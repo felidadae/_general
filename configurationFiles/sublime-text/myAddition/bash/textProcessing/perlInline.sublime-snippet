@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+perl -pi -e   's/  ${1:regex}  /  ${2:substitution}  /gx'   "\$${3:fileToModify}"
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>perlInline</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.shell</scope>
+</snippet>
+

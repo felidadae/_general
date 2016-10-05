@@ -1,0 +1,13 @@
+snippet unittest "" b
+import unittest
+from ClassToTest import *
+
+class UtilsTestCase(unittest.TestCase):
+	def test__${1:functionNameToTest}(self):
+		#self.assertEqual() | self.assertTrue() | self.assertFalse()
+endsnippet
+
+snippet testfun "" b
+def test__${1:name}(self):
+	${0}
+endsnippet

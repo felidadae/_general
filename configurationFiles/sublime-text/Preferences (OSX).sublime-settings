@@ -1,0 +1,19 @@
+{
+	"color_scheme": "Packages/Colorcoder/Monokai (Colorcoded).tmTheme",
+	"dpi_scale": 1.25,
+	"font_face": "menlo",
+	"font_size": 11.5,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"BracketHighlighter",
+		"GitGutter",
+		"Makefile",
+		"Vintage"
+	],
+	"original_color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"overlay_scroll_bars": "enabled",
+	"save_on_focus_lost": false,
+	"soda_classic_tabs": false,
+	"theme": "Soda Dark 3.sublime-theme"
+}

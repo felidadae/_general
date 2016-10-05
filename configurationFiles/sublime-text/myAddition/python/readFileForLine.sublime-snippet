@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+import codecs
+fref = codecs.open(${1:fileName}, 'r', 'utf-8')
+for line in fref:
+	line = line.rstrip()
+	#regex for regexing
+	${0}
+fref.close()
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>readFileForLine</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

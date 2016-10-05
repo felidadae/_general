@@ -1,0 +1,151 @@
+##
+#File I/O
+##
+snippet readFileIntoString "" b
+import codecs
+fref = codecs.open(${1:fileName}, 'r', 'utf-8')
+fContent = fref.read()
+fref.close()
+endsnippet
+
+snippet readFileForLine "" b
+import codecs
+fref = codecs.open(${1:fileName}, 'r', 'utf-8')
+for line in fref:
+	line = line.rstrip()
+	#regex for regexing
+	${0}
+fref.close()
+endsnippet
+
+snippet writeToFile  "" b
+import codecs		
+fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
+fref.write("${2:stringToWrite}")
+fref.close()
+endsnippet
+
+snippet filterScript "" b
+import sys
+import os
+import codecs
+import re
+
+fileIn = sys.argv[1]
+fileOut= sys.argv[2]
+
+if os.path.isfile(fileIn):
+	fileIn_ = codecs.open(fileIn, 'r', 'utf-8')
+else:
+	print "[Error] Input file does not exits."
+	exit(1)
+fileOut_ = codecs.open(fileOut, 'w+', 'utf-8')
+
+for l in fileIn_:
+	l = l.rstrip('\n')
+	# Do sth with line
+endsnippet
+
+snippet writeToFile  "" b
+import codecs		
+fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
+fref.write("${2:stringToWrite}")
+fref.close()
+endsnippet
+
+
+##
+#Regex
+##
+snippet regex "" b
+s = re.search("${1:pattern}", ${2:string})
+if s: group1 = s.group(1)
+${0}
+endsnippet
+
+snippet regex "" b
+import re
+s = re.search("${1:pattern}", ${2:string})
+if s:
+	group1 = s.group(1)
+	group2 = s.group(2)
+	${0}
+endsnippet
+
+snippet ifregex "" b
+if re.match("${1:pattern}", ${2:string}):
+	${0}
+endsnippet
+snippet breakpoint "" b
+import ipdb; ipdb.set_trace()
+endsnippet
+
+
+
+
+
+snippet systemcheck "" b
+from sys import platform as _platform
+if _platform == "linux" or _platform == "linux2":
+    # linux
+    pass
+elif _platform == "darwin":
+    # OS X
+    pass
+elif _platform == "win32":
+    # Windows...
+    pass
+endsnippet
+
+snippet str "" b
+${1:sentence} = unicode("${2:string}", 'utf8')${0}
+endsnippet
+
+
+
+snippet time "" b
+
+import time
+def timeTest__${1}():
+	def ${1:fun}():
+		${2:YourCodeToTest}
+
+	################
+	t0 = time.time()
+	for i in xrange(1,${3:100}):
+		${1}()
+	t1 = time.time()
+	print "Function ${1} has taken " + str((t1-t0)/${3}) + "[s]"
+	################
+endsnippet
+
+
+snippet currDate "" b
+import datetime
+t_ = datetime.datetime.strftime(datetime.datetime.now(), '%Y%m%d%H%M')
+endsnippet
+
+
+snippet split "" b
+import re
+${1:splitted} = re.split("${2:pattern}", ${3:string} )
+endsnippet
+
+snippet currPos "" b
+import os
+pathIn  = (os.path.dirname(os.path.abspath(__file__))
+			+ "/${1:subdirectory}")
+endsnippet
+
+snippet convertJSON "" b
+import json
+json.dumps(${1:dataStructure})
+endsnippet
+
+snippet standardImport "" b
+import sys
+import os
+import codecs
+import re
+endsnippet
+

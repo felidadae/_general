@@ -1,0 +1,44 @@
+{
+	"binary_file_patterns":
+	[
+		"*.dds",
+		"*.eot",
+		"*.gif",
+		"*.ico",
+		"*.jar",
+		"*.jpeg",
+		"*.jpg",
+		"*.pdf",
+		"*.png",
+		"*.swf",
+		"*.tga",
+		"*.tsv",
+		"*.ttf",
+		"*.zip",
+		"/mnt/b/HLTLAB/working/schwa/dictionary-updates/**",
+		"/mnt/b/HLTLAB/working/schwa/web-tool-manual-validation-logs/**",
+		"AE2-Scripts/.OUT/**",
+		"AE2-Scripts/.in/**",
+		"AE2-Scripts/doc/**",
+		"AE2-Scripts/lastRunFilteredOut/**",
+		"TIweb/XMLResources/**",
+		"TIweb/src/tifocus/static/**"
+	],
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"dpi_scale": 1,
+	"font_size": 9,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Anaconda",
+		"ClangAutoComplete",
+		"Colorcoder",
+		"HTMLBeautify",
+		"Makefile",
+		"Package Control",
+		"TrailingSpaces"
+	],
+	"original_color_scheme": "Packages/User/Color Highlighter/themes/Monokai (Colorcoded).tmTheme",
+	"show_encoding": true,
+	"theme": "Soda Dark 3.sublime-theme"
+}

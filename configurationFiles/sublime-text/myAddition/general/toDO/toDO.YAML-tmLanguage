@@ -1,0 +1,42 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: ToDO
+scopeName: text.toDO
+fileTypes: [todo]
+uuid: 97c45e17-1a3b-4167-90c8-41ff597369fe
+
+patterns:
+- comment: 
+  name: keyword.other.ssraw
+  match: \[.\]
+  captures:
+    '1': {name: constant.numeric.ssraw}
+
+- comment: Sequences like \$, \> and \<
+  name: constant.character.escape.ssraw
+  match: \!\!BUG
+
+- comment: Sequences like \$, \> and \<
+  name: entity.name.class
+  match: \$[^\s]*
+
+- comment: Sequences like \$, \> and \<
+  name: storage.type
+  match: ^\s+\$.*
+
+- comment: Sequences like \$, \> and \<
+  name: string
+  match: \@.+
+
+- comment: Sequences like \$, \> and \<
+  name: comment.block
+  match: ^\s+[^\$].*
+
+- comment: Sequences like \$, \> and \<
+  name: comment.block
+  match: ^\*+
+
+- comment: Sequences like \$, \> and \<
+  name: variable.parameter
+  match: \s*\{.*\}
+...

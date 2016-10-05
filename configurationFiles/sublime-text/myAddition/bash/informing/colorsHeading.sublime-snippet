@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>colors</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.shell</scope>
+</snippet>

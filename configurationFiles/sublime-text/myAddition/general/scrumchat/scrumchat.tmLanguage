@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array/>
+	<key>name</key>
+	<string>scrumchat</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.ssraw</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<false/>
+			<key>match</key>
+			<string>\[.*\]</string>
+			<key>name</key>
+			<string>keyword.other.ssraw</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>\!\!BUG</string>
+			<key>name</key>
+			<string>constant.character.escape.ssraw</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>\{.*\}</string>
+			<key>name</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>\**</string>
+			<key>name</key>
+			<string>comment.block</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.scrumchat</string>
+	<key>uuid</key>
+	<string>9a586948-54b9-4a32-a1fc-2181b1aa3841</string>
+</dict>
+</plist>

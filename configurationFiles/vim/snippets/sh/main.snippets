@@ -1,0 +1,139 @@
+snippet colorsSuccess "" b
+printf "\${RED}[Error]\${NC} ${1:message}\n"
+endsnippet
+
+snippet colors "" b
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+endsnippet
+
+snippet colorsSuccess "" b
+printf "\${GREEN}[Success]\${NC} ${1:message}\n"
+endsnippet
+
+snippet baseAndExtension "" b
+fileBaseName="\${${1:fullFilePath}%.*}"
+extension="\${${1}##*.}"
+endsnippet
+
+snippet ifSubstringContain "" b
+[[ "\$${1:string}" == *"\$${2:substring}"* ]]
+endsnippet
+
+snippet perlNotRegex "" b
+perl -pi -e  's/  \Q${1:regex}\E  /  ${2:/*NO NEED TO do that*/}  /gx' "\$${3:file}" 
+endsnippet
+
+snippet perlENV "" b
+export ${1:bashVariable}
+perl -pi -e  's/ \$ENV\{${1}\} / ${2:replaceWith} /gx' "\$${3:file}" 
+endsnippet
+
+snippet perlInline "" b
+perl -pi -e   's/  ${1:regex}  /  ${2:substitution}  /gx'   "\$${3:fileToModify}"
+endsnippet
+
+snippet ifDarwin "" b
+if [ "\$OS_KERNEL__" == "darwin" ]; 
+then
+	#MAC OS X
+	${0}
+fi
+endsnippet
+
+snippet diffAnd "" b
+#diff without taking into consideration white spaces;
+diff -b "${1:file1}" "${2:file2}"
+if [[  \$? != 0  ]]; then
+	exit 1;
+else 
+	exit 0;
+fi
+endsnippet
+
+snippet testFileFilterFunction "" b
+. ${1:scriptFileName}.sh
+
+touch test
+echo "${2:line1}" >> test
+echo "${3:line2}" >> test
+
+echo "************"
+echo "Before"
+echo "************"
+cat test
+echo "************"
+
+echo ""
+echo ""
+echo ""
+
+${1} ${4:arg1} ${5:arg2} test
+echo "Function result code is: \$?"
+
+echo ""
+echo ""
+echo ""
+
+echo "************"
+echo "Result"
+echo "************"
+cat test
+echo "************"
+
+rm test
+endsnippet
+
+snippet forls "" b
+for ifile in ${1:~}/*; do
+	[ -e "\$ifile" ] || continue
+	$0
+done
+endsnippet
+
+snippet $ "" b
+"\$${1:NAME}" $0
+endsnippet
+
+snippet forA "" b
+for el in "\$\{${1:arrayname}[@]\}"
+do
+   ${0}
+done
+endsnippet
+
+snippet redirectToTrash "" b
+> /dev/null 2>&1
+endsnippet
+
+snippet currPos "" b
+scriptPath="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
+endsnippet
+
+snippet ifLinux "" b
+if [ "\$OS_KERNEL__" == "linux" ]; 
+then
+	${0}
+fi
+endsnippet
+
+snippet fun "" b
+function ${1:funName} {
+	$0
+}
+endsnippet
+
+snippet forarray "For-loop iterating through array additionaly with counter;" b
+i=0
+for rp in "\${${1:ArrayName}[@]}"
+do
+	${0}
+	i=\$((i+1))
+done
+endsnippet
+
+snippet arraycopy "Copy array to another variable" b
+${2:destiny}=("\${${1:source}[@]}")
+endsnippet

@@ -1,0 +1,27 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Task List
+scopeName: text.taskList
+fileTypes: [tasklist]
+uuid: 13b5718f-ce34-488e-9f4a-d3855f96a457
+
+patterns:
+
+- comment: Tab stops like $1, $2...
+  match: ^\s*(\[.?\])\s*(\@)([a-zA-Z\.\,]*)?((->)?(\{.*\}))?
+  captures:
+    '1': {name: constant.numeric}
+    '2': {name: variable.language.ssraw}
+    '3': {name: keyword.other.ssraw}
+    '5': {name: keyword.other.special-method}
+    '6': {name: string}
+
+- comment: Tab stops like $1, $2...
+  name: comment
+  match: ^\s*\#.*$
+
+
+- comment: Tab stops like $1, $2...
+  name: comment
+  match: (\d\d\d\d\.)?\d\d\.\d\d
+...

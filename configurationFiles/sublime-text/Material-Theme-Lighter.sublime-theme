@@ -1,0 +1,9 @@
+[
+	{
+		"class": "sidebar_label",
+		"font.bold": true,
+		"font.size": 13,
+		"font.face": "Ubuntu",
+		"color": [160,160,160],
+	},
+]

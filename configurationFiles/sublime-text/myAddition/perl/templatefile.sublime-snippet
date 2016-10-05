@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+use strict;
+use warnings;
+use Term::ANSIColor qw(:constants);
+\$Term::ANSIColor::AUTORESET = 1;
+
+
+sub main {
+	#open(my \$fin,  '<', shift @ARGV) or die "Could not open file!";
+	#open(my \$fout, '<', shift @ARGV) or die "Could not open file!";
+
+	#foreach my $l (<\$fin>) {
+		#Goes here
+	#}
+
+	foreach my $l (<STDIN>) {
+		print $0;
+	}
+}
+
+main()
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.perl</scope>
+</snippet>

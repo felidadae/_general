@@ -1,0 +1,10 @@
+snippet hello "" b
+install.packages('${1:PackageName}', 
+	repos='http://r.meteo.uni.wroc.pl/', 
+	dependencies = TRUE)
+endsnippet
+
+snippet at "" b
+attributes( ${1:object} )$2
+endsnippet
+

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+import codecs		
+fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
+fref.write("${2:stringToWrite}")
+fref.close()
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger> writeToFile </tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

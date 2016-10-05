@@ -1,0 +1,45 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"All Autocomplete",
+		"BracketHighlighter",
+		"C++ Completions",
+		"C++ Snippets",
+		"C++11",
+		"ClangAutoComplete",
+		"Color Highlighter",
+		"Color Scheme - Chromodynamics",
+		"Colorcoder",
+		"Djaneiro",
+		"Django",
+		"Fold Comments",
+		"Git",
+		"GitGutter",
+		"Gitignore",
+		"GTKDarkThemeVariantSetter",
+		"Highlight",
+		"InsertDate",
+		"JavaScriptNext - ES6 Syntax",
+		"Jedi - Python autocompletion",
+		"Makefile Improved",
+		"Material Theme",
+		"ModernPerl",
+		"Origami",
+		"Package Control",
+		"PackageDev",
+		"PackageResourceViewer",
+		"Python Improved",
+		"SideBarEnhancements",
+		"Solarized Color Scheme",
+		"SublimeREPL",
+		"Sublimerge Pro",
+		"Terminal",
+		"Theme - Soda",
+		"Theme - Spacegray"
+	]
+}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>todo</string>
+	</array>
+	<key>name</key>
+	<string>ToDO</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.ssraw</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<false/>
+			<key>match</key>
+			<string>\[.\]</string>
+			<key>name</key>
+			<string>keyword.other.ssraw</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>\!\!BUG</string>
+			<key>name</key>
+			<string>constant.character.escape.ssraw</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>\$[^\s]*</string>
+			<key>name</key>
+			<string>entity.name.class</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>^\s+\$.*</string>
+			<key>name</key>
+			<string>storage.type</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>\@.+</string>
+			<key>name</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>^\s+[^\$].*</string>
+			<key>name</key>
+			<string>comment.block</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>^\*+</string>
+			<key>name</key>
+			<string>comment.block</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Sequences like \$, \&gt; and \&lt;</string>
+			<key>match</key>
+			<string>\s*\{.*\}</string>
+			<key>name</key>
+			<string>variable.parameter</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>text.toDO</string>
+	<key>uuid</key>
+	<string>97c45e17-1a3b-4167-90c8-41ff597369fe</string>
+</dict>
+</plist>

@@ -1,0 +1,6 @@
+.DS_Store
+.dev/*.sublime-workspace
+configurationFiles/rec
+*.swp
+*.swo
+.localonly

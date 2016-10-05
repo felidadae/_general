@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>hlinks</string>
+	</array>
+	<key>name</key>
+	<string>hlinks</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>Tab stops like $1, $2...</string>
+			<key>match</key>
+			<string>^\s*\@.*$</string>
+			<key>name</key>
+			<string>variable.language.ssraw</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Tab stops like $1, $2...</string>
+			<key>match</key>
+			<string>^\s*\#.*$</string>
+			<key>name</key>
+			<string>comment</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Tab stops like $1, $2...</string>
+			<key>match</key>
+			<string>^\s*http[^\s]*</string>
+			<key>name</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Tab stops like $1, $2...</string>
+			<key>match</key>
+			<string>\{.*\}</string>
+			<key>name</key>
+			<string>constant.numeric</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.hlinks</string>
+	<key>uuid</key>
+	<string>c7c0b204-e565-4454-b8a6-ad5e88e6d79b</string>
+</dict>
+</plist>

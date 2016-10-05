@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+if [ "\$OS_KERNEL__" == "linux" ]; 
+then
+	${0}
+fi
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ifLinux</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.shell</scope>
+</snippet>

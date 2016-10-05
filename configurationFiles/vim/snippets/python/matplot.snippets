@@ -1,0 +1,26 @@
+snippet plot "" b
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(0.0, 1.0, 0.01)
+y = np.${1:someNumpyFunction}(x)
+plt.plot(x, y)
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Plot of function ${1}')
+plt.grid(False)
+
+plt.xlim( x.min() - 0.01, x.max() + 0.01 )
+plt.ylim( y.min() - 0.01, y.max() + 0.01 )
+
+plt.show()
+endsnippet
+
+snippet importMatplotlib "" b
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import numpy as np
+plt.style.use('ggplot')
+endsnippet
+

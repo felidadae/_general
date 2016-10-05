@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+import codecs
+fref = codecs.open(${1:fileName}, 'r', 'utf-8')
+fContent = fref.read()
+fref.close()
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>readFileIntoString</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

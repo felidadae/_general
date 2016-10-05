@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+<form class="XForm" action="{% url 'APPName:URL' %}" method="POST|GET">
+	<input type="text"   name="ArgName" value="ArgValue"/>
+	<input type="hidden" name="ArgName" value="ArgValue"/>
+	<input type="submit" value="Go!"/>
+</form>
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>log</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

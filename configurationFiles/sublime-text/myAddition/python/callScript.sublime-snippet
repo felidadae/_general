@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+fullPathToScript = ${1}
+
+p = subprocess.Popen(
+	["/bin/bash", 
+		fullPathToScript,
+		${2:arg1},
+		${3:arg2}
+	],
+	stdout=subprocess.PIPE
+)
+
+output, err = p.communicate()
+returncode = p.returncode
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>callScript</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

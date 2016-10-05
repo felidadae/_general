@@ -1,0 +1,10 @@
+####
+# kWorker
+####
+sudo crontab -e
+@reboot echo "disable" > /sys/firmware/acpi/interrupts/gpe16
+@reboot echo "disable" > /sys/firmware/acpi/interrupts/gpe17
+
+####
+# mbpfan
+####

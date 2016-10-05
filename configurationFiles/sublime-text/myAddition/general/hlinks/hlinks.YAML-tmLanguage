@@ -1,0 +1,24 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: hlinks
+scopeName: source.hlinks
+fileTypes: [hlinks]
+uuid: c7c0b204-e565-4454-b8a6-ad5e88e6d79b
+
+patterns:
+- comment: Tab stops like $1, $2...
+  match: ^\s*\@.*$
+  name: variable.language.ssraw
+
+- comment: Tab stops like $1, $2...
+  name: comment
+  match: ^\s*\#.*$
+
+- comment: Tab stops like $1, $2...
+  name: string
+  match: ^\s*http[^\s]* 
+
+- comment: Tab stops like $1, $2...
+  name: constant.numeric
+  match: \{.*\}
+...

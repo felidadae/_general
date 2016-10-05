@@ -1,0 +1,39 @@
+[ 
+	{ "keys": ["shift+alt+b"], "command": "toggle_side_bar" },
+	{
+		"keys": ["shift+alt+t"],
+		"command": "open_terminal",
+		"args": {
+			"parameters": ["-T", "Working in directory %CWD%"]
+		}
+	},
+	{ "keys": ["ctrl+alt+;"], "command": "goto_definition" },
+	{
+	    "keys": ["f5"],
+	    "command": "revert"
+	},
+	{
+		 "keys": ["ctrl+up"],
+		 "command": "scroll_lines", "args": {"amount": 25.0}
+	},
+	{
+		 "keys": ["ctrl+down"],
+		 "command": "scroll_lines", "args": {"amount": -25.0}
+	},
+	{
+		 "keys": ["alt+up"],
+		 "command": "scroll_lines", "args": {"amount": 15.0}
+	},
+	{
+		 "keys": ["alt+down"],
+		 "command": "scroll_lines", "args": {"amount": -15.0}
+	},
+	{
+		"keys": ["shift+alt+n"], 
+		"command": "new_window_for_project" 
+	},
+	{
+		"keys": ["shift+alt+v"],
+    	"command": "exec", "args": { "cmd": ["gvim", "test.txt"]} 
+	}
+]

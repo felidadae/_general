@@ -1,0 +1,58 @@
+<html>
+
+<head>
+	<script type="text/javascript" 
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js">
+	</script>
+
+	<!-- CSS with the whole appeareance description -->
+	<link rel="stylesheet" type="text/css" href="mainStyle.css">
+
+	<!-- Client logic -->
+	<script type="text/javascript" src="editEntries.js"></script>
+
+	<!-- Variables to make page know about itself history... -->
+	<script>
+		var G2P_WEBSERVER_SOLUTION_VERSION 	= "0.1.0";
+		var G2P_LANGUAGE_CODE = "{{ sentences.attrib.language_code }}";
+		var G2P_DATE = "{{ sentences.attrib.g2p_date }}";
+		var FILE_NAME = "{{ sentences.attrib.filename }}";
+	</script>
+
+	<script>
+		var updatesLinkage = {{ updatesLinkage|safe }};
+		var updatesLinkage__offset = {{ updatesLinkage__offset }};
+	</script>
+</head>
+
+<body>
+<table>
+	{% include "tifocus/pageController.html" %}
+
+	{% for sentence in sentences %}
+		<tr><td>
+			<a class="recording" href="{{ sentence.0.attrib.RecordingURL }}"> </a>
+
+			<span class="REF">REF:</span></a>
+			{% spaceless %}
+			{% for word in sentence.0 %}<a href="#" class="word" id="{{ word.attrib.id }}">{{word.0.text}}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endfor %}
+			{% endspaceless %}
+			<br>
+			<span class="HYP">DIFF: </span>
+			{% spaceless %}
+			{% for word in sentence.1 %}{% if word.attrib.State == "Common" %}<a href="#" class="word" diffState="Common" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% if word.attrib.State == "Deleted" %}<a href="#" class="word" diffState="Deleted" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% if word.attrib.State == "Inserted" %}<a href="#" class="word" diffState="Inserted" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% endfor %}{% endspaceless %}
+		</td></tr>
+	{% endfor %}
+
+	{% include "tifocus/pageController.html" %}
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div id="container">
+	{% for phblock in initialPHBlocks %}
+	<div class="phblock" id="d{{ phblock.0 }}">{% for form in phblock.1 %}{% if not forloop.first %}<br>{% endif %}{{form.text.strip}}{% endfor %}	</div>
+	{% endfor %}
+</div>
+
+</body>
+</html>

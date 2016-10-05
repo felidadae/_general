@@ -1,0 +1,22 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: scrumchat
+scopeName: source.scrumchat
+fileTypes: []
+uuid: 9a586948-54b9-4a32-a1fc-2181b1aa3841
+
+patterns:
+- comment: 
+  name: keyword.other.ssraw
+  match: \[.*\]
+  captures:
+    '1': {name: constant.numeric.ssraw}
+
+- comment: Sequences like \$, \> and \<
+  name: string
+  match: \{.*\}
+
+- comment: Sequences like \$, \> and \<
+  name: comment.block
+  match: \**
+...

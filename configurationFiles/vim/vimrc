@@ -1,0 +1,201 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'sickill/vim-monokai'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'hdima/python-syntax'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'ciaranm/detectindent'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tmux-plugins/vim-tmux'
+Plugin 'tpope/vim-commentary'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'severin-lemaignan/vim-minimap'
+Plugin 'tpope/vim-abolish' "manBro ManBro
+Plugin 'vim-scripts/keepcase.vim'
+Plugin 'qpkorr/vim-bufkill'
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'godlygeek/tabular'
+Plugin 'itchyny/vim-cursorword'
+Plugin 'vim-scripts/Greplace.vim'
+call vundle#end()            
+filetype plugin indent on
+
+"GUI OPTIONS
+:set guioptions-=L  "remove left-hand scroll bar
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guifont=Roboto\ Mono\ Medium\ for\ Powerline\ Medium\ 8 
+
+"to run POWERLINE 
+let g:remoteSession = ($SSH_CLIENT == "")
+if g:remoteSession
+	python from powerline.vim import setup as powerline_setup
+	python powerline_setup()
+	python del powerline_setup
+else
+	:set t_ut=
+	:set showtabline=0
+endif
+
+"devicons
+let g:webdevicons_enable_ctrlp = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+" call webdevicons#refresh()
+"let g:webdevicons_conceal_nerdtree_brackets = 1
+"let g:DevIconsEnableFoldersOpenClose = 1
+
+"Colors
+set background=dark
+colorscheme solarized
+:highlight nontext ctermfg=bg 
+:hi folded term=none cterm=none ctermfg=green ctermbg=none
+:hi foldcolumn ctermbg=none
+
+" Mappings
+" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+inoremap jk <Esc>
+:nnoremap _<space> i<space><esc>
+:nnoremap _<tab> i<tab><esc>
+:nnoremap _<CR> i<CR><esc>
+:nmap ; :
+:let mapleader = ","
+:let maplocalleader = "\\"
+:nnoremap cp :let @+ = expand("%") <cr>
+:nnoremap <leader>ev :split $MYVIMRC<cr>/Mapping<cr>zt
+:nnoremap <leader>ep :split $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
+":nnoremap <leader>sv :source $MYVIMRC<cr> :call webdevicons#refresh()<cr>
+:nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
+:nnoremap <leader>nt :NERDTreeToggle<cr>
+" :nnoremap ,., :w :b#<::cr>
+nnoremap <leader>" bdwi""<Esc>hp
+nnoremap <leader>{ bdwi{}<Esc>hp
+:nnoremap <leader>p :CtrlPTag
+
+"General
+:set rnu
+:set nu
+:set cursorline
+hi NonText guifg=bg
+:set encoding=utf8
+:set laststatus=2
+set nocompatible              " be iMproved, required
+set clipboard=unnamedplus
+filetype on
+filetype plugin on
+filetype indent on
+syntax enable
+:set textwidth=0 
+:set wrapmargin=0
+:set nowrap
+:set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+:set showtabline=2
+:set backspace=2
+:set scroll=15
+
+"to highlight (["
+:let OPTION_NAME = 1
+autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
+function! s:def_base_syntax()
+	" Simple example
+	syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+	syntax match baseDelimiter ","
+	hi link commonOperator Operator
+	hi link baseDelimiter Special
+endfunction
+
+"Nerdtree
+" autocmd FileType nerdtree setlocal nolist
+" function! StartUp()
+"     if 0 == argc()
+"         NERDTree
+"     end
+" endfunction
+"NerdTree starter
+" autocmd VimEnter * call StartUp()
+:let g:NERDTreeWinSize=54
+:let g:NERDTreeMinimalUI=1
+:let NERDTreeHijackNetrw=0
+
+"CtrlP fuzzy finder
+let g:ctrlp_follow_symlinks = 2
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_show_hidden = 1
+
+"UltiSnips
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="horizontal"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
+let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"
+
+"Intendation
+set foldmethod=indent
+set foldtext=MyFoldText()
+function! MyFoldText()
+	let i = indent(v:foldstart)
+	return repeat(' ', i) . "↪" 
+endfunction
+set foldlevel=3
+
+"Wipeout not used buffers
+command! -bang Wipeout :call Wipeout(<bang>0)
+function! Wipeout(bang)
+	" figure out which buffers are visible in any tab
+	let visible = {}
+	for t in range(1, tabpagenr('$'))
+		for b in tabpagebuflist(t)
+			let visible[b] = 1
+		endfor
+	endfor
+	" close any buffer that are loaded and not visible
+	let l:tally = 0
+	let l:cmd = 'bw'
+	if a:bang
+		let l:cmd .= '!'
+	endif
+	for b in range(1, bufnr('$'))
+		if buflisted(b) && !has_key(visible, b)
+			let l:tally += 1
+			exe l:cmd . ' ' . b
+		endif
+	endfor
+	echon "Deleted " . l:tally . " buffers"
+endfun
+
+:let g:session_autosave = 'no'
+
+" x-st column is magenta if there is a char
+autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
+autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%80v', 80)
+
+" vim-session
+set sessionoptions-=options
+set sessionoptions-=help
+set sessionoptions-=buffers
+
+"Needed to be on the end of the file
+:highlight nontext ctermfg=bg 
+:hi folded term=none cterm=none ctermfg=none ctermbg=none
+:hi foldcolumn ctermbg=none
+:set fillchars="fold: " 

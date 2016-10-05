@@ -1,0 +1,52 @@
+<snippet>
+	<content><![CDATA[
+######################################################
+#####
+#Description
+#####
+# 
+
+#####
+#Abbreviations and naming scheme 
+#####
+# 
+
+#####
+#Usage
+#####
+# - normal usage: no parameters
+# - testrun usage: with a flag "--testrun"
+# - info: with a flag "--info"
+
+#####
+#Tested on 
+#####
+# ---
+
+#####
+#Notes
+#####
+# ---
+
+#####
+#@TODO
+#####
+#
+
+#####
+#@State (ready, in progress, just started) and last focused task in progress
+#####
+# ---
+
+
+#####
+#Authors
+##### 
+#s.bugaj@samsung.com
+#####################################################
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

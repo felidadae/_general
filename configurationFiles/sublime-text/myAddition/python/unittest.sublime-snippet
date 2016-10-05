@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+import unittest
+from ClassToTest import *
+
+class UtilsTestCase(unittest.TestCase):
+	def test__${1:functionNameToTest}(self):
+		#self.assertEqual() | self.assertTrue() | self.assertFalse()
+]]></content>
+    <tabTrigger>unittest</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

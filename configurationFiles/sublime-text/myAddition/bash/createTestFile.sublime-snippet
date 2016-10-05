@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[
+. ${1:scriptFileName}.sh
+
+touch test
+echo "${2:line1}" >> test
+echo "${3:line2}" >> test
+
+echo "************"
+echo "Before"
+echo "************"
+cat test
+echo "************"
+
+echo ""
+echo ""
+echo ""
+
+${1} ${4:arg1} ${5:arg2} test
+echo "Function result code is: \$?"
+
+echo ""
+echo ""
+echo ""
+
+echo "************"
+echo "Result"
+echo "************"
+cat test
+echo "************"
+
+rm test
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>testFileFilterFunction</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.shell</scope>
+</snippet>

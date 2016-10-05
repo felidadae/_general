@@ -1,0 +1,77 @@
+{
+	"animation_enabled": false,
+	"auto_complete": true,
+	"auto_complete_selector": "source - comment",
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "."
+		},
+		{
+			"characters": ">"
+		},
+		{
+			"characters": ":"
+		}
+	],
+	"binary_file_patterns":
+	[
+		"*.dds",
+		"*.eot",
+		"*.gif",
+		"*.ico",
+		"*.jar",
+		"*.jpeg",
+		"*.jpg",
+		"*.pdf",
+		"*.png",
+		"*.swf",
+		"*.tga",
+		"*.ttf",
+		"*.zip",
+		"__pycache__/**"
+	],
+	"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+	"dpi_scale": 2.4,
+	"extensions":
+	[
+		"c",
+		"h"
+	],
+	"font_face": "Ubuntu Mono",
+	"font_options":
+	[
+		"bold",
+		"gray_antialias",
+		"subpixel_antialias"
+	],
+	"font_size": 11,
+	"highlight_line": true,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Alignment",
+		"All Autocomplete",
+		"BracketHighlighter",
+		"ClangAutoComplete",
+		"Colorcoder",
+		"GTKDarkThemeVariantSetter",
+		"Makefile",
+		"Vintage"
+	],
+	"material_theme_bold_tab": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_tab": true,
+	"overlay_scroll_bars": "enabled",
+	"remember_open_files": false,
+	"rulers":
+	[
+		80
+	],
+	"save_on_focus_lost": false,
+	"scroll_speed": 0.0,
+	"soda_classic_tabs": false,
+	"theme": "Material-Theme.sublime-theme",
+	"tree_animation_enabled": true
+}

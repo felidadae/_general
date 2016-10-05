@@ -1,0 +1,41 @@
+snippet rmr "" b
+import shutil
+shutil.rmtree(${1:directoryToRemove})
+endsnippet
+
+snippet mkdirr "" b
+import os
+os.makedirs(${1:pathToDir})
+endsnippet
+
+snippet ifFileExists "" b
+import os
+if os.path.isfile(${1:fileName}):
+	${0}
+endsnippet
+
+snippet rm "" b
+import os
+os.remove(${1:pathToFile})
+endsnippet
+
+snippet ls "" b
+import os
+os.listdir(${1:pathToDir})
+endsnippet
+
+snippet callScript "" b
+fullPathToScript = ${1}
+
+p = subprocess.Popen(
+	["/bin/bash", 
+		fullPathToScript,
+		${2:arg1},
+		${3:arg2}
+	],
+	stdout=subprocess.PIPE
+)
+
+output, err = p.communicate()
+returncode = p.returncode
+endsnippet

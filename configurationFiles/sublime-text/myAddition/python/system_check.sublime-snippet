@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+from sys import platform as _platform
+if _platform == "linux" or _platform == "linux2":
+    # linux
+    pass
+elif _platform == "darwin":
+    # OS X
+    pass
+elif _platform == "win32":
+    # Windows...
+    pass
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>systemcheck</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>
