@@ -35,3 +35,4 @@ vim_=/home/felidadae/.vim
 darktable_conf=/home/felidadae/.config/darktable
 darktable_exec=/opt/darktable
 darktable_src=$base/_toolsSources/darktable
+cv=/home/felidadae/Programming/_General/notus/CV

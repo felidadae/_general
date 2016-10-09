@@ -77,8 +77,25 @@ export EDITOR="$(which subl) --new-window --wait"
 TERM=xterm-256color
 
 #Promt
-alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-PS1='\[\e[1;32m\][\W]\[\e[0;35m\]$(__git_ps1)\[\e[0m\]\[\e[1;32m\]\$\[\e[0m\] '
+function parse_git_branch() {
+    x=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
+    if [[ "$x" == "" ]]; then
+		echo ""
+	else
+		x=${x:1:-1}
+		echo " $x"
+    fi
+}
+function dayTime() {
+	hour=`date +"%H"` 
+	if (($hour > 6 && $hour < 18)); then 
+		echo "☼ "
+	else
+		echo "☽ "
+	fi
+}
+# alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+PS1='\[\e[0;33m\]`dayTime`[\W]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[1;32m\]\$\[\e[0m\] '
 
 HISTFILESIZE=
 HISTSIZE=5000

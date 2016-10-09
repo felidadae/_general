@@ -93,6 +93,7 @@ function dynamicLibraryRequirements {
 		ldd "$1"
 	fi
 }
+printdocument=lpr
 # @extend
 
 
@@ -170,15 +171,15 @@ function fuzzyCall {
 	array=()
 	while IFS=  read -r -d $'\0'; do
 		array+=("$REPLY")
-	done < <(find . -path .git -prune -o -iname "*$2*" -not -name "*.swp" -not -name "*.swo" -not -type d -print0)
+	done < <(find "$1" -path .git -prune -o -iname "*$3*" -not -name "*.swp" -not -name "*.swo" -not -type d -print0)
 
-	if [[ $3 != "" ]]; then
-		idx=$3
+	if [[ $4 != "" ]]; then
+		idx=$4
 		idx=$((idx-1))
-		eval "$1 ${array[$idx]}"	
+		eval "$2 ${array[$idx]}"	
 	else
 		if [[ ${#array[@]} == 1 ]]; then
-			eval "$1 ${array[0]}"
+			eval "$2 ${array[0]}"
 		else
 			printf '%s\n' "${array[@]}" | cat -n	
 		fi
@@ -203,6 +204,9 @@ function vim_newsyntax {
 }
 #--------------------------------
 
+#--------------------------------
+#Some variables which i will use
+#--------------------------------
 
 
 #--------------------------------
@@ -212,16 +216,19 @@ alias .c="xclip -selection c"
 
 function ,epo { vim $general/bashProfile/pocketknife.sh;  }
 function ,ev  { vim ~/.vimrc;  }
-function ,  { fuzzyCall "vim" "$1" "$2"; }
-function ,, { fuzzyCall "$1" "$2" "$3"; }
-function ,. { p=$(pwd); cd $general; fuzzyCall "vim" "$1" "$2"; cd "$p"; }
-function ,,. { fuzzyCall "vim" "$1" "$2"; }
-function ,., { p=$(pwd); cd $general; fuzzyCall "pygmentize -g" "$1" "$2"; cd "$p"; }
-function ,n { notify-send --urgency=critical --expire-time=400 "$1" "$2"; }
+###---
+function ,  { fuzzyCall . "vim" "$1" "$2"; }
+function ,. { fuzzyCall . "$1" "$2" "$3"; }
+###---
+function g,  { fuzzyCall "$general" "vim" "$1" "$2"; }
+function g,. { fuzzyCall "$general" "pygmentize -g" "$1" "$2"; }
+###---
+function s,  { fuzzyCall "/" "vim" "$1" "$2";  }
+function ,n  { notify-send --urgency=critical --expire-time=400 "$1" "$2"; }
 alias _f=fuzzyCall
 
-function .b+ { xbacklight -inc 60 }
-function .b- { xbacklight -dec 60 }
+function .b+ { xbacklight -inc 60; }
+function .b- { xbacklight -dec 60; }
 
 alias _gls="git_listFilesIn1Commit"
 alias diffgit="git diff --no-index"
@@ -234,4 +241,9 @@ alias _gl="git log"
 alias _gb="git branch"
 alias _gpo="git push origin"
 alias _gall="git status; git branch;"
+
+function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  }
+function ,py,c { python $LAST_SCRIPT;  }
+function ,py,m { mv $LAST_SCRIPT "$1"; }
+#@--fast
 #--------------------------------

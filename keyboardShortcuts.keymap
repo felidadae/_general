@@ -49,6 +49,7 @@ gp : paste and move curser after paste
 -------------------------------------------------------
 @BASH
 $Command Editing Shortcuts
+Ctrl+[    : start vim mode
 Ctrl + a  : go to the start of the command line
 Ctrl + e  : go to the end of the command line
 Ctrl + k  : delete from cursor to the end of the command line
