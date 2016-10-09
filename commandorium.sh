@@ -10,3 +10,6 @@ perl -pi -e  s/ XZA / DUPOSZ /gx $(find . -name *txt)
 
 git remote set-url origin https://github.com/felidadae/_general.git
 git push -u origin master
+
+set -x ;
+set -o functrace

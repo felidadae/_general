@@ -32,6 +32,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'godlygeek/tabular'
 Plugin 'itchyny/vim-cursorword'
 Plugin 'vim-scripts/Greplace.vim'
+Plugin 'tikhomirov/vim-glsl'
 call vundle#end()            
 filetype plugin indent on
 

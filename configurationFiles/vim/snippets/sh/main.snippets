@@ -127,7 +127,7 @@ endsnippet
 
 snippet forarray "For-loop iterating through array additionaly with counter;" b
 i=0
-for rp in "\${${1:ArrayName}[@]}"
+for el in "\${${1:ArrayName}[@]}"
 do
 	${0}
 	i=\$((i+1))
@@ -136,4 +136,11 @@ endsnippet
 
 snippet arraycopy "Copy array to another variable" b
 ${2:destiny}=("\${${1:source}[@]}")
+endsnippet
+
+snippet arrayfind "To create bash array from find result" b
+${1:array}=()
+while IFS=  read -r -d $'\0'; do
+	$1+=("$REPLY")
+done < <(find . -name ${2:pattern} -print0)
 endsnippet

@@ -1,8 +1,9 @@
-#--------------------------------
-function pocketknife__see {
-	local scriptPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-	pygmentize -g "$scriptPath"/pocketknife.sh
-}
+if [ "$OS_KERNEL__" == "darwin" ]; 
+then
+	function reloadBashProfile { source ~/.bash_profile; }
+else
+	function reloadBashProfile { source ~/.bashrc; }
+fi
 
 alias catt="pygmentize -g"
 function c { clear; }
@@ -13,20 +14,10 @@ alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
 alias tmux="tmux -2"
 
-#Reload bashprofile
-if [ "$OS_KERNEL__" == "darwin" ]; 
-then
-	function reloadBashProfile { source ~/.bash_profile; }
-else
-	function reloadBashProfile { source ~/.bashrc; }
-fi
-
 function howManyFiles { ls -1 "$1" | wc -l; }
-
 function modifiedFilesIn {
 	find . -mtime -1 -ls
 }
-
 function listSize {
 	for i in "$1"*; do
 		[ ! -d "$i" ] && continue
@@ -57,7 +48,6 @@ function grepMyCodeWithExtension_1Pattern_2extension {
 alias finder="xdg-open ."
 alias grepc="grep -B 3 -A 2"
 alias ls='ls -G'
-
 function grepp {
 	ps aux | grep "$1"
 }
@@ -65,12 +55,21 @@ alias processFind1Pattern=grepp
 function cpu_usage_get {
 	lscpu | grep "CPU MHz"
 }
-
-#network
+function process_find__arg1port {
+	netstat -tulpn | grep "$1"
+}
+function process_find__arg1name {
+	ps aux | grep $1
+}
+function swprm {
+	rm $(find . -name "*.swp")
+}
+function jobskill {
+	kill $(jobs -p)
+}
 function portCheckWhatProcessIsListening_1Port {
 	netstat -tulpn | grep "$1"
 }
-
 #apt get repos
 if [ "$OS_KERNEL__" == "linux" ]; 
 then
@@ -85,7 +84,6 @@ then
 		pwd
 	}
 fi
-
 function dynamicLibraryRequirements {
 	if [ "$OS_KERNEL__" == "darwin" ]; 
 	then
@@ -95,16 +93,17 @@ function dynamicLibraryRequirements {
 		ldd "$1"
 	fi
 }
+# @extend
 
+
+#--------------------------------
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 export YELLOW='\033[0;33m'
 export NC='\033[0m'
-
 function MessageError   { printf "${RED}[Error]${NC} $1\n"; }
 function MessageSuccess { printf "${GREEN}[Success]${NC} $1\n"; }
 function MessageInfo    { printf "${YELLOW}[Info]${NC} $1\n"; }
-
 function perlRegexSplitTest {
 	perlExp='@r=split /\s+|(?=[^\[])-(?=[^\]])/, $_;'
 	perlExp+='foreach (@r) { print $_ . "\n" }'
@@ -159,7 +158,6 @@ function git_help {
 	echo "git diff-tree --no-commit-id --name-only -r COMMIT"
 	echo "git log --diff-filter=A -- SOURCE_FILE"
 }
-
 function git_listFilesIn1Commit {
 	git diff-tree --no-commit-id --name-only -r "$1"
 }
@@ -168,18 +166,11 @@ function git_listFilesIn1Commit {
 
 
 #--------------------------------
-function process_find__arg1port {
-	netstat -tulpn | grep "$1"
-}
-function process_find__arg1name {
-	ps aux | grep $1
-}
-function swprm {
-	rm $(find . -name "*.swp")
-}
 function fuzzyCall {
-	availableFiles=$(find . -iname "*$2*" -not -name "*.swp" -not -name "*.swo" -not -type d )
-	array=($availableFiles)
+	array=()
+	while IFS=  read -r -d $'\0'; do
+		array+=("$REPLY")
+	done < <(find . -path .git -prune -o -iname "*$2*" -not -name "*.swp" -not -name "*.swo" -not -type d -print0)
 
 	if [[ $3 != "" ]]; then
 		idx=$3
@@ -187,13 +178,12 @@ function fuzzyCall {
 		eval "$1 ${array[$idx]}"	
 	else
 		if [[ ${#array[@]} == 1 ]]; then
-			eval "$1 $availableFiles"
+			eval "$1 ${array[0]}"
 		else
-			echo -e "$availableFiles" | cat -n	
+			printf '%s\n' "${array[@]}" | cat -n	
 		fi
 	fi
 }
-
 #--------------------------------
 
 
@@ -216,29 +206,22 @@ function vim_newsyntax {
 
 
 #--------------------------------
-#screen
-function .b+ {
-	xbacklight -inc 60
-}
-function .b- {
-	xbacklight -dec 60
-}
-#--------------------------------
-
-
-#--------------------------------
 #Super fast
 alias _r="reloadBashProfile"
 alias .c="xclip -selection c"
 
 function ,epo { vim $general/bashProfile/pocketknife.sh;  }
 function ,ev  { vim ~/.vimrc;  }
-function , { p=$(pwd); cd $general; fuzzyCall "$1" "$2" "$3"; cd "$p"; }
+function ,  { fuzzyCall "vim" "$1" "$2"; }
+function ,, { fuzzyCall "$1" "$2" "$3"; }
 function ,. { p=$(pwd); cd $general; fuzzyCall "vim" "$1" "$2"; cd "$p"; }
 function ,,. { fuzzyCall "vim" "$1" "$2"; }
 function ,., { p=$(pwd); cd $general; fuzzyCall "pygmentize -g" "$1" "$2"; cd "$p"; }
 function ,n { notify-send --urgency=critical --expire-time=400 "$1" "$2"; }
 alias _f=fuzzyCall
+
+function .b+ { xbacklight -inc 60 }
+function .b- { xbacklight -dec 60 }
 
 alias _gls="git_listFilesIn1Commit"
 alias diffgit="git diff --no-index"
