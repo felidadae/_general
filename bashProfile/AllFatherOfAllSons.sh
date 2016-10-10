@@ -114,7 +114,7 @@ function dayTime() {
 	fi
 }
 # alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-PS1='\[\e[0;33m\]`dayTime`[\W]`git_color``parse_git_branch`\[\e[0m\]\[\e[1;32m\]\$\[\e[0m\] '
+PS1='\[\e[0;33m\]`dayTime`\W`git_color``parse_git_branch`\[\e[0m\]\[\e[1;32m\]\$\[\e[0m\] '
 
 HISTFILESIZE=
 HISTSIZE=5000
