@@ -18,7 +18,7 @@ export vimrc=~/.vimrc
 export tmuxconf=~/.tmux.conf
 export tmuxsessions=$general/configurationFiles/tmux/sessions
 #---
-if [ "$OS_KERNEL__" == "darwin" ]; 
+if [ "$OS_KERNEL__" = "darwin" ]; 
 then
 	#MAC OS X
 	externDisc="/Volumes/EXTERNDISC"

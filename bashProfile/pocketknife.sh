@@ -1,4 +1,4 @@
-if [ "$OS_KERNEL__" == "darwin" ]; 
+if [ "$OS_KERNEL__" = "darwin" ]; 
 then
 	function reloadBashProfile { source ~/.bash_profile; }
 else
@@ -71,7 +71,7 @@ function portCheckWhatProcessIsListening_1Port {
 	netstat -tulpn | grep "$1"
 }
 #apt get repos
-if [ "$OS_KERNEL__" == "linux" ]; 
+if [ "$OS_KERNEL__" = "linux" ]; 
 then
 	function apt_repos_see {
 		sudo cat /etc/apt/sources.list > rec
@@ -85,7 +85,7 @@ then
 	}
 fi
 function dynamicLibraryRequirements {
-	if [ "$OS_KERNEL__" == "darwin" ]; 
+	if [ "$OS_KERNEL__" = "darwin" ]; 
 	then
 		#MAC OS X
 		otool -L "$1"
@@ -122,7 +122,7 @@ function djangoTemplateTest {
 
 
 #--------------------------------
-if [ "$OS_KERNEL__" == "darwin" ]; 
+if [ "$OS_KERNEL__" = "darwin" ]; 
 then
 	#MAC OS X
 	function ff { osascript -e 'tell application "Finder"'\
@@ -141,7 +141,7 @@ then
 	}
 fi
 
-if [ "$OS_KERNEL__" == "darwin" ]; 
+if [ "$OS_KERNEL__" = "darwin" ]; 
 then
 	#MAC OS X
 	function bd { osascript "$general"/tools/brightness/bb.AppleScript; } 
@@ -230,7 +230,7 @@ alias _f=fuzzyCall
 function .b+ { xbacklight -inc 60; }
 function .b- { xbacklight -dec 60; }
 
-function ,gc { echo 'git add -A; git commit -m "Cleaning; git push origin master;"' | .c;}
+function ,gc { printf 'git add -A; git commit -m "Cleaning; git push origin master;"' | .c;}
 alias _gls="git_listFilesIn1Commit"
 alias diffgit="git diff --no-index"
 alias _gs="git status"
