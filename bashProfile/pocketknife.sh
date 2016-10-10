@@ -230,6 +230,7 @@ alias _f=fuzzyCall
 function .b+ { xbacklight -inc 60; }
 function .b- { xbacklight -dec 60; }
 
+function ,gc { echo 'git add -A; git commit -m "Cleaning; git push origin master;"' | .c;}
 alias _gls="git_listFilesIn1Commit"
 alias diffgit="git diff --no-index"
 alias _gs="git status"

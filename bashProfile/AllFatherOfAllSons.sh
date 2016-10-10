@@ -96,13 +96,13 @@ function git_color() {
 	COLOR_RESET="\033[0m"
 	local git_status="$(git status 2> /dev/null)"
 	if [[ ! $git_status =~ "working directory clean" ]]; then
-		echo -e $COLOR_RED
+		echo -e $COLOR_GREEN
 	elif [[ $git_status =~ "Your branch is ahead of" ]]; then
 		echo -e $COLOR_YELLOW
 	elif [[ $git_status =~ "nothing to commit" ]]; then
 		echo -e $COLOR_GREEN
 	else
-		echo -e $COLOR_OCHRE
+		echo -e $COLOR_GREEN
 	fi
 }
 function dayTime() {
@@ -110,11 +110,11 @@ function dayTime() {
 	if (($hour > 6 && $hour < 18)); then 
 		echo "☼ "
 	else
-		echo "☽ "
+		echo "☼ "
 	fi
 }
 # alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-PS1='\[\e[0;33m\]`dayTime`\W`git_color``parse_git_branch`\[\e[0m\]\[\e[1;32m\]\$\[\e[0m\] '
+PS1='\[\e[0;33m\]`dayTime`\W`git_color``parse_git_branch`\[\e[0m\]\[\e[0;33m\] \$\[\e[0m\]'
 
 HISTFILESIZE=
 HISTSIZE=5000
