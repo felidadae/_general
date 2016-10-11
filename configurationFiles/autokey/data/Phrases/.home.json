@@ -6,9 +6,9 @@
     "abbreviation": {
         "wordChars": "[^\\t]", 
         "abbreviations": [
-            ",h"
+            "`1"
         ], 
-        "immediate": false, 
+        "immediate": true, 
         "ignoreCase": false, 
         "backspace": true, 
         "triggerInside": true

@@ -6,18 +6,20 @@
     "abbreviation": {
         "wordChars": "[\\w]", 
         "abbreviations": [
-            "45"
+            "34"
         ], 
         "immediate": true, 
         "ignoreCase": false, 
         "backspace": true, 
-        "triggerInside": false
+        "triggerInside": true
     }, 
     "hotkey": {
         "hotKey": null, 
         "modifiers": []
     }, 
-    "modes": [], 
+    "modes": [
+        1
+    ], 
     "showInTrayMenu": false, 
     "matchCase": false, 
     "filter": {
