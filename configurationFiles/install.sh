@@ -14,6 +14,8 @@ function createSymbolicLink {
 }
 
 createSymbolicLink "$DIR"/vim/vimrc ~/.vimrc vimrc
+createSymbolicLink "$DIR"/autokey/data ~/.config/autokey/data autokey 
+createSymbolicLink "$DIR"/inputrc ~/.inputrc inputrc
 createSymbolicLink "$DIR"/vim/snippets ~/.vim/felidadae_snippets vim_snippets 
 createSymbolicLink "$DIR"/matplotlib/matplotlibrc  ~/.config/matplotlib/matplotlibrc  matplotlibrc
 createSymbolicLink "$DIR"/tmux/tmux.conf ~/.tmux.conf tmux.conf
