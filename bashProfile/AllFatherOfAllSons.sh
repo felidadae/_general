@@ -87,7 +87,7 @@ function parse_git_branch() {
     fi
 }
 function dayTime() {
-	hour=`date +"%H"` 
+	hour=`date +"%l"` 
 	if (($hour > 6 && $hour < 18)); then 
 		echo "☼ "
 	else
