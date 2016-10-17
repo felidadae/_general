@@ -1,4 +1,3 @@
-#!/bin/bash
 
 
 
@@ -46,8 +45,7 @@ function checkDesktopSession {
 	else
 		desktop=$XDG_CURRENT_DESKTOP
 	fi
-
-	desktop=${desktop,,}  # convert to lower case
+	desktop=$(echo $desktop | tr '[:upper:]' '[:lower:]')
 	echo $desktop
 }
 export DESKTOP_SESSION__=$(checkDesktopSession)
@@ -73,11 +71,11 @@ OS_VER__=$(lsb_release -sr)
 
 #------------------------
 export PATH=~/bin:"$PATH"
-export EDITOR="$(which subl) --new-window --wait"
+export EDITOR="vim"
 TERM=xterm-256color
 
 #Promt
-if [ -n $BASH_VERSION ]; then
+if [ $__MY_SHELL__ = "bash" ]; then
 	function parse_git_branch() {
 		x=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
 		if [[ "$x" == "" ]]; then
@@ -115,7 +113,7 @@ if [ -n $BASH_VERSION ]; then
 		fi
 	}
 	# alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-	PS1='\[\e[0;33m\]`dayTime`[\W]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[1;32m\]\$\[\e[0m\] '
+	PS1='\[\e[0;33m\]`dayTime`[\W]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\$\[\e[0m\] '
 fi
 
 HISTFILESIZE=
@@ -202,7 +200,7 @@ function general_sync {
 
 
 
-if [ -n $BASH_VERSION ]; then
+if [ $__MY_SHELL__ = "bash" ]; then
 	# Automatically add completion for all aliases to commands having completion functions
 	function alias_completion {
 		local namespace="alias_completion"

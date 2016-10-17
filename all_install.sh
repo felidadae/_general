@@ -7,6 +7,7 @@
 INSTALL_MBPFAN=0
 INSTALL_ANDROIDTOOLS=1
 INSTALL_GIT_GNOME_KEYRING=1
+INSTALL_TEX_FULL=0
 
 
 if [[ $(dpkg-query -W -f='${Status}' git 2>/dev/null | grep -c "ok installed") == 0 ]]; 
@@ -54,9 +55,6 @@ if [[ ! -d ~/Programming/_General ]]; then
 	mkdir Playground
 	git clone https://bitbucket.org/felidadae/my-general
 	mv my-general _General
-	##bash profile
-	echo -e "\n\nsource ~/Programming/_General/bashProfile/my_main.sh" >> ~/.bashrc
-	source ~/.bashrc
 fi
 
 ###
@@ -73,6 +71,7 @@ fi
 ###Vim
 if [[ "$(which vim)" == "" ]]; then
 	sudo apt-get install vim
+	#@TODO maybe should be installed from source?
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
@@ -80,17 +79,6 @@ cd ~/Programming/_General
 bash install.sh
 vim +PluginInstall +qall
 
-##
-# @Utility
-##
-sudo apt-get install openssh-server
-sudo apt-get install htop
-sudo apt-get install tree
-sudo apt-get install python-pygments
-sudo pip install powerline-status
-sudo apt-get install xbacklight
-sudo apt-get install xclip
-sudo apt-get install texlive-full
 
 
 ###Android-studio
@@ -113,12 +101,6 @@ if [[ "$(which android-studio)" == "" ]] && [[ "$INSTALL_ANDROIDTOOLS" == 1 ]]; 
 	sudo add-apt-repository ppa:webupd8team/java
 	sudo apt-get update
 	sudo apt-get install oracle-java8-installer
-fi
-
-
-###xflux
-if [ "$(which redshift)" == "" ]; then
-	sudo apt install redshift
 fi
 
 
@@ -179,3 +161,33 @@ sudo apt install cmake
 ###
 sudo apt install exuberant-ctags
 sudo apt-get install xclip #get copy to x11 clipboard in vi copy mode;
+
+
+##
+# @Utility
+##
+sudo apt-get install openssh-server
+sudo apt-get install htop
+sudo apt-get install tree
+sudo apt-get install python-pygments
+sudo pip install powerline-status
+sudo apt-get install xbacklight
+sudo apt-get install xclip
+if [[ $INSTALL_TEX_FULL == "1" ]]; then
+	#statements
+	sudo apt-get install texlive-full
+fi
+sudo apt-get install lynx
+sudo apt install redshift
+
+if [[ $SET_SHELL == "1" ]]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	echo -e "\n\nsource ~/Programming/_General/bashProfile/AllFatherOfAllSons.sh.sh" >> ~/.bashrc
+	echo -e "\n\nsource ~/Programming/_General/bashProfile/AllFatherOfAllSons.sh.sh" >> ~/.zshrc
+fi
+
+wget git.io/trans
+chmod +x ./trans
+sudo mv trans /usr/local/bin/
+
+sudo apt-get install autokey-gtk

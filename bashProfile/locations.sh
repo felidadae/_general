@@ -9,6 +9,7 @@ export projects="$base"/Projects
 #---
 export playground="$base"/Playground
 export labs="$base"/Labs
+export musicallab=$labs/MusicalLab
 function locationAdd {
 	echo "$1" >> "$bashProfileFiles"/locations
 }

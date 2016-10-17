@@ -15,8 +15,13 @@ function pp-findRoot {
 	while [[ $(ls -1a | grep ".git$") == "" ]]; do cd ..; done
 	export projectRoot__=$(pwd)
 	cd "$currPos" 
-}
 
+	echo Root set to projectRoot__=$projectRoot__
+}
+function pp-setRoot {
+	export projectRoot__="$(pwd)"
+}
+function pp-r { cd $projectRoot__; }
 function pp-reload {
 	currPos2=$(pwd); cd "$projectRoot__"/.dev; 
 	source tools.sh
