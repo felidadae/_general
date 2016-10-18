@@ -1,12 +1,12 @@
 {
-    "usageCount": 4, 
+    "usageCount": 0, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "home", 
+    "description": "doubleparent", 
     "abbreviation": {
         "wordChars": "[^\\t]", 
         "abbreviations": [
-            "``"
+            ".9."
         ], 
         "immediate": true, 
         "ignoreCase": false, 
@@ -17,9 +17,7 @@
         "hotKey": null, 
         "modifiers": []
     }, 
-    "modes": [
-        1
-    ], 
+    "modes": [], 
     "showInTrayMenu": false, 
     "matchCase": false, 
     "filter": {

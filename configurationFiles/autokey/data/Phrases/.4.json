@@ -1,12 +1,12 @@
 {
-    "usageCount": 0, 
+    "usageCount": 4, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "doubleparent", 
+    "description": ")", 
     "abbreviation": {
         "wordChars": "[^\\t]", 
         "abbreviations": [
-            ".9."
+            "90"
         ], 
         "immediate": true, 
         "ignoreCase": false, 

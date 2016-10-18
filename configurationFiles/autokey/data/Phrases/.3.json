@@ -1,12 +1,12 @@
 {
-    "usageCount": 4, 
+    "usageCount": 3, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "home", 
+    "description": "(", 
     "abbreviation": {
         "wordChars": "[^\\t]", 
         "abbreviations": [
-            "``"
+            "89"
         ], 
         "immediate": true, 
         "ignoreCase": false, 
