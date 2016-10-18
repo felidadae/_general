@@ -262,6 +262,7 @@ alias _gb="git branch"
 alias _gpo="git push origin"
 alias _gall="git status; git branch;"
 function ,te { trans pl: "$1"; }
+function ,pwd { pwd | .c;  }
 
 function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  }
 function ,py,c { python $LAST_SCRIPT;  }

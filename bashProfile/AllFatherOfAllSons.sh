@@ -75,7 +75,7 @@ export EDITOR="vim"
 TERM=xterm-256color
 
 #Promt
-if [ $__MY_SHELL__ = "bash" ]; then
+if [[ $__MY_SHELL__ = "bash" ]]; then
 	function parse_git_branch() {
 		x=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
 		if [[ "$x" == "" ]]; then
@@ -200,7 +200,7 @@ function general_sync {
 
 
 
-if [ $__MY_SHELL__ = "bash" ]; then
+if [[ $__MY_SHELL__ = "bash" ]]; then
 	# Automatically add completion for all aliases to commands having completion functions
 	function alias_completion {
 		local namespace="alias_completion"
