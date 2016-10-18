@@ -1,9 +1,4 @@
-if [ "$OS_KERNEL__" = "darwin" ]; 
-then
-	function reloadBashProfile { source ~/.bash_profile; }
-else
-	function reloadBashProfile { source ~/.bashrc; }
-fi
+function reloadBashProfile { source $general/bashProfile/AllFatherOfAllSons.sh; }
 
 alias catt="pygmentize -g"
 function c { clear; }
@@ -169,23 +164,43 @@ function git_listFilesIn1Commit {
 
 
 #--------------------------------
-function fuzzyCall {
-	array=()
-	while IFS=  read -r -d $'\0'; do
-		array+=("$REPLY")
-	done < <(find "$1" -path .git -prune -o -iname "*$3*" -not -name "*.swp" -not -name "*.swo" -not -type d -print0)
-
-	if [[ $4 != "" ]]; then
-		idx=$4
+function _arrayChoice {
+	# 1 <- app
+	# 2 <- idx of array
+    # 0 <- As global array	
+	if [[ $2 != "" ]]; then
+		idx=$2
 		idx=$((idx-1))
-		eval "$2 ${array[$idx]}"	
+		eval "$1 ${array[$idx]}"	
 	else
 		if [[ ${#array[@]} == 1 ]]; then
-			eval "$2 ${array[0]}"
+			eval "$1 ${array[0]}"
 		else
 			printf '%s\n' "${array[@]}" | cat -n	
 		fi
 	fi
+}
+function fuzzyCall {
+	array=()
+	while IFS=  read -r -d $'\0'; do
+		array+=("$REPLY")
+	done < <(find "$1" \
+		-path .git -prune -o \
+		-iname "*$3*" \
+		-not -name "*.swp" -not -name "*.swo" \
+		-not -type d -print0)
+
+	_arrayChoice "$2" "$4"  
+}
+function chooseDir {
+	array=()
+	while IFS=  read -r -d $'\0'; do
+		array+=("$REPLY")
+	done < <(find "$1" \
+		-path *.git* -prune -o \
+		-type d -print0)
+
+	_arrayChoice "cd" "$2"
 }
 #--------------------------------
 
@@ -231,6 +246,8 @@ alias _f=fuzzyCall
 
 function .b+ { xbacklight -inc 60; }
 function .b- { xbacklight -dec 60; }
+function .reslow { xrandr -s 1920x1080; }
+function .reshigh { xrandr -s 3840x2160; }
 
 function ,gc { printf 'git add -A; git commit -m "Cleaning; git push origin master;"' | .c;}
 alias _gls="git_listFilesIn1Commit"
@@ -244,6 +261,7 @@ alias _gl="git log"
 alias _gb="git branch"
 alias _gpo="git push origin"
 alias _gall="git status; git branch;"
+function ,te { trans pl: "$1"; }
 
 function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  }
 function ,py,c { python $LAST_SCRIPT;  }

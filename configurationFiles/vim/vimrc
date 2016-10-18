@@ -133,7 +133,7 @@ endfunction
 " endfunction
 "NerdTree starter
 " autocmd VimEnter * call StartUp()
-:let g:NERDTreeWinSize=54
+:let g:NERDTreeWinSize=34
 :let g:NERDTreeMinimalUI=1
 :let NERDTreeHijackNetrw=0
 
