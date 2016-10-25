@@ -1,12 +1,12 @@
 {
-    "usageCount": 15, 
+    "usageCount": 0, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "_", 
+    "description": "@", 
     "abbreviation": {
         "wordChars": "[\\w]", 
         "abbreviations": [
-            "0-"
+            "12"
         ], 
         "immediate": true, 
         "ignoreCase": false, 
