@@ -183,6 +183,7 @@ done
 
 
 function general_sync {
+	prev=$(pwd)
 	cd "$general"
 	if [[ "$(git status --porcelain)" != "" ]]; then 
 		git add -A
@@ -192,6 +193,7 @@ function general_sync {
 	git push origin master
 
 	git status
+	cd "$prev"
 }
 
 #-------------------------------------------------------------------------------
@@ -270,3 +272,4 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 		source "$tmp_file" && rm -f "$tmp_file"
 	}; alias_completion
 fi
+clear

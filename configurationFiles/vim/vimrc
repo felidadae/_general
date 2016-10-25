@@ -34,6 +34,7 @@ Plugin 'itchyny/vim-cursorword'
 Plugin 'vim-scripts/Greplace.vim'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'easymotion/vim-easymotion'
+" PluginExtend
 call vundle#end()            
 filetype plugin indent on
 
