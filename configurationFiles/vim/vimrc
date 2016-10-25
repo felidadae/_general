@@ -33,6 +33,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'itchyny/vim-cursorword'
 Plugin 'vim-scripts/Greplace.vim'
 Plugin 'tikhomirov/vim-glsl'
+Plugin 'easymotion/vim-easymotion'
 call vundle#end()            
 filetype plugin indent on
 
@@ -91,6 +92,8 @@ inoremap jk <Esc>
 nnoremap <leader>" bdwi""<Esc>hp
 nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>p :CtrlPTag
+:nnoremap <leader>= :vertical resize +10<cr>
+:nnoremap <leader>- :vertical resize -10<cr>
 
 "General
 :set rnu
@@ -112,6 +115,8 @@ syntax enable
 :set showtabline=2
 :set backspace=2
 :set scroll=15
+set splitbelow
+set splitright
 
 "to highlight (["
 :let OPTION_NAME = 1
@@ -155,7 +160,7 @@ set foldmethod=indent
 set foldtext=MyFoldText()
 function! MyFoldText()
 	let i = indent(v:foldstart)
-	return repeat(' ', i) . "↪" 
+	return repeat(' ', i) . "----Folded----" 
 endfunction
 set foldlevel=3
 
