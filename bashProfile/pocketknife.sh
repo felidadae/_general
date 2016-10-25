@@ -184,7 +184,7 @@ function fuzzyCall {
 	array=()
 	while IFS=  read -r -d $'\0'; do
 		array+=("$REPLY")
-	done < <(find "$1" \
+	done < <(find "$1" -follow \
 		-path .git -prune -o \
 		-iname "*$3*" \
 		-not -name "*.swp" -not -name "*.swo" \
@@ -196,7 +196,7 @@ function chooseDir {
 	array=()
 	while IFS=  read -r -d $'\0'; do
 		array+=("$REPLY")
-	done < <(find "$1" \
+	done < <(find -follow "$1" \
 		-path *.git* -prune -o \
 		-type d -print0)
 
