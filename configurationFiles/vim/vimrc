@@ -1,3 +1,12 @@
+set <m-a>=^[a
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+set timeout ttimeoutlen=50
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -7,22 +16,17 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'sickill/vim-monokai'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'hdima/python-syntax'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'ciaranm/detectindent'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-commentary'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'severin-lemaignan/vim-minimap'
-Plugin 'tpope/vim-abolish' "manBro ManBro
+Plugin 'tpope/vim-abolish'
 Plugin 'vim-scripts/keepcase.vim'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'xolox/vim-session'
@@ -95,6 +99,11 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>p :CtrlPTag
 :nnoremap <leader>= :vertical resize +10<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
+" provide hjkl movements in Insert mode via the <Alt> modifier key
+:inoremap <m-4> <Esc>A
+:inoremap <m-l> <Esc>A
+:inoremap <m-4> <Esc>A
+:inoremap ;; :<cr>
 
 "General
 :set rnu
@@ -113,6 +122,10 @@ syntax enable
 :set wrapmargin=0
 :set nowrap
 :set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+augroup Python
+    autocmd!
+    autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+augroup END
 :set showtabline=2
 :set backspace=2
 :set scroll=15
@@ -206,3 +219,5 @@ set sessionoptions-=buffers
 :hi folded term=none cterm=none ctermfg=none ctermbg=none
 :hi foldcolumn ctermbg=none
 :set fillchars="fold: " 
+:set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+

@@ -168,8 +168,8 @@ function _arrayChoice {
 	# 1 <- app
 	# 2 <- idx of array
     # 0 <- As global array	
-	if [[ $2 != "" ]]; then
-		idx=$2
+	if [[ "$2" != "" ]]; then
+		idx="$2"
 		idx=$((idx-1))
 		eval "$1 ${array[$idx]}"	
 	else
@@ -263,9 +263,11 @@ alias _gpo="git push origin"
 alias _gall="git status; git branch;"
 function ,te { trans pl: "$1"; }
 function ,pwd { pwd | .c;  }
+function ,commandoriumsave { xclip -selection c -o >> $general/commandorium.sh; }
 
 function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  }
 function ,py,c { python $LAST_SCRIPT;  }
 function ,py,m { mv $LAST_SCRIPT "$1"; }
+function ,algorithms { _f $general/notus/books "xdg-open" pdf $1; }
+function ,ytandroid { google-chrome --app=https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh; }
 #@--fast
-#--------------------------------

@@ -57,6 +57,9 @@
 		"Colorcoder",
 		"GTKDarkThemeVariantSetter",
 		"Makefile",
+		"Material Theme",
+		"SideBarEnhancements",
+		"Sublimerge Pro",
 		"Vintage"
 	],
 	"material_theme_bold_tab": true,
@@ -72,6 +75,6 @@
 	"save_on_focus_lost": false,
 	"scroll_speed": 0.0,
 	"soda_classic_tabs": false,
-	"theme": "Material-Theme.sublime-theme",
+	"theme": "Default.sublime-theme",
 	"tree_animation_enabled": true
 }

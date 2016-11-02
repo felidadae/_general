@@ -4,6 +4,8 @@ import numpy as np
 
 x = np.arange(0.0, 1.0, 0.01)
 y = np.${1:someNumpyFunction}(x)
+#x = np.arange(0, 100) #to have integer values
+#y = np.array([f(x_) for x_ in x]) #to call your own function 
 plt.plot(x, y)
 
 plt.xlabel('x')
