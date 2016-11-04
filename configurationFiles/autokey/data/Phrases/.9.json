@@ -1,17 +1,17 @@
 {
-    "usageCount": 3, 
+    "usageCount": 0, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "git commit", 
+    "description": "|", 
     "abbreviation": {
-        "wordChars": "[^\\t]", 
+        "wordChars": "[\\w]", 
         "abbreviations": [
-            ",gc"
+            "'\\"
         ], 
-        "immediate": false, 
+        "immediate": true, 
         "ignoreCase": false, 
         "backspace": true, 
-        "triggerInside": false
+        "triggerInside": true
     }, 
     "hotkey": {
         "hotKey": null, 
