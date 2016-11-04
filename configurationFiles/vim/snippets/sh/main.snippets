@@ -144,3 +144,13 @@ while IFS=  read -r -d $'\0'; do
 	$1+=("$REPLY")
 done < <(find . -name ${2:pattern} -print0)
 endsnippet
+
+snippet dateYYYYMMDD "YYYYMMDD" b
+today=\`date +%Y%m%d\`
+endsnippet
+
+snippet regexVariable "Regex variable with perl oneliner" b
+matches=$(echo ${1:variable} | perl -pe 's/ .*().* /\1\t\2/gx')
+match1=$(echo -e "$matches" | cut -f1)
+match2=$(echo -e "$matches" | cut -f2)
+endsnippet

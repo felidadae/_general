@@ -76,7 +76,7 @@ snippet ifregex "" b
 if re.match("${1:pattern}", ${2:string}):
 	${0}
 endsnippet
-snippet breakpoint "" b
+snippet breakpoint "ipdb breakpoint" b
 import ipdb; ipdb.set_trace()
 endsnippet
 
@@ -84,7 +84,7 @@ endsnippet
 
 
 
-snippet systemcheck "" b
+snippet systemcheck "check platform" b
 from sys import platform as _platform
 if _platform == "linux" or _platform == "linux2":
     # linux
@@ -97,14 +97,13 @@ elif _platform == "win32":
     pass
 endsnippet
 
-snippet str "" b
+snippet str "python 2 utf8 string" b
 ${1:sentence} = unicode("${2:string}", 'utf8')${0}
 endsnippet
 
 
 
-snippet time "" b
-
+snippet time "to measure time execution" b
 import time
 def timeTest__${1}():
 	def ${1:fun}():
@@ -120,32 +119,35 @@ def timeTest__${1}():
 endsnippet
 
 
-snippet currDate "" b
+snippet currDate "current date string" b
 import datetime
 t_ = datetime.datetime.strftime(datetime.datetime.now(), '%Y%m%d%H%M')
 endsnippet
 
 
-snippet split "" b
+snippet split "regex split" b
 import re
 ${1:splitted} = re.split("${2:pattern}", ${3:string} )
 endsnippet
 
-snippet currPos "" b
+snippet currPos "Position of this python file" b
 import os
 pathIn  = (os.path.dirname(os.path.abspath(__file__))
 			+ "/${1:subdirectory}")
 endsnippet
 
-snippet convertJSON "" b
+snippet convertToJSON "convert python data structure to JSON" b
 import json
 json.dumps(${1:dataStructure})
 endsnippet
 
-snippet standardImport "" b
+snippet standardImport "Standard imports for python" b
 import sys
 import os
 import codecs
 import re
 endsnippet
 
+snippet argvRead "Read command line arguments" b
+argv_ = sys.argv[1:]
+endsnippet

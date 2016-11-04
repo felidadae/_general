@@ -99,11 +99,17 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>p :CtrlPTag
 :nnoremap <leader>= :vertical resize +10<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
+:nnoremap <leader><leader>= :resize +10<cr>
+:nnoremap <leader><leader>- :resize -10<cr>
 " provide hjkl movements in Insert mode via the <Alt> modifier key
-:inoremap <m-4> <Esc>A
-:inoremap <m-l> <Esc>A
-:inoremap <m-4> <Esc>A
+:inoremap <m-e> <Esc>A
+:inoremap <m-l> <Esc>la
+:inoremap <m-h> <Esc>ha
+:inoremap <m-j> <Esc>ji
+:inoremap <m-k> <Esc>ki
 :inoremap ;; :<cr>
+:nnoremap <m-e> $
+:nnoremap <m-b> ^
 
 "General
 :set rnu
@@ -155,6 +161,10 @@ endfunction
 :let g:NERDTreeWinSize=34
 :let g:NERDTreeMinimalUI=1
 :let NERDTreeHijackNetrw=0
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
 
 "CtrlP fuzzy finder
 let g:ctrlp_follow_symlinks = 2
