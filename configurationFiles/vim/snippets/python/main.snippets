@@ -18,6 +18,10 @@ for line in fref:
 fref.close()
 endsnippet
 
+snippet openFile "open a file with filename from argv" b
+${1:refFile} = codecs.open(argv_[${2:0}], '${3:r}', 'utf-8')
+endsnippet
+
 snippet writeToFile  "" b
 import codecs		
 fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
@@ -57,13 +61,13 @@ endsnippet
 ##
 #Regex
 ##
-snippet regex "" b
+snippet regexSearch "Search for regex in string;" b
 s = re.search("${1:pattern}", ${2:string})
 if s: group1 = s.group(1)
 ${0}
 endsnippet
 
-snippet regex "" b
+snippet regexSearchLonger "Search for regex in string; group1 group1" b
 import re
 s = re.search("${1:pattern}", ${2:string})
 if s:
@@ -72,10 +76,19 @@ if s:
 	${0}
 endsnippet
 
+snippet regexFindall "Search for regex and return array of all matches" b
+results = re.findall("${1:pattern}", ${2:string}, re.X)
+if len(results):
+	for matches in results:
+		# captured groups are in matches
+		${3:pass}
+endsnippet
+
 snippet ifregex "" b
 if re.match("${1:pattern}", ${2:string}):
 	${0}
 endsnippet
+
 snippet breakpoint "ipdb breakpoint" b
 import ipdb; ipdb.set_trace()
 endsnippet

@@ -137,6 +137,7 @@ augroup END
 :set scroll=15
 set splitbelow
 set splitright
+:set autowrite
 
 "to highlight (["
 :let OPTION_NAME = 1
