@@ -272,3 +272,4 @@ function ,py,m { mv $LAST_SCRIPT "$1"; }
 function ,algorithms { _f $general/notus/books "xdg-open" pdf $1; }
 function ,ytandroid { google-chrome --app=https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh; }
 #@--fast
+
