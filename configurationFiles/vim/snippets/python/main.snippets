@@ -1,14 +1,14 @@
 ##
 #File I/O
 ##
-snippet readFileIntoString "" b
+snippet readFileIntoString "read the whole file into var" b
 import codecs
 fref = codecs.open(${1:fileName}, 'r', 'utf-8')
 fContent = fref.read()
 fref.close()
 endsnippet
 
-snippet readFileForLine "" b
+snippet readFileForLine "read file line by line" b
 import codecs
 fref = codecs.open(${1:fileName}, 'r', 'utf-8')
 for line in fref:
@@ -22,14 +22,14 @@ snippet openFile "open a file with filename from argv" b
 ${1:refFile} = codecs.open(argv_[${2:0}], '${3:r}', 'utf-8')
 endsnippet
 
-snippet writeToFile  "" b
+snippet writeToFile  "open file, write to file string, close file" b
 import codecs		
 fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
 fref.write("${2:stringToWrite}")
 fref.close()
 endsnippet
 
-snippet filterScript "" b
+snippet filterScript "fileIn, fileOut from argv, for each line fileIn" b
 import sys
 import os
 import codecs
@@ -50,7 +50,7 @@ for l in fileIn_:
 	# Do sth with line
 endsnippet
 
-snippet writeToFile  "" b
+snippet writeToFile  "open, write given var to file, close file" b
 import codecs		
 fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
 fref.write("${2:stringToWrite}")
@@ -93,10 +93,6 @@ snippet breakpoint "ipdb breakpoint" b
 import ipdb; ipdb.set_trace()
 endsnippet
 
-
-
-
-
 snippet systemcheck "check platform" b
 from sys import platform as _platform
 if _platform == "linux" or _platform == "linux2":
@@ -110,11 +106,9 @@ elif _platform == "win32":
     pass
 endsnippet
 
-snippet str "python 2 utf8 string" b
-${1:sentence} = unicode("${2:string}", 'utf8')${0}
+snippet stru "python 2 utf8 string" b
+${1:sentence} = unicode("${2:string}", 'utf8')
 endsnippet
-
-
 
 snippet time "to measure time execution" b
 import time
@@ -122,13 +116,11 @@ def timeTest__${1}():
 	def ${1:fun}():
 		${2:YourCodeToTest}
 
-	################
 	t0 = time.time()
 	for i in xrange(1,${3:100}):
 		${1}()
 	t1 = time.time()
 	print "Function ${1} has taken " + str((t1-t0)/${3}) + "[s]"
-	################
 endsnippet
 
 
