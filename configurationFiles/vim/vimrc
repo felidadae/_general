@@ -81,6 +81,7 @@ nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 inoremap jk <Esc>
+nnoremap <m-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 :nnoremap _<space> i<space><esc>
 :nnoremap _<tab> i<tab><esc>
 :nnoremap _<CR> i<CR><esc>
