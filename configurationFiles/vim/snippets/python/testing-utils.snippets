@@ -1,9 +1,9 @@
 snippet unittest "" b
 import unittest
-from ${1:ClassName} import *
+from `!p snip.rv = snip.basename` import *
 
-class Test${1}(unittest.TestCase):
-	def test_${2:main}(self):
+class Test`!p snip.rv = snip.basename` (unittest.TestCase):
+	def test_${1:main}(self):
 		${0}
 endsnippet
 
