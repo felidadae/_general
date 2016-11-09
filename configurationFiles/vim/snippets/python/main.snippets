@@ -164,3 +164,18 @@ endsnippet
 snippet ,a "append to list" b
 ${1:list}.append(${2:elementtoadd})
 endsnippet
+
+snippet setCurrentDirectoryToTheFile "set current directory (os.getcwd() os.chdir()) to the file" b
+import os
+# print("Curr directory:" + os.getcwd()) 
+pathToCurrFile = (os.path.dirname(os.path.abspath(__file__)))
+os.chdir(pathToCurrFile)
+import sys
+sys.path.append("sub")
+from someModule.someSubmodule import printShit
+endsnippet
+
+snippet appendPath "append to sys.path new path; check os.getcwd()" b
+import sys
+sys.path.append("${1}")
+endsnippet
