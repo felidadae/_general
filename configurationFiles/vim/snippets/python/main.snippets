@@ -29,6 +29,21 @@ fref.write("${2:stringToWrite}")
 fref.close()
 endsnippet
 
+snippet scriptWithExternalModule "when you have general module available" b
+from ae2_utilities.general import \
+	main_filter, main_filter_clean, writeLineToFile, readLines
+
+def filter(ls):
+	return ${3:filterFun}(*ls)
+
+in_, out_, params_ = main_filter(${1:inN}, ${2:outN})
+ls = readLines(in_)
+while ls[0] != "":
+	writeLineToFile(out_[0], filter(ls))
+	ls = readLines(in_)
+main_filter_clean(in_, out_)
+endsnippet
+
 snippet filterScript "fileIn, fileOut from argv, for each line fileIn" b
 import sys
 import os
