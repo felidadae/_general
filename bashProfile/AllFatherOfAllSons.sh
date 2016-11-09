@@ -273,3 +273,6 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 	}; alias_completion
 fi
 clear
+
+init_ 3500
+
