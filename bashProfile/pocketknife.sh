@@ -89,7 +89,7 @@ function dynamicLibraryRequirements {
 	fi
 }
 printdocument=lpr
-function momentusjob() { echo "`date`" >> ~/momentusjob.txt; }
+function momentusjob() { echo "`date`" >> ~/momentusjob.txt; general_sync; }
 function ,momentusjob() { catt ~/momentusjob.txt; }
 # @extend
 
