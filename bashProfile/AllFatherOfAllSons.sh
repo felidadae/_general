@@ -274,5 +274,5 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 fi
 clear
 
-init_ 3500
+# init_ 3500
 

@@ -194,3 +194,30 @@ snippet appendPath "append to sys.path new path; check os.getcwd()" b
 import sys
 sys.path.append("${1}")
 endsnippet
+
+
+
+snippet XML "read write XML" b
+from xml.etree.ElementTree import Element, SubElement, tostring
+import xml.dom.minidom
+
+${1:Root} = Element('$1')
+$1.attrib["${2:attribName}"] = ${3:attribute} 
+${4:nameOfSubElement}= SubElement($1, '$4')
+
+def saveToFile(xmlroot, fpout):
+	fpout_ = codecs.open(fpout, 'w', 'utf-8')
+	_xml_ = xml.dom.minidom.parseString(tostring(root))	
+	pretty_xml_as_string = _xml_.toprettyxml()
+	output.write( pretty_xml_as_string )
+	output.close()
+saveToFile($1, ${3:outputPath})
+endsnippet
+
+snippet XMLattrib "Add attribute to XML element" b
+${1:XMLelement}.attrib["${2:attribName}"] = ${3:attribute} 
+endsnippet
+
+snippet XMLaddChild "Add subelement as child of element; XML;" b
+${1:ChildrenXML} = SubElement(${2:ParentBlock}, '$1')
+endsnippet
