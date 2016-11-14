@@ -58,6 +58,7 @@ function process_find__arg1name {
 }
 function swprm {
 	rm $(find . -name "*.swp")
+	rm $(find . -name "*.swo")
 }
 function jobskill {
 	kill $(jobs -p)
