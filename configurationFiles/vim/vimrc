@@ -139,6 +139,8 @@ augroup END
 set splitbelow
 set splitright
 :set autowrite
+:set ignorecase
+:set smartcase
 
 "to highlight (["
 :let OPTION_NAME = 1
