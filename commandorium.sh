@@ -15,5 +15,5 @@ set -x ;
 set -o functrace
 find src -path src/g2p_improvement__server -prune -o -path src/tifocus/migrations -prune -o -name *.py -o -name *.sh -print | xargs wc -l
 
-
-perl -pi -e  's/ \saer_tsv__comparison__word_statistics__2html / run.sh /gx' $(find .)
+perl -pi.backup -e  's/ \saer_tsv__comparison__word_statistics__2html / run.sh /gx' $(find .)
+grep -Pr 'pattern'
