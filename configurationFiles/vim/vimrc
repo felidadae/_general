@@ -111,6 +111,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :inoremap ;; :<cr>
 :nnoremap <m-e> $
 :nnoremap <m-b> ^
+:nnoremap <leader>h :hide
 
 "General
 :set rnu
@@ -139,6 +140,9 @@ augroup END
 set splitbelow
 set splitright
 :set autowrite
+:set ignorecase
+:set smartcase
+:set showtabline=0
 
 "to highlight (["
 :let OPTION_NAME = 1
