@@ -167,6 +167,7 @@ endfunction
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
 
 "CtrlP fuzzy finder
 let g:ctrlp_follow_symlinks = 2
