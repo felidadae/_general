@@ -35,6 +35,10 @@ snippet perlInline "" b
 perl -pi -e   's/  ${1:regex}  /  ${2:substitution}  /gx'   "\$${3:fileToModify}"
 endsnippet
 
+snippet perlFilterIntoVariable "filter line and save result to bash variable" b
+${1:varName}=$( ${2:input} | perl -ne 'if ($_ =~ / ${3:regex} /x) {print $1;}')
+endsnippet
+
 snippet ifDarwin "" b
 if [ "\$OS_KERNEL__" == "darwin" ]; 
 then

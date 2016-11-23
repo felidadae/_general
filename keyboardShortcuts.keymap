@@ -42,6 +42,10 @@ C-f : ↓ PageDOWN
 $NotSorted
 dt<character> : delete until but not including
 gp : paste and move curser after paste
+
+$FastShit
+<leader>n : find and replace current variable like sublime ctrl+n
+<C-n><C-p> : in command mode to autocomplete
 -------------------------------------------------------
 
 
