@@ -115,6 +115,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>h :hide
 :vnoremap <leader>n y :%s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>n viwy :%s/<c-r>"//gc<Left><Left><Left>
+:nnoremap <leader>b :CtrlPBuffer<cr>
 
 "General
 :set rnu
