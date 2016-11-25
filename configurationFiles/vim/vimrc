@@ -147,6 +147,7 @@ set splitright
 :set ignorecase
 :set smartcase
 :set showtabline=0
+:set foldignore=
 
 "to highlight (["
 :let OPTION_NAME = 1

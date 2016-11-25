@@ -17,3 +17,17 @@ find src -path src/g2p_improvement__server -prune -o -path src/tifocus/migration
 
 perl -pi.backup -e  's/ \saer_tsv__comparison__word_statistics__2html / run.sh /gx' $(find .)
 grep -Pr 'pattern'
+
+
+
+
+@Observation points for bugs
+sed -n 111,117p _main/diff_.sh > _r
+function seeWord {
+	grep -iR "$1" ~/tmp/prev_refhyp > r; 
+	echo "********************" >> r
+	grep -iR "$1" ~/tmp/curr_refhyp >> r
+	perl -pi -e 's/^.*?\t//g' r  
+}
+echo $prev_refhyp $curr_refhyp
+exit
