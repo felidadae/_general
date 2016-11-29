@@ -18,9 +18,6 @@ find src -path src/g2p_improvement__server -prune -o -path src/tifocus/migration
 perl -pi.backup -e  's/ \saer_tsv__comparison__word_statistics__2html / run.sh /gx' $(find .)
 grep -Pr 'pattern'
 
-
-
-
 @Observation points for bugs
 sed -n 111,117p _main/diff_.sh > _r
 function seeWord {
