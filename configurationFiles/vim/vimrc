@@ -38,6 +38,7 @@ Plugin 'itchyny/vim-cursorword'
 Plugin 'vim-scripts/Greplace.vim'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'vim-scripts/CmdlineComplete'
 " PluginExtend
 call vundle#end()            
 filetype plugin indent on
@@ -112,6 +113,10 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <m-e> $
 :nnoremap <m-b> ^
 :nnoremap <leader>h :hide
+:vnoremap <leader>n y :%s/<c-r>"//gc<Left><Left><Left>
+:nnoremap <leader>n viwy :%s/<c-r>"//gc<Left><Left><Left>
+:nnoremap <leader>b :CtrlPBuffer<cr>
+:nnoremap <leader>e 10<C-e>
 
 "General
 :set rnu
@@ -143,6 +148,7 @@ set splitright
 :set ignorecase
 :set smartcase
 :set showtabline=0
+:set foldignore=
 
 "to highlight (["
 :let OPTION_NAME = 1
