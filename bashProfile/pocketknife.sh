@@ -270,8 +270,9 @@ function ,keys { vim $general/keyboardShortcuts.keymap; }
 function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  }
 function ,py,c { python $LAST_SCRIPT;  }
 function ,py,m { mv $LAST_SCRIPT "$1"; }
-function ,algorithms { _f $general/notus/books "xdg-open" pdf $1; }
+
+function ,books { _f $general/mybooks "xdg-open" pdf $1; }
 function ,ytandroid { google-chrome --app=https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh; }
-function ,restartnetwork { sudo service network-manager restart; }
+function ,networkrestart { sudo service network-manager restart; }
 #@--fast
 
