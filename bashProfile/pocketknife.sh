@@ -274,5 +274,7 @@ function ,py,m { mv $LAST_SCRIPT "$1"; }
 function ,books { _f $general/mybooks "xdg-open" pdf $1; }
 function ,ytandroid { google-chrome --app=https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh; }
 function ,networkrestart { sudo service network-manager restart; }
+
+function ,s { tmux split-window -p 50 "vim $1;"; }
 #@--fast
 
