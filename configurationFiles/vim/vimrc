@@ -39,6 +39,7 @@ Plugin 'vim-scripts/Greplace.vim'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/CmdlineComplete'
+Plugin 'joonty/vdebug'
 " PluginExtend
 call vundle#end()            
 filetype plugin indent on
