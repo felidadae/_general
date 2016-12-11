@@ -12,7 +12,7 @@ def increasingPairs(m_):
 			yield (i, limit)
 		yield (limit, limit)
 
-def compare(s1, s2, resultRepr="I", splittingRegex="\s+"):
+def compare(s1, s2, resultRepr="string", splittingRegex="\s+"):
 	"""
 	s1, s2 strings in
 	resultRepr <- {"string", "I", "G"}
@@ -61,16 +61,20 @@ def compare(s1, s2, resultRepr="I", splittingRegex="\s+"):
 			cast_I_to_G(result))
 
 def cast_I_to_G(I_repr):
+	if len(I_repr)==0:
+		return []
+
 	groups = []
-	group = (0, []) 
+	group = (I_repr[0][0], [])
 	prev_t=BEFORE_FIRST
-	for t, w in I_repr:
-		if t != BEFORE_FIRST and t != prev_t:
-			#close the group and open a new one
+	for i, (t, w) in enumerate(I_repr):
+		if (prev_t != BEFORE_FIRST and t != prev_t): 
 			groups.append(group)
 			group = (t, [w])
 		else:
 			group[1].append(w)
+		if i == len(I_repr)-1:
+			groups.append(group)
 		prev_t=t
 	return groups
 
@@ -81,12 +85,12 @@ def cast_G_to_string(G_repr):
 		if typew == COMMON:
 			result += " ".join(words)
 		elif typew == INSERTED:
-			result += "{+" + " ".join(words) + "+}"
+			result += " {+ " + " ".join(words) + " +} "
 		elif typew == DELETED:
-			result += "[-" + " ".join(words) + "-]"
+			result += " [- " + " ".join(words) + " -] "
 		else:
 			pass
-	return result
+	return result.replace('  ', ' ')
 
 
 
