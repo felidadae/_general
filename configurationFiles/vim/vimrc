@@ -114,8 +114,8 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <m-e> $
 :nnoremap <m-b> ^
 :nnoremap <leader>h :hide
-:vnoremap <leader>n y :%s/<c-r>"//gc<Left><Left><Left>
-:nnoremap <leader>n viwy :%s/<c-r>"//gc<Left><Left><Left>
+:vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
+:nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 
