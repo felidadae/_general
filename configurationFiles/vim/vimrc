@@ -118,6 +118,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
+:nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
 
 "General
 :set rnu
