@@ -28,3 +28,4 @@ function seeWord {
 }
 echo $prev_refhyp $curr_refhyp
 exit
+rep function -r --include=\*.sh _main
