@@ -76,7 +76,7 @@ colorscheme solarized
 :hi folded term=none cterm=none ctermfg=green ctermbg=none
 :hi foldcolumn ctermbg=none
 
-" Mappings
+"@Mappings
 " Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
 nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
@@ -112,6 +112,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :inoremap <m-k> <Esc>ki
 :inoremap ;; :<cr>
 :nnoremap <m-e> $
+:nnoremap <m-w> W
 :nnoremap <m-b> ^
 :nnoremap <leader>h :hide
 :vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
