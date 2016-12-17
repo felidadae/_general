@@ -267,8 +267,7 @@ function ,pwd { pwd | .c;  }
 function ,commandoriumsave { xclip -selection c -o >> $general/commandorium.sh; }
 function ,keys { vim $general/keyboardShortcuts.keymap; }
 
-function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  }
-function ,py,c { python $LAST_SCRIPT;  }
+function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  } function ,py,c { python $LAST_SCRIPT;  }
 function ,py,m { mv $LAST_SCRIPT "$1"; }
 
 function ,books { _f $general/mybooks "xdg-open" pdf $1; }
