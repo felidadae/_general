@@ -272,7 +272,7 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 		source "$tmp_file" && rm -f "$tmp_file"
 	}; alias_completion
 fi
-clear
+# clear
 
 # init_ 3500
 

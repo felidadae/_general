@@ -48,7 +48,7 @@ filetype plugin indent on
 :set guioptions-=L  "remove left-hand scroll bar
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
-:set guifont=Roboto\ Mono\ Medium\ for\ Powerline\ Medium\ 8 
+:set guifont=Roboto\ Mono\ Medium\ for\ Powerline\ Medium\ 9 
 
 "to run POWERLINE 
 let g:remoteSession = ($SSH_CLIENT == "")
