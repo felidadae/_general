@@ -203,6 +203,14 @@ function chooseDir {
 
 	_arrayChoice "cd" "$2"
 }
+function fastTest {
+	tmux new-window -n 'Experimental'	
+	tmux split-window -t 'Experimental' -h	
+	tmux send-keys -t 'Experimental' "vim $1.py" Enter	
+	tmux select-window -t 'Experimental'	
+	tmux select-pane -t 2	
+	tmux send-keys 'echo dupa'	
+}
 #--------------------------------
 
 
@@ -268,8 +276,9 @@ function ,commandoriumsave { xclip -selection c -o >> $general/commandorium.sh; 
 function ,keys { vim $general/keyboardShortcuts.keymap; }
 
 #@Fast prototyping
+# function ,fast { fastTest  } 
 function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  } 
-function ,py,c { python $LAST_SCRIPT;  }
+function ,py,c { python $LAST_SCRIPT; }
 function ,py,m { mv $LAST_SCRIPT "$1"; }
 
 function ,books { _f $general/mybooks "xdg-open" pdf $1; }
