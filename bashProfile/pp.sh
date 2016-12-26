@@ -56,7 +56,8 @@ function pp-listPyFiles-main {
 #	finishing
 #
 function pp-listfun {
-	currPos=$(pwd); cd "$projectRoot__"/.dev; 
+	currPos=$(pwd); 
+	[[ ! -e "$projectRoot__"/.dev ]] && return 
 	for ifile in *; do
 		[ -e "$ifile" ] || continue
 		[[ "$ifile" == *"tools"* ]] || continue
