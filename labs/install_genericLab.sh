@@ -6,7 +6,7 @@ function installLab {
 	cd ..
 	[[ ! -d Labs ]] && mkdir Labs
 	cd Labs
-	if [[ ! -d $"labDirName" ]]; then
+	if [[ ! -d "$labDirName" ]]; then
 		if git clone https://github.com/felidadae/$repoName.git; then
 			printf "${GREEN}[Success]${NC} Installed >>$repoName<< repo in $(pwd)\n"
 		else
@@ -16,8 +16,8 @@ function installLab {
 	else 
 		printf "${YELLOW}[Info]${NC} A Directory with the repo exists already\n"
 	fi
-	mv $repoName $"labDirName"
-	cd $"labDirName"
+	mv $repoName "$labDirName"
+	cd "$labDirName"
 
 	echo "Trying to install dependencies..."
 	if bash installDependencies.sh; then

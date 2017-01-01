@@ -237,6 +237,9 @@ endfun
 autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
 autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%80v', 80)
 
+" ycm to set python version
+let g:ycm_python_binary_path = '/usr/bin/python3'
+
 " vim-session
 set sessionoptions-=options
 set sessionoptions-=help

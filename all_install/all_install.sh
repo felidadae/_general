@@ -46,7 +46,9 @@ fi
 source python.sh
 source c++.sh
 source vim_tmux.sh
-source android-studio.sh
+if [[ "$(which android-studio)" == "" ]] && [[ "$INSTALL_ANDROIDTOOLS" == 1 ]]; then
+	source android-studio.sh
+fi
 
 cd ~/Programming/_General
 bash install.sh
