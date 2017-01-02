@@ -51,25 +51,26 @@ filetype plugin indent on
 :set guifont=Roboto\ Mono\ Medium\ for\ Powerline\ Medium\ 9 
 
 "to run POWERLINE 
-let g:remoteSession = ($SSH_CLIENT == "")
+let g:remoteSession = ($SSH_CLIENT == "" || $SSH_CONNECTION == "")
 if g:remoteSession
 	python from powerline.vim import setup as powerline_setup
 	python powerline_setup()
 	python del powerline_setup
+
+	"devicons
+	let g:webdevicons_enable_ctrlp = 1
+	let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+	let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+	" call webdevicons#refresh()
+	"let g:webdevicons_conceal_nerdtree_brackets = 1
+	"let g:DevIconsEnableFoldersOpenClose = 1
 else
 	:set t_ut=
 	:set showtabline=0
+	let g:webdevicons_enable = 0
 endif
 
-"devicons
-let g:webdevicons_enable_ctrlp = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-" call webdevicons#refresh()
-"let g:webdevicons_conceal_nerdtree_brackets = 1
-"let g:DevIconsEnableFoldersOpenClose = 1
-
-"Colors
+" Colors
 set background=dark
 colorscheme solarized
 :highlight nontext ctermfg=bg 
@@ -235,6 +236,9 @@ endfun
 " x-st column is magenta if there is a char
 autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
 autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%80v', 80)
+
+" ycm to set python version
+let g:ycm_python_binary_path = '/usr/bin/python3'
 
 " vim-session
 set sessionoptions-=options

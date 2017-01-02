@@ -4,7 +4,7 @@ cd ~/.vim/bundle/YouCompleteMe
 cd ~
 mkdir ycm_tmp
 cd ycm_tmp
-curl http://llvm.org/releases/3.8.1/clang+llvm-3.8.1-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+curl http://llvm.org/releases/3.8.1/clang+llvm-3.8.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
 #curl http://llvm.org/releases/3.8.1/clang+llvm-3.8.1-x86_64-linux-gnu-ubuntu-14.04.tar.xz
 
 cd ~
