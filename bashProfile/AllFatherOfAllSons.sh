@@ -269,4 +269,5 @@ fi
 # clear
 
 # init_ 3500
+bind '"jk":vi-movement-mode'
 

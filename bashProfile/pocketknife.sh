@@ -197,7 +197,7 @@ function chooseDir {
 	array=()
 	while IFS=  read -r -d $'\0'; do
 		array+=("$REPLY")
-	done < <(find . -follow \
+	done < <(find . -maxdepth $1 -follow \
 		-path *.git* -prune -o \
 		-type d -print0)
 
