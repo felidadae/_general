@@ -154,6 +154,7 @@ set splitright
 :set showtabline=0
 :set foldignore=
 :set hidden
+:set ssop=blank,buffers,sesdir,folds,tabpages,winpos,winsize
 
 "to highlight (["
 :let OPTION_NAME = 1
