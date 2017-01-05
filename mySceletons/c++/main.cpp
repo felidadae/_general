@@ -3,7 +3,11 @@
 #include <list>
 #include <deque>
 
-using namespace std::vector, std::string, std::cout, std::endl, std::list;
+using std::vector;
+using std::string;
+using std::cout;
+using std::endl;
+using std::list;
 
 int main()
 {

@@ -244,6 +244,7 @@ function ,epo { vim $general/bashProfile/pocketknife.sh;  }
 function ,ev  { vim ~/.vimrc;  }
 ###---
 function ,  { fuzzyCall . "vim" "$1" "$2"; }
+function ,gi { fuzzyCall . "git diff" "$1" "$2"; }
 function ,. { fuzzyCall . "$1" "$2" "$3"; }
 ###---
 function g,  { fuzzyCall "$general" "vim" "$1" "$2"; }
