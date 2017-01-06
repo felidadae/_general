@@ -211,6 +211,32 @@ function fastTest {
 	tmux select-pane -t 2	
 	tmux send-keys 'echo dupa'	
 }
+function experimentCode {
+	# cpp, py, java
+	local lang=${1}
+	local today=`date +%Y%m%d-%H%M`
+	
+	local source=$skeletons/$lang
+	[[ ! -d $playground/EXP ]] && mkdir $playground/EXP
+	[[ ! -d $playground/EXP_stable ]] && mkdir $playground/EXP_stable
+	local destiny=$playground/EXP/$lang-$today
+	cp -r $source $destiny
+
+	window_name=EXP
+	tmux new-window -n "$window_name";
+	tmux split -t :"$window_name" "cd $destiny; vim main.$lang"; 
+	tmux send-keys -t :"$window_name".1 "cd $destiny" Enter "c"
+}
+function experimentCode__clear { 
+	rm -r $playground/EXP/*; 
+}
+function experimentCode__mv {
+	local currpos=$(pwd)
+	cd ..;
+	mv $currpos "$1"	
+	cd "$1"
+}
+alias ,exp=experimentCode
 #--------------------------------
 
 
@@ -239,11 +265,13 @@ function vim_newsyntax {
 #Super fast
 alias _r="reloadBashProfile"
 alias .c="xclip -selection c"
+function ,re { make clean; make; ./main; }
 
 function ,epo { vim $general/bashProfile/pocketknife.sh;  }
 function ,ev  { vim ~/.vimrc;  }
 ###---
 function ,  { fuzzyCall . "vim" "$1" "$2"; }
+function ,gi { fuzzyCall . "git diff" "$1" "$2"; }
 function ,. { fuzzyCall . "$1" "$2" "$3"; }
 ###---
 function g,  { fuzzyCall "$general" "vim" "$1" "$2"; }
@@ -264,7 +292,8 @@ alias diffgit="git diff --no-index"
 alias _gs="git status"
 alias _ga="git add"
 alias _gc="git checkout"
-alias _gcom="git commit -m"
+alias tsk="tmux send-keys"
+function _gcom2 { sleep 0.2; tmux send-keys "git commit -m "; }
 alias _gd="git diff"
 alias _gl="git log"
 alias _gb="git branch"
@@ -289,4 +318,3 @@ function ,s { tmux split-window -p 50 "vim $1;"; }
 function ,ta { tmux split-window -p 30 "vim $notus/tablica.todo;"; }
 
 #@--fast
-

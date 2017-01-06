@@ -4,6 +4,7 @@ export documents=~/Documents
 
 export general="$base"/_General
 export bashProfileFiles="$general"/bashProfile
+export skeletons="$general/Skeletons"
 #---
 export projects="$base"/Projects
 #---
