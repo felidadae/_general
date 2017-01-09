@@ -203,37 +203,36 @@ function chooseDir {
 
 	_arrayChoice "cd" "$2"
 }
-function fastTest {
-	tmux new-window -n 'Experimental'	
-	tmux split-window -t 'Experimental' -h	
-	tmux send-keys -t 'Experimental' "vim $1.py" Enter	
-	tmux select-window -t 'Experimental'	
-	tmux select-pane -t 2	
-	tmux send-keys 'echo dupa'	
-}
+#Its done?
+# function fastTest {
+# 	tmux new-window -n 'Experimental'	
+# 	tmux split-window -t 'Experimental' -h	
+# 	tmux send-keys -t 'Experimental' "vim $1.py" Enter	
+# 	tmux select-window -t 'Experimental'	
+# 	tmux select-pane -t 2	
+# 	tmux send-keys 'echo dupa'	
+# }
 function experimentCode {
-	# cpp, py, java
+	# cpp, py, java, manual
 	local lang=${1}
 	local today=`date +%Y%m%d-%H%M`
 	
 	local source=$skeletons/$lang
-	[[ ! -d $playground/EXP ]] && mkdir $playground/EXP
-	[[ ! -d $playground/EXP_stable ]] && mkdir $playground/EXP_stable
+	mkdir -p $playground/EXP
+	mkdir -p $playground/EXP_stable
 	local destiny=$playground/EXP/$lang-$today
 	cp -r $source $destiny
 
 	window_name=EXP
 	tmux new-window -n "$window_name";
 	tmux split -t :"$window_name" "cd $destiny; vim main.$lang"; 
-	tmux send-keys -t :"$window_name".1 "cd $destiny" Enter "c"
+	tmux send-keys -t :"$window_name".1 "cd $destiny" Enter "c" Enter "pwd" Enter
 }
-function experimentCode__clear { 
-	rm -r $playground/EXP/*; 
-}
+function experimentCode__clear { rm -r $playground/EXP/*; }
 function experimentCode__mv {
 	local currpos=$(pwd)
 	cd ..;
-	mv $currpos "$1"	
+	mv $currpos "$1"
 	cd "$1"
 }
 alias ,exp=experimentCode

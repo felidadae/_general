@@ -1,16 +1,14 @@
-snippet colorsSuccess "" b
-printf "\${RED}[Error]\${NC} ${1:message}\n"
-endsnippet
-
-snippet colors "" b
+snippet colors "Define colors: red,yellow,green,nc" b
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 endsnippet
-
-snippet colorsSuccess "" b
+snippet colors_success "" b
 printf "\${GREEN}[Success]\${NC} ${1:message}\n"
+endsnippet
+snippet colors_error "" b
+printf "\${RED}[Error]\${NC} ${1:message}\n"
 endsnippet
 
 snippet baseAndExtension "" b

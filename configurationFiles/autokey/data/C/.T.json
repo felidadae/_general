@@ -1,12 +1,12 @@
 {
-    "usageCount": 3, 
+    "usageCount": 0, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "<<", 
+    "description": "<T>", 
     "abbreviation": {
         "wordChars": "[\\w]", 
         "abbreviations": [
-            "nm,"
+            "m,"
         ], 
         "immediate": true, 
         "ignoreCase": false, 
