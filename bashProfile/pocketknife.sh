@@ -213,13 +213,14 @@ function chooseDir {
 # 	tmux send-keys 'echo dupa'	
 # }
 function experimentCode {
-	# cpp, py, java, manual
-	local lang=${1}
+	local lang=${1}		# cpp, py, java
+	[[ $lang == "" ]] && echo "usage: arg1=lang" && return 
+
 	local today=`date +%Y%m%d-%H%M`
 	
 	local source=$skeletons/$lang
-	mkdir -p $playground/EXP
-	mkdir -p $playground/EXP_stable
+	[[ ! -d $playground/EXP ]] && mkdir -p $playground/EXP
+	[[ ! -d $playground/EXP_stable ]] && mkdir -p $playground/EXP_stable
 	local destiny=$playground/EXP/$lang-$today
 	cp -r $source $destiny
 
