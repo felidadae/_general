@@ -272,3 +272,7 @@ fi
 bind '"jk":vi-movement-mode'
 # bind '"^[h":vi-backward-word'
 
+for i in $currlocation/external/*; do
+	source $i
+done
+
