@@ -41,6 +41,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'joonty/vdebug'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ekalinin/Dockerfile.vim'
 " PluginExtend
 call vundle#end()            
 filetype plugin indent on
