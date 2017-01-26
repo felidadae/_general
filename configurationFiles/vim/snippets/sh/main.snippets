@@ -34,7 +34,7 @@ perl -pi -e   's/  ${1:regex}  /  ${2:substitution}  /gx'   "\$${3:fileToModify}
 endsnippet
 
 snippet perlFilterIntoVariable "filter line and save result to bash variable" b
-${1:varName}=$( ${2:input} | perl -ne 'if ($_ =~ / ${3:regex} /x) {print $1;}')
+${1:varName}=$( ${2:input} | perl -ne 'if ($_ =~ / ${3:regex} /x) {print \$1;}')
 endsnippet
 
 snippet ifDarwin "" b
@@ -155,4 +155,12 @@ snippet regexVariable "Regex variable with perl oneliner" b
 matches=$(echo ${1:variable} | perl -pe 's/ .*().* /\1\t\2/gx')
 match1=$(echo -e "$matches" | cut -f1)
 match2=$(echo -e "$matches" | cut -f2)
+endsnippet
+
+snippet ssh_copyToRemoteSSHServer "copy from here to remote machine with ssh server" b
+IP=
+USER=
+PASSWD=
+sshpass -p "$PASSWD" scp ${1:fileToCopy} \
+	$USER@$IP:/home/$USER/${2:destination}
 endsnippet

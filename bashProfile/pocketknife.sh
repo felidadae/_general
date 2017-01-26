@@ -9,6 +9,7 @@ alias ls="ls --color"
 alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
 alias tmux="tmux -2"
+alias cd.="cd .."
 
 function howManyFiles { ls -1 "$1" | wc -l; }
 function modifiedFilesIn {
