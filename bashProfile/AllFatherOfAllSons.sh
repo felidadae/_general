@@ -82,7 +82,7 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 			echo ""
 		else
 			x=${x:1:-1}
-			echo " $x"
+			echo " $x"
 		fi
 	}
 	function git_color() {
@@ -107,13 +107,15 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 	function dayTime() {
 		hour=`date +"%l"` 
 		if (($hour > 6 && $hour < 18)); then 
-			echo ""
+			echo "☀ "
 		else
-			echo ""
+			echo "☀ "
 		fi
 	}
+
 	# alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
 	PS1='\[\e[0;33m\]`dayTime`[\W]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\$\[\e[0m\] '
+	# PS1='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
 fi
 
 HISTFILESIZE=

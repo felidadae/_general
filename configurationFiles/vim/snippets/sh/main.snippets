@@ -164,3 +164,25 @@ PASSWD=
 sshpass -p "$PASSWD" scp ${1:fileToCopy} \
 	$USER@$IP:/home/$USER/${2:destination}
 endsnippet
+
+snippet argsWhile "to read args into variables;"
+${1:flag1}=0
+function help {
+	echo "Options:"
+	echo -e "\t--$1"
+	echo -e "\t\t${2:Description of the flag}"
+}
+while test $# -gt 0
+do
+    case "\$1" in
+		--$1) $1=1
+			;;
+		--*) help; exit 1;
+			;;
+		*) help; exit 1; 
+			;;
+    esac
+    shift
+done
+[ $1 == "0" ] && help && exit 1
+endsnippet
