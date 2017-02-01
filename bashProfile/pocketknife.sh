@@ -238,6 +238,14 @@ function experimentCode__mv {
 	cd "$1"
 }
 alias ,exp=experimentCode
+function refactor {
+	echo "Use perl -pi.pre_refactor -e 's///g' $(find . -)"
+}
+function restore_refactor {
+	for f in $(find . -name '*.pre_refactor'); do
+		mv $f "${f%.*}"
+	done	
+}
 #--------------------------------
 
 
