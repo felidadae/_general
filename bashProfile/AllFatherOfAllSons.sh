@@ -12,6 +12,13 @@
 
 
 
+#-------------------------------------------------------------------------------
+# move current working path; source config
+script_path__allfather="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $script_path__allfather/.config/_config.sh
+#-------------------------------------------------------------------------------
+
+
 
 
 #-------------------------------------------------------------------------------
@@ -58,7 +65,6 @@ OS_VER__=$(lsb_release -sr)
 
 
 
-
 #-------------------------------------------------------------------------------
 
 #
@@ -76,6 +82,14 @@ TERM=xterm-256color
 
 #Promt
 if [[ $__MY_SHELL__ = "bash" ]]; then
+	COLOR_RED="\033[0;31m"
+	COLOR_YELLOW="\033[0;33m"
+	COLOR_GREEN="\033[0;32m"
+	COLOR_OCHRE="\033[38;5;95m"
+	COLOR_BLUE="\033[0;34m"
+	COLOR_WHITE="\033[0;37m"
+	COLOR_RESET="\033[0m"
+
 	function parse_git_branch() {
 		x=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
 		if [[ "$x" == "" ]]; then
@@ -86,13 +100,6 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 		fi
 	}
 	function git_color() {
-		COLOR_RED="\033[0;31m"
-		COLOR_YELLOW="\033[0;33m"
-		COLOR_GREEN="\033[0;32m"
-		COLOR_OCHRE="\033[38;5;95m"
-		COLOR_BLUE="\033[0;34m"
-		COLOR_WHITE="\033[0;37m"
-		COLOR_RESET="\033[0m"
 		local git_status="$(git status 2> /dev/null)"
 		if [[ ! $git_status =~ "working directory clean" ]]; then
 			echo -e $COLOR_GREEN
@@ -112,9 +119,20 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 			echo "☀ "
 		fi
 	}
+	function dockerContainersCounter {
+		#check if any container is running currently; if so light lamp
+		result=$(docker ps -q)
+		if [ "$result" == "" ]; then
+			echo ""
+		else
+			docker_icon=⚓
+			container_count=$(echo $result | tr ' ' '\n' | wc -l )
+			echo -e "$COLOR_GREEN$docker_icon $container_count$COLOR_RESET"
+		fi
+	} 
 
 	# alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-	PS1='\[\e[0;33m\]`dayTime`[\W]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\$\[\e[0m\] '
+	PS1='\[\e[0;33m\]`dayTime`[\W]\[\e[0;35m\]`parse_git_branch` `dockerContainersCounter` \[\e[0m\]\[\e[0;33m\]\$\[\e[0m\]'
 	# PS1='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
 fi
 

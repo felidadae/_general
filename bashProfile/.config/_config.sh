@@ -1,9 +1,2 @@
-###
-source _config.sh.template
-###
-#--------------------------------------------------
-
-
-#--------------------------------------------------
-# Do not change anything above
+SAMSUNG_TIWEB=1
 IF_AT_WORK=1
