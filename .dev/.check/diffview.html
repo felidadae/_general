@@ -21,7 +21,6 @@
 
 	<script>
 		var updatesLinkage = {{ updatesLinkage|safe }};
-		var updatesLinkage__offset = {{ updatesLinkage__offset }};
 	</script>
 </head>
 
@@ -35,16 +34,18 @@
 
 			<span class="REF">REF:</span></a>
 			{% spaceless %}
-			{% for word in sentence.0 %}<a href="#" class="word" id="{{ word.attrib.id }}">{{word.0.text}}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endfor %}
+			{% for word in sentence.0 %}<a href="#" charsAfter="{{ word.attrib.charsAfter }}" class="word" id="{{ word.attrib.id }}">{{word.0.text}}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endfor %}
 			{% endspaceless %}
 			<br>
 			<span class="HYP">DIFF: </span>
 			{% spaceless %}
-			{% for word in sentence.1 %}{% if word.attrib.State == "Common" %}<a href="#" class="word" diffState="Common" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% if word.attrib.State == "Deleted" %}<a href="#" class="word" diffState="Deleted" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% if word.attrib.State == "Inserted" %}<a href="#" class="word" diffState="Inserted" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% endfor %}{% endspaceless %}
+			{% for word in sentence.1 %}{% if word.attrib.State == "Common" %}<a href="#" charsAfter="{{ word.attrib.charsAfter }}" class="word" diffState="Common" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% if word.attrib.State == "Deleted" %}<a href="#" charsAfter="{{ word.attrib.charsAfter }}" class="word" diffState="Deleted" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% if word.attrib.State == "Inserted" %}<a href="#" charsAfter="{{ word.attrib.charsAfter }}" class="word" diffState="Inserted" id="{{ word.attrib.id }}">{{ word.0.text }}</a>{% if word.attrib.charsAfter == " " %}&nbsp;{% else %}{{word.attrib.charsAfter}}{% endif %}{% endif %}{% endfor %}{% endspaceless %}
 		</td></tr>
 	{% endfor %}
 
-	{% include "tifocus/pageController.html" %}
+	{% if cleaningParams.includePageControllerOnBottom == '1' %}
+		{% include "tifocus/pageController.html" %}
+	{% endif %}
 </table>
 <br><br><br><br><br><br><br><br><br><br><br><br>
 

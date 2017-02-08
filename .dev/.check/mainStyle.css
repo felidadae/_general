@@ -14,7 +14,7 @@ span.WebTitle {
 	background-color: #0e2136; /*description*/
 	color: white;
 	color: white;
-	background-color: #3575bf;
+Pbackground-color: #3575bf;
 	font-family: Courier;
 	 /* round the corners */
     -webkit-border-radius: 4px;
@@ -243,6 +243,21 @@ span.state-removed {
 	color: red;
 	transition: all 0.5s ease;
 }
+span.state-blacklisted {
+    /* round the corners */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+
+    /* make it glow! */
+    -webkit-box-shadow: 0px 0px 4px #4195fc;
+       -moz-box-shadow: 0px 0px 4px #4195fc;
+            box-shadow: 0px 0px 4px #4195fc; /* some variation of blue for the shadow */
+
+	background: black;
+	color: white;
+	transition: all 0.5s ease;
+}
 
 span.copyButton { 
 	/* round the corners */
@@ -366,6 +381,10 @@ div.buttonMismatchRecording:hover{
 	color: #3575bf;
 	transition: color 0.5s ease;
 }
+div.buttonIncomprehensibleRecording:hover{
+	color: #3575bf;
+	transition: color 0.5s ease;
+}
 div.buttonWrongRef {
 	/*background-color: red;*/
 	margin: auto;
@@ -437,7 +456,30 @@ div.buttonMismatchRecording {
 	background: #404040;
 
 }
+div.buttonIncomprehensibleRecording {
+	/*background-color: red;*/
+	padding: 0px;
+	background-color: black;
+	margin: auto;
+	display: inline-block;
+    font-family: monospace;
 
+    border-radius: 0px;
+	border: 0px solid black;
+
+	    /* round the corners */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+
+    /* make it glow! */
+    -webkit-box-shadow: 0px 0px 4px #4195fc;
+       -moz-box-shadow: 0px 0px 4px #4195fc;
+            box-shadow: 0px 0px 4px #4195fc; /* some variation of blue for the shadow */
+
+	background: #404040;
+
+}
 
 div.betaNotificationDetails {
 	display: none;
@@ -551,15 +593,15 @@ span.curr a:hover {
 }
 
 a.word[diffState="Deleted"] {
-	color: #E65C5C;
+	color: #b3ccff;
 	text-decoration: line-through;
 	transition: color 0.5s ease;
 }
 a.word[diffState="Deleted"]:link {
-	color: #E65C5C;
+	color: #b3ccff;
 }
 a.word[diffState="Deleted"]:visited {
-	color: #E65C5C;
+	color: #b3ccff;
 }
 a.word[diffState="Deleted"]:hover {
     color:#3575bf;
@@ -567,18 +609,18 @@ a.word[diffState="Deleted"]:hover {
 
 
 a.word[diffState="Inserted"] {
-	color: #007A29;
+	color: #b3ccff;
 	text-decoration: underline;
 	transition: color 0.5s ease;
 }
 a.word[diffState="Inserted"] {
-	color: #007A29;
+	color: #b3ccff;
 }
 a.word[diffState="Inserted"]:link {
-	color: green;
+	color: #b3ccff;
 }
 a.word[diffState="Inserted"]:visited {
-	color: green;
+	color: #b3ccff;
 }
 a.word[diffState="Inserted"]:hover {
     color:#3575bf;
