@@ -36,9 +36,13 @@ snippet perlInline "" b
 perl -pi -e   's/  ${1:regex}  /  ${2:substitution}  /gx'   "\$${3:fileToModify}"
 endsnippet
 
-snippet perlFilterIntoVariable "filter line and save result to bash variable" b
-${1:varName}=$( ${2:input} | perl -ne 'if ($_ =~ / ${3:regex} /x) {print \$1;}')
+# snippet perlFilterIntoVariable "filter line and save result to bash variable" b
+# ${1:varName}=$( ${2:input} | perl -ne 'if ($_ =~ / ${3:regex} /x) {print \$1;}')
+# endsnippet
+snippet perlPatternIntoVar_short "search for a pattern in a file and set to variable" b
+${1:varName}=$( cat ${2:infile} | perl -ne 'print ${4:numOfCapturedGroup} if /${3:pattern}/;')
 endsnippet
+
 
 snippet perlRegexVariable "Regex variable with perl oneliner" b
 matches=$(echo ${1:variable} | perl -pe 's/ .*().* /\1\t\2/gx')
@@ -75,6 +79,11 @@ endsnippet
 
 
 ##### @general @bashing
+snippet tmp "mktemp tool to manage tmp files" b
+local __tmp__=$(mktemp)
+rm $__tmp__
+endsnippet
+
 snippet redirectToDevNull "redirect to a trash" b
 > /dev/null 2>&1
 endsnippet
