@@ -202,6 +202,9 @@ let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
 let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"
 
+"easy-motion
+map ,. <Plug>(easymotion-prefix)
+
 "Intendation
 set foldmethod=indent
 set foldtext=MyFoldText()
