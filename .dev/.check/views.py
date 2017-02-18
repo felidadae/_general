@@ -1,4 +1,7 @@
-
+"""
+	In this file we call real functionalities
+	from Managers; here we just prepare arguments;
+"""
 import os
 import sys
 from django.http import HttpResponse
@@ -19,7 +22,6 @@ import tifocus.core.managers.dictionaryUpdatesManager as dictionaryUpdatesManage
 import tifocus.core.managers.InputManager as InputManager
 import tifocus.core.managers.betaNotificationManager as betaNotificationManager
 import tifocus.core.managers.suggestionsManager as suggestionsManager
-import tifocus.core.managers.phentriesValidationManager as phentriesValidationManager
 
 
 
@@ -28,6 +30,7 @@ def cleanFaceOfUnicode(unn):
 	unn = unn.replace(u'\xa0', u' ')
 	unn = re.sub("\s+", " ", unn, re.UNICODE)
 	unn = unn.strip()
+	unn = uri_to_iri(unn)
 	return unn
 
 logger = logging.getLogger(__name__)
@@ -57,27 +60,9 @@ def chooseFile(request):
 		show lists of available files
 	"""
 
-	def fun1(item1, item2):
-		if item1[0] > item2[0]:
-			return True
-		if item1[0] < item2[0]:
-			return False
-
-		s = re.search(".*curr_R.*?\-(\d{8})", item1[1])
-		if s: item1_ = s.group(1)
-		s = re.search(".*curr_R.*?\-(\d{8})", item2[1])
-		if s: item2_ = s.group(1)
-
-		print item1_
-		print item2_
-		print int(item1_) > int(item2_)
-		print "***"
-
-		return -1*cmp(int(item1_), int(item2_))
-
 	#[[langCode, filename], [langCode, filename] ... ]
+    #Note: already sorted;
 	filesListPairs = InputManager.listAvailableFiles()
-	filesListPairs.sort(cmp=fun1)
 
 	return render( request,
 		"tifocus/chooseFile.html", 
@@ -135,13 +120,22 @@ def showFileWithSearchResults(request):
 	fileName 	 = request.POST.get('fileName', '')
 	wordToSearch = request.POST.get('wordToFind', '')
 
-	import ipdb; ipdb.set_trace()
-
 	from tifocus.core.managers.XMLDividerManager import splitXML__containingWord_
-	from tifocus.core.managers.HTMLRendererManager import renderDiff_oneFile
+	from tifocus.core.managers.HTMLRendererManager import renderDiff_oneFile, renderWStat_oneFile
 	
 	XMLsearchResult = splitXML__containingWord_(languageCode, fileName, wordToSearch)
-	renderDiff_oneFile(languageCode, XMLsearchResult, "tmp.html")
+
+	if "diff" in fileName:
+		renderDiff_oneFile(
+			languageCode, XMLsearchResult, "tmp.html",  0,1,
+			{"includePageControllerOnBottom": 0, "includeSearchField": 0}
+		)
+	else:
+		renderWStat_oneFile(
+			languageCode, XMLsearchResult, "tmp.html", 0,1,
+			{"includePageControllerOnBottom": 0, "includeSearchField": 0}
+		) 
+
 	os.remove(XMLsearchResult)
 
 	import codecs
@@ -162,19 +156,30 @@ def editEntry(request):
 
 		state of word -> state BEFORE doing THAT operation;
 		we guess what to do from its current state;
-
-		dictionaryUpdatesManager.update
+		possible states are:
+		- before-adding
+			add new form not existing before
+		- removed
+			want to reinstert removed form 
+			(from g2p snapshot/oldforms)
+		- added
+			if changed mind and want to remove
+			added form
+		- zero
+			wants to delete form from 
+			g2p snapshot/oldforms
 	"""
 	myloggin(request, inspect.stack()[0][3], "START")
 
-	languageCode 	= request.GET.get('languageCode', '')
+	langCode	 	= request.GET.get('languageCode', '')
 	state 			= request.GET.get('state', '')
 	word 			= request.GET.get('word', '')
-	forms 			= request.GET.get('forms', '')
+	form 			= request.GET.get('forms', '')
 	oldForms		= request.GET.get('oldForms', '')
 
-	forms = cleanFaceOfUnicode(forms)
+	form = cleanFaceOfUnicode(form)
 	oldForms = oldForms.split("*")
+	word = word.lower()
 
 	#
 	#	Process word to utf8 from ansi form which do 
@@ -184,48 +189,28 @@ def editEntry(request):
 	#
 	word = uri_to_iri(word)
 
-	#	If a form removed and wants to be reinserted
-	if (state == "removed"):
-	 	returnCode = \
-	 		dictionaryUpdatesManager.update(
-	 			languageCode, word, forms, oldForms,
-	 			"deletion", "deletionDictionary")
-
-	#	If wants to delete form
-	if (state == "zero"):
-	 	returnCode = \
-	 		dictionaryUpdatesManager.update(
-	 			languageCode, word, forms, oldForms,
-	 			"insertion", "deletionDictionary")
-
-	#	If changed mind and wants to remove added form
-	if (state == "added"):
-		returnCode = \
-	 		dictionaryUpdatesManager.update(
-	 			languageCode, word, forms, oldForms,
-	 			"deletion", "insertionDictionary")
-
-	#	If wants to add new form
-	if (state == "before-adding"):
-		#We want to assure that there are only
-		#allowed phones;
-		result = phentriesValidationManager.validateForm(forms, languageCode)
-		if result[0] == False:
-			return HttpResponse("I'm afraid your form cannot be added." 
-				"You have used unrecognizable phone (" + result[1] + ")."
-				"Check the phoneset for your language.")
-		returnCode = \
-	 		dictionaryUpdatesManager.update(
-	 			languageCode, word, forms, oldForms,
-				"insertion", "insertionDictionary")
+	dictionaryUpdatesManager.update(langCode, word, form, oldForms, state)
 
 	myloggin(request, inspect.stack()[0][3], "END__")
+	return HttpResponse("OK")
+
+def editBlacklist(request):
+	languageCode 	= request.GET.get('languageCode', '')
+	word 			= request.GET.get('word', '')
+	forms 			= request.GET.get('forms', '')
+	action			= request.GET.get('action', '')
+
+	forms = cleanFaceOfUnicode(forms)
+	word = word.lower()
+
+	returnValue = (
+		dictionaryUpdatesManager.updateBlacklist(
+			languageCode, word, forms, action))
 
 	return HttpResponse("OK")
 
-
 def currentStateForWord(request):
-	languageCode 	= request.GET.get('languageCode', 	'')
+	langCode	 	= request.GET.get('languageCode', 	'')
 	word 			= request.GET.get('word', 			'')
 	sentenceA		= request.GET.get('sentenceA',		'')
 	sentenceB		= request.GET.get('sentenceB',		'')
@@ -233,37 +218,19 @@ def currentStateForWord(request):
 
 	sentenceA = cleanFaceOfUnicode(sentenceA)
 	sentenceB = cleanFaceOfUnicode(sentenceB)
+	word = cleanFaceOfUnicode(word)
 
-	m = (re.search( '(asr[^\/]*).*\/((\d|\-)+).wav', 
-		recordingURL));
-	corpusname = m.group(1);
-	FileID     = m.group(2);
-
-	entriesInserted = dictionaryUpdatesManager.read(
-		languageCode, word.lower(), "insertionDictionary")
-	entriesRemoved  = dictionaryUpdatesManager.read(
-		languageCode, word.lower(), "deletionDictionary")
-	BETAnotification= betaNotificationManager.checkIfNotified(
-		corpusname, FileID, languageCode,
-		word, sentenceA, sentenceB)
-
-	stateXML = Element('state')
-	insertedXML = SubElement(stateXML, 'inserted')
-	for item in entriesInserted:
-		entry = SubElement(insertedXML, 'form')
-		entry.text = item
-	removedXML  = SubElement(stateXML, 'removed')
-	for item in entriesRemoved:
-		entry = SubElement(removedXML, 'form')
-		entry.text = item
-	notificationXML = SubElement(stateXML, 'BETAnotification')
-	entry = SubElement(notificationXML, 'ambigOrt')
-	entry.text = str(BETAnotification["ambigOrt"])
-	entry = SubElement(notificationXML, 'wrongRef')
-	entry.text = str(BETAnotification["wrongRef"])
-	entry = SubElement(notificationXML, 'mismatchRecording')
-	entry.text = str(BETAnotification["mismatchRecording"])
-	print tostring(stateXML)
+	if recordingURL != "":
+		m = (re.search( '(asr[^\/]*).*\/((\d|\-)+).wav', 
+			recordingURL));
+		corpusname = m.group(1);
+		FileID     = m.group(2);
+		stateXML = dictionaryUpdatesManager.getCurrentStateForWord(
+			langCode, word, sentenceA, sentenceB,
+			corpusname, FileID)
+	else:
+		stateXML = dictionaryUpdatesManager.getCurrentStateForWord(
+			langCode, word)
 
 	return HttpResponse(  tostring(stateXML)  )
 
@@ -330,7 +297,7 @@ def notifyWrongRef(request):
 	needsVerification = request.GET.get('needsVerification', '')
 	globallySafe 	  = request.GET.get('globallySafe', '')
 
-	wrongRef= cleanFaceOfUnicode(wrongRef)
+	wrongRef	= cleanFaceOfUnicode(wrongRef)
 	correctedRef= cleanFaceOfUnicode(correctedRef)
 
 	if needsVerification == "":
@@ -377,6 +344,26 @@ def notifyMismatchRecording(request):
 	myloggin(request, inspect.stack()[0][3], "END__")
 	return HttpResponse()
 
+def notifyIncomprehensibleRecording(request):
+	"""
+		If recording 
+	"""
+
+	myloggin(request, inspect.stack()[0][3], "START")
+	
+	languageCode 	= request.GET.get('languageCode', '')
+	recordingURL	= request.GET.get('fullRecordingURL', '')
+
+	m = (re.search( '(asr[^\/]*).*\/((\d|\-)+).wav',
+		recordingURL));
+	corpusname = m.group(1);
+	fileid     = m.group(2);
+
+	betaNotificationManager.incomprehensibleRecording(
+		languageCode, corpusname, fileid)
+
+	myloggin(request, inspect.stack()[0][3], "END__")
+	return HttpResponse()
 	
 def notifyAmbigOrt(request):
 	"""

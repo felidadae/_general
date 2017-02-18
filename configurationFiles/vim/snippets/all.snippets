@@ -5,3 +5,11 @@ endsnippet
 snippet ., "New entry with date" b
 $`date +%Y%m%d` [%] @${1:YourGreatThought}
 endsnippet
+
+snippet echo-gi "echo to .gitignore" b
+echo "${1:command}" >> .gitignore
+endsnippet
+
+snippet git-acp "git add commit push" b
+git add -A; git commit -m "[TIweb-solution] ${1:message}"; git push origin schwa;
+endsnippet

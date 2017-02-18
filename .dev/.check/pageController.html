@@ -57,47 +57,51 @@ $(function() {
 		    <a class="home" href="{% url 'tifocus:chooseUpdatesToPush' %}">  &#9726; </a>
 		</div>
 
-		{% for part in parts %}
-		    <a 	class="pageController" 
-		    	onClick="callback_choosePageController(this)"
-		    	postURL="{% url 'tifocus:showPartOfFile' %}">
-		    	{% ifequal currPart part %} 
-		    		<span class="choosenPage">{{ part }}</span> 
-		    	{% else %} 
-		    		{{ part }} 
-		    	{% endifequal %} 
-		    </a>
-		{% endfor %}
+		{% if cleaningParams.includeSearchField == '1' %}
+			{% for part in parts %}
+			    <a 	class="pageController" 
+			    	onClick="callback_choosePageController(this)"
+			    	postURL="{% url 'tifocus:showPartOfFile' %}">
+			    	{% ifequal currPart part %} 
+			    		<span class="choosenPage">{{ part }}</span> 
+			    	{% else %} 
+			    		{{ part }} 
+			    	{% endifequal %} 
+			    </a>
+			{% endfor %}
 
 
-		<div class="pageControllerArrows">
-			{% if currPart != 0 %}
-			<a 	class="pageController" 
-		    	onClick="callback_choosePageController_prev(this)"
-		    	postURL="{% url 'tifocus:showPartOfFile' %}">
-		    	&larr;
-		    </a>
-		    {% else %}
-		    	&nbsp;
-		    {% endif %}
-		    {% if currPart != Nparts %}
-		    <a 	class="pageController" 
-		    	onClick="callback_choosePageController_next(this)"
-		    	postURL="{% url 'tifocus:showPartOfFile' %}">
-		    	&rarr;
-		    </a>
-		    {% else %}
-		    	&nbsp; 
-		    {% endif %}
+			<div class="pageControllerArrows">
+				{% if currPart != 0 %}
+				<a 	class="pageController" 
+			    	onClick="callback_choosePageController_prev(this)"
+			    	postURL="{% url 'tifocus:showPartOfFile' %}">
+			    	&larr;
+			    </a>
+			    {% else %}
+			    	&nbsp;
+			    {% endif %}
+			    {% if currPart != Nparts %}
+			    <a 	class="pageController" 
+			    	onClick="callback_choosePageController_next(this)"
+			    	postURL="{% url 'tifocus:showPartOfFile' %}">
+			    	&rarr;
+			    </a>
+			    {% else %}
+			    	&nbsp; 
+			    {% endif %}
 		</div>
-		<div class="SearchDiv">
-			<form class="SearchForm" action="{% url 'tifocus:showFileWithSearchResults' %}" method="POST">
-				<input type="text" name="wordToFind" 	 size="15" value=""/>
-				<input type="hidden" name="fileName" 	 size="15" value=""/>
-				<input type="hidden" name="languageCode" size="15" value=""/>
-				<input type="submit" value="Search!"/>
-			</form>
-		</div>
+
+			<div class="SearchDiv">
+				<form class="SearchForm" action="{% url 'tifocus:showFileWithSearchResults' %}" method="POST">
+					<input type="text" name="wordToFind" 	 size="10" value=""/>
+					<input type="hidden" name="fileName" 	 size="10" value=""/>
+					<input type="hidden" name="languageCode" size="10" value=""/>
+					<input type="submit" value="Search!"/>
+				</form>
+			</div>
+		{% endif %}
+
 	</div>
 	
 </td>

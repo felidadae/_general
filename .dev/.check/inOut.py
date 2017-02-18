@@ -24,45 +24,44 @@ def insertWordsAmbigOrt(words, langCode):
 	"""
 		@Description
 			insert words into database
+		@Explanation of code
+			1) get all wordDB which should be merged and
+				get all wordGroupDB which should be deleted;
+			2) create new wordsGroupDB and assign to it all needed wordDB
+			3) delete not needed wordsGroupDB
 		@Arg 
 			@words
 				array of strings
 	"""
-	wordDB = None
+	wordDBs_toMerge = []
+	wordsGroupDBs_toMerge = []
+	wordDBs_new     = []
+
 	for word in words:
-		wordDB = AmbigOrt_Word.objects.filter(word=word, langCode=langCode)
-		if wordDB.count() == 0: wordDB = None
-		else: wordDB = wordDB[0]
-
-		if wordDB:
-			#If exists at least a word already added
-			break
-
-	if not wordDB:
-		wordsGroup__db__new = AmbigOrt_WordsGroup(langCode=langCode)
-		wordsGroup__db__new.save()
-		for word in words:
-			word__db__new = (
-				AmbigOrt_Word(
-					word=word,
-					langCode=langCode,
-					wordsGroup_id=wordsGroup__db__new.id
-				)
-			)
-			word__db__new.save()
-	else:
-		__id = wordDB.wordsGroup_id
-		for word in words:
-			wordDB = AmbigOrt_Word.objects.filter(word=word, langCode=langCode)
-			if wordDB.count() == 0:
-				word__db__new = (
-					AmbigOrt_Word(
-						word=word, 
-						langCode=langCode,
-						wordsGroup_id=__id
+		tmp = get_wordDBs_from_WordS(word, langCode)
+		wordDBs_toMerge += tmp
+		if len(tmp) != 0:
+			for el in tmp:
+				wordsGroupDBs_toMerge += (
+					get_wordGroupDB_from_wordGroupID(
+						el.wordsGroup_id
 					)
 				)
-				word__db__new.save()
+		else:
+			wordDBs_new.append(AmbigOrt_Word(langCode=langCode, word=word))
+
+	wordsGroup__db__new = AmbigOrt_WordsGroup(langCode=langCode)
+	wordsGroup__db__new.save()
+	
+	for wordDB in wordDBs_toMerge:
+		wordDB.wordsGroup_id = wordsGroup__db__new.id
+		wordDB.save()
+	for wordDB in wordDBs_new:
+		wordDB.wordsGroup_id = wordsGroup__db__new.id
+		wordDB.save()
+	for wordGroupDB in wordsGroupDBs_toMerge:
+		wordGroupDB.delete()
+
 
 @transaction.atomic
 def importAmbigOrt(fp_TSV, langCode):
@@ -144,7 +143,7 @@ def clearAmbigOrt(langCode):
 	wordGroupsDB = getall_wordGroups(langCode)
 
 	for wordGroupDB in wordGroupsDB:
-		wordsDB = get_wordDB_from_wrodsGroupDB(wordGroupsDB)
+		wordsDB = get_wordDB_from_wordsGroupDB(wordGroupsDB)
 		for wordDB in wordsGroup:
 			wordDB.delete()
 		wordGroupDB.delete()

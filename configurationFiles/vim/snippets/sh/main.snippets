@@ -1,27 +1,30 @@
-snippet colors "Define colors: red,yellow,green,nc" b
+##### @Colors
+snippet defineColors "Define colors: red,yellow,green,nc" b
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 endsnippet
-snippet colors_success "" b
-printf "\${GREEN}[Success]\${NC} ${1:message}\n"
-endsnippet
-snippet colors_error "" b
-printf "\${RED}[Error]\${NC} ${1:message}\n"
+
+snippet defineColorLogs "MessageError|Success|Info" b
+function MessageError   { printf "${RED}[Error]${NC} \$1\n"; }
+function MessageSuccess { printf "${GREEN}[Success]${NC} \$1\n"; }
+function MessageInfo    { printf "${YELLOW}[Info]${NC} \$1\n"; }
 endsnippet
 
-snippet baseAndExtension "" b
-fileBaseName="\${${1:fullFilePath}%.*}"
-extension="\${${1}##*.}"
+
+
+##### @Perl
+snippet perlInlineWithoutPrinting "perl -ni -e" b
+perl -ni -e $0  
 endsnippet
 
-snippet ifSubstringContain "" b
-[[ "\$${1:string}" == *"\$${2:substring}"* ]]
+snippet perlInlineWithPrinting "perl -pi -e" b
+perl -pi -e $0  
 endsnippet
 
-snippet perlNotRegex "" b
-perl -pi -e  's/  \Q${1:regex}\E  /  ${2:/*NO NEED TO do that*/}  /gx' "\$${3:file}" 
+snippet perlNotRegex "perl" b
+perl -pi -e  's/  \Q${1:string}\E  /  ${2:/*NO NEED TO do that*/}  /gx' "\$${3:file}" 
 endsnippet
 
 snippet perlENV "" b
@@ -33,98 +36,35 @@ snippet perlInline "" b
 perl -pi -e   's/  ${1:regex}  /  ${2:substitution}  /gx'   "\$${3:fileToModify}"
 endsnippet
 
-snippet perlFilterIntoVariable "filter line and save result to bash variable" b
-${1:varName}=$( ${2:input} | perl -ne 'if ($_ =~ / ${3:regex} /x) {print \$1;}')
+# snippet perlFilterIntoVariable "filter line and save result to bash variable" b
+# ${1:varName}=$( ${2:input} | perl -ne 'if ($_ =~ / ${3:regex} /x) {print \$1;}')
+# endsnippet
+snippet perlPatternIntoVar_short "search for a pattern in a file and set to variable" b
+${1:varName}=$( cat ${2:infile} | perl -ne 'print ${4:numOfCapturedGroup} if /${3:pattern}/;')
 endsnippet
 
-snippet ifDarwin "" b
-if [ "\$OS_KERNEL__" == "darwin" ]; 
-then
-	#MAC OS X
-	${0}
-fi
+
+snippet perlRegexVariable "Regex variable with perl oneliner" b
+matches=$(echo ${1:variable} | perl -pe 's/ .*().* /\1\t\2/gx')
+match1=$(echo -e "$matches" | cut -f1)
+match2=$(echo -e "$matches" | cut -f2)
 endsnippet
 
-snippet diffAnd "" b
-#diff without taking into consideration white spaces;
-diff -b "${1:file1}" "${2:file2}"
-if [[  \$? != 0  ]]; then
-	exit 1;
-else 
-	exit 0;
-fi
-endsnippet
 
-snippet testFileFilterFunction "" b
-. ${1:scriptFileName}.sh
 
-touch test
-echo "${2:line1}" >> test
-echo "${3:line2}" >> test
-
-echo "************"
-echo "Before"
-echo "************"
-cat test
-echo "************"
-
-echo ""
-echo ""
-echo ""
-
-${1} ${4:arg1} ${5:arg2} test
-echo "Function result code is: \$?"
-
-echo ""
-echo ""
-echo ""
-
-echo "************"
-echo "Result"
-echo "************"
-cat test
-echo "************"
-
-rm test
-endsnippet
-
-snippet forls "" b
+##### @loops @for
+snippet forls "for each file in a directory" b
 for ifile in ${1:~}/*; do
 	[ -e "\$ifile" ] || continue
 	$0
 done
 endsnippet
 
-snippet $ "" b
-"\$${1:NAME}" $0
-endsnippet
-
-snippet forA "" b
+snippet forEachArray "for each element in an array" b
 for el in "\$\{${1:arrayname}[@]\}"
 do
    ${0}
 done
-endsnippet
-
-snippet redirectToTrash "" b
-> /dev/null 2>&1
-endsnippet
-
-snippet currPos "" b
-scriptPath="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
-endsnippet
-
-snippet ifLinux "" b
-if [ "\$OS_KERNEL__" == "linux" ]; 
-then
-	${0}
-fi
-endsnippet
-
-snippet fun "" b
-function ${1:funName} {
-	$0
-}
 endsnippet
 
 snippet forarray "For-loop iterating through array additionaly with counter;" b
@@ -136,11 +76,38 @@ do
 done
 endsnippet
 
-snippet arraycopy "Copy array to another variable" b
+
+
+##### @general @bashing
+snippet tmp "mktemp tool to manage tmp files" b
+local __tmp__=$(mktemp)
+rm $__tmp__
+endsnippet
+
+snippet redirectToDevNull "redirect to a trash" b
+> /dev/null 2>&1
+endsnippet
+
+snippet currPos "" b
+scriptPath_${1:id}="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
+cd "$scriptPath_$1"
+endsnippet
+
+snippet $ "quote variable" b
+"\$${1:NAME}" $0
+endsnippet
+
+snippet fun "" b
+function ${1:funName} {
+	$0
+}
+endsnippet
+
+snippet copyArrayToANewVariable "Copy array to another variable" b
 ${2:destiny}=("\${${1:source}[@]}")
 endsnippet
 
-snippet arrayfind "To create bash array from find result" b
+snippet createArrayFromFindResult "To create bash array from find result" b
 ${1:array}=()
 while IFS=  read -r -d $'\0'; do
 	$1+=("$REPLY")
@@ -151,38 +118,11 @@ snippet dateYYYYMMDD "YYYYMMDD" b
 today=\`date +%Y%m%d\`
 endsnippet
 
-snippet regexVariable "Regex variable with perl oneliner" b
-matches=$(echo ${1:variable} | perl -pe 's/ .*().* /\1\t\2/gx')
-match1=$(echo -e "$matches" | cut -f1)
-match2=$(echo -e "$matches" | cut -f2)
+snippet getFilenameAndExtension "from path get filebasename and extension" b
+fileBaseName="\${${1:fullFilePath}%.*}"
+extension="\${${1}##*.}"
 endsnippet
 
-snippet ssh_copyToRemoteSSHServer "copy from here to remote machine with ssh server" b
-IP=
-USER=
-PASSWD=
-sshpass -p "$PASSWD" scp ${1:fileToCopy} \
-	$USER@$IP:/home/$USER/${2:destination}
-endsnippet
-
-snippet argsWhile "to read args into variables;"
-${1:flag1}=0
-function help {
-	echo "Options:"
-	echo -e "\t--$1"
-	echo -e "\t\t${2:Description of the flag}"
-}
-while test $# -gt 0
-do
-    case "\$1" in
-		--$1) $1=1
-			;;
-		--*) help; exit 1;
-			;;
-		*) help; exit 1; 
-			;;
-    esac
-    shift
-done
-[ $1 == "0" ] && help && exit 1
+snippet ifSubstringContains "if a string is a substring of an another string" b
+[[ "\$${1:string}" == *"\$${2:substring}"* ]]
 endsnippet
