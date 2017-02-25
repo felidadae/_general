@@ -126,3 +126,15 @@ endsnippet
 snippet ifSubstringContains "if a string is a substring of an another string" b
 [[ "\$${1:string}" == *"\$${2:substring}"* ]]
 endsnippet
+
+
+
+#ssh
+snippet scp "scp to remote with port and ssh key" b 
+USER=
+IP=
+SSH_PORT=
+source=
+destiny=
+scp -P $SSH_PORT -i ~/.ssh/id_rsa ${1:fileFromClient} $USER@$IP:$destiny
+endsnippet
