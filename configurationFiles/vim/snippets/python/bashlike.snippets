@@ -3,6 +3,11 @@ import shutil
 shutil.rmtree(${1:directoryToRemove})
 endsnippet
 
+snippet currPos "get full path to the current file" b
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+endsnippet
+
 snippet mkdirr "" b
 import os
 os.makedirs(${1:pathToDir})
@@ -26,7 +31,6 @@ endsnippet
 
 snippet callScript "" b
 fullPathToScript = ${1}
-
 p = subprocess.Popen(
 	["/bin/bash", 
 		fullPathToScript,
@@ -35,7 +39,21 @@ p = subprocess.Popen(
 	],
 	stdout=subprocess.PIPE
 )
-
 output, err = p.communicate()
 returncode = p.returncode
+endsnippet
+
+snippet callShell "" b
+import subprocess, re
+p = subprocess.Popen(re.split("\s+", "${1:command}"), stdout=subprocess.PIPE)
+out, err = p.communicate()
+endsnippet
+
+snippet pwd "current working directory" b
+import os
+cwd = os.getcwd()
+endsnippet
+
+snippet cd "change current working directory" b
+import os; os.chdir(${1:path})
 endsnippet

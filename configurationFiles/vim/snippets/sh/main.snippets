@@ -93,6 +93,10 @@ scriptPath_${1:id}="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
 cd "$scriptPath_$1"
 endsnippet
 
+snippet currRepo "Path to this repository root directory" b
+currentRepoRootDir=$(git rev-parse --show-toplevel)
+endsnippet
+
 snippet $ "quote variable"
 "\$${1:NAME}" $0
 endsnippet
@@ -138,3 +142,5 @@ source=
 destiny=
 scp -P $SSH_PORT -i ~/.ssh/id_rsa ${1:fileFromClient} $USER@$IP:$destiny
 endsnippet
+
+

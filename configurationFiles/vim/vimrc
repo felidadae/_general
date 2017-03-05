@@ -99,6 +99,7 @@ nnoremap <m-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 ":nnoremap <leader>sv :source $MYVIMRC<cr> :call webdevicons#refresh()<cr>
 :nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
 :nnoremap <leader>nt :NERDTreeToggle<cr>
+:nnoremap <leader>nf :NERDTreeFocus<cr>
 " :nnoremap ,., :w :b#<::cr>
 nnoremap <leader>" bdwi""<Esc>hp
 nnoremap <leader>{ bdwi{}<Esc>hp
