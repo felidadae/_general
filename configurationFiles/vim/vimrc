@@ -54,23 +54,23 @@ filetype plugin indent on
 
 "to run POWERLINE 
 let g:remoteSession = ($SSH_CLIENT == "" || $SSH_CONNECTION == "")
-if g:remoteSession
-	python from powerline.vim import setup as powerline_setup
-	python powerline_setup()
-	python del powerline_setup
+" if g:remoteSession
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
-	"devicons
-	let g:webdevicons_enable_ctrlp = 1
-	let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-	let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-	" call webdevicons#refresh()
-	"let g:webdevicons_conceal_nerdtree_brackets = 1
-	"let g:DevIconsEnableFoldersOpenClose = 1
-else
-	:set t_ut=
-	:set showtabline=0
-	let g:webdevicons_enable = 0
-endif
+"devicons
+let g:webdevicons_enable_ctrlp = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+" call webdevicons#refresh()
+"let g:webdevicons_conceal_nerdtree_brackets = 1
+"let g:DevIconsEnableFoldersOpenClose = 1
+" else
+" 	:set t_ut=
+" 	:set showtabline=0
+" 	let g:webdevicons_enable = 0
+" endif
 
 " Colors
 set background=dark
@@ -99,6 +99,7 @@ nnoremap <m-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 ":nnoremap <leader>sv :source $MYVIMRC<cr> :call webdevicons#refresh()<cr>
 :nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
 :nnoremap <leader>nt :NERDTreeToggle<cr>
+:nnoremap <leader>nf :NERDTreeFocus<cr>
 " :nnoremap ,., :w :b#<::cr>
 nnoremap <leader>" bdwi""<Esc>hp
 nnoremap <leader>{ bdwi{}<Esc>hp

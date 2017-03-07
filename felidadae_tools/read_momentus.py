@@ -29,6 +29,7 @@ for line in fref:
 				exit(1)
 			delta_ = (datetime_object - prev_datetime_object)
 			delta_ = float (delta_.seconds) / 60.0 / 60.0
+			print (delta_)
 			sumOfHours += delta_
 			prev_datetime_object = 0
 		else:
