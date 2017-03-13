@@ -27,6 +27,10 @@ snippet perlNotRegex "perl" b
 perl -pi -e  's/  \Q${1:string}\E  /  ${2:/*NO NEED TO do that*/}  /gx' "\$${3:file}" 
 endsnippet
 
+snippet perlNotRegexUniwersal "Just need to escape single tick" b
+perl -pe $'$from=quotemeta(\'"$list": "$RESOURCES/$lang\'); $to=(\'"$list": "$RESOURCES\'); s/$from/$to/g;' in > out
+endsnippet
+
 snippet perlENV "" b
 export ${1:bashVariable}
 perl -pi -e  's/ \$ENV\{${1}\} / ${2:replaceWith} /gx' "\$${3:file}" 
@@ -142,5 +146,3 @@ source=
 destiny=
 scp -P $SSH_PORT -i ~/.ssh/id_rsa ${1:fileFromClient} $USER@$IP:$destiny
 endsnippet
-
-
