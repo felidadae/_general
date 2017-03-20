@@ -20,7 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-commentary'
@@ -127,9 +127,10 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap uio :UltiSnipsEdit<CR>
 
 "General
+:set t_ut=
 :set rnu
 :set nu
-:set cursorline
+" :set cursorline
 hi NonText guifg=bg
 :set encoding=utf8
 :set laststatus=2
@@ -143,10 +144,11 @@ syntax enable
 :set wrapmargin=0
 :set nowrap
 :set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-augroup Python
-    autocmd!
-    autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-augroup END
+autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+" augroup Python
+"     autocmd!
+"     autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+" augroup END
 :set showtabline=2
 :set backspace=2
 :set scroll=15
@@ -155,7 +157,7 @@ set splitright
 :set autowrite
 :set ignorecase
 :set smartcase
-:set showtabline=0
+" :set showtabline=0
 :set foldignore=
 :set hidden
 :set ssop=blank,buffers,sesdir,folds,tabpages,winpos,winsize
@@ -180,6 +182,8 @@ endfunction
 " endfunction
 "NerdTree starter
 " autocmd VimEnter * call StartUp()
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
 :let g:NERDTreeWinSize=34
 :let g:NERDTreeMinimalUI=1
 :let NERDTreeHijackNetrw=0
@@ -244,7 +248,7 @@ endfun
 
 " x-st column is magenta if there is a char
 autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
-autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%80v', 80)
+autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
 
 " ycm to set python version
 let g:ycm_python_binary_path = '/usr/bin/python3'
