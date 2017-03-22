@@ -44,6 +44,10 @@ function grepMyCodeWithExtension_1Pattern_2extension {
 }
 alias finder="xdg-open ."
 alias grepc="grep -B 3 -A 2"
+function .grep {
+	[ "$2" == "" ] && con=3
+	grep -rn -A $con -B $con --color=always "$1"
+}
 function grepp {
 	ps aux | grep "$1"
 }
@@ -272,7 +276,7 @@ function vim_newsyntax {
 
 #--------------------------------
 #Super fast
-alias _r="reloadBashProfile"
+alias .r="reloadBashProfile"
 alias .c="xclip -selection c"
 function ,re { make clean; make; ./main; }
 
