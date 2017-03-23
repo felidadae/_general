@@ -132,9 +132,9 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 		fi
 	} 
 
-
+	THEIP=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1 }')
 	# alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-	PS1='\[\e[0;33m\]`dayTime`[\u@\h:::\w]\[\e[0;35m\]`parse_git_branch``dockerContainersCounter`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
+	PS1='\[\e[1;93m\]`dayTime`{\u@\h} \[\e[0m\]\[\e[0;33m\][\w]\[\e[0;35m\]`parse_git_branch``dockerContainersCounter`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\] '
 	# PS1='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch``dockerContainersCounter`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
 	# PS1='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
 fi
