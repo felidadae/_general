@@ -28,7 +28,9 @@ perl -pi -e  's/  \Q${1:string}\E  /  ${2:/*NO NEED TO do that*/}  /gx' "\$${3:f
 endsnippet
 
 snippet perlNotRegexUniwersal "Just need to escape single tick" b
-perl -pe $'$from=quotemeta(\'"$list": "$RESOURCES/$lang\'); $to=(\'"$list": "$RESOURCES\'); s/$from/$to/g;' in > out
+export ___FROM='${1:FROM}'
+export ___TO='${2:TO}'
+perl -pe $'$from=quotemeta($ENV{\'___FROM\'}); $to=($ENV{\'___TO\'}); s/$from/$to/g;' $in > $out
 endsnippet
 
 snippet perlENV "" b
