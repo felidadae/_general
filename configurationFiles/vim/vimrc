@@ -124,7 +124,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
-:nnoremap uio :UltiSnipsEdit<CR>
+" :nnoremap uio :UltiSnipsEdit<CR>
 
 "General
 :set t_ut=
