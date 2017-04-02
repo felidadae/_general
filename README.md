@@ -10,9 +10,16 @@ Among others the repository contains:
 * bash general tools (extended bash\_profile: aliases, useful functions, handy paths, etc.)
 
 
-Files-guide:
+Directories overview
+---------------------
+* all\_install 
+* configurationFiles 
+* bashProfile
+
+
+Important files-guide:
 ---------------------
 * bashProfile/pocketknife.sh - handy bash functions which help me everyday;
 * bashProfile/toggling/* - scripts to change with one call dark to light or vice versa theme of gnome, terminal, sublime, vim;
-* all\_install.sh - to call after fresh install of ubuntu;
+* all\_install - to call after fresh install of ubuntu; or just to install minimal stuff vim+tmux;
 * tools/* - contains among others scripts to replace non-hdpi with hdpi icons for sublime-text3;

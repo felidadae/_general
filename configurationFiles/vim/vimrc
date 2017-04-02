@@ -20,7 +20,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'Valloric/YouCompleteMe'
-" Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-commentary'
@@ -42,9 +41,16 @@ Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'joonty/vdebug'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ekalinin/Dockerfile.vim'
+let g:ifGlobalPowerlineEnabled = ($IF_GLOBAL_POWERLINE_ENABLED != 1)
+if g:ifGlobalPowerlineEnabled
+	Plugin 'vim-airline/vim-airline'
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme='simple'
+endif
 " PluginExtend
 call vundle#end()            
 filetype plugin indent on
+
 
 "GUI OPTIONS
 :set guioptions-=L  "remove left-hand scroll bar
@@ -124,6 +130,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
+:nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
 " :nnoremap uio :UltiSnipsEdit<CR>
 
 "General
