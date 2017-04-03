@@ -189,3 +189,26 @@ snippet appendPath "append to sys.path new path; check os.getcwd()" b
 import sys
 sys.path.append("${1}")
 endsnippet
+
+
+snippet argparse "argparse for a script"
+import argparse
+from argparse import RawTextHelpFormatter
+class bcolors:
+	HEADER = '\033[95m'
+	OKBLUE = '\033[94m'
+	OKGREEN = '\033[92m'
+	WARNING = '\033[93m'
+	FAIL = '\033[91m'
+	ENDC = '\033[0m'
+	BOLD = '\033[1m'
+	UNDERLINE = '\033[4m'
+
+current_module = sys.modules[__name__]
+parser = argparse.ArgumentParser(
+	description=bcolors.WARNING + current_module.__doc__ + bcolors.ENDC, 
+	formatter_class=RawTextHelpFormatter)
+
+parser.add_argument('argumentname', type=str, help="grammars apps directory")
+args = parser.parse_args()
+endsnippet
