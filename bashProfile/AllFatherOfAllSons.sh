@@ -14,6 +14,7 @@
 
 #-------------------------------------------------------------------------------
 # move current working path; source config
+export __MY_SHELL__=bash #currently I dont use any other shell
 script_path__allfather="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $script_path__allfather/.config/_config.sh
 #-------------------------------------------------------------------------------
@@ -134,9 +135,27 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 
 	THEIP=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1 }')
 	# alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-	PS1='\[\e[1;93m\]`dayTime`{\u@\h} \[\e[0m\]\[\e[0;33m\][\w]\[\e[0;35m\]`parse_git_branch``dockerContainersCounter`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\] '
-	# PS1='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch``dockerContainersCounter`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
-	# PS1='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
+	
+	# @PS1@ tag
+
+	#only name of dir
+	export PS1_A='\[\e[1;93m\]\[\e[0m\]\[\e[0;33m\][\W]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\$\[\e[0m\] '
+
+	#full path and newline
+	export PS1_B='\[\e[1;93m\]\[\e[0m\]\[\e[0;33m\][\w]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\] '
+
+	#with docker
+	export PS1_C='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch``dockerContainersCounter`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
+
+	#i dont know
+	export PS1_D='\[\e[0;33m\]`dayTime`[\w]\[\e[0;35m\]`parse_git_branch`\[\e[0m\]\[\e[0;33m\]\n\$\[\e[0m\]'
+
+	#choose the default value
+	export PS1_DEFAULT="$PS1_A"
+	PS1="$PS1_DEFAULT"
+
+	#But if you export PS1_VARIANT that will be choosed; 
+	[ "$PS1_VARIANT" != "" ] && PS1="$PS1_VARIANT"
 fi
 
 HISTFILESIZE=
@@ -200,10 +219,16 @@ done
 
 
 function general_sync {
+	local ifPushVimTmuxConf=${1}
+
 	prev=$(pwd)
 	cd "$general"
 	if [[ "$(git status --porcelain)" != "" ]]; then 
 		git add -A
+		if [ "$ifPushVimTmuxConf" == "--nvt" ]; then
+			git rm --cached "configurationFiles/tmux/tmux.conf"
+			git rm --cached "configurationFiles/vim/vimrc"
+		fi
 		git commit -m "*** automatic sync commit ***"
 	fi
 	git pull origin master
@@ -217,7 +242,26 @@ function general_sync {
 
 
 
+#-------------------------------------------------------------------------------
 
+#
+##
+# Readline bash vim mode 
+##
+#
+
+bind '"jk":vi-movement-mode'
+#-------------------------------------------------------------------------------
+
+
+
+#-------------------------------------------------------------------------------
+
+#
+##
+# Add completion for bash 
+##
+#
 
 if [[ $__MY_SHELL__ = "bash" ]]; then
 	# Automatically add completion for all aliases to commands having completion functions
@@ -291,11 +335,6 @@ if [[ $__MY_SHELL__ = "bash" ]]; then
 fi
 # clear
 
-# init_ 3500
-bind '"jk":vi-movement-mode'
-# bind '"^[h":vi-backward-word'
-
 for i in $currlocation/external/*; do
 	source $i
 done
-

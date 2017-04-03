@@ -23,6 +23,8 @@ createSymbolicLink "$DIR"/matplotlib/matplotlibrc  ~/.config/matplotlib/matplotl
 createSymbolicLink "$DIR"/tmux/tmux.conf ~/.tmux.conf tmux.conf
 createSymbolicLink "$DIR"/perl/perldb ~/.perldb perldb
 
+
+
 #sublime
 echo "Creating symbolic for sublime-text3."
 for f in sublime-text/*; do 

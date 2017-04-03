@@ -1,5 +1,0 @@
-function ,jackrun  {
-	"
-}
-function ,jackkill {}
-
