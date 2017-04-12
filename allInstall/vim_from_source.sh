@@ -6,9 +6,9 @@ sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
 	libatk1.0-dev libbonoboui2-dev \
 	libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
 	python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git	
-exit
 sudo apt-get remove vim vim-runtime gvim
 cd vim
+make distclean
 ./configure --with-features=huge \
 			--enable-multibyte \
 			--enable-rubyinterp=yes \
@@ -22,4 +22,4 @@ cd vim
 			--enable-cscope --prefix=/usr
 cd src
 make
-sudo make install
+sudo checkinstall 

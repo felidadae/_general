@@ -15,7 +15,7 @@ function locationAdd {
 	echo "$1" >> "$bashProfileFiles"/locations
 }
 export algorithms="$base"/Algorithms
-export _sources="$base"/_sources
+export _sources="$base"/_ToolsSource
 #---
 export vimrc=~/.vimrc
 export tmuxconf=~/.tmux.conf
@@ -30,4 +30,3 @@ fi
 notus=$general/notus
 #---
 #---
-
