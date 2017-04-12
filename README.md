@@ -12,7 +12,7 @@ Among others the repository contains:
 
 Directories overview
 ---------------------
-* all\_install 
+* allInstall 
 * configurationFiles 
 * bashProfile
 
@@ -21,5 +21,5 @@ Important files-guide:
 ---------------------
 * bashProfile/pocketknife.sh - handy bash functions which help me everyday;
 * bashProfile/toggling/* - scripts to change with one call dark to light or vice versa theme of gnome, terminal, sublime, vim;
-* all\_install - to call after fresh install of ubuntu; or just to install minimal stuff vim+tmux;
+* allInstall - to call after fresh install of ubuntu; or just to install minimal stuff vim+tmux;
 * tools/* - contains among others scripts to replace non-hdpi with hdpi icons for sublime-text3;
