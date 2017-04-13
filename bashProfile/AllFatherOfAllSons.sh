@@ -197,11 +197,11 @@ source "$currlocation"/.tmp.sh
 #
 #
 #
-for ifile in "$currlocation"/softwareShortcuts/* ; do
+for ifile in "$currlocation"/softwareShortcuts/*.sh ; do
 	[ -e "$ifile" ] || continue
 	source "$ifile" 
 done
-for ifile in "$currlocation"/toggling/* ; do
+for ifile in "$currlocation"/toggling/*.sh ; do
 	[ -e "$ifile" ] || continue
 	source "$ifile" 
 done
