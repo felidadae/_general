@@ -4,7 +4,7 @@ ZSH_THEME="felidadae"
 HYPHEN_INSENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(git virtualenvwrapper zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,6 +49,7 @@ zle -N zle-line-init
 #	Use showkeys -a or cat to see which escape sequences needed t
 KEY_LEFT='^[[D'
 KEY_BRACKET_LEFT='^?^?{'
+ENTER='^M'
 #	Set vim mode
 bindkey -v # to set vi mode
 export KEYTIMEOUT=10 # i dont really understand whats the fuck going on here
@@ -59,14 +60,7 @@ bindkey -M viins "op[$KEY_BRACKET_LEFT" forward-char #complete gray history
 bindkey -M vicmd v edit-command-line
 bindkey -M viins -s ']\' '|'
 bindkey -M viins -s ',wc' '| wc -l'
-bindkey -M viins -s 'tre' "trans pl:en ''$KEY_LEFT"
-bindkey -M viins -s 'ytr' "trans -p en:es ''$KEY_LEFT"
 bindkey -M vicmd -s ,su '0isudo jk$i '
 bindkey -M viins -s '.gm' "git commit -m ''$KEY_LEFT"
 bindkey -M viins -s '.pe' "perl -pe 's///g' *$KEY_LEFT"
-
-# function sep_ { for i in {1..50}; do printf '*'; done; echo; }
-# function tr_ { sep_; trans pl:en "$1"; sep_; trans pl:es "$1"; sep_; }
-# bindkey -M viins -s 'tre' "tr_ \"\"$KEY_LEFT" #translate
-# bindkey -M viins -s 'tre' "trans pl: \"\"$KEY_LEFT" #translate
-# bindkey -M viins -s 'trer' "trans en:es \"\"$KEY_LEFT" #translate
+source /home/felidadae/Programming/_General/felidadaeTools/spanishLearner/main.zsh

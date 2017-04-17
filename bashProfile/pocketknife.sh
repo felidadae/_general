@@ -45,7 +45,7 @@ function grepMyCodeWithExtension_1Pattern_2extension {
 alias finder="xdg-open ."
 alias grepc="grep -B 3 -A 2"
 function .grep {
-	[ "$2" == "" ] && con=3
+	[[ "$2" == "" ]] && con=3
 	grep -rn -A $con -B $con --color=always "$1"
 }
 function grepp {
@@ -176,11 +176,17 @@ function _arrayChoice {
     # 0 <- As global array	
 	if [[ "$2" != "" ]]; then
 		idx="$2"
-		idx=$((idx-1))
+		if [[ "$SHELL" == "/bin/bash" ]]; then
+			idx=$((idx-1))
+		fi
 		eval "$1 ${array[$idx]}"	
 	else
 		if [[ ${#array[@]} == 1 ]]; then
-			eval "$1 ${array[0]}"
+			if [[ "$SHELL" == "/bin/bash" ]]; then
+				eval "$1 ${array[0]}"
+			else
+				eval "$1 ${array[1]}"
+			fi
 		else
 			printf '%s\n' "${array[@]}" | cat -n	
 		fi
