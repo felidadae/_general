@@ -23,3 +23,6 @@ Important files-guide:
 * bashProfile/toggling/* - scripts to change with one call dark to light or vice versa theme of gnome, terminal, sublime, vim;
 * allInstall - to call after fresh install of ubuntu; or just to install minimal stuff vim+tmux;
 * tools/* - contains among others scripts to replace non-hdpi with hdpi icons for sublime-text3;
+
+Naming scheme
+jk

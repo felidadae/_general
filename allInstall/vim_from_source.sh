@@ -8,18 +8,19 @@ sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
 	python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git	
 sudo apt-get remove vim vim-runtime gvim
 cd vim
+sudo dpkg -r vim
+sudo make uninstall
 make distclean
 ./configure --with-features=huge \
 			--enable-multibyte \
 			--enable-rubyinterp=yes \
 			--enable-pythoninterp=yes \
 			--with-python-config-dir=/usr/lib/python2.7/config \
-			# --enable-python3interp=yes \
-			# --with-python3-config-dir=/usr/lib/python3.5/config \
 			--enable-perlinterp=yes \
 			--enable-luainterp=yes \
-			# --enable-gui=gtk3 \
-			--enable-cscope --prefix=/usr
-cd src
+			--enable-cscope --prefix=/usr \
+			--enable-gui=gtk3
+			# --enable-python3interp=yes \
+			# --with-python3-config-dir=/usr/lib/python3.5/config \
 make
 sudo checkinstall 

@@ -31,3 +31,4 @@ exit
 rep function -r --include=\*.sh _main
 tmux split; touch main.cpp; sleep 1; tmux send-keys 'vim main.cpp' C-m; tmux select-pane -U; tmux send-keys 'g++ main -o all'
 tmux create-window; tmux split; touch main.cpp; sleep 1; tmux send-keys 'vim main.cpp' C-m; tmux select-pane -U; tmux send-keys 'g++ main -o all'
+showkey -a
