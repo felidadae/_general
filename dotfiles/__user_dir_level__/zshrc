@@ -2,7 +2,7 @@ export ZSH=/home/felidadae/.oh-my-zsh
 
 ZSH_THEME="felidadae"
 HYPHEN_INSENSITIVE="true"
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
 

@@ -148,13 +148,13 @@ done
 
 
 function general_sync {
-	local ifPushVimTmuxConf=${1}
+	local ifPushVimTmuxConf="${1}"
 
 	prev=$(pwd)
 	cd "$general"
 	if [[ "$(git status --porcelain)" != "" ]]; then 
 		git add -A
-		if [ "$ifPushVimTmuxConf" == "--nvt" ]; then
+		if [[ "$ifPushVimTmuxConf" == "--nvt" ]]; then
 			git rm --cached "configurationFiles/tmux/tmux.conf"
 			git rm --cached "configurationFiles/vim/vimrc"
 		fi
