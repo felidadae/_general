@@ -1,4 +1,4 @@
-export dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function createSymbolicLink {
 	# @Description
@@ -25,7 +25,7 @@ function addDotfile {
 	local name=${1}
 
 	cp "$name" "$dotfiles_dir/__user_dir_level__/$name" 
-	echo 'createSymbolicLink "$dotfiles_dir"/__user_dir_level__/'"$1" '~/.'"${1} $1" >> "$dotfiles_dir"/install.sh; }
+	echo 'createSymbolicLink "$dotfiles_dir"/__user_dir_level__/'"$1" '~/.'"${1} $1" >> "$dotfiles_dir"/install.sh;
 	cd "$dotfiles_dir" 
 	bash install.sh
 	echo "[Success] Finished."

@@ -1,2 +1,2 @@
-cp .start.zsh /home/felidadae/.oh-my-zsh/custom/plugins/zsh-autosuggestions/src/start.zsh
+cp .start.zsh ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/src/start.zsh
  

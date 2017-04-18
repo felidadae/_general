@@ -1,4 +1,4 @@
-export ZSH=/home/felidadae/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="felidadae"
 HYPHEN_INSENSITIVE="true"
@@ -63,4 +63,4 @@ bindkey -M viins -s ',wc' '| wc -l'
 bindkey -M vicmd -s ,su '0isudo jk$i '
 bindkey -M viins -s '.gm' "git commit -m ''$KEY_LEFT"
 bindkey -M viins -s '.pe' "perl -pe 's///g' *$KEY_LEFT"
-source /home/felidadae/Programming/_General/felidadaeTools/spanishLearner/main.zsh
+source ~/Programming/_General/felidadaeTools/spanishLearner/main.zsh
