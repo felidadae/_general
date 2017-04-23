@@ -25,4 +25,5 @@ Important files-guide:
 * tools/* - contains among others scripts to replace non-hdpi with hdpi icons for sublime-text3;
 
 Naming scheme
-jk
+---------------------
+Directories and files are cammelCased.
