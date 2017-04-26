@@ -1,0 +1,27 @@
+{
+    "filter": {
+        "isRecursive": false,
+        "regex": null
+    },
+    "type": "folder",
+    "title": "numeric_to_signs",
+    "usageCount": 38,
+    "modes": [
+        3
+    ],
+    "abbreviation": {
+        "ignoreCase": false,
+        "wordChars": "[\\w]",
+        "abbreviations": [],
+        "backspace": true,
+        "triggerInside": false,
+        "immediate": false
+    },
+    "hotkey": {
+        "hotKey": "<f7>",
+        "modifiers": [
+            "<ctrl>"
+        ]
+    },
+    "showInTrayMenu": false
+}

@@ -4,3 +4,4 @@ configurationFiles/rec
 *.swp
 *.swo
 .localonly
+__pycache__
