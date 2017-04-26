@@ -41,6 +41,7 @@ Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'joonty/vdebug'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'hdima/python-syntax'
 " let g:ifGlobalPowerlineEnabled = ($IF_GLOBAL_POWERLINE_ENABLED != 1)
 " if g:ifGlobalPowerlineEnabled
 " 	Plugin 'vim-airline/vim-airline'
