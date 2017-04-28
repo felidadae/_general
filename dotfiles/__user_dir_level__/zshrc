@@ -4,8 +4,8 @@ ZSH_THEME="felidadae"
 HYPHEN_INSENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
+# plugins=(git)
 plugins=(git virtualenvwrapper zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
-
 source $ZSH/oh-my-zsh.sh
 
 #felidadae

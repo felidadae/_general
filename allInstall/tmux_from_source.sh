@@ -1,14 +1,16 @@
-"Print install tmux 2.3 from source code"
+echo "Print install tmux 2.3 from source code"
 
-"Install dependency libevent 2.x"
-sudo apt install libevent-dev
+echo "Install dependency libevent 2.x"
+sudo apt-get install libevent-dev
 
-"Cloning tmux github repo"
+echo "Cloning tmux github repo"
+cd $_sources
 git clone https://github.com/tmux/tmux.git
 cd tmux/
-"Checkout to 2.3 version"
+echo "Checkout to 2.3 version"
 git checkout 2.3
 sh autogen.sh 
 
-print "Install system wide using checkinstall."
- ./configure && make && sudo checkinstall
+echo "Install system wide using checkinstall."
+sudo apt-get install checkinstall
+./configure && make && sudo checkinstall
