@@ -1,5 +1,5 @@
 " Quit when a syntax file was already loaded.
-if exists('b:current_syntax') | finish|  endif
+if exists('b:current_syntax') | finish |  endif
 
 "[+] @->
 syntax match tickerDone "\[+\]" 

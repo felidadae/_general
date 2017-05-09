@@ -1,3 +1,21 @@
+" @FIXME to make it working on termux
+" let g:ifGlobalPowerlineEnabled = ($IF_GLOBAL_POWERLINE_ENABLED != 1)
+" if g:ifGlobalPowerlineEnabled
+" 	Plugin 'vim-airline/vim-airline'
+" 	let g:airline_powerline_fonts = 1
+" 	let g:airline_theme='simple'
+" endif
+" PluginExtend
+"
+"
+" @FIXME check if powerline available
+" let g:remoteSession = ($SSH_CLIENT == "" || $SSH_CONNECTION == "")
+" if g:remoteSession
+
+
+
+
+
 set <m-a>=^[a
 let c='a'
 while c <= 'z'
@@ -7,8 +25,13 @@ while c <= 'z'
 endw
 set timeout ttimeoutlen=50
 
+
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
+
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -42,31 +65,27 @@ Plugin 'joonty/vdebug'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'hdima/python-syntax'
-" let g:ifGlobalPowerlineEnabled = ($IF_GLOBAL_POWERLINE_ENABLED != 1)
-" if g:ifGlobalPowerlineEnabled
-" 	Plugin 'vim-airline/vim-airline'
-" 	let g:airline_powerline_fonts = 1
-" 	let g:airline_theme='simple'
-" endif
-" PluginExtend
 call vundle#end()            
 filetype plugin indent on
 
 
+
 "GUI OPTIONS
-:set guioptions-=L  "remove left-hand scroll bar
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
+" :set guioptions-=L  "remove left-hand scroll bar
+" :set guioptions-=m  "remove menu bar
+" :set guioptions-=T  "remove toolbar
 :set guifont=Roboto\ Mono\ Medium\ for\ Powerline\ Medium\ 9 
 
-"to run POWERLINE 
-let g:remoteSession = ($SSH_CLIENT == "" || $SSH_CONNECTION == "")
-" if g:remoteSession
+
+
+" @powerline
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
-"devicons
+
+
+" @devicons
 let g:webdevicons_enable_ctrlp = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
@@ -79,14 +98,18 @@ let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 " 	let g:webdevicons_enable = 0
 " endif
 
-" Colors
+
+
+" @colors
 set background=dark
 colorscheme solarized
 :highlight nontext ctermfg=bg 
 :hi folded term=none cterm=none ctermfg=green ctermbg=none
 :hi foldcolumn ctermbg=none
 
-"@Mappings
+
+
+" @mappings
 " Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
 nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
@@ -134,7 +157,13 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
 " :nnoremap uio :UltiSnipsEdit<CR>
 
-"General
+
+
+" @encoding @indent @general
+:set wrap
+:set linebreak
+:set breakindent
+:set display+=lastline
 :set t_ut=
 :set rnu
 :set nu
@@ -150,16 +179,11 @@ filetype indent on
 syntax enable
 :set textwidth=0 
 :set wrapmargin=0
-:set nowrap
 :set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-" augroup Python
-"     autocmd!
-"     autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-" augroup END
 :set showtabline=2
 :set backspace=2
-:set scroll=15
+" :set scroll=15
 set splitbelow
 set splitright
 :set autowrite
@@ -169,6 +193,8 @@ set splitright
 :set foldignore=
 :set hidden
 :set ssop=blank,buffers,sesdir,folds,tabpages,winpos,winsize
+
+
 
 "to highlight (["
 :let OPTION_NAME = 1
@@ -181,7 +207,9 @@ function! s:def_base_syntax()
 	hi link baseDelimiter Special
 endfunction
 
-"Nerdtree
+
+
+" @nerdtree
 " autocmd FileType nerdtree setlocal nolist
 " function! StartUp()
 "     if 0 == argc()
@@ -201,12 +229,16 @@ let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
 
-"CtrlP fuzzy finder
+
+
+" @ctrlp fuzzy finder
 let g:ctrlp_follow_symlinks = 2
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_show_hidden = 1
 
-"UltiSnips
+
+
+" @ultisnips
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsListSnippets="<c-u>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -215,10 +247,14 @@ let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
 let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"
 
-"easy-motion
+
+
+" @easy-motion
 map ,. <Plug>(easymotion-prefix)
 
-"Intendation
+
+
+" @folding
 set foldmethod=indent
 set foldtext=MyFoldText()
 function! MyFoldText()
@@ -227,7 +263,9 @@ function! MyFoldText()
 endfunction
 set foldlevel=3
 
-"Wipeout not used buffers
+
+
+" @wipeout
 command! -bang Wipeout :call Wipeout(<bang>0)
 function! Wipeout(bang)
 	" figure out which buffers are visible in any tab
@@ -254,17 +292,25 @@ endfun
 
 :let g:session_autosave = 'no'
 
-" x-st column is magenta if there is a char
+
+
+" @line-length-limit x-st column is magenta if there is a char
 autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
 autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
 
-" ycm to set python version
+
+
+" @ycm ycm to set python version
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
-" vim-session
+
+
+" @session @vim-session
 set sessionoptions-=options
 set sessionoptions-=help
 set sessionoptions-=buffers
+
+
 
 "Needed to be on the end of the file
 :highlight nontext ctermfg=bg 
@@ -272,4 +318,3 @@ set sessionoptions-=buffers
 :hi foldcolumn ctermbg=none
 :set fillchars="fold: " 
 :set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-

@@ -27,6 +27,6 @@ then
 	externDisc="/Volumes/EXTERNDISC"
 fi
 #---
-notus=$general/notus
+notus=$general/notusLink
 #---
 #---
