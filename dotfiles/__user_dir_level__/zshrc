@@ -10,7 +10,7 @@ source $ZSH/oh-my-zsh.sh
 
 #felidadae
 export __MY_SHELL__="zsh"
-source ~/Programming/_General/bashProfile/AllFatherOfAllSons.sh
+source ~/Programming/_General/shellProfile/AllFatherOfAllSons.sh
 if [ -e ~/bixby/bixby_profile.sh ]; then
 	source ~/bixby/bixby_profile.sh
 	function .rb {
