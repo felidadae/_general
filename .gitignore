@@ -5,3 +5,4 @@ configurationFiles/rec
 *.swo
 .localonly
 __pycache__
+*.mp4

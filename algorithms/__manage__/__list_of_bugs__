@@ -1,0 +1,4 @@
+- need to write self in python
+	- self to refer to methods and variables shitty...
+- cannot pass reference to int in python, or rather int are immutable
+- int/2 -> float

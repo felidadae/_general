@@ -15,9 +15,9 @@
 
 
 
-
+" @fix for alt
 set <m-a>=^[a
-let c='a'
+:let c='a'
 while c <= 'z'
   exec "set <A-".c.">=\e".c
   exec "imap \e".c." <A-".c.">"
@@ -86,9 +86,9 @@ python del powerline_setup
 
 
 " @devicons
-let g:webdevicons_enable_ctrlp = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+:let g:webdevicons_enable_ctrlp = 1
+:let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+:let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 " call webdevicons#refresh()
 "let g:webdevicons_conceal_nerdtree_brackets = 1
 "let g:DevIconsEnableFoldersOpenClose = 1
@@ -210,42 +210,32 @@ endfunction
 
 
 " @nerdtree
-" autocmd FileType nerdtree setlocal nolist
-" function! StartUp()
-"     if 0 == argc()
-"         NERDTree
-"     end
-" endfunction
-"NerdTree starter
-" autocmd VimEnter * call StartUp()
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
+:let g:NERDTreeDirArrowExpandable="+"
+:let g:NERDTreeDirArrowCollapsible="~"
 :let g:NERDTreeWinSize=34
 :let g:NERDTreeMinimalUI=1
 :let NERDTreeHijackNetrw=0
 " enable line numbers
-let NERDTreeShowLineNumbers=1
+:let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
-let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
+:let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
 
 
 
 " @ctrlp fuzzy finder
-let g:ctrlp_follow_symlinks = 2
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_show_hidden = 1
-
+:let g:ctrlp_follow_symlinks = 2
+:let g:ctrlp_working_path_mode = 'r'
 
 
 " @ultisnips
-let g:UltiSnipsExpandTrigger="<c-a>"
-let g:UltiSnipsListSnippets="<c-u>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
-let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"
+:let g:UltiSnipsExpandTrigger="<c-a>"
+:let g:UltiSnipsListSnippets="<c-u>"
+:let g:UltiSnipsJumpForwardTrigger="<c-b>"
+:let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+:let g:UltiSnipsEditSplit="horizontal"
+:let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
+:let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"
 
 
 
@@ -301,7 +291,7 @@ autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
 
 
 " @ycm ycm to set python version
-let g:ycm_python_binary_path = '/usr/bin/python3'
+:let g:ycm_python_binary_path = '/usr/bin/python3'
 
 
 
@@ -312,7 +302,7 @@ set sessionoptions-=buffers
 
 
 
-"Needed to be on the end of the file
+" @Needed to be on the end of the file 
 :highlight nontext ctermfg=bg 
 :hi folded term=none cterm=none ctermfg=none ctermbg=none
 :hi foldcolumn ctermbg=none

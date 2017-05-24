@@ -15,8 +15,8 @@ function translate_and_read_en2es {
 }
 
 #Bindings
-bindkey -M viins -s 'tre' "trans pl:en ''$KEY_LEFT"
-bindkey -M viins -s 'ytr' "trans -p en:es ''$KEY_LEFT"
-bindkey -M viins -s 'gtr' "gtts-cli.py -l es -o zupa.mp3 ''$KEY_LEFT"
-bindkey -M viins -s 'ptr' "play zupa.mp3$ENTER"
-bindkey -M viins -s 'atr' "trans -p es:en ''$KEY_LEFT"
+bindkey -M vicmd -s 'tre' "itrans pl:en ''$KEY_LEFT"
+bindkey -M vicmd -s 'ytr' "itrans -p en:es ''$KEY_LEFT"
+bindkey -M vicmd -s 'gtr' "igtts-cli.py -l es -o zupa.mp3 ''$KEY_LEFT"
+bindkey -M vicmd -s 'ptr' "iplay zupa.mp3$ENTER"
+bindkey -M vicmd -s 'atr' "itrans -p es:en ''$KEY_LEFT"

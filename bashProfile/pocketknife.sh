@@ -5,7 +5,6 @@ function c { clear; }
 function tree1 { tree -L 1 -C --dirsfirst; }
 function tree2 { tree "$1" -L 2 -C --dirsfirst; }
 alias t2="tree2"
-alias ls="ls --color"
 alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
 alias tmux="tmux -2"
