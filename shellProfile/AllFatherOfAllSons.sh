@@ -98,7 +98,7 @@ fi
 #------------------------
 export base=~/Programming
 general="$base/_General"
-currlocation="$general"/bashProfile
+currlocation="$general"/shellProfile
 #------------------------
 #-------------------------------------------------------------------------------
 

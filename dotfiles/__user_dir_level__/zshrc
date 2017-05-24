@@ -5,7 +5,7 @@ HYPHEN_INSENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
 # plugins=(git)
-plugins=(git zsh-autosuggestions zsh-history-substring-search)
+plugins=(git zsh-history-substring-search)
 source $ZSH/oh-my-zsh.sh
 
 #felidadae
@@ -20,7 +20,7 @@ fi
 
 
 #zsh autosuggest colors
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 # ZSH_HIGHLIGHT_STYLES[default]='fg=yellow,bold' #base1
 # ZSH_HIGHLIGHT_STYLES[alias]='fg=yellow'
 # ZSH_HIGHLIGHT_STYLES[builtin]='fg=yellow'

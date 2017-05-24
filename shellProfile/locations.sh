@@ -2,7 +2,7 @@ export base=~/Programming
 
 # @general
 export general="$base"/_General
-export bashProfileFiles="$general"/bashProfile
+export shellProfileFiles="$general"/shellProfile
 export skeletons="$general/Skeletons"
 export playground="$general"/playground
 export algorithms="$general"/algorithms
@@ -20,6 +20,6 @@ export documents=~/Documents
 
 
 function locationAdd {
-	echo "$1" >> "$bashProfileFiles"/locations
+	echo "$1" >> "$shellProfileFiles"/locations
 }
 ### @added by function locationAdd >>

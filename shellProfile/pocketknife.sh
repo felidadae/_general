@@ -1,4 +1,4 @@
-function reloadBashProfile { source $general/bashProfile/AllFatherOfAllSons.sh; }
+function reloadBashProfile { source $general/shellProfile/AllFatherOfAllSons.sh; }
 
 alias catt="pygmentize -g"
 function c { clear; }
@@ -285,7 +285,7 @@ alias .r="reloadBashProfile"
 alias .c="xclip -selection c"
 function ,re { make clean; make; ./main; }
 
-function ,epo { vim $general/bashProfile/pocketknife.sh;  }
+function ,epo { vim $general/shellProfile/pocketknife.sh;  }
 function ,ev  { vim ~/.vimrc;  }
 ###---
 function ,  { fuzzyCall . "vim" "$1" "$2"; }
@@ -338,6 +338,6 @@ function ,gr { cd $(git rev-parse --show-toplevel); }
 function tmux-rename-pane { printf '\033]2;%s\033\' $1; }
 
 #@--fast
-function ,epoa { echo "$@" " #,epoa" >> $general/bashProfile/pocketknife.sh; }  #,epoa
-function ,epoc { perl -ne '/\@Super fast/ && ($m=1); $m == 1 && print;' $general/bashProfile/pocketknife.sh | pygmentize -g -l sh; }
+function ,epoa { echo "$@" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
+function ,epoc { perl -ne '/\@Super fast/ && ($m=1); $m == 1 && print;' $general/shellProfile/pocketknife.sh | pygmentize -g -l sh; }
 function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa

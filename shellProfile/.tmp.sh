@@ -1,5 +1,5 @@
 function tmpAdd {
-	echo "$1" >> $general/bashProfile/.tmp.sh
+	echo "$1" >> $general/shellProfile/.tmp.sh
 }
 
 function book__fluentpython {
