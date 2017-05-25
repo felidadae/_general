@@ -65,6 +65,8 @@ Plugin 'joonty/vdebug'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'hdima/python-syntax'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-scripts/vim-auto-save'
 call vundle#end()            
 filetype plugin indent on
 
@@ -162,7 +164,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 " @encoding @indent @general
 :set wrap
 :set linebreak
-:set breakindent
+" :set breakindent
 :set display+=lastline
 :set t_ut=
 :set rnu
@@ -302,7 +304,13 @@ set sessionoptions-=buffers
 
 
 
-" @Needed to be on the end of the file 
+" @autosave
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save = 1
+
+
+
+"Needed to be on the end of the file
 :highlight nontext ctermfg=bg 
 :hi folded term=none cterm=none ctermfg=none ctermbg=none
 :hi foldcolumn ctermbg=none
