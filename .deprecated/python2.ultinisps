@@ -1,0 +1,76 @@
+
+snippet readFileIntoString "read the whole file into var" b
+import codecs
+fref = codecs.open(${1:fileName}, 'r', 'utf-8')
+fContent = fref.read()
+fref.close()
+endsnippet
+
+snippet readFileForLine "read file line by line" b
+import codecs
+fref = codecs.open(${1:fileName}, 'r', 'utf-8')
+for line in fref:
+	line = line.rstrip()
+	#regex for regexing
+	${0}
+fref.close()
+endsnippet
+
+snippet openFile "open a file with filename from argv" b
+${1:refFile} = codecs.open(argv_[${2:0}], '${3:r}', 'utf-8')
+endsnippet
+
+snippet writeToFile  "open file, write to file string, close file" b
+import codecs		
+fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
+fref.write("${2:stringToWrite}")
+fref.close()
+endsnippet
+
+snippet scriptWithExternalModule "when you have general module available" b
+from ae2_utilities.general import \
+	main_filter, main_filter_clean, writeLineToFile, readLines
+
+def filter(ls):
+	return ${3:filterFun}(*ls)
+
+in_, out_, params_ = main_filter(${1:inN}, ${2:outN})
+ls = readLines(in_)
+while ls[0] != "":
+	writeLineToFile(out_[0], filter(ls))
+	ls = readLines(in_)
+main_filter_clean(in_, out_)
+endsnippet
+
+snippet filterScript "fileIn, fileOut from argv, for each line fileIn" b
+import sys
+import os
+import codecs
+import re
+
+fileIn = sys.argv[1]
+fileOut= sys.argv[2]
+
+if os.path.isfile(fileIn):
+	fileIn_ = codecs.open(fileIn, 'r', 'utf-8')
+else:
+	print "[Error] Input file does not exits."
+	exit(1)
+fileOut_ = codecs.open(fileOut, 'w+', 'utf-8')
+
+for l in fileIn_:
+	l = l.rstrip('\n')
+	# Do sth with line
+endsnippet
+
+snippet writeToFile  "open, write given var to file, close file" b
+import codecs		
+fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
+fref.write("${2:stringToWrite}")
+fref.close()
+endsnippet
+
+snippet stru "python 2 utf8 string" b
+${1:sentence} = unicode("${2:string}", 'utf8')
+endsnippet
+

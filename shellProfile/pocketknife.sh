@@ -258,6 +258,14 @@ function restore_refactor {
 #--------------------------------
 
 
+#--------------------------------
+# @help
+function help_perl {
+	echo "Non consuming groups: (?<=regex)regex(?=regex)"
+}
+#--------------------------------
+
+
 
 #--------------------------------
 #Vim subtools

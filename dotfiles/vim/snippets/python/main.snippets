@@ -1,97 +1,35 @@
 ##
 #File I/O
 ##
-snippet readFileIntoString "read the whole file into var" b
-import codecs
-fref = codecs.open(${1:fileName}, 'r', 'utf-8')
-fContent = fref.read()
-fref.close()
+snippet openFile "Open file with context" b
+with open(${1:filename}, 'r') as fref_$1:
 endsnippet
 
-snippet readFileForLine "read file line by line" b
-import codecs
-fref = codecs.open(${1:fileName}, 'r', 'utf-8')
-for line in fref:
-	line = line.rstrip()
-	#regex for regexing
-	${0}
-fref.close()
-endsnippet
-
-snippet openFile "open a file with filename from argv" b
-${1:refFile} = codecs.open(argv_[${2:0}], '${3:r}', 'utf-8')
-endsnippet
-
-snippet writeToFile  "open file, write to file string, close file" b
-import codecs		
-fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
-fref.write("${2:stringToWrite}")
-fref.close()
-endsnippet
-
-snippet scriptWithExternalModule "when you have general module available" b
-from ae2_utilities.general import \
-	main_filter, main_filter_clean, writeLineToFile, readLines
-
-def filter(ls):
-	return ${3:filterFun}(*ls)
-
-in_, out_, params_ = main_filter(${1:inN}, ${2:outN})
-ls = readLines(in_)
-while ls[0] != "":
-	writeLineToFile(out_[0], filter(ls))
-	ls = readLines(in_)
-main_filter_clean(in_, out_)
-endsnippet
-
-snippet filterScript "fileIn, fileOut from argv, for each line fileIn" b
-import sys
-import os
-import codecs
-import re
-
-fileIn = sys.argv[1]
-fileOut= sys.argv[2]
-
-if os.path.isfile(fileIn):
-	fileIn_ = codecs.open(fileIn, 'r', 'utf-8')
-else:
-	print "[Error] Input file does not exits."
-	exit(1)
-fileOut_ = codecs.open(fileOut, 'w+', 'utf-8')
-
-for l in fileIn_:
-	l = l.rstrip('\n')
-	# Do sth with line
-endsnippet
-
-snippet writeToFile  "open, write given var to file, close file" b
-import codecs		
-fref = codecs.open(${1:fileName}, 'a+', 'utf-8')
-fref.write("${2:stringToWrite}")
-fref.close()
+snippet  
 endsnippet
 
 
-##
-#Regex
-##
-snippet regexSearch "Search for regex in string;" b
+
+
+
+###
+# @Regex
+###
+snippet regexFindFirst "Search for regex in string" b
 s = re.search("${1:pattern}", ${2:string})
-if s: group1 = s.group(1)
+if s: 
+	${3:capturedValue} = s.group(1)
 ${0}
 endsnippet
 
-snippet regexSearchLonger "Search for regex in string; group1 group1" b
-import re
+snippet regexFindFirstAssert "Search for regex in string" b
 s = re.search("${1:pattern}", ${2:string})
-if s:
-	group1 = s.group(1)
-	group2 = s.group(2)
-	${0}
+assert(bool(s) == True)
+${3:capturedValue} = s.group(1)
+${0}
 endsnippet
 
-snippet regexFindall "Search for regex and return array of all matches" b
+snippet regexFindAll "Search for regex and return array of all matches" b
 results = re.findall("${1:pattern}", ${2:string}, re.X)
 if len(results):
 	for matches in results:
@@ -99,33 +37,28 @@ if len(results):
 		${3:pass}
 endsnippet
 
-snippet ifregex "" b
+snippet ifMatchRegex "If string match the regex" b
 if re.match("${1:pattern}", ${2:string}):
 	${0}
 endsnippet
 
+snippet regexSplit "Split string on regex" b
+import re
+${1:splitted} = re.split("${2:pattern}", ${3:string} )
+endsnippet
+
+
+
+
+
+###
+# @Others
+###
 snippet breakpoint "ipdb breakpoint" b
 import ipdb; ipdb.set_trace()
 endsnippet
 
-snippet systemcheck "check platform" b
-from sys import platform as _platform
-if _platform == "linux" or _platform == "linux2":
-    # linux
-    pass
-elif _platform == "darwin":
-    # OS X
-    pass
-elif _platform == "win32":
-    # Windows...
-    pass
-endsnippet
-
-snippet stru "python 2 utf8 string" b
-${1:sentence} = unicode("${2:string}", 'utf8')
-endsnippet
-
-snippet time "to measure time execution" b
+snippet measureExecutionTime "to measure time execution" b
 import time
 def timeTest__${1}():
 	def ${1:fun}():
@@ -138,16 +71,9 @@ def timeTest__${1}():
 	print "Function ${1} has taken " + str((t1-t0)/${3}) + "[s]"
 endsnippet
 
-
 snippet currDate "current date string" b
 import datetime
 t_ = datetime.datetime.strftime(datetime.datetime.now(), '%Y%m%d%H%M')
-endsnippet
-
-
-snippet split "regex split" b
-import re
-${1:splitted} = re.split("${2:pattern}", ${3:string} )
 endsnippet
 
 snippet currPos "Position of this python file" b
@@ -159,12 +85,8 @@ endsnippet
 snippet standardImport "Standard imports for python" b
 import sys
 import os
-import codecs
 import re
-endsnippet
-
-snippet argvRead "Read command line arguments" b
-argv_ = sys.argv[1:]
+import subprocess
 endsnippet
 
 snippet ,l "length" b
@@ -177,12 +99,8 @@ endsnippet
 
 snippet setCurrentDirectoryToTheFile "set current directory (os.getcwd() os.chdir()) to the file" b
 import os
-# print("Curr directory:" + os.getcwd()) 
-pathToCurrFile = (os.path.dirname(os.path.abspath(__file__)))
-os.chdir(pathToCurrFile)
-import sys
-sys.path.append("sub")
-from someModule.someSubmodule import printShit
+path_to_curr_file = os.path.dirname(os.path.abspath(__file__))
+os.chdir(path_to_curr_file)
 endsnippet
 
 snippet appendPath "append to sys.path new path; check os.getcwd()" b
@@ -211,4 +129,72 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument('argumentname', type=str, help="grammars apps directory")
 args = parser.parse_args()
+endsnippet
+
+
+
+
+
+####
+# @bashlike
+####
+snippet rmr "" b
+import shutil
+shutil.rmtree(${1:directoryToRemove})
+endsnippet
+
+snippet currPos "get full path to the current file" b
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+endsnippet
+
+snippet mkdirr "" b
+import os
+os.makedirs(${1:pathToDir})
+endsnippet
+
+snippet ifFileExists "" b
+import os
+if os.path.isfile(${1:fileName}):
+	${0}
+endsnippet
+
+snippet rm "" b
+import os
+os.remove(${1:pathToFile})
+endsnippet
+
+snippet ls "" b
+import os
+os.listdir(${1:pathToDir})
+endsnippet
+
+snippet callScript "" b
+fullPathToScript = ${1}
+p = subprocess.Popen(
+	["/bin/bash", 
+		fullPathToScript,
+		${2:arg1},
+		${3:arg2}
+	],
+	stdout=subprocess.PIPE
+)
+output, err = p.communicate()
+returncode = p.returncode
+endsnippet
+
+snippet callShell "" b
+import subprocess, re
+p = subprocess.Popen(re.split("\s+", "${1:command}"), stdout=subprocess.PIPE)
+out, err = p.communicate()
+endsnippet
+
+snippet pwd "current working directory" b
+import os
+cwd = os.getcwd()
+endsnippet
+
+snippet cd "change current working directory" b
+import os
+os.chdir(${1:path})
 endsnippet
