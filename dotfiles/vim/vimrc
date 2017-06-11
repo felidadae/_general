@@ -157,7 +157,7 @@ nnoremap <leader>{ bdwi{}<Esc>hp
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
 :nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
-" :nnoremap uio :UltiSnipsEdit<CR>
+:nnoremap op[ :UltiSnipsEdit<CR>
 
 
 

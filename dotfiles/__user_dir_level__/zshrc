@@ -8,33 +8,9 @@ HYPHEN_INSENSITIVE="true"
 plugins=(git zsh-history-substring-search)
 source $ZSH/oh-my-zsh.sh
 
-#felidadae
-export __MY_SHELL__="zsh"
-source ~/Programming/_General/shellProfile/AllFatherOfAllSons.sh
-if [ -e ~/bixby/bixby_profile.sh ]; then
-	source ~/bixby/bixby_profile.sh
-	function .rb {
-		source ~/bixby/bixby_profile.sh
-	}
-fi
-
-
-#zsh autosuggest colors
-# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
-# ZSH_HIGHLIGHT_STYLES[default]='fg=yellow,bold' #base1
-# ZSH_HIGHLIGHT_STYLES[alias]='fg=yellow'
-# ZSH_HIGHLIGHT_STYLES[builtin]='fg=yellow'
-# ZSH_HIGHLIGHT_STYLES[function]='fg=white'
-# ZSH_HIGHLIGHT_STYLES[command]='fg=blue'
-# ZSH_HIGHLIGHT_STYLES[precommand]='fg=yellow'
-# ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=green,bold' #base01
-# ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
-# ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=blue,bold' #base0
-# ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=blue,bold' #base0
-# ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=red,bold' #orange
-
 
 # show which vim mode we are in
+bindkey -v 
 precmd() {
   RPROMPT=""
 }
@@ -50,39 +26,18 @@ zle-line-init() {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
-
-#--------------------------------------------------------------------
-# bindkeys 
-# @Documentation
-#	Use showkeys -a or cat to see which escape sequences needed t
-KEY_LEFT='^[[D'
-KEY_BRACKET_LEFT='^?^?{'
-ENTER='^M'
-#HOME='^[[1~'
-#END='^[[4~'
-#	Set vim mode
-bindkey -v # to set vi mode
-export KEYTIMEOUT=20 # i dont really understand whats the fuck going on here
-#	Bindings:
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey '^[r' history-incremental-search-backward
-bindkey -M viins "op[" forward-char #complete gray history
-bindkey -M vicmd v edit-command-line
-bindkey -M viins -s ']\' '|'
-bindkey -M viins -s ',wc' '| wc -l'
-bindkey -M vicmd -s ,su '0isudo jk$i '
-bindkey -M viins -s ',gm' "git commit -m ''$KEY_LEFT"
-bindkey -M viins -s ',ez' "tmux split-window \"vim + ~/.zshrc\"$ENTER"
-bindkey -M viins -s ',e,' "tmux split-window \"vim \"$KEY_LEFT"
-bindkey -M viins -s ',pe' "perl -i -pe 's///g' *$KEY_LEFT$KEY_LEFT$KEY_LEFT$KEY_LEFT$KEY_LEFT$KEY_LEFT"
-bindkey -M viins -s 'sfg' "sudo find / -name ''$KEY_LEFT"
-# bindkey -M viins -s ',su' "${HOME}sudo${END}"
-source ~/Programming/_General/felidadaeTools/spanishLearner/main.zsh
-#--------------------------------------------------------------------
 export DISABLE_AUTO_TITLE=true
+[ ! -d ~/.zshnip_ ] && git clone https://github.com/facetframer/zshnip ~/.zshnip_
+source .zshnip_/zshnip.zsh
 
 
-
-function ,./ {
-	history | tail -1 | perl -ne 'print "$1" if /.*?\s\s(.*)$/;' | .c
-}
+#felidadae
+export __MY_SHELL__="zsh"
+source ~/Programming/_General/shellProfile/AllFatherOfAllSons.sh
+if [ -e ~/bixby/bixby_profile.sh ]; then
+	source ~/bixby/bixby_profile.sh
+	function .rb {
+		source ~/bixby/bixby_profile.sh
+	}
+fi
+source ~/Programming/_General/felidadaeTools/spanishLearner/main.zsh

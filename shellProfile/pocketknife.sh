@@ -4,6 +4,7 @@ alias catt="pygmentize -g"
 function c { clear; }
 function tree1 { tree -L 1 -C --dirsfirst; }
 function tree2 { tree "$1" -L 2 -C --dirsfirst; }
+function definition { whence -f $1; }
 alias t2="tree2"
 alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
@@ -287,10 +288,63 @@ function vim_newsyntax {
 #--------------------------------
 
 
+#-------------------------------
+# @zsh @zsh-snippets @zsh-small-snippets
+if [[ "$__MY_SHELL__" == 'zsh' ]]; then
+	#	Use showkeys -a or cat to see which escape sequences needed.
+	#	Autokeys should be disabled while using this.
+	#	bindkey to use fast without special key to 
+	#		launch snippet.
+	#	Use zshnip-add for snippets which rarer used 
+	#		and special key must be used to run.
+
+	KEY_LEFT='^[[D'
+	KEY_BRACKET_LEFT='^?^?{'
+	ENTER='^M'
+	bindkey -M viins -s '^[h' '^[[D'
+	bindkey -M viins -s '^[l' '^[[C'
+	bindkey -M viins -s '^[4' '^[[4~ | '
+
+	#numeric
+	bindkey -M viins -s '34' "\"\$\"$KEY_LEFT"
+	bindkey -M viins -s '89' "\""
+	bindkey -M viins -s '90' "\""
+	bindkey -M viins -s '890' "\"\"$KEY_LEFT"
+	bindkey -M viins -s '0-' "_"
+	bindkey -M viins -s '``' "~/"
+	bindkey -M viins -s '```' '$general/'
+
+	bindkey -M viins -s '^[;' "^[[4~" # go to end of the line >>M-;<<
+	bindkey -M viins -s '^[g' "^[[1~" # go to the begin of the line M-g
+
+	bindkey -M viins 'jk' vi-cmd-mode
+	bindkey -M viins '^[r' history-incremental-search-backward
+	bindkey -M vicmd v edit-command-line
+	bindkey -M viins -s ']\' '|'
+	bindkey -M viins -s '^[2' ' | '
+	bindkey -M viins -s ',wc' ' | wc -l'
+	bindkey -M vicmd -s '^[s' '0isudo ^[A^['
+	bindkey -M viins -s ',ez' "tmux split-window \"vim + ~/.zshrc\"$ENTER"
+	bindkey -M viins -s ',e,' "tmux split-window \"vim \"$KEY_LEFT"
+
+	export TAB="\t"
+	bindkey '\ej' zshnip-expand-or-edit # Alt-J
+	bindkey '\ee' zshnip-edit-and-expand # Alt-E
+
+	zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
+	zshnip-add perlane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4
+
+	# @zshsnippet
+fi
+#-------------------------------
+
+
+
 #--------------------------------
 #@Super fast
 alias .r="reloadBashProfile"
 alias .c="xclip -selection c"
+function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
 function ,re { make clean; make; ./main; }
 
 function ,epo { vim $general/shellProfile/pocketknife.sh;  }
@@ -349,3 +403,10 @@ function tmux-rename-pane { printf '\033]2;%s\033\' $1; }
 function ,epoa { echo "$@" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
 function ,epoc { perl -ne '/\@Super fast/ && ($m=1); $m == 1 && print;' $general/shellProfile/pocketknife.sh | pygmentize -g -l sh; }
 function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa
+#--------------------------------
+
+
+
+#--------------------------------
+#@--not yet ordered
+#--------------------------------

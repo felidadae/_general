@@ -1,0 +1,11 @@
+snippet shell_git_echo_to_gitignore "echo to .gitignore" b
+echo "${1:command}" >> .gitignore
+endsnippet
+
+snippet shell_git-addcommitpush "git add commit push" b
+git add -A; git commit -m "[TIweb-solution] ${1:message}"; git push origin schwa;
+endsnippet
+
+snippet shell_rsync-standard "standard rsync usage; see $playground/Rsync; "
+rsync --archive --delete --verbose ${1:dirOfWhichContentWantsToArchive}/ ${2:dirWhereDirContentShouldBeCopied}
+endsnippet

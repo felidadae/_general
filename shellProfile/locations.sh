@@ -22,4 +22,6 @@ export documents=~/Documents
 function locationAdd {
 	echo "$1" >> "$shellProfileFiles"/locations
 }
+
+ultisnips_dir=$general/dotfiles/vim/snippets/
 ### @added by function locationAdd >>
