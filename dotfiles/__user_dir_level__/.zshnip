@@ -1,2 +1,5 @@
 zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
 zshnip-add perllane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4
+zshnip-add gm $'git commit -m ""' 1
+zshnip-add s $'kj' 0
+zshnip-add tmuxs $'tmux split -p 30 \'\'' 1

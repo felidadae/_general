@@ -1,4 +1,11 @@
-function reloadBashProfile { source $general/shellProfile/AllFatherOfAllSons.sh; }
+function reloadBashProfile { 
+	if [[ "$__MY_SHELL__" == 'zsh' ]]; then
+		source ~/.zshrc	
+	else
+		source ~/.bashrc	
+	fi
+	source $general/shellProfile/AllFatherOfAllSons.sh; 
+}
 
 alias catt="pygmentize -g"
 function c { clear; }
@@ -288,7 +295,13 @@ function vim_newsyntax {
 #--------------------------------
 
 
-#-------------------------------
+
+
+
+#--------------------------------
+#@Super fast
+
+#------------
 # @zsh @zsh-snippets @zsh-small-snippets
 if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	#	Use showkeys -a or cat to see which escape sequences needed.
@@ -306,7 +319,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '^[4' '^[[4~ | '
 
 	#numeric
-	bindkey -M viins -s '34' "\"\$\"$KEY_LEFT"
+	bindkey -M viins -s '34' \$
 	bindkey -M viins -s '89' "\""
 	bindkey -M viins -s '90' "\""
 	bindkey -M viins -s '890' "\"\"$KEY_LEFT"
@@ -336,19 +349,16 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 
 	# @zshsnippet
 fi
-#-------------------------------
+#------------
 
 
-
-#--------------------------------
-#@Super fast
 alias .r="reloadBashProfile"
 alias .c="xclip -selection c"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
 function ,re { make clean; make; ./main; }
 
-function ,epo { vim $general/shellProfile/pocketknife.sh;  }
-function ,ev  { vim ~/.vimrc;  }
+function ,epo { tmux split -p 40 'vim +/@super $general/shellProfile/pocketknife.sh;'  }
+function ,ev  { tmux split -p 40 'vim +/@mapping ~/.vimrc';  }
 ###---
 function ,  { fuzzyCall . "vim" "$1" "$2"; }
 function ,gi { fuzzyCall . "git diff" "$1" "$2"; }
@@ -390,7 +400,7 @@ function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  }
 function ,py,c { python $LAST_SCRIPT; }
 function ,py,m { mv $LAST_SCRIPT "$1"; }
 
-function ,books { _f $general/mybooks "xdg-open" pdf $1; }
+function ,books { _f $general/linkMyBooks "xdg-open" pdf $1; }
 function ,ytandroid { google-chrome --app=https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh; }
 function ,networkrestart { sudo service network-manager restart; }
 
@@ -409,4 +419,5 @@ function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa
 
 #--------------------------------
 #@--not yet ordered
+function sk { tmux split -p 30 'showkey -a'; }
 #--------------------------------

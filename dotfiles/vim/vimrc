@@ -108,59 +108,85 @@ colorscheme solarized
 :highlight nontext ctermfg=bg 
 :hi folded term=none cterm=none ctermfg=green ctermbg=none
 :hi foldcolumn ctermbg=none
+"----------------------------------------------------------------------------------
 
 
 
+
+
+"----------------------------------------------------------------------------------
 " @mappings
-" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
-nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
-nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
-nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
-inoremap jk <Esc>
-nnoremap <m-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-:nnoremap _<space> i<space><esc>
-:nnoremap _<tab> i<tab><esc>
-:nnoremap _<CR> i<CR><esc>
-:nmap ; :
+
+" @basics
 :let mapleader = ","
 :let maplocalleader = "\\"
-:nnoremap cp :let @+ = expand("%") <cr>
-:nnoremap <leader>ev :split $MYVIMRC<cr>/Mapping<cr>zt
-:nnoremap <leader>ep :split $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
-":nnoremap <leader>sv :source $MYVIMRC<cr> :call webdevicons#refresh()<cr>
-:nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
-:nnoremap <leader>nt :NERDTreeToggle<cr>
-:nnoremap <leader>nf :NERDTreeFocus<cr>
-" :nnoremap ,., :w :b#<::cr>
-nnoremap <leader>" bdwi""<Esc>hp
-nnoremap <leader>{ bdwi{}<Esc>hp
-:nnoremap <leader>p :CtrlPTag
+inoremap jk <Esc>
 :nnoremap <leader>= :vertical resize +10<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
 :nnoremap <leader><leader>= :resize +10<cr>
 :nnoremap <leader><leader>- :resize -10<cr>
-" provide hjkl movements in Insert mode via the <Alt> modifier key
-:inoremap <m-e> <Esc>A
-:inoremap <m-l> <Esc>la
-:inoremap <m-h> <Esc>ha
-:inoremap <m-j> <Esc>ji
-:inoremap <m-k> <Esc>ki
-:inoremap ;; :<cr>
-:nnoremap <m-e> $
+:nmap ; :
+:nnoremap <leader>ev :split $MYVIMRC<cr>/Mapping<cr>zt
+:nnoremap <leader>rv :source ~/.vimrc<cr>
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+" @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
+:inoremap <m-l> <Right>
+:inoremap <m-h> <Left>
 :nnoremap <m-w> W
 :nnoremap <m-b> ^
+
+" @Insert blank
+nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+:nnoremap =<space> i<space><esc>
+:nnoremap =<tab> i<tab><esc>
+:nnoremap =<CR> i<CR><esc>
+
+" @nerdtree
+:nnoremap <leader>nt :NERDTreeToggle<cr>
+:nnoremap <leader>nf :NERDTreeFocus<cr>
+
+" @double quote string
+:nnoremap <leader>" bdwi""<Esc>hp
+:nnoremap <leader>{ bdwi{}<Esc>hp
+
+" @others
+:nnoremap cp :let @+ = expand("%") <cr>
+:nnoremap <leader>ep :split $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
+:nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
+:nnoremap <leader>p :CtrlPTag
 :nnoremap <leader>h :hide
-:vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
-:nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
 :nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
+nnoremap <m-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 :nnoremap op[ :UltiSnipsEdit<CR>
 
+" @replace current
+:vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
+:nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
+
+" @mapping-sh only
+:autocmd Filetype sh :inoremap 34 "$"<Left>
+	"VVV Thats quite shitty thing: we here use escape sequence
+:autocmd Filetype sh :inoremap <Esc>4 \|<Space>
+
+" @mapping-c++ only
+
+" @mapping-python only
+:autocmd Filetype python :inoremap ;; :<cr>
+"----------------------------------------------------------------------------------
 
 
+
+
+
+"----------------------------------------------------------------------------------
 " @encoding @indent @general
 :set wrap
 :set linebreak

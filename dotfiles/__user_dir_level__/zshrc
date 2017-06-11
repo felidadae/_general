@@ -28,7 +28,7 @@ zle -N zle-line-init
 
 export DISABLE_AUTO_TITLE=true
 [ ! -d ~/.zshnip_ ] && git clone https://github.com/facetframer/zshnip ~/.zshnip_
-source .zshnip_/zshnip.zsh
+source ~/.zshnip_/zshnip.zsh
 
 
 #felidadae
