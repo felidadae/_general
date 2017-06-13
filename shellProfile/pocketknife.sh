@@ -216,7 +216,7 @@ function chooseDir {
 	while IFS=  read -r -d $'\0'; do
 		array+=("$REPLY")
 	done < <(find . -maxdepth $1 -follow \
-		-path *.git* -prune -o \
+		-path '*.git*' -prune -o \
 		-type d -print0)
 
 	_arrayChoice "cd" "$2"
@@ -379,8 +379,8 @@ function ,pwd { pwd | .c; }
 function ,se  { tmux split-window -p 50 "vim $1;"; }
 function ,sc  { tmux split-window -p 30 "vim $1;"; }
 
-function ,gr  { cd $(git rev-parse --show-toplevel); }
-function ,gre { echo $(git rev-parse --show-toplevel); }
+function ggr  { cd $(git rev-parse --show-toplevel); }
+function egr  { echo $(git rev-parse --show-toplevel); }
 
 function ,epoa { echo "$@" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
 function ,epoa { echo "<(xclip)" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
