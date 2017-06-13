@@ -407,6 +407,8 @@ function ,networkrestart { sudo service network-manager restart; }
 function ,s { tmux split-window -p 50 "vim $1;"; }
 function ,ta { tmux split-window -p 30 "vim $notus/tablica.todo;"; }
 function ,gr { cd $(git rev-parse --show-toplevel); }
+function gotogitroot { cd $(git rev-parse --show-toplevel); }
+function echogitroot { echo $(git rev-parse --show-toplevel); }
 function tmux-rename-pane { printf '\033]2;%s\033\' $1; }
 
 #@--fast
