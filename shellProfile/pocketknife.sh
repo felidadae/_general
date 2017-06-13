@@ -216,7 +216,7 @@ function chooseDir {
 	while IFS=  read -r -d $'\0'; do
 		array+=("$REPLY")
 	done < <(find . -maxdepth $1 -follow \
-		-path *.git* -prune -o \
+		-path '*.git*' -prune -o \
 		-type d -print0)
 
 	_arrayChoice "cd" "$2"
@@ -320,6 +320,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 
 	#numeric
 	bindkey -M viins -s '34' \$
+	bindkey -M viins -s '1232' \!\!
 	bindkey -M viins -s '89' "\""
 	bindkey -M viins -s '90' "\""
 	bindkey -M viins -s '890' "\"\"$KEY_LEFT"
@@ -341,9 +342,9 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s ',e,' "tmux split-window \"vim \"$KEY_LEFT"
 
 	export TAB="\t"
-	bindkey '\ej' zshnip-expand-or-edit # Alt-J
-	bindkey '\ee' zshnip-edit-and-expand # Alt-E
-
+	# bindkey '\ej' zshnip-expand-or-edit # Alt-J
+	# bindkey '\ee' zshnip-edit-and-expand # Alt-E
+	# bindkey '^[8' zshnip-list
 	zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
 	zshnip-add perlane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4
 
@@ -355,71 +356,48 @@ fi
 alias .r="reloadBashProfile"
 alias .c="xclip -selection c"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
-function ,re { make clean; make; ./main; }
 
 function ,epo { tmux split -p 40 'vim +/@super $general/shellProfile/pocketknife.sh;'  }
 function ,ev  { tmux split -p 40 'vim +/@mapping ~/.vimrc';  }
-###---
-function ,  { fuzzyCall . "vim" "$1" "$2"; }
+
+alias _f=fuzzyCall
+function ,   { fuzzyCall . "vim" "$1" "$2"; }
 function ,gi { fuzzyCall . "git diff" "$1" "$2"; }
-function ,. { fuzzyCall . "$1" "$2" "$3"; }
-###---
+function ,.  { fuzzyCall . "$1" "$2" "$3"; }
 function g,  { fuzzyCall "$general" "vim" "$1" "$2"; }
 function g,. { fuzzyCall "$general" "pygmentize -g" "$1" "$2"; }
-###---
 function s,  { fuzzyCall "/" "vim" "$1" "$2";  }
 function ,n  { notify-send --urgency=critical --expire-time=400 "$1" "$2"; }
-alias _f=fuzzyCall
 
-function .b+ { xbacklight -inc 60; }
-function .b- { xbacklight -dec 60; }
-function .reslow { xrandr -s 1920x1080; }
-function .reshigh { xrandr -s 3840x2160; }
 
-function ,gc { printf 'git add -A; git commit -m "Cleaning; git push origin master;"' | .c;}
-alias _gls="git_listFilesIn1Commit"
 alias diffgit="git diff --no-index"
 alias _gs="git status"
 alias _ga="git add"
 alias _gc="git checkout"
-alias tsk="tmux send-keys"
-function _gcom2 { sleep 0.2; tmux send-keys "git commit -m "; }
-alias _gd="git diff"
-alias _gl="git log"
-alias _gb="git branch"
-alias _gpo="git push origin"
-alias _gall="git status; git branch;"
-function ,te { trans pl: "$1"; }
-function ,pwd { pwd | .c;  }
-function ,commandoriumsave { xclip -selection c -o >> $general/commandorium.sh; }
-function ,keys { vim $general/keyboardShortcuts.keymap; }
+function ,pwd { pwd | .c; }
 
-#@Fast prototyping
-# function ,fast { fastTest  } 
-function ,py { export LAST_SCRIPT=$1.py; touch $1.py; vim $1.py;  } 
-function ,py,c { python $LAST_SCRIPT; }
-function ,py,m { mv $LAST_SCRIPT "$1"; }
+function ,se  { tmux split-window -p 50 "vim $1;"; }
+function ,sc  { tmux split-window -p 30 "vim $1;"; }
 
-function ,books { _f $general/linkMyBooks "xdg-open" pdf $1; }
-function ,ytandroid { google-chrome --app=https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh; }
-function ,networkrestart { sudo service network-manager restart; }
+function ggr  { cd $(git rev-parse --show-toplevel); }
+function egr  { echo $(git rev-parse --show-toplevel); }
 
-function ,s { tmux split-window -p 50 "vim $1;"; }
-function ,ta { tmux split-window -p 30 "vim $notus/tablica.todo;"; }
-function ,gr { cd $(git rev-parse --show-toplevel); }
-function gotogitroot { cd $(git rev-parse --show-toplevel); }
-function echogitroot { echo $(git rev-parse --show-toplevel); }
-function tmux-rename-pane { printf '\033]2;%s\033\' $1; }
-
-#@--fast
 function ,epoa { echo "$@" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
+function ,epoa { echo "<(xclip)" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
 function ,epoc { perl -ne '/\@Super fast/ && ($m=1); $m == 1 && print;' $general/shellProfile/pocketknife.sh | pygmentize -g -l sh; }
-function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa
 #--------------------------------
 
 
 
 #--------------------------------
 #@--not yet ordered
+function .reslow { xrandr -s 1920x1080; }
+function .reshigh { xrandr -s 3840x2160; }
+function .b+ { xbacklight -inc 60; }
+function .b- { xbacklight -dec 60; }
+
+function ,networkrestart { sudo service network-manager restart; }
 function sk { tmux split -p 30 'showkey -a'; }
+function _gcom2 { sleep 0.2; tmux send-keys "git commit -m "; }
+function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa
 #--------------------------------
