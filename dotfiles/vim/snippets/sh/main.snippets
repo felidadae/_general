@@ -137,7 +137,13 @@ snippet ifSubstringContains "if a string is a substring of an another string" b
 [[ "\$${1:string}" == *"\$${2:substring}"* ]]
 endsnippet
 
-
+snippet forlineinfile "for each file in a file" b
+while read line
+do
+	[ "$line" == "" ] && continue
+	echo "$line"
+done < ${1:in_file}
+endsnippet
 
 #ssh
 snippet scp "scp to remote with port and ssh key" b 
