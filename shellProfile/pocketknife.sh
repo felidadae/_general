@@ -354,7 +354,7 @@ fi
 
 
 alias .r="reloadBashProfile"
-alias .c="xclip -selection c"
+alias .c="xclip -selection c "
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
 
 function ,epo { tmux split -p 40 'vim +/@super $general/shellProfile/pocketknife.sh;'  }
@@ -374,7 +374,7 @@ alias diffgit="git diff --no-index"
 alias _gs="git status"
 alias _ga="git add"
 alias _gc="git checkout"
-function ,pwd { pwd | .c; }
+function ,pwd { pwd | tr '\n' ' ' | .c; }
 
 function ,se  { tmux split-window -p 50 "vim $1;"; }
 function ,sc  { tmux split-window -p 30 "vim $1;"; }
@@ -400,4 +400,8 @@ function ,networkrestart { sudo service network-manager restart; }
 function sk { tmux split -p 30 'showkey -a'; }
 function _gcom2 { sleep 0.2; tmux send-keys "git commit -m "; }
 function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa
+function clean_whitespaces_to_4spaces {
+	perl -MText::Tabs -n -i -e 'BEGIN {$tabstop = 4;} print expand $_' $(git ls-files)
+	perl -i -lpe 's/\s+$//' $(git ls-files)
+}
 #--------------------------------
