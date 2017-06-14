@@ -342,9 +342,9 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s ',e,' "tmux split-window \"vim \"$KEY_LEFT"
 
 	export TAB="\t"
-	# bindkey '\ej' zshnip-expand-or-edit # Alt-J
-	# bindkey '\ee' zshnip-edit-and-expand # Alt-E
-	# bindkey '^[8' zshnip-list
+	bindkey '\ej' zshnip-expand-or-edit # Alt-J
+	bindkey '\ee' zshnip-edit-and-expand # Alt-E
+	bindkey '^[8' zshnip-list
 	zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
 	zshnip-add perlane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4
 
