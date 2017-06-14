@@ -25,3 +25,4 @@ zshnip-add  $'' 0
 zshnip-add  $'' 0
 zshnip-add  $'c' 0
 zshnip-add  $'clear' 0
+zshnip-add _zshnip-edit-finished-callback $'' 0
