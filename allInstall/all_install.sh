@@ -1,5 +1,5 @@
 source __config.sh
-source __my_general_bootstrap.sh
+source boostrap.sh
 
 sudo apt install cmake
 sudo apt install tlp

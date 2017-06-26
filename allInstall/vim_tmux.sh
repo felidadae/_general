@@ -3,7 +3,7 @@ if [[ "$(which vim)" == "" ]]; then
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 if [[ "$(which tmux)" == "" ]]; then
-	sudo apt install tmux
+	source tmux_from_source.sh
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	echo "[Remember] run Prefix+I in tmux session to install tmux plugins"; sleep 1
 fi
