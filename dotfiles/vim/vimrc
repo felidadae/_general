@@ -67,6 +67,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'artur-shaik/vim-javacomplete2'
 call vundle#end()            
 filetype plugin indent on
 

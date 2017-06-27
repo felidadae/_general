@@ -26,3 +26,4 @@ zshnip-add  $'' 0
 zshnip-add  $'c' 0
 zshnip-add  $'clear' 0
 zshnip-add _zshnip-edit-finished-callback $'' 0
+zshnip-add tmuxs $'tmux split -p 30 \'\'' 1
