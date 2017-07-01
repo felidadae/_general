@@ -1,3 +1,4 @@
+"----------------------------------------------------------------------------------
 " @FIXME to make it working on termux
 " let g:ifGlobalPowerlineEnabled = ($IF_GLOBAL_POWERLINE_ENABLED != 1)
 " if g:ifGlobalPowerlineEnabled
@@ -11,7 +12,6 @@
 " @FIXME check if powerline available
 " let g:remoteSession = ($SSH_CLIENT == "" || $SSH_CONNECTION == "")
 " if g:remoteSession
-
 
 
 
@@ -29,9 +29,12 @@ set timeout ttimeoutlen=50
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
+" @Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -70,9 +73,12 @@ Plugin 'vim-scripts/vim-auto-save'
 Plugin 'artur-shaik/vim-javacomplete2'
 call vundle#end()            
 filetype plugin indent on
+" @Plugins.end
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 "GUI OPTIONS
 " :set guioptions-=L  "remove left-hand scroll bar
 " :set guioptions-=m  "remove menu bar
@@ -139,6 +145,11 @@ augroup END
 :inoremap <m-h> <Left>
 :nnoremap <m-w> W
 :nnoremap <m-b> ^
+
+" @normal mode fast begin end
+:nnoremap <m-h> 0
+:nnoremap <m-l> $
+:nnoremap <m-a> A
 
 " @Insert blank
 nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
@@ -222,9 +233,11 @@ set splitright
 :set foldignore=
 :set hidden
 :set ssop=blank,buffers,sesdir,folds,tabpages,winpos,winsize
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 "to highlight (["
 :let OPTION_NAME = 1
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
@@ -235,9 +248,11 @@ function! s:def_base_syntax()
 	hi link commonOperator Operator
 	hi link baseDelimiter Special
 endfunction
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @nerdtree
 :let g:NERDTreeDirArrowExpandable="+"
 :let g:NERDTreeDirArrowCollapsible="~"
@@ -249,14 +264,19 @@ endfunction
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
 :let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @ctrlp fuzzy finder
 :let g:ctrlp_follow_symlinks = 2
 :let g:ctrlp_working_path_mode = 'r'
+"----------------------------------------------------------------------------------
 
 
+
+"----------------------------------------------------------------------------------
 " @ultisnips
 :let g:UltiSnipsExpandTrigger="<c-a>"
 :let g:UltiSnipsListSnippets="<c-u>"
@@ -265,14 +285,18 @@ autocmd FileType nerdtree setlocal relativenumber
 :let g:UltiSnipsEditSplit="horizontal"
 :let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
 :let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @easy-motion
 map ,. <Plug>(easymotion-prefix)
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @folding
 set foldmethod=indent
 set foldtext=MyFoldText()
@@ -281,9 +305,11 @@ function! MyFoldText()
 	return repeat(' ', i) . "----Folded----" 
 endfunction
 set foldlevel=3
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @wipeout
 command! -bang Wipeout :call Wipeout(<bang>0)
 function! Wipeout(bang)
@@ -310,36 +336,55 @@ function! Wipeout(bang)
 endfun
 
 :let g:session_autosave = 'no'
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @line-length-limit x-st column is magenta if there is a char
 autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
 autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @ycm ycm to set python version
 :let g:ycm_python_binary_path = '/usr/bin/python3'
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @session @vim-session
 set sessionoptions-=options
 set sessionoptions-=help
 set sessionoptions-=buffers
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
 " @autosave
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 let g:auto_save = 1
+"----------------------------------------------------------------------------------
 
 
 
+"----------------------------------------------------------------------------------
+" @unsorted
+:set isfname-=/
+:set path=$PWD/**
+"----------------------------------------------------------------------------------
+
+
+
+"----------------------------------------------------------------------------------
 "Needed to be on the end of the file
 :highlight nontext ctermfg=bg 
 :hi folded term=none cterm=none ctermfg=none ctermbg=none
 :hi foldcolumn ctermbg=none
 :set fillchars="fold: " 
 :set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+"----------------------------------------------------------------------------------
