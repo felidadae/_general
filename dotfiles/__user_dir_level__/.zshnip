@@ -26,3 +26,18 @@ zshnip-add  $'' 0
 zshnip-add  $'c' 0
 zshnip-add  $'clear' 0
 zshnip-add _zshnip-edit-finished-callback $'' 0
+zshnip-add _zshnip-edit-finished-callback $'0' 0
+zshnip-add monk $'cd cd ~/bixby/pandora23_gerrit/dc-monkey-tools' 0
+zshnip-add cd $'' 0
+zshnip-add gomonk $'cd ~/bixby/pandora23_gerrit/dc-monkey-tools' 0
+zshnip-add _zshnip-edit-finished-callback $'0dd' 0
+zshnip-add gojc $'cd /home/s.bugaj/bixby/tmp_g/base/JC_ ' 0
+zshnip-add ts $'tmux split vim ' 0
+zshnip-add ts $'tmux split -p 40 vim ' 0
+zshnip-add _zshnip-edit-finished-callback $'' 0
+zshnip-add gotic3 $'cd /mnt/m/cowork/t3/' 0
+zshnip-add gonk $'' 0
+zshnip-add gopathdb $'cd ~/tmp/srpolpathdb-es-US-17.0.0/es-US/' 0
+zshnip-add _zshnip-edit-finished-callback $'0' 1
+zshnip-add tt $'ctags -R' 0
+zshnip-add _ $'' 0

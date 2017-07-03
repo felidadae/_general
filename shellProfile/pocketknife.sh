@@ -354,7 +354,7 @@ fi
 
 
 alias .r="reloadBashProfile"
-alias .c="xclip -selection c "
+alias .c="tr '\n' ' ' | xclip -selection c"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
 
 function ,epo { tmux split -p 40 'vim +/@super $general/shellProfile/pocketknife.sh;'  }

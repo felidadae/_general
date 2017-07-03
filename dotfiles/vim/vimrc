@@ -67,6 +67,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'artur-shaik/vim-javacomplete2'
 call vundle#end()            
 filetype plugin indent on
 
@@ -138,6 +139,10 @@ augroup END
 :inoremap <m-h> <Left>
 :nnoremap <m-w> W
 :nnoremap <m-b> ^
+
+" @normal-move end begin of line
+:nnoremap <C-l> $
+:nnoremap <C-h> 0
 
 " @Insert blank
 nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
