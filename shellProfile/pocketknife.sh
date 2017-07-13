@@ -288,10 +288,42 @@ function vim_newsyntax {
 	echo "let b:current_syntax = '$nameOfSyntax'" >> $p
 	vim $p
 }
-#--------------------------------
+function zshsnippet_save {
+	export LAST_COMMAND=$(tail -1 ~/.zshnip); 
+	EPO=$general/shellProfile/pocketknife.sh
+	perl -i -ne '
+		BEGIN { 
+			$wrong_input_data=0;
+			$wrong_input_data = 1 unless $ENV{LAST_COMMAND} =~ /^zshnip-add\s*(.*?)\s/; 
+			$name = $1; $inside=0; $changed=0; 
+			$wrong_input_data = 1 if "$name" eq "";
+			$begin_r = "^(\s*)#\s*\@zshsnippet_begin";
+			$end_r = "^(\s*)#\s*\@zshsnippet_end";
+		}
+		if ($wrong_input_data == 1) { print; next; }
+	 
+		if (/^(\s*)#\s*\@zshsnippet_begin/) { $inside=1; }
 
-#--------------------------------
-#Some variables which i will use
+		if ($inside == 0) { print; next; }
+
+		if (/^(\s*)zshnip-add $name/) {
+			print "$1$ENV{LAST_COMMAND}\n";
+			$changed = 1;
+			next;
+		}
+
+		if (/^(\s*)#\s*\@zshsnippet_end/)   { 
+			$inside=0; 
+			if ($changed == 0) {
+				print "$1$ENV{LAST_COMMAND}\n$1alias $name=\"\"\n$_";
+			} else {print;}
+			next;
+		}
+		print;
+
+		' "$EPO"
+	unset LAST_COMMAND
+}
 #--------------------------------
 
 
@@ -345,10 +377,14 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey '\ej' zshnip-expand-or-edit # Alt-J
 	bindkey '\ee' zshnip-edit-and-expand # Alt-E
 	bindkey '^[8' zshnip-list
+	# @zshsnippet_begin
 	zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
+	alias echotsv=''
 	zshnip-add perlane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4
-
-	# @zshsnippet
+	alias perlane=''
+	zshnip-add tmuxdupa $'tmyx my dupa' 0
+	alias tmuxdupa=""
+	# @zshsnippet_end
 fi
 #------------
 
@@ -404,4 +440,5 @@ function clean_whitespaces_to_4spaces {
 	perl -MText::Tabs -n -i -e 'BEGIN {$tabstop = 4;} print expand $_' $(git ls-files)
 	perl -i -lpe 's/\s+$//' $(git ls-files)
 }
+function print_header { head -1 $1 | tr '\t' '\n' | cat -n; }
 #--------------------------------

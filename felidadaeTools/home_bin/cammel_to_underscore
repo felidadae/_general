@@ -2,7 +2,6 @@
 """
     @Test usage:
     python3 cammel_to_underscore.py <(echo -e 'zupaDupa = 15\nmojPies = 13\nfun(zupaDupa, mojPies)')
-
 """
 
 import fileinput
