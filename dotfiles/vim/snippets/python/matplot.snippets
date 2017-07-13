@@ -1,6 +1,7 @@
 snippet plot "" b
 import matplotlib.pyplot as plt
 import numpy as np
+plt.style.use('ggplot')
 
 x = np.arange(0.0, 1.0, 0.01)
 y = np.${1:someNumpyFunction}(x)
@@ -26,3 +27,6 @@ import numpy as np
 plt.style.use('ggplot')
 endsnippet
 
+snippet array "numpy array"
+np.array([[${1:first}], [${2:second}]], type=int)
+endsnippet
