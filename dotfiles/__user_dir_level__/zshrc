@@ -53,4 +53,15 @@ if [ -e ~/bixby/bixby_profile.sh ]; then
 		source ~/bixby/bixby_profile.sh
 	}
 fi
+
 source ~/Programming/_General/felidadaeTools/spanishLearner/main.zsh
+
+function virtualenv_prompt_info(){
+  [[ -n ${VIRTUAL_ENV} ]] || return
+  echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}${VIRTUAL_ENV:t}${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
+}
+export WORKON_HOME=~/Envs
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+mkdir -p $WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh
