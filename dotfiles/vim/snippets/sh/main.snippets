@@ -56,6 +56,13 @@ match1=$(echo -e "$matches" | cut -f1)
 match2=$(echo -e "$matches" | cut -f2)
 endsnippet
 
+snippet columnNumber "get column number by perl" b
+export ${1:COL_NAME}=$(head -1 ${2:htsv} | perl -F'\t' -lane '$i=1; foreach $col (@F) { print $i if $col eq ${3:COL_STRING}; ++$i; }') #1 indexed
+endsnippet
+
+snippet perlane "perl lane on tab"
+perl -F'\t' -lane 'if ($F[0] eq "string") { print "$_"; }'
+endsnippet
 
 
 ##### @loops @for
@@ -99,7 +106,7 @@ scriptPath_${1:id}="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
 cd "$scriptPath_$1"
 endsnippet
 
-snippet currRepo "Path to this repository root directory" b
+snippet gitRoot "Path to this repository root directory" b
 currentRepoRootDir=$(git rev-parse --show-toplevel)
 endsnippet
 

@@ -390,7 +390,7 @@ fi
 
 
 alias .r="reloadBashProfile"
-alias .c="xclip -selection c "
+alias .c="tr '\n' ' ' | xclip -selection c"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
 
 function ,epo { tmux split -p 40 'vim +/@super $general/shellProfile/pocketknife.sh;'  }
@@ -440,4 +440,5 @@ function clean_whitespaces_to_4spaces {
 	perl -MText::Tabs -n -i -e 'BEGIN {$tabstop = 4;} print expand $_' $(git ls-files)
 	perl -i -lpe 's/\s+$//' $(git ls-files)
 }
+function print_header { head -1 $1 | tr '\t' '\n' | cat -n; }
 #--------------------------------
