@@ -43,3 +43,4 @@ zshnip-add tt $'ctags -R' 0
 zshnip-add _ $'' 0
 zshnip-add tmuxs $'tmux split -p 30 \'\'' 1
 zshnip-add _zshnip-edit-finished-callback $'' 0
+zshnip-add perlane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4

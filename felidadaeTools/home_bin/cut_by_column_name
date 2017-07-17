@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""
+How to test from commandline:
+    echo -e "col0${TAB}col1${TAB}col2${TAB}col3\ncol0_${TAB}col1_${TAB}col2_${TAB}col3_\ncol0__${TAB}col1__${TAB}col2__${TAB}col3__" | cut_by_column_name -fcol0
+"""
+
+import sys
+
+if len(sys.argv) > 3 or len(sys.argv) == 1:
+    exit(1)
+if not sys.argv[1].startswith("-f"):
+    exit(1)
+
+try:
+    col_to_cut = sys.argv[1].split("-f")[1].split(",")
+except:
+    exit(1)
+
+def filter_file(our_input):
+    header = {}
+    header_len = 0
+    for il, line in enumerate(our_input):
+        line_splitted = line.rstrip('\n').split('\t')
+        if il == 0:
+            header = { colname: icol for icol, colname in enumerate(line_splitted) }
+            header_len = line(line_splitted)
+
+        try:
+            assert(header_len == len(line_splitted))
+        except:
+            print("[Error] Wrong number of columns in line {}".format(il), file=sys.stderr)
+            exit(1)
+
+        columns = []
+        for colname in col_to_cut:
+            columns.append(line_splitted[header[colname]])
+        print("\t".join(columns))
+
+if len(sys.argv) == 2:
+    our_input = sys.stdin
+    filter_file(our_input)
+else:
+    our_input=open(sys.argv[-1])
+    filter_file(our_input)
+    our_input.close()

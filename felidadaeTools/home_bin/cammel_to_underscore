@@ -27,12 +27,12 @@ def filtered(var_):
         else:
             result += ch.lower()
     return result
-            
+
 with open(tmp, 'r') as fref_tmp:
     for l in fref_tmp:
         l = l.rstrip()
         for var_ in vars_:
             l = (re.sub("(^|(?<=[\s\(]))" + var_ + "(?=[\s\.,\)])", filtered(var_), l))
         print(l)
-        
+
 os.remove(tmp)
