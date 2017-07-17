@@ -1,30 +1,30 @@
 #!/bin/bash -e
 
 function join_with_header {
-	fileA=${1}
-	export colFromA=${2}
-	fileB=${3}
-	export colFromB=${4}
+    fileA=${1}
+    export colFromA=${2}
+    fileB=${3}
+    export colFromB=${4}
 
-	export colFromA_=$(head -1 $fileA | \
-		perl -F'\t' -lane '
-			$i=1; 
-			foreach $col (@F) { print $i if $col eq "$ENV{colFromA}"; 
-			++$i; }') #1 indexed
-	export colFromB_=$(head -1 $fileB | \
-		perl -F'\t' -lane '
-			$i=1; 
-			foreach $col (@F) { print $i if $col eq "$ENV{colFromB}"; 
-			++$i; }') #1 indexed
+    export colFromA_=$(head -1 $fileA | \
+        perl -F'\t' -lane '
+            $i=1;
+            foreach $col (@F) { print $i if $col eq "$ENV{colFromA}";
+            ++$i; }') #1 indexed
+    export colFromB_=$(head -1 $fileB | \
+        perl -F'\t' -lane '
+            $i=1;
+            foreach $col (@F) { print $i if $col eq "$ENV{colFromB}";
+            ++$i; }') #1 indexed
 
-	fileA_k=$(mktemp)
-	fileB_k=$(mktemp)
-	paste <(cut -f$colFromA_ $fileA) $fileA | sed '1d;$d'|  sort -k1 > $fileA_k
-	paste <(cut -f$colFromB_ $fileB) $fileB | sed '1d;$d'|  sort -k1 > $fileB_k
+    fileA_k=$(mktemp)
+    fileB_k=$(mktemp)
+    paste <(cut -f$colFromA_ $fileA) $fileA | sed '1d;$d'|  sort -k1 > $fileA_k
+    paste <(cut -f$colFromB_ $fileB) $fileB | sed '1d;$d'|  sort -k1 > $fileB_k
 
-	paste <(head -1 $fileA) <(head -1 $fileB)
-	join -t $'\t' $fileA_k $fileB_k | cut -f2- | sort -u 
-	rm $fileA_k $fileB_k
+    paste <(head -1 $fileA) <(head -1 $fileB)
+    join -t $'\t' $fileA_k $fileB_k | cut -f2- | sort -u
+    rm $fileA_k $fileB_k
 }
 
 join_with_header $@
