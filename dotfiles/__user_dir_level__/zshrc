@@ -65,3 +65,4 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 mkdir -p $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
+VIRTUAL_ENV="system-wide"

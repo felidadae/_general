@@ -354,6 +354,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '34' \$
 	bindkey -M viins -s '1232' \!\!
 	bindkey -M viins -s '89' "\""
+	bindkey -M viins -s '78' "*"
 	bindkey -M viins -s '90' "\""
 	bindkey -M viins -s '890' "\"\"$KEY_LEFT"
 	bindkey -M viins -s '0-' "_"
@@ -369,9 +370,9 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s ']\' '|'
 	bindkey -M viins -s '^[2' ' | '
 	bindkey -M viins -s ',wc' ' | wc -l'
-	bindkey -M vicmd -s '^[s' '0isudo ^[A^['
+	bindkey -M vicmd -s 'su' '^[0isudo ' # here we have bug in zsh for multline prompts
 	bindkey -M viins -s ',ez' "tmux split-window \"vim + ~/.zshrc\"$ENTER"
-	bindkey -M viins -s ',e,' "tmux split-window \"vim \"$KEY_LEFT"
+	bindkey -M viins -s ',e,' "jk0itmux split-window -p 30 " 
 
 	export TAB="\t"
 	bindkey '\ej' zshnip-expand-or-edit # Alt-J
@@ -382,8 +383,8 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	alias echotsv=''
 	zshnip-add perlane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4
 	alias perlane=''
-	zshnip-add tmuxdupa $'tmyx my dupa' 0
-	alias tmuxdupa=""
+	zshnip-add perlne $'perl -ne \'print "$1" if //;\' ' 4
+	alias perlne=''
 	# @zshsnippet_end
 fi
 #------------
