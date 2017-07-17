@@ -61,7 +61,7 @@ function virtualenv_prompt_info(){
   echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}${VIRTUAL_ENV:t}${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
 }
 export WORKON_HOME=~/Envs
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 mkdir -p $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
