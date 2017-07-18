@@ -1,0 +1,4 @@
+#!/bin/bash -e
+word=${1}
+wget -qO- https://sjp.pwn.pl/szukaj/${word}.html | grep « | perl -ne 'print "$1\n" if /(«.*?»)/;'
+

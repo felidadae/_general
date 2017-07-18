@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+from bs4 import BeautifulSoup
+import sys
+import subprocess
+import os
+
+word=sys.argv[1]
+return_code = subprocess.call("wget -qO- https://www.synonimy.pl/synonim/{}/ > .tmp.html".format(word), shell=True)
+
+data=""
+with open(".tmp.html", 'r') as fref_sample:
+    for line in fref_sample:
+        data += line
+os.remove(".tmp.html")
+
+soup = BeautifulSoup(data, 'html.parser')
+
+class Group:
+    def __init__(self):
+        self.title=""
+        self.words=[]
+
+    def __repr__(self):
+        result = ""
+        result += "«" + self.title + "»" + "\n"
+        for iw, word in enumerate(self.words):
+            if iw % 4 == 0 and iw > 0:
+                result += "".join(word.ljust(20) for word in self.words[iw-4:iw]) + "\n"
+        return result
+
+for group_synonims in soup.find_all('dd'):
+    my_group = Group()
+    my_group.title = group_synonims.find('span').find('small').find('i').contents[0]
+    for synonim in group_synonims.find_all('a', {"class":"load_word"}):
+        my_group.words.append(synonim.contents[0])
+    print(my_group)

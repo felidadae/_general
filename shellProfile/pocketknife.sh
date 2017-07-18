@@ -16,6 +16,7 @@ alias t2="tree2"
 alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
 alias tmux="tmux -2"
+alias gre=grep
 alias cd.="cd .."
 
 function howManyFiles { ls -1 "$1" | wc -l; }
@@ -360,6 +361,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '0-' "_"
 	bindkey -M viins -s '``' "~/"
 	bindkey -M viins -s '```' '$general/'
+	bindkey -M viins -s '````' 'cd $general'"$ENTER"
 
 	bindkey -M viins -s '^[;' "^[[4~" # go to end of the line >>M-;<<
 	bindkey -M viins -s '^[g' "^[[1~" # go to the begin of the line M-g
@@ -369,10 +371,24 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M vicmd v edit-command-line
 	bindkey -M viins -s ']\' '|'
 	bindkey -M viins -s '^[2' ' | '
-	bindkey -M viins -s ',wc' ' | wc -l'
-	bindkey -M vicmd -s 'su' '^[0isudo ' # here we have bug in zsh for multline prompts
+	bindkey -M viins -s '^[3' ' | grep -i '
+	bindkey -M viins -s 'wcl' ' | wc -l'
 	bindkey -M viins -s ',ez' "tmux split-window \"vim + ~/.zshrc\"$ENTER"
 	bindkey -M viins -s ',e,' "jk0itmux split-window -p 30 " 
+
+	function _git-status {
+		BUFFER="git status"
+		zle accept-line
+	}
+	zle -N _git-status
+	bindkey 'ŋ' _git-status
+
+	function _sudo-all {
+		zle beginning-of-line
+		LBUFFER="sudo "
+	}
+	zle -N _sudo-all 
+	bindkey '\es\es' _sudo-all
 
 	export TAB="\t"
 	bindkey '\ej' zshnip-expand-or-edit # Alt-J
@@ -442,4 +458,10 @@ function clean_whitespaces_to_4spaces {
 	perl -i -lpe 's/\s+$//' $(git ls-files)
 }
 function print_header { head -1 $1 | tr '\t' '\n' | cat -n; }
+function touch_sample_tsv {
+	echo "Touching file sample.htsv"
+	echo -e "col_name_0${TAB}col_name_1${TAB}col_name_2${TAB}col_name_3" >> sample.htsv
+	echo -e "col_val_row0_col0${TAB}col_val_row0_col1${TAB}col_val_row0_col2${TAB}col_val_row0_col3" >> sample.htsv
+	echo -e "col_val_row1_col0${TAB}col_val_row1_col1${TAB}col_val_row1_col2${TAB}col_val_row1_col3" >> sample.htsv
+}
 #--------------------------------
