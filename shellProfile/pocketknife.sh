@@ -373,6 +373,10 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '^[2' ' | '
 	bindkey -M viins -s '^[3' ' | grep -i '
 	bindkey -M viins -s 'wcl' ' | wc -l'
+	bindkey -M viins -s 'ł' 'ls'"$ENTER"
+	bindkey -M viins -s 'æ' 'git lg1'"$ENTER"
+	bindkey -M viins -s 'ó' "$ENTER"
+	bindkey -M viins -s 'þ' "$ENTER"
 	bindkey -M viins -s ',ez' "tmux split-window \"vim + ~/.zshrc\"$ENTER"
 	bindkey -M viins -s ',e,' "jk0itmux split-window -p 30 " 
 
@@ -390,6 +394,26 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	zle -N _sudo-all 
 	bindkey '\es\es' _sudo-all
 
+	function _tmux_bottom {
+		zle beginning-of-line
+		LBUFFER="tmux split-window -p $1"
+		zle accept-line
+	}
+	function _tmux_bottom_30 {
+		_tmux_bottom 30
+	}
+	function _tmux_bottom_50 {
+		_tmux_bottom 50
+	}
+	function _tmux_kill_pane {
+		BUFFER="tmux kill-pane"
+		zle accept-line
+	}
+	zle -N _tmux_bottom_30
+	bindkey 'ß' _tmux_bottom_30
+	zle -N _tmux_bottom_50
+	bindkey 'ßß' _tmux_bottom_50
+
 	export TAB="\t"
 	bindkey '\ej' zshnip-expand-or-edit # Alt-J
 	bindkey '\ee' zshnip-edit-and-expand # Alt-E
@@ -400,6 +424,8 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	zshnip-add perlane $'perl -F"$TAB" -lane \'print $F[0];\' ' 4
 	alias perlane=''
 	zshnip-add perlne $'perl -ne \'print "$1" if //;\' ' 4
+	alias perlne=''
+	zshnip-add perln $'perl -ne \'print "$." if //;\' ' 4
 	alias perlne=''
 	# @zshsnippet_end
 fi
