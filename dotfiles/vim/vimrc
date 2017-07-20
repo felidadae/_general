@@ -1,32 +1,4 @@
 "----------------------------------------------------------------------------------
-" @FIXME to make it working on termux
-" let g:ifGlobalPowerlineEnabled = ($IF_GLOBAL_POWERLINE_ENABLED != 1)
-" if g:ifGlobalPowerlineEnabled
-" 	Plugin 'vim-airline/vim-airline'
-" 	let g:airline_powerline_fonts = 1
-" 	let g:airline_theme='simple'
-" endif
-" PluginExtend
-"
-"
-" @FIXME check if powerline available
-" let g:remoteSession = ($SSH_CLIENT == "" || $SSH_CONNECTION == "")
-" if g:remoteSession
-
-
-
-" @fix for alt
-set <m-a>=^[a
-:let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
-set timeout ttimeoutlen=50
-
-
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 "----------------------------------------------------------------------------------
@@ -69,7 +41,6 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-scripts/vim-auto-save'
 Plugin 'artur-shaik/vim-javacomplete2'
 call vundle#end()            
 filetype plugin indent on
@@ -80,9 +51,6 @@ filetype plugin indent on
 
 "----------------------------------------------------------------------------------
 "GUI OPTIONS
-" :set guioptions-=L  "remove left-hand scroll bar
-" :set guioptions-=m  "remove menu bar
-" :set guioptions-=T  "remove toolbar
 :set guifont=Roboto\ Mono\ Medium\ for\ Powerline\ Medium\ 9 
 
 
@@ -98,14 +66,6 @@ python del powerline_setup
 :let g:webdevicons_enable_ctrlp = 1
 :let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 :let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-" call webdevicons#refresh()
-"let g:webdevicons_conceal_nerdtree_brackets = 1
-"let g:DevIconsEnableFoldersOpenClose = 1
-" else
-" 	:set t_ut=
-" 	:set showtabline=0
-" 	let g:webdevicons_enable = 0
-" endif
 
 
 
@@ -141,15 +101,18 @@ augroup myvimrc
 augroup END
 
 " @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
-:inoremap <m-l> <Right>
-:inoremap <m-h> <Left>
-:nnoremap <m-w> W
-:nnoremap <m-b> ^
+:inoremap <Esc>l <Right>
+:inoremap <Esc>h <Left>
 
-" @normal mode fast begin end
-:nnoremap <m-h> 0
-:nnoremap <m-l> $
-:nnoremap <m-a> A
+" @fast begin end
+:nnoremap <Esc>g 0
+:nnoremap <Esc>; $
+:inoremap <Esc>b <c-o>b
+:inoremap <Esc>e <c-o>e
+:inoremap <Esc>w <c-o>w
+:inoremap ó <c-o>
+:nnoremap <Esc>a A
+
 
 " @Insert blank
 nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
@@ -178,7 +141,7 @@ nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
 :nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
-nnoremap <m-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 :nnoremap op[ :UltiSnipsEdit<CR>
 
 " @replace current
