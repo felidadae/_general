@@ -18,7 +18,7 @@ HYPHEN_INSENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
 # plugins=(git)
-plugins=(git zsh-history-substring-search)
+plugins=(git zsh-history-substring-search clipboard)
 source $ZSH/oh-my-zsh.sh
 
 

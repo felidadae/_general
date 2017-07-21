@@ -1,3 +1,4 @@
+pk="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 function reloadBashProfile { 
 	if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 		source ~/.zshrc	
@@ -264,6 +265,17 @@ function restore_refactor {
 		mv $f "${f%.*}"
 	done	
 }
+function split_or_full {
+	app="$1"
+	percentage="$2"
+
+	[ -z "$percentage" ] && percentage=50
+	if [ "$percentage" != f ]; then 
+		tmux split -p "$percentage" "$app"
+	else
+		eval "$app"
+	fi
+}
 #--------------------------------
 
 
@@ -385,7 +397,14 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 		zle accept-line
 	}
 	zle -N _git-status
-	bindkey 'ŋ' _git-status
+	bindkey 'ś' _git-status
+
+	function _git-diff {
+		BUFFER="git diff"
+		zle accept-line
+	}
+	zle -N _git-diff
+	bindkey 'ð' _git-diff
 
 	function _sudo-all {
 		zle beginning-of-line
@@ -393,6 +412,14 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	}
 	zle -N _sudo-all 
 	bindkey '\es\es' _sudo-all
+
+	function _yank_line {
+		zle vi-yank-whole-line
+		LBUFFER="sudo "
+	}
+	zle -N _sudo-all 
+	bindkey '\es\es' _sudo-all
+
 
 	function _tmux_bottom {
 		zle beginning-of-line
@@ -427,6 +454,8 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	alias perlne=''
 	zshnip-add perln $'perl -ne \'print "$." if //;\' ' 4
 	alias perlne=''
+	zshnip-add perli $'perl -i -pe \'s///g\' *' 6
+	alias perli=""
 	# @zshsnippet_end
 fi
 #------------
@@ -436,7 +465,15 @@ alias .r="reloadBashProfile"
 alias .c="tr '\n' ' ' | xclip -selection c"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
 
-function ,epo { tmux split -p 40 'vim +/@super $general/shellProfile/pocketknife.sh;'  }
+function ,epo { 
+	percentage=$1
+	[ -z $percentage ] && percentage=50
+	if [ $percentage != 100 ]; then 
+		tmux split -p $percentage 'vim +/@super $general/shellProfile/pocketknife.sh;'  
+	else
+		vim +/@super $general/shellProfile/pocketknife.sh;
+	fi
+}
 function ,ev  { tmux split -p 40 'vim +/@mapping ~/.vimrc';  }
 
 alias _f=fuzzyCall
@@ -458,7 +495,7 @@ function ,pwd { pwd | tr '\n' ' ' | .c; }
 function ,se  { tmux split-window -p 50 "vim $1;"; }
 function ,sc  { tmux split-window -p 30 "vim $1;"; }
 
-function ggr  { cd $(git rev-parse --show-toplevel); }
+function ggr  { cd   $(git rev-parse --show-toplevel); }
 function egr  { echo $(git rev-parse --show-toplevel); }
 
 function ,epoa { echo "$@" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
@@ -472,12 +509,9 @@ function ,epoc { perl -ne '/\@Super fast/ && ($m=1); $m == 1 && print;' $general
 #@--not yet ordered
 function .reslow { xrandr -s 1920x1080; }
 function .reshigh { xrandr -s 3840x2160; }
-function .b+ { xbacklight -inc 60; }
-function .b- { xbacklight -dec 60; }
-
-function ,networkrestart { sudo service network-manager restart; }
+function .b+ { xbacklight -inc $1; }
+function .b- { xbacklight -dec $1; }
 function sk { tmux split -p 30 'showkey -a'; }
-function _gcom2 { sleep 0.2; tmux send-keys "git commit -m "; }
 function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa
 function clean_whitespaces_to_4spaces {
 	perl -MText::Tabs -n -i -e 'BEGIN {$tabstop = 4;} print expand $_' $(git ls-files)
