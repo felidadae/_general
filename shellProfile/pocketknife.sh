@@ -337,6 +337,16 @@ function zshsnippet_save {
 		' "$EPO"
 	unset LAST_COMMAND
 }
+function help_perlregexbehind {
+	echo '(?=) - Positive look ahead assertion foo(?=bar) matches foo when followed by bar'
+	echo '(?!) - Negative look ahead assertion foo(?!bar) matches foo when not followed by bar'
+	echo '(?<=) - Positive look behind assertion (?<=foo)bar matches bar when preceded by foo'
+	echo '(?<!) - Negative look behind assertion (?<!foo)bar matches bar when NOT preceded by foo'
+	echo '(?>) - Once-only subpatterns (?>\d+)bar Performance enhancing when bar not present'
+	echo '(?(x)) - Conditional subpatterns'
+	echo '(?(3)foo|fu)bar - Matches foo if 3rd subpattern has matched, fu if not'
+	echo '(?#) - Comment (?# Pattern does x y or z)'
+}
 #--------------------------------
 
 
