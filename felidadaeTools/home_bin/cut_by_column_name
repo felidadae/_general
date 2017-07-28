@@ -23,7 +23,7 @@ def filter_file(our_input):
         line_splitted = line.rstrip('\n').split('\t')
         if il == 0:
             header = { colname: icol for icol, colname in enumerate(line_splitted) }
-            header_len = line(line_splitted)
+            header_len = len(line_splitted)
 
         try:
             assert(header_len == len(line_splitted))

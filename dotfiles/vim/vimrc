@@ -243,7 +243,7 @@ autocmd FileType nerdtree setlocal relativenumber
 
 "----------------------------------------------------------------------------------
 " @ultisnips
-:let g:UltiSnipsExpandTrigger="<m-a>"
+:let g:UltiSnipsExpandTrigger="<Esc>a"
 :let g:UltiSnipsListSnippets="<c-u>"
 :let g:UltiSnipsJumpForwardTrigger="<c-b>"
 :let g:UltiSnipsJumpBackwardTrigger="<c-z>"
