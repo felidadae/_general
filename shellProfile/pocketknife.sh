@@ -514,8 +514,9 @@ function .b- { xbacklight -dec $1; }
 function sk { tmux split -p 30 'showkey -a'; }
 function man2pdf { man -t $1 | ps2pdf - > $1.pdf; }  #,epoa
 function clean_whitespaces_to_4spaces {
-	perl -MText::Tabs -n -i -e 'BEGIN {$tabstop = 4;} print expand $_' $(git ls-files)
-	perl -i -lpe 's/\s+$//' $(git ls-files)
+	FILES=$(git ls-files | grep '.sh\|.py' | tr '\n' ' ')
+	perl -MText::Tabs -n -i -e 'BEGIN {$tabstop = 4;} print expand $_' $FILES
+	perl -i -lpe 's/\s+$//' $FILES
 }
 function print_header { head -1 $1 | tr '\t' '\n' | cat -n; }
 function touch_sample_tsv {
