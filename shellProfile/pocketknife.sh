@@ -397,6 +397,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s 'wcl' ' | wc -l'
 	bindkey -M viins -s 'ł' 'ls'"$ENTER"
 	bindkey -M viins -s 'æ' 'git lg1'"$ENTER"
+	bindkey -M viins -s 'ŋ' 'git status'"$ENTER"
 	bindkey -M viins -s 'ó' "$ENTER"
 	bindkey -M viins -s 'þ' "$ENTER"
 	bindkey -M viins -s ',ez' "tmux split-window \"vim + ~/.zshrc\"$ENTER"
