@@ -17,10 +17,8 @@ ZSH_THEME="felidadae"
 HYPHEN_INSENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
-# plugins=(git)
 plugins=(git zsh-history-substring-search clipboard)
 source $ZSH/oh-my-zsh.sh
-
 
 # show which vim mode we are in
 bindkey -v 
@@ -43,26 +41,19 @@ export DISABLE_AUTO_TITLE=true
 [ ! -d ~/.zshnip_ ] && git clone https://github.com/facetframer/zshnip ~/.zshnip_
 source ~/.zshnip_/zshnip.zsh
 
-
 #felidadae
 export __MY_SHELL__="zsh"
 source ~/Programming/_General/shellProfile/AllFatherOfAllSons.sh
-if [ -e ~/bixby/bixby_profile.sh ]; then
-	source ~/bixby/bixby_profile.sh
-	function .rb {
-		source ~/bixby/bixby_profile.sh
-	}
-fi
-
 source ~/Programming/_General/felidadaeTools/spanishLearner/main.zsh
-
-function virtualenv_prompt_info(){
-  [[ -n ${VIRTUAL_ENV} ]] || return
-  echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}${VIRTUAL_ENV:t}${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
-}
-export WORKON_HOME=~/Envs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-mkdir -p $WORKON_HOME
-source /usr/local/bin/virtualenvwrapper.sh
-VIRTUAL_ENV="system-wide"
+if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
+	function virtualenv_prompt_info(){
+	  [[ -n ${VIRTUAL_ENV} ]] || return
+	  echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}${VIRTUAL_ENV:t}${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
+	}
+	export WORKON_HOME=~/Envs
+	export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+	export VIRTUAL_ENV_DISABLE_PROMPT=1
+	mkdir -p $WORKON_HOME
+	source /usr/local/bin/virtualenvwrapper.sh
+	VIRTUAL_ENV="system-wide"
+fi
