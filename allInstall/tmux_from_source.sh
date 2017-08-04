@@ -1,7 +1,7 @@
 echo "Print install tmux 2.3 from source code"
 
 echo "Install dependency libevent 2.x"
-sudo apt-get install libevent-dev
+sudo apt-get install libevent-dev automake
 
 echo "Cloning tmux github repo"
 cd $_sources
