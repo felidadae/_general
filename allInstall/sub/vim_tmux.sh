@@ -1,8 +1,9 @@
+#!/bin/bash -e
 if [[ "$(which vim)" == "" ]]; then
-	source vim_from_source.sh
+	./vim_from_source.sh
 fi
 if [[ "$(which tmux)" == "" ]]; then
-	source tmux_from_source.sh
+	./tmux_from_source.sh
 	echo "[Remember] run Prefix+I in tmux session to install tmux plugins"; sleep 1
 fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -13,3 +14,12 @@ sudo apt-get install xclip #get copy to x11 clipboard in vi copy mode;
 sudo pip install git+git://github.com/Lokaltog/powerline #powerline for many
 echo "[Remember] Install nerd fonts from fonts \$general/dir;"; sleep 3
 #@vim @tmux
+
+sudo apt-get install build-essential cmake
+sudo apt-get install python-dev python3-dev
+cd ~/.vim/bundle/YouCompleteMe
+if [ "$INSTALL_YOUCOMPLETEME_CLANG_COMPLETER" == 1 ]; then
+	./install.py --clang-completer
+else
+	./install.py
+fi

@@ -1,3 +1,4 @@
+#!/bin/bash -e
 cd $_sources
 
 [[ ! -d vim ]] && git clone https://github.com/vim/vim.git 

@@ -177,8 +177,4 @@ function general_sync {
 if [[ $__MY_SHELL__ = "bash" ]]; then
 	bind '"jk":vi-movement-mode'
 fi
-
-if [[ $__MY_SHELL__ = "zsh" ]]; then
-
-fi
 #-------------------------------------------------------------------------------

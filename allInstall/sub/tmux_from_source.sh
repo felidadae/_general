@@ -1,3 +1,4 @@
+#!/bin/bash -e
 echo "Print install tmux 2.3 from source code"
 
 echo "Install dependency libevent 2.x"

@@ -1,3 +1,4 @@
+#!/bin/bash -e
 cd ~/Downloads
 git clone https://github.com/sakisds/pPub.git
 cd pPub

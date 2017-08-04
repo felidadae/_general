@@ -1,3 +1,4 @@
+#!/bin/bash -e
 #
 #	Download from http://developer.android.com/sdk/index.html and put into
 #	~/Downloads

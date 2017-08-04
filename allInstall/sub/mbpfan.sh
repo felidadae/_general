@@ -1,3 +1,4 @@
+#!/bin/bash -e
 if [[ $INSTALL_MBPFAN == 1 ]]; then
 	cd ~
 	mkdir ToolsSources

@@ -1,3 +1,4 @@
+#!/bin/bash -e
 cd "$_sources"
 if [[ ! -d darktable ]]; then
 	git clone https://github.com/darktable-org/darktable.git
