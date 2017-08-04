@@ -476,13 +476,7 @@ alias .c="tr '\n' ' ' | xclip -selection c"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c }
 
 function ,epo { 
-	percentage=$1
-	[ -z $percentage ] && percentage=50
-	if [ $percentage != 100 ]; then 
-		tmux split -p $percentage 'vim +/@super $general/shellProfile/pocketknife.sh;'  
-	else
-		vim +/@super $general/shellProfile/pocketknife.sh;
-	fi
+	vim +/@super $general/shellProfile/pocketknife.sh;
 }
 function ,ev  { tmux split -p 40 'vim +/@mapping ~/.vimrc';  }
 
