@@ -16,3 +16,4 @@ sudo apt install redshift
 ./trans.sh
 sudo apt-get install python-pip python-dev build-essential 
 sudo apt-get install libfreetype6-dev libxft-dev
+sudo apt-get install ncdu

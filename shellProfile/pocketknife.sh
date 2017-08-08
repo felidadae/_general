@@ -347,6 +347,9 @@ function help_perlregexbehind {
 	echo '(?(3)foo|fu)bar - Matches foo if 3rd subpattern has matched, fu if not'
 	echo '(?#) - Comment (?# Pattern does x y or z)'
 }
+function help_checkspace {
+	echo 'Use tools: du, df, ncdu'
+}
 #--------------------------------
 
 

@@ -1,5 +1,10 @@
 cd /media/felidadae/EXTERNDISC/Backups
-rsync --update -av --exclude 'felidadae/*Android*' --exclude 'felidadae/.*' ~ .
+
+#all my data
+rsync --delete --update -av --exclude 'felidadae/*Android*' --exclude 'felidadae/.*' ~ .
+
+#gnome shell extensions
+rsync --delete --update -av ~/.local/share/gnome-shell/extensions .
 
 script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$script_path"

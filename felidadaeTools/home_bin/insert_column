@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+# @test:
+# insert_column equimpent.tsv test_header test_default_value category
+
+file_in=$1
+export header_name=$2
+export default_val=$3
+export after_column_name=$4
+
+export boundary_index=$(head -1 "$file_in" | \
+	perl -F'\t' -lane '
+		$i=1; 
+		foreach $col (@F) { 
+			print $i if $col eq $ENV{after_column_name}; ++$i; 
+		}') #1 indexed
+
+paste \
+	<(cut -f1-$boundary_index $file_in | \
+		perl -ne '
+			chomp; 
+			if ($. == 1) { print "$_\t$ENV{header_name}\n"; } 
+			else { print "$_\t$ENV{default_val}\n"; }') \
+	<(cut -f$((boundary_index+1))- $file_in)

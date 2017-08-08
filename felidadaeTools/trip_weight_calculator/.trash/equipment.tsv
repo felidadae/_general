@@ -1,0 +1,24 @@
+category	parent_part	part_name	minimal_weight	max_weight	probable_weight	count	price	if_taken
+computer	surface	charger	206	206	206	1 	0 	True
+computer	surface	laptop	800	800	800	1	0	True
+computer	surface	keyboard	200	300	300	1	0	True
+computer	asus	laptop	2138	2138	2138	1	0	False
+computer	asus	charger	625	625	625	1	0	False
+phone	phone	phone	180	180	180	1	0	True
+phone	phone	fast charger	144	144	144	1	0	True
+phone	phone	usb cable	25	25	25	1	0	False
+phone	powerbank	powerbank	238	238	238	1	0	False
+camera	camera	camera	1140	1140	1140	1	0	False
+camera	camera	charger	N/A	N/A	N/A	1	0	False
+backpack	backpack	backpack	1000	1000	1000	1	0	True
+sleeping	tent	tent	1300	1300	1300	1	0	True
+sleeping	sleeping bag	sleepingbag	500	500	500	1	0	True
+sleeping	matterace	matterace	500	500	500	1	0	True
+clothes	jacket	jacket	753	753	753	1	0	True
+clothes	polar	polar	500	500	500	1	0	True
+clothes	long pants	long pants	500	500	500	1	0	True
+clothes	short pants	short pants	320	320	320	2	0	True
+clothes	t-shirt	t-shirt	180	180	180	3	0	True
+clothes	pants	pants	80	80	80	3	0	True
+clothes	sockets	sockets	50	50	50	3	0	True
+food	water	water	1000	1000	1000	1	0	True

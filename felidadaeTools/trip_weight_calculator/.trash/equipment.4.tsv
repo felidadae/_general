@@ -1,0 +1,24 @@
+category	parent_part	part_name	option_name	option_value	weight	count	price	if_taken
+computer	surface	charger	laptop-choice	surface	206	1 	0 	True
+computer	surface	laptop	laptop-choice	surface	800	1	0	True
+computer	surface	keyboard	laptop-choice	surface	300	1	0	True
+computer	asus	laptop	laptop-choice	asus	2138	1	0	False
+computer	asus	charger	laptop-choice	asus	625	1	0	False
+phone	phone	phone	N/A	N/A	180	1	0	True
+phone	phone	fast charger	N/A	N/A	144	1	0	True
+phone	phone	usb cable	N/A	N/A	25	1	0	False
+phone	powerbank	powerbank	N/A	N/A	238	1	0	False
+camera	camera	camera	N/A	N/A	1140	1	0	False
+camera	camera	charger	N/A	N/A	N/A	1	0	False
+backpack	backpack	backpack	N/A	N/A	1000	1	0	True
+sleeping	tent	tent	N/A	N/A	1300	1	0	True
+sleeping	sleeping bag	sleepingbag	N/A	N/A	500	1	0	True
+sleeping	matterace	matterace	N/A	N/A	500	1	0	True
+clothes	jacket	jacket	N/A	N/A	753	1	0	True
+clothes	polar	polar	N/A	N/A	500	1	0	True
+clothes	long pants	long pants	N/A	N/A	500	1	0	True
+clothes	short pants	short pants	N/A	N/A	320	2	0	True
+clothes	t-shirt	t-shirt	N/A	N/A	180	3	0	True
+clothes	pants	pants	N/A	N/A	80	3	0	True
+clothes	sockets	sockets	N/A	N/A	50	3	0	True
+food	water	water	N/A	N/A	1000	1	0	True

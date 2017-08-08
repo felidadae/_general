@@ -1,11 +1,31 @@
 ##
 #File I/O
 ##
+snippet bangLine "bang line for python3" b
+#!/usr/bin/env python3
+endsnippet
+
 snippet openFile "Open file with context" b
 with open(${1:filename}, 'r') as fref_$1:
 endsnippet
 
-snippet  
+snippet openFileLoopLines "Open file and loops through all of its lines"
+with open(${1:filename}, 'r') as fref:
+	for il, line in enumerate(fref):
+endsnippet
+
+snippet openTsvFileLoopLines "Open TSV file and loops through all of its rows treating first as header"
+with open(${1:filename}, 'r') as fref:
+	header = {}
+	for il, line in enumerate(fref):
+		vals = line.rstrip().split('\t')
+		if il == 0:
+			header = { col_name: col_index for col_index, col_name in enumerate(vals) }
+			continue
+
+		# to get val 
+		def get_col_val(col_name):
+			return line[header[col_name]]
 endsnippet
 
 
@@ -138,7 +158,7 @@ endsnippet
 ####
 # @bashlike
 ####
-snippet rmr "" b
+snippet rmr "remove directory" b
 import shutil
 shutil.rmtree(${1:directoryToRemove})
 endsnippet
@@ -148,28 +168,28 @@ import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 endsnippet
 
-snippet mkdirr "" b
+snippet mkdir "make dir" b
 import os
 os.makedirs(${1:pathToDir})
 endsnippet
 
-snippet ifFileExists "" b
+snippet ifFileExists "check if a file exists" b
 import os
 if os.path.isfile(${1:fileName}):
 	${0}
 endsnippet
 
-snippet rm "" b
+snippet rm "delete a file" b
 import os
 os.remove(${1:pathToFile})
 endsnippet
 
-snippet ls "" b
+snippet ls "list current directory" b
 import os
 os.listdir(${1:pathToDir})
 endsnippet
 
-snippet callScript "" b
+snippet callScript "call script and read output from it" b
 fullPathToScript = ${1}
 p = subprocess.Popen(
 	["/bin/bash", 
