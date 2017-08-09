@@ -2,8 +2,8 @@ category	parent_part	part_name	if_optional	option_name	option_value	weight	count
 computer	laptop	charger	True	laptop-choice	surface	206	1 	0 	True
 computer	laptop	laptop	True	laptop-choice	surface	800	1	0	True
 computer	laptop	keyboard	True	laptop-choice	surface	300	1	0	True
-computer	laptop	laptop	True	laptop-choice	asus	2138	1	0	True	
-computer	laptop	charger	True	laptop-choice	asus	625	1	0	True	
+computer	laptop	laptop	True	laptop-choice	asus	2138	1	0	True
+computer	laptop	charger	True	laptop-choice	asus	625	1	0	True
 phone	phone	phone	False	N/A	N/A	180	1	0	True
 phone	phone	fast charger	False	N/A	N/A	144	1	0	True
 phone	phone	usb cable	False	N/A	N/A	25	1	0	False
@@ -16,10 +16,10 @@ sleeping	tent	tent	False	tent-choice	tent-ultra-l	700	1	0	True
 sleeping	sleeping bag	sleepingbag	False	N/A	N/A	500	1	0	True
 sleeping	matterace	matterace	False	N/A	N/A	500	1	0	True
 clothes	jacket	jacket	False	jacket-choice	german	753	1	0	True
-clothes	jacket	jacket	False	jacket-choice	new	300	1	680	False	
+clothes	jacket	jacket	False	jacket-choice	new	300	1	680	False
 clothes	polar	polar	False	N/A	N/A	500	1	0	True
-clothes	long pants	long pants	False	N/A	N/A	500	1	0	True
-clothes	short pants	short pants	False	N/A	N/A	320	2	0	True
+clothes	long-pants	long pants	False	N/A	N/A	500	1	0	True
+clothes	short-pants	short pants	False	N/A	N/A	320	2	0	True
 clothes	t-shirt	t-shirt	False	N/A	N/A	180	3	0	True
 clothes	pants	pants	False	N/A	N/A	80	3	0	True
 clothes	sockets	sockets	False	N/A	N/A	50	3	0	True
@@ -32,4 +32,5 @@ cleaning	beautician	washing zel	False	N/A	N/A	50	1	0	True
 cleaning	beautician	blade	False	N/A	N/A	30	1	0	True
 cooking	burner+pot	burner+pot	False	burner-option	solid-fuel	138	1	0	True
 cooking	fork	fork	False	burner-option	solid-fuel	20	1	0	True
+cooking	solid-fuel	solid-fuel	False	burner-option	solid-fuel	84	1	0	True
 food	water	water	False	N/A	N/A	750	1	0	True
