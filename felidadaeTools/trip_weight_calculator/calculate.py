@@ -5,52 +5,24 @@
     @todo:
     - fold by category, or parent_part
 """
+import plot
+from utilities import apply_fun, flat_print
 
-def apply_fun(fun, fun_state):
-    with open('data/equipment.tsv', 'r') as fref:
-        header = {}
-
-        for il, line in enumerate(fref):
-            vals = line.rstrip().split('\t')
-            if il == 0:
-                header = { col_name: col_index for col_index, col_name in enumerate(vals) }
-                continue
-            fun(header, vals, fun_state)
-
-    return fun_state
-
-
-def flat_print(list):
-    return ("\n".join(list))
+EQUIPMENT_FILE="data/equipment.tsv"
 
 
 def get_options():
     state = set() 
     def get_options_internal(header, vals, fun_state):
         fun_state.add(vals[header["option_name"]])
-    apply_fun(get_options_internal, state)
+    apply_fun(EQUIPMENT_FILE, get_options_internal, state)
     return state
 
 
-def calculate_taken():
-    state_ = { "sum": 0, "items": [] }
-
-    def sum_internal(header, vals, state):
-        def get_col_val(col_name):
-            return vals[header[col_name]]
-        if get_col_val("if_taken") == "True":
-            print("name: {}-{}-{}-{}".format(
-                get_col_val("category"),
-                get_col_val("parent_part"),
-                get_col_val("part_name"),
-                get_col_val("option_value")))
-            state_["sum"] += int(get_col_val("weight")) * int(get_col_val("count"))
-
-    apply_fun(sum_internal, state_) 
-    return state_
-
-
 def calculate_taken_with_option(options, ignore_categories=set()):
+    """
+
+    """
     state_ = { "sum": 0, "items": [], "backpack_weight": 0 }
 
     def sum_options(header, vals, state):
@@ -78,7 +50,7 @@ def calculate_taken_with_option(options, ignore_categories=set()):
                         state_["sum"] += int(get_col_val("weight")) * int(get_col_val("count"))
                         if get_col_val("part_name") == "backpack": state_["backpack_weight"] = int(get_col_val("weight"))
 
-    apply_fun(sum_options, state_) 
+    apply_fun(EQUIPMENT_FILE, sum_options, state_) 
 
     # sort items
     state_["items"] = sorted(state_["items"], reverse=True, key=lambda item: item[1]) 
@@ -98,9 +70,9 @@ def calculate_taken_with_option(options, ignore_categories=set()):
         )
     )
     return state_
-         
+        
 
-if __name__ == "__main__":
+def main():
     r = calculate_taken_with_option(
         options = {
             "jacket-choice": "german", 
@@ -110,3 +82,11 @@ if __name__ == "__main__":
         },
         ignore_categories = set(["computer"]))
     print(r["to_print"])
+    plot.plot_pie(
+        labels  = [name for name, _ in r["items"]], 
+        sizes   = [weight for _, weight in r["items"]], 
+        explode = [0]*len(r["items"]))
+
+
+if __name__ == "__main__":
+    main()

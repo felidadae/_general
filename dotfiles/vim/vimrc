@@ -113,16 +113,8 @@ augroup END
 :inoremap ó <c-o>
 :nnoremap <Esc>a A
 
-" @faster movements
-:nnoremap w W
-:nnoremap b B
-:nnoremap e E
-:nnoremap qw 2w
-:nnoremap vb 2b
-:nnoremap we 2e
-
 " @Insert blank
-nnoremap <silent><F2> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap ,2, :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 :nnoremap =<space> i<space><esc>
 :nnoremap =<tab> i<tab><esc>
