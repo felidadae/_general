@@ -13,3 +13,4 @@ if [[ ! -d $general ]]; then
 	mkdir -p $labs
 	mkdir -p $_sources 
 fi
+cd "$general/allInstall"; ./all_install.sh

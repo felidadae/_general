@@ -2,9 +2,10 @@
 
 # to install only some part comment unneeded code
 
+all_install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$all_install_path"
 cd sub
 source __config__.sh
-source boostrap.sh
 
 ./essentials.sh
 
