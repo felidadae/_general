@@ -13,7 +13,7 @@ function create_link_long {
 	local name=${3}
 
 	echo "Creating symbolic for $name."
-	rm $target
+	rm -f $target
 	ln -s "$source" "$target"
 }
 function create_link {
