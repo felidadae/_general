@@ -1,4 +1,15 @@
+# @system wide
+
+# Where gnome keeps all its stuff system-wide
+export gnome_system_stuff=/usr/share/gnome-shell 
+export gnome_user_stuff=~/.local/share/gnome-shell
+
+
+
+# @base
 export base=~/Programming
+
+
 
 # @general
 export general="$base"/_General
@@ -7,6 +18,8 @@ export skeletons="$general/Skeletons"
 export playground="$general"/playground
 export algorithms="$general"/algorithms
 
+
+
 # @base other than general
 export projects="$base"/Projects
 export labs="$base"/Labs
@@ -14,9 +27,12 @@ export musicallab=$labs/MusicalLab
 export _sources="$base"/_ToolsSource
 notus=$general/notusLink
 
+
+
 # @other than base
 export myphotos=~/Pictures/MojeZdjecia
 export documents=~/Documents
+
 
 
 function locationAdd {

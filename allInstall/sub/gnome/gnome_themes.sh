@@ -1,11 +1,19 @@
 #!/bin/bash -e
 sudo apt-add-repository ppa:tista/adapta
 sudo apt update && sudo apt install adapta-gtk-theme
+mkdir -p ~/.themes
+cp -r /usr/share/themes/Adapta-Nokto ~/.themes/Adapta-Nokto-My
+cd ~/.themes/Adapta-Nokto-My
 
-cp -r Adapta-Nokto ~/.themes/Adapta-Nokto-My2
 #apply path
+perl -i -pe 'if (/^stage/) {s/font-family:.*?;/font-family: Ubuntu Condensed;/g;}' gnome-shell.css 
+perl -i -pe 'if (/^stage/) {s/font-size:.*?;/font-size: 11pt;/g;}' gnome-shell.css 
+exit 0
 
-exit
+
+
+
+
 diff --git a/gnome-shell.css b/gnome-shell.css
 index da380e1..13eaaac 100644
 --- a/gnome-shell.css

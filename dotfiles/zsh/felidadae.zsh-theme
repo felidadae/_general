@@ -1,4 +1,5 @@
-# ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
+# ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png 
+
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 
@@ -20,11 +21,10 @@ else
   fi
 fi
 local git_branch='$(git_prompt_info)%{$reset_color%}'
-
-PROMPT="╭─${current_dir} ${rvm_ruby}${git_branch} 
+local virtual_env='%{$fg[blue]%}‹ $(basename $VIRTUAL_ENV)›%{$reset_color%}'
+PROMPT="╭─${current_dir} ${git_branch} ${virtual_env} 
 ╰─%B${user_symbol}%b "
 RPS1="%B${return_code}%b"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
-
