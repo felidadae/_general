@@ -17,3 +17,4 @@ sudo apt install redshift
 sudo apt-get install python-pip python-dev build-essential 
 sudo apt-get install libfreetype6-dev libxft-dev
 sudo apt-get install ncdu
+sudo apt-get install checkinstall

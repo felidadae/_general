@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 [ ! -d gnome-terminal-colors-solarized ] && git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
 [ ! -d gnome-terminal-colors-monokai ] && git clone git://github.com/pricco/gnome-terminal-colors-monokai.git
 [ ! -d osx-terminal.app-colors-solarized ] && git clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git

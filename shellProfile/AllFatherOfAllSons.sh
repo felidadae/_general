@@ -56,9 +56,9 @@ function checkDesktopSession {
 }
 export DESKTOP_SESSION__=$(checkDesktopSession)
 
-OS__=$(lsb_release -si)
-ARCHITECTURE__=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
-OS_VER__=$(lsb_release -sr)
+export OS__=$(lsb_release -si)
+export ARCHITECTURE__=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
+export OS_VER__=$(lsb_release -sr)
 #-------------------------------------------------------------------------------
 
 
@@ -77,7 +77,7 @@ OS_VER__=$(lsb_release -sr)
 #------------------------
 export PATH=~/bin:"$PATH"
 export EDITOR="vim"
-TERM=xterm-256color
+export TERM=xterm-256color
 
 #Promt
 source $script_path__allfather/ps1_bash.sh
