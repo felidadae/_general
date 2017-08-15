@@ -21,8 +21,14 @@ else
   fi
 fi
 local git_branch='$(git_prompt_info)%{$reset_color%}'
-local virtual_env='%{$fg[blue]%}‹ $(basename $VIRTUAL_ENV)›%{$reset_color%}'
-PROMPT="╭─${current_dir} ${git_branch} ${virtual_env} 
+
+if [[ "$CONDA_DEFAULT_ENV" != "" ]]; then
+	local python_env='%{$fg[blue]%}‹ conda: $(echo $CONDA_DEFAULT_ENV)›%{$reset_color%}'
+else
+	local python_env='%{$fg[blue]%}‹ ve: $(basename $VIRTUAL_ENV)›%{$reset_color%}'
+fi
+
+PROMPT="╭─${current_dir} ${git_branch} ${python_env} 
 ╰─%B${user_symbol}%b "
 RPS1="%B${return_code}%b"
 

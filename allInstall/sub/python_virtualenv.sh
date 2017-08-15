@@ -21,6 +21,4 @@ source /usr/local/bin/virtualenvwrapper.sh
 EOF
 fi
 
-echo <<EOF
-Use commands as "mkvirtualenv -p $PYTHON_PATH env35"
-EOF
+echo "Use commands as \"mkvirtualenv -p $PYTHON_PATH env35\""
