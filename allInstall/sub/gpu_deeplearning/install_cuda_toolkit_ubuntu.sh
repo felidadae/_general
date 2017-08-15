@@ -1,5 +1,5 @@
-# https://medium.com/@at15/install-nvidia-cuda-on-ubuntu-17-04-823300ab7bcc
-sudo apt-get install -y nvidia-cuda-dev nvidia-cuda-toolkit
+echo "Follow manual: https://developer.nvidia.com/cuda-downloads"
+read ""
 
 #check if works
 cd resources
