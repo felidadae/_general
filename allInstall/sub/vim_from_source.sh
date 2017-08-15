@@ -4,13 +4,9 @@ cd $_sources
 export IF_NO_X11=0
 
 [[ ! -d vim ]] && git clone https://github.com/vim/vim.git 
-if [ $IF_NO_X11 == 0 ]; then
-	if [ $OS_VER__ == "17.04" ]; then 
-		sudo apt-get install libgtk-3-dev
-	else
-		sudo apt-get install libgtk3.0-dev
-	fi
+if [ $IF_NO_X11 == 0 ]; then	 
 	sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
+		libgtk-3-dev \
 		libatk1.0-dev libbonoboui2-dev \
 		libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
 		python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git
