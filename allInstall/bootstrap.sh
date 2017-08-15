@@ -5,7 +5,7 @@ export father=$general/shellProfile/AllFatherOfAllSons.sh
 if [[ ! -d $general ]]; then
 	mkdir -p ~/Programming
 	cd ~/Programming
-	sudo apt-get install git
+	sudo apt-get install -y git
 	git clone https://github.com/felidadae/_general.git
 	mv _general _General
 fi

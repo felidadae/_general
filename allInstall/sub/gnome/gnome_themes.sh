@@ -1,6 +1,6 @@
 #!/bin/bash -e
 sudo apt-add-repository ppa:tista/adapta
-sudo apt update && sudo apt install adapta-gtk-theme
+sudo apt update && sudo apt install -y adapta-gtk-theme
 mkdir -p ~/.themes
 cp -r /usr/share/themes/Adapta-Nokto ~/.themes/Adapta-Nokto-My
 cd ~/.themes/Adapta-Nokto-My

@@ -10,7 +10,7 @@ if [[ $INSTALL_MBPFAN == 1 ]]; then
 	git clone https://github.com/dgraziotin/mbpfan
 	sudo echo "coretemp" >> /etc/modules
 	sudo echo "applesmc" >> /etc/modules
-	sudo apt-get install build-essential
+	sudo apt-get install -y build-essential
 	###
 	cd mbpfan
 	make

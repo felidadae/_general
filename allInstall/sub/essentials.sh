@@ -2,20 +2,20 @@
 
 # essentials utilities 
 
-sudo apt-get install htop
-sudo apt-get install cmake
-sudo apt-get install tlp
-sudo apt-get install tlp-rdw
-sudo apt-get install openssh-server
-sudo apt-get install tree
-sudo apt-get install python-pygments
-sudo apt-get install xbacklight
-sudo apt-get install lynx
-sudo apt-get install autokey-gtk
-sudo apt install redshift
+sudo apt-get install -y htop
+sudo apt-get install -y cmake
+sudo apt-get install -y tlp
+sudo apt-get install -y tlp-rdw
+sudo apt-get install -y openssh-server
+sudo apt-get install -y tree
+sudo apt-get install -y python-pygments
+sudo apt-get install -y xbacklight
+sudo apt-get install -y lynx
+sudo apt-get install -y autokey-gtk
+sudo apt install -y redshift
 ./trans.sh
-sudo apt-get install python-pip python-dev build-essential 
-sudo apt-get install libfreetype6-dev libxft-dev
-sudo apt-get install ncdu
-sudo apt-get install checkinstall
-sudo apt-get install net-tools
+sudo apt-get install -y python-pip python-dev build-essential 
+sudo apt-get install -y libfreetype6-dev libxft-dev
+sudo apt-get install -y ncdu
+sudo apt-get install -y checkinstall
+sudo apt-get install -y net-tools

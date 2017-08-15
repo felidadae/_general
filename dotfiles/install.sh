@@ -39,10 +39,9 @@ for f in $dotfiles_dir/__user_dir_level__/*; do
 	[ ! -e "$f" ] && continue
 	create_link_long "$f" ~/.$(basename $f) $(basename $f)
 done
-create_link zsh/felidadae.zsh-theme ~/.oh-my-zsh/themes/felidadae.zsh-theme
+mkdir -p ~/.oh-my-zsh/themes; create_link zsh/felidadae.zsh-theme ~/.oh-my-zsh/themes/felidadae.zsh-theme
 create_link vim/vimrc ~/.vimrc
 create_link vim/snippets ~/.vim/felidadae_snippets
-create_link autokey/data ~/.config/autokey/data
-create_link matplotlib/matplotlibrc  ~/.config/matplotlib/matplotlibrc
+mkdir -p ~/.config/matplotlib; create_link matplotlib/matplotlibrc  ~/.config/matplotlib/matplotlibrc
 create_link tmux/tmux.conf ~/.tmux.conf
 create_link perl/perldb ~/.perldb
