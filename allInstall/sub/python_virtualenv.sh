@@ -1,13 +1,10 @@
 #!/bin/bash -e
-#
-# @TODO documentation
-#
 
-echo "Installed python is" "$(python --version)" 
+echo "Virtualenv will be installed for python of version" "$(python --version)" 
 echo "Type any key to continue."
 read 
 
-echo "Install virtualenv for python2.7"
+echo "Install virtualenv systemwide (for all users with sudo)" 
 sudo pip install virtualenv
 sudo pip install virtualenvwrapper
 
@@ -21,4 +18,11 @@ source /usr/local/bin/virtualenvwrapper.sh
 EOF
 fi
 
-echo "Use commands as \"mkvirtualenv -p $PYTHON_PATH env35\""
+echo "Use commands as \"mkvirtualenv -p \$PYTHON_EXEC_PATH \$ENV_NAME\""
+echo "For example:"
+echo "mkvirtualenv -p $(which python3) env35"
+echo "pip install ipython ipdb numpy matplotlib"
+
+# Example commands:
+# mkvirtualenv -p $(which python3) env35
+# pip install ipython ipdb numpy matplotlib

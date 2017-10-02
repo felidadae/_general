@@ -13,3 +13,5 @@ my $choice = $choices[<>-1] or die "invalid choice";
 exec (qw(pacmd load-module module-remap-sink sink_name=mono),
     "master=$choice",
     qw(channels=2 channel_map=mono,mono));
+
+`pacmd set-default-sink mono`

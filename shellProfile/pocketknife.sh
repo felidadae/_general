@@ -18,6 +18,10 @@ alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
 alias tmux="tmux -2"
 alias gre=grep
+alias install="sudo apt-get install"
+alias uninstall="sudo apt-get uninstall"
+alias install_upgrade="sudo apt-get udpate && sudo apt-get upgrade"
+alias def="xdg-open"
 alias cd.="cd .."
 
 function howManyFiles { ls -1 "$1" | wc -l; }
@@ -476,7 +480,7 @@ fi
 
 
 alias .r="reloadBashProfile"
-alias .c="tr '\n' ' ' | xclip -selection c"
+alias .c="tr '\n' ' ' | xclip -selection p"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c; }
 
 function ,epo { 

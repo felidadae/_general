@@ -60,3 +60,8 @@ fi
 if [ -d ~/miniconda3 ]; then
 	PATH="$PATH:/home/felidadae/miniconda3/bin"
 fi
+
+if [ ! -e $_sources/z/z.sh ]; then
+	git clone https://github.com/rupa/z.git $_sources 
+fi
+source $_sources/z/z.sh

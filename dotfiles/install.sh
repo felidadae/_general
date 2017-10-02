@@ -42,6 +42,8 @@ done
 mkdir -p ~/.oh-my-zsh/themes; create_link zsh/felidadae.zsh-theme ~/.oh-my-zsh/themes/felidadae.zsh-theme
 create_link vim/vimrc ~/.vimrc
 create_link vim/snippets ~/.vim/felidadae_snippets
+create_link vim/syntax ~/.vim/syntax
+create_link vim/ftdetect ~/.vim/ftdetect
 mkdir -p ~/.config/matplotlib; create_link matplotlib/matplotlibrc  ~/.config/matplotlib/matplotlibrc
 create_link tmux/tmux.conf ~/.tmux.conf
 create_link perl/perldb ~/.perldb

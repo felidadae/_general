@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+# to add note with 
+# current clipboard to notus
+
+if [ "$(xclip -out)" == "" ]; then
+	exit 1
+else
+	notus=~/Programming/_General/linkNotus/notes.todo
+	notus_tmp="$notus"'.tmp'
+	echo '$'"$(~/bin/date_) {bookmark toset} @$(xclip -out)" >> "$notus_tmp"
+	cat "$notus" >> "$notus_tmp"
+	mv "$notus_tmp" "$notus"
+fi

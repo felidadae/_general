@@ -25,9 +25,10 @@ export projects="$base"/Projects
 export labs="$base"/Labs
 export musicallab=$labs/MusicalLab
 export _sources="$base"/_ToolsSource
-notus=$general/notusLink
-
-
+export notus=$general/linkNotus
+export books=$general/linkMyBooks
+export powiesci=$general/linkMyBooks/powiesci
+export dropbox=$general/linkDropbox
 
 # @other than base
 export myphotos=~/Pictures/MojeZdjecia
