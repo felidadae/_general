@@ -21,7 +21,9 @@ alias gre=grep
 alias install="sudo apt-get install"
 alias uninstall="sudo apt-get uninstall"
 alias install_upgrade="sudo apt-get udpate && sudo apt-get upgrade"
-alias def="xdg-open"
+alias cham="chmod +x"
+alias open="xdg-open"
+alias spotify="spotify --force-device-scale-factor=2.5"
 alias cd.="cd .."
 
 function howManyFiles { ls -1 "$1" | wc -l; }
