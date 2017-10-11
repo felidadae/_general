@@ -62,6 +62,6 @@ if [ -d ~/miniconda3 ]; then
 fi
 
 if [ ! -e $_sources/z/z.sh ]; then
-	git clone https://github.com/rupa/z.git $_sources 
+	git clone https://github.com/rupa/z.git $_sources/z
 fi
 source $_sources/z/z.sh

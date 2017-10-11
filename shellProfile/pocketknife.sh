@@ -288,6 +288,12 @@ function split_or_full {
 function help_perl {
 	echo "Non consuming groups: (?<=regex)regex(?=regex)"
 }
+function help_gnome_extensions {
+	echo "Gnome extensions are located in two places:"
+	echo "  user   <- ~/.local/share/gnome-shell/extensions"
+	echo "  system <- /usr/share/gnome-shell/extensions/"
+}
+
 #--------------------------------
 
 
