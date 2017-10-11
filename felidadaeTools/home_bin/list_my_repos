@@ -1,0 +1,2 @@
+#!/bin/bash -e
+USER=felidadae; curl "https://api.github.com/users/$USER/repos?per_page=1000" | grep -o 'git@[^"]*'

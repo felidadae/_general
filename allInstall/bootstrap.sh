@@ -15,3 +15,5 @@ mkdir -p $labs
 mkdir -p $_sources 
 cd "$general/allInstall"
 source all_install.sh
+scriptPath_location="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+rm "$scriptPath_location"/bootstrap.sh # remove itself

@@ -18,10 +18,14 @@ alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
 alias tmux="tmux -2"
 alias gre=grep
-alias install="sudo apt-get install"
-alias uninstall="sudo apt-get uninstall"
-alias install_upgrade="sudo apt-get udpate && sudo apt-get upgrade"
-alias def="xdg-open"
+alias .get="sudo apt-get install"
+alias .remove="apt-get uninstall"
+function up {
+	sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove
+}
+alias cham="chmod +x"
+alias open="xdg-open"
+alias spotify="spotify --force-device-scale-factor=2.5"
 alias cd.="cd .."
 
 function howManyFiles { ls -1 "$1" | wc -l; }
@@ -542,5 +546,10 @@ function touch_sample_tsv {
 	echo -e "col_name_0${TAB}col_name_1${TAB}col_name_2${TAB}col_name_3" >> sample.htsv
 	echo -e "col_val_row0_col0${TAB}col_val_row0_col1${TAB}col_val_row0_col2${TAB}col_val_row0_col3" >> sample.htsv
 	echo -e "col_val_row1_col0${TAB}col_val_row1_col1${TAB}col_val_row1_col2${TAB}col_val_row1_col3" >> sample.htsv
+}
+function touch_script_sh {
+	touch "$1.sh"
+	chmod +x "$1.sh"
+	echo "#!/bin/bash -e" > "$1.sh"
 }
 #--------------------------------
