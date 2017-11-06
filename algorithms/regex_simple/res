@@ -1,0 +1,50 @@
+*****
+id: 0
+is_final: False
+last_character: BEGIN
+children: 1-->a
+*****
+
+*****
+id: 1
+is_final: False
+last_character: a
+children: 2-->b 3-->a
+*****
+
+*****
+id: 3
+is_final: False
+last_character: a
+children: 4-->c 5-->a
+*****
+
+*****
+id: 5
+is_final: False
+last_character: a
+children: 6-->END
+*****
+
+*****
+id: 6
+is_final: True
+last_character: END
+children: 
+*****
+
+*****
+id: 4
+is_final: False
+last_character: c
+children: 4-->c 5-->a
+*****
+
+*****
+id: 2
+is_final: False
+last_character: b
+children: 2-->b 3-->a
+*****
+
+

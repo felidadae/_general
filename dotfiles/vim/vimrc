@@ -84,10 +84,39 @@ colorscheme solarized
 "----------------------------------------------------------------------------------
 " @mappings
 
+" @lower upper
+:inoremap aa A
+:inoremap bb B
+:inoremap cc C
+:inoremap dd D
+:inoremap ee E
+:inoremap ff F
+:inoremap gg G
+:inoremap hh H
+:inoremap ii I
+:inoremap jj J
+:inoremap kk K
+:inoremap ll L
+:inoremap mm M
+:inoremap nn N
+:inoremap oo O
+:inoremap pp P
+:inoremap qq Q
+:inoremap rr R
+:inoremap ss S
+:inoremap tt T
+:inoremap uu U
+:inoremap vv V
+:inoremap ww W
+:inoremap xx X
+:inoremap yy Y
+
+
 " @basics
 :let mapleader = ","
 :let maplocalleader = "\\"
 inoremap jk <Esc>
+:nnoremap ghg G
 :nnoremap <leader>= :vertical resize +10<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
 :nnoremap <leader><leader>= :resize +10<cr>
@@ -155,7 +184,10 @@ nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " @mapping-c++ only
 
 " @mapping-python only
-:autocmd Filetype python :inoremap ;; :<cr>
+:autocmd Filetype python :inoremap ;; <Esc>$a:<cr>
+:autocmd Filetype python :inoremap 89 ()<Left>
+:autocmd Filetype python :inoremap [] {}<Left>
+:autocmd Filetype python :inoremap 0- _
 "----------------------------------------------------------------------------------
 
 
