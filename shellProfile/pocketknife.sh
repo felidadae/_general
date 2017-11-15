@@ -27,6 +27,7 @@ alias cham="chmod +x"
 alias open="xdg-open"
 alias spotify="spotify --force-device-scale-factor=2.5"
 alias cd.="cd .."
+alias df_gb="df --block-size=GB"
 
 function howManyFiles { ls -1 "$1" | wc -l; }
 function modifiedFilesIn {
