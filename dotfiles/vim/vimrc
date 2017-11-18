@@ -176,6 +176,10 @@ nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 :vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 
+" @all programming languages
+:inoremap ;'; <Esc>o
+:inoremap -= +
+
 " @mapping-sh only
 :autocmd Filetype sh :inoremap 34 "$"<Left>
 	"VVV Thats quite shitty thing: we here use escape sequence
@@ -185,6 +189,7 @@ nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " @mapping-python only
 :autocmd Filetype python :inoremap ;; <Esc>$a:<cr>
+:autocmd Filetype python :inoremap ;'; <Esc>$a<cr>
 :autocmd Filetype python :inoremap 89 ()<Left>
 :autocmd Filetype python :inoremap [] {}<Left>
 :autocmd Filetype python :inoremap 0- _
@@ -364,6 +369,7 @@ set sessionoptions-=buffers
 " @unsorted
 :set isfname-=/
 :set path=$PWD/**
+:set timeoutlen=180 ttimeoutlen=0
 "----------------------------------------------------------------------------------
 
 
