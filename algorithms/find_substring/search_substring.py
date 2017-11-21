@@ -22,11 +22,29 @@ def is_matching(bi, mi, p):
 
 def search(pattern, text):
     table = build_table(pattern)
-    while b != len()
+    b=0
+    i=0
 
+    while b < len(text) - len(pattern) + 1:
+        if pattern[i] == text[b+i]:
+            if i == len(pattern) - 1:
+                return (True, b) 
+            else:
+                i += 1
+        else:
+            # we know we have mismatch at >>i<< position
+            b_shift = table[i]
+            b_new = b + b_shift
+            i_new = i - b_shift if b_shift <= i else 0
+            i = i_new
+            b = b_new
+
+    return False
+         
 
 if __name__ == "__main__":
-    t = build_table("papak")
-    print(t)
-    t = build_table("papapaszka")
-    print(t)
+    r = search("kupa", "pan kupa kupy je")
+    print(r)
+
+    r = search("papak", "papapapapakzka")
+    print(r)

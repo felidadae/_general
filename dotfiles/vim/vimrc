@@ -190,9 +190,11 @@ nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " @mapping-python only
 :autocmd Filetype python :inoremap ;; <Esc>$a:<cr>
 :autocmd Filetype python :inoremap ;'; <Esc>$a<cr>
-:autocmd Filetype python :inoremap 89 ()<Left>
+:autocmd Filetype java :inoremap ;'; <Esc>$;a<cr>
+:inoremap 89 ()<Left>
 :autocmd Filetype python :inoremap [] {}<Left>
-:autocmd Filetype python :inoremap 0- _
+:inoremap 0- _
+:autocmd Filetype python :inoremap prt print()<Left> 
 "----------------------------------------------------------------------------------
 
 

@@ -1,0 +1,9 @@
+libmysqlclient-dev
+libmysqlclient20
+libqt4-sql-mysql
+mysql-client-5.7
+mysql-client-core-5.7
+mysql-common
+mysql-server
+mysql-server-5.7
+mysql-server-core-5.7
