@@ -353,7 +353,7 @@ autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
 
 "----------------------------------------------------------------------------------
 " @ycm ycm to set python version
-:let g:ycm_python_binary_path = '/usr/bin/python3'
+:let g:ycm_python_binary_path = 'python'
 "----------------------------------------------------------------------------------
 
 

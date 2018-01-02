@@ -8,6 +8,9 @@ function reloadBashProfile {
 	source $general/shellProfile/AllFatherOfAllSons.sh; 
 }
 
+# make tap to click
+synclient TapButton1=1 TapButton2=3 TapButton3=2
+
 alias catt="pygmentize -g"
 function c { clear; }
 function tree1 { tree -L 1 -C --dirsfirst; }
@@ -20,6 +23,7 @@ alias tmux="tmux -2"
 alias gre=grep
 alias .get="sudo apt-get install"
 alias .remove="apt-get uninstall"
+alias lynx='lynx -accept_all_cookies -lss=lynx.lss'
 function up {
 	sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove
 }
@@ -313,6 +317,27 @@ function split_or_full {
 		eval "$app"
 	fi
 }
+function experiment_java {
+	cat <<'EOF' > Experiment.java 
+import java.util.*;
+
+public class Experiment{
+	public static void main(String[] args){
+		System.out.println("Happy Coding!");
+	}
+}
+EOF
+	echo "Type run_java"
+}
+function run_java {
+	javac Experiment.java
+	java Experiment 
+}
+function move_to_tmp_dir {
+	pushd .
+	local __tmp__=$(mktemp -d)
+	cd "$__tmp__"
+}
 #--------------------------------
 
 
@@ -437,6 +462,8 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins 'jk' vi-cmd-mode
 	bindkey -M viins '^[r' history-incremental-search-backward
 	bindkey -M vicmd v edit-command-line
+	bindkey -M vicmd -s '^S' "$ENTER" 
+	bindkey -M viins -s '^S' "$ENTER" 
 	bindkey -M viins -s ']\' '|'
 	bindkey -M viins -s '^[2' ' | '
 	bindkey -M viins -s '^[3' ' | grep -i '
