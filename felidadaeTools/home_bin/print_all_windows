@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+import fileinput
+from termcolor import colored
+
+import subprocess, re
+
+command = "wmctrl -l | sort -k2"
+p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+out, err = p.communicate()
+out = out.decode("UTF-8")
+
+for line in (el for el in out.split("\n") if el != ""):
+    line = line.rstrip().split()
+    print(colored(str(int(line[1])+1), "yellow") + " ❱❱❱ " + " ".join(line[3:]))

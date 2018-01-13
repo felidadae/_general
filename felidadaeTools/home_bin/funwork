@@ -1,0 +1,2 @@
+#!/bin/bash -e
+wmctrl -s 4; gnome-terminal --window --full-screen -e tmux; sleep 1; sleep 1; xdotool type 'watch --color -n3 print_all_windows'; xdotool key KP_Enter; xdotool key ctrl+e ; xdotool type '\' ; xdotool key ctrl+h; xdotool key ctrl+e 'KP_Equal'; xdotool type ipython; xdotool key KP_Enter; xdotool key ctrl+e k ctrl+e k;xdotool key ctrl+l; xdotool type 'vim /home/felidadae/tmp/sample.py'; xdotool key 'KP_Enter'; xdotool key ctrl+e 'KP_Equal'; xdotool type cmatrix; xdotool key 'KP_Enter'; wmctrl -s 0;
