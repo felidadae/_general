@@ -9,7 +9,7 @@ function reloadBashProfile {
 }
 
 # make tap to click
-synclient TapButton1=1 TapButton2=3 TapButton3=2
+[ -x "$(command -v synclient)" ] && synclient TapButton1=1 TapButton2=3 TapButton3=2
 
 alias catt="pygmentize -g"
 function c { clear; }
