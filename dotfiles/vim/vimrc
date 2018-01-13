@@ -41,7 +41,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
 call vundle#end()            
 filetype plugin indent on
 " @Plugins.end
