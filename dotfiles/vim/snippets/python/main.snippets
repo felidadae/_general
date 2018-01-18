@@ -218,3 +218,13 @@ snippet cd "change current working directory" b
 import os
 os.chdir(${1:path})
 endsnippet
+
+snippet magic "magic function" b
+def __${1:name}__(self):
+	$0
+endsnippet
+
+snippet magic_other "magic function with other" b
+def __${1:name}__(self, other):
+	$0
+endsnippet

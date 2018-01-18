@@ -42,3 +42,4 @@ function locationAdd {
 
 ultisnips_dir=$general/dotfiles/vim/snippets/
 ### @added by function locationAdd >>
+snippets_buildin=/home/felidadae/.vim/bundle/vim-snippets/snippets
