@@ -19,7 +19,9 @@ sudo apt-get install -y build-essential cmake
 sudo apt-get install -y python-dev python3-dev
 cd ~/.vim/bundle/YouCompleteMe
 if [ "$INSTALL_YOUCOMPLETEME_CLANG_COMPLETER" == 1 ]; then
+	echo "Compiling YouCompleteMe with CLANG support"
 	./install.py --clang-completer
 else
+	echo "Compiling YouCompleteMe WITHOUT CLANG support; rerun setup with ~/.vim/bundle/YouCompleteMe/install.py --clang-completer;"
 	./install.py
 fi
