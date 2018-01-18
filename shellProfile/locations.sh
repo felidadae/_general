@@ -14,7 +14,7 @@ export base=~/Programming
 # @general
 export general="$base"/_General
 export shellProfileFiles="$general"/shellProfile
-export skeletons="$general/Skeletons"
+export skeletons="$general/skeletons"
 export playground="$general"/playground
 export algorithms="$general"/algorithms
 

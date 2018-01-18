@@ -9,7 +9,7 @@ function reloadBashProfile {
 }
 
 # make tap to click
-synclient TapButton1=1 TapButton2=3 TapButton3=2
+[ -x "$(command -v synclient)" ] && synclient TapButton1=1 TapButton2=3 TapButton3=2
 
 alias catt="pygmentize -g"
 function c { clear; }
@@ -286,9 +286,9 @@ function experimentCode {
 	cp -r $source $destiny
 
 	window_name=EXP
-	tmux new-window -n "$window_name";
-	tmux split -t :"$window_name" "cd $destiny; vim main.$lang"; 
-	tmux send-keys -t :"$window_name".1 "cd $destiny" Enter "c" Enter "pwd" Enter
+	tmux new-window -c "$destiny" -n "$window_name";
+	tmux split -t :"$window_name" "cd $destiny; vim *.$lang"; 
+	# tmux send-keys -t :"$window_name".1 "cd $destiny" Enter "c" Enter "pwd" Enter
 }
 function experimentCode__clear { rm -r $playground/EXP/*; }
 function experimentCode__mv {

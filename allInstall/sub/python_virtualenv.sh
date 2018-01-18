@@ -23,6 +23,7 @@ echo "For example:"
 echo "mkvirtualenv -p $(which python3) env35"
 echo "pip install ipython ipdb numpy matplotlib"
 
-# Example commands:
-# mkvirtualenv -p $(which python3) env35
-# pip install ipython ipdb numpy matplotlib
+export function install_standard_env35 {
+	mkvirtualenv -p $(which python3) env35
+	pip install ipython ipdb numpy matplotlib
+}
