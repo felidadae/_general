@@ -11,24 +11,27 @@ def create_matrix(n,m):
     n <- count of rows
     m <- count of columns
     """
-    return [[NOT_SET]*m]*n
+    return [[NOT_SET for x in range(m)] for x in range(n)]
 subresults = None
 
 def edit_distance_dynamic(s1, s2, i1=0, i2=0, 
-        costs=costs, will_notify_call_count=True, subresults=subresults):
+        costs=costs, will_notify_call_count=True):
     '''
     s1,s2 strings to compute edit distance between them
     @returns int (minimal distance between two strings, 
     not minimal could be as big as one wish)
     '''
-
-    #check if already computed
-    if subresults[i1][i2] != NOT_SET:
-        return subresults[i1][i2]
+    global subresults
+    global call_count
 
     #first time
     if i1 == 0 and i2 == 0:
         subresults = create_matrix(len(s1)+1, len(s2)+1)
+        call_count = {}
+
+    #check if already computed
+    if subresults[i1][i2] != NOT_SET:
+        return subresults[i1][i2]
 
     # just to notify how many times called for the same arguments
     if will_notify_call_count:
@@ -41,7 +44,7 @@ def edit_distance_dynamic(s1, s2, i1=0, i2=0,
         if i1 >= len(s1) or i2 >= len(s2): 
             r = (len(s1)-i1 if i1 < len(s1) else len(s2) - i2)
         else:
-            if s1[0] == s2[0]:
+            if s1[i1] == s2[i2]:
                 r = edit_distance_dynamic(s1, s2, i1+1, i2+1)
             else:
                 r = min( 
