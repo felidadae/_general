@@ -27,8 +27,9 @@ if [[ "$CONDA_DEFAULT_ENV" != "" ]]; then
 else
 	local python_env='%{$fg[blue]%}‹ ve: $(basename $VIRTUAL_ENV)›%{$reset_color%}'
 fi
-
-PROMPT="╭─${current_dir} ${git_branch} ${python_env} 
+local current_dir_=%(4~|.../%3~|%~)
+PROMPT="╭─${current_dir}
+*  ${git_branch} ${python_env} 
 ╰─%B${user_symbol}%b "
 RPS1="%B${return_code}%b"
 

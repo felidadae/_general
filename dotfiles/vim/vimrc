@@ -43,6 +43,8 @@ Plugin 'vim-scripts/keepcase.vim'
 
 "@syntax
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'lifepillar/pgsql.vim'
 
 "@temporarily disabled
 Plugin 'tpope/vim-fugitive'

@@ -208,11 +208,11 @@ fi
 #	GIT system
 #
 
-function git_help {
+function help_git_ {
 	echo "git diff-tree --no-commit-id --name-only -r COMMIT"
 	echo "git log --diff-filter=A -- SOURCE_FILE"
 }
-function git_listFilesIn1Commit {
+function help_git_listFilesIn1Commit {
 	git diff-tree --no-commit-id --name-only -r "$1"
 }
 #--------------------------------
@@ -350,6 +350,9 @@ function help_gnome_extensions {
 	echo "Gnome extensions are located in two places:"
 	echo "  user   <- ~/.local/share/gnome-shell/extensions"
 	echo "  system <- /usr/share/gnome-shell/extensions/"
+}
+function help_system_clipboard_piping {
+	echo "to pipe into clipboard >> xclip -selection c"
 }
 
 #--------------------------------
@@ -546,7 +549,7 @@ fi
 
 
 alias .r="reloadBashProfile"
-alias .c="tr '\n' ' ' | xclip -selection p"
+alias .c="tr '\n' ' ' | xclip -selection c"
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c; }
 
 function ,epo { 
