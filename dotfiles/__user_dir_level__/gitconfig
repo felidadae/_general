@@ -2,8 +2,8 @@
 	editor = vim
 	pager = less -x1,5
 [user]
-	email = s.bugaj@samsung.com
-	name = Szymon Bugaj\n\n
+	email = szymon.bugaj@protonmail.com
+	name = Szymon Bugaj
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [diff]

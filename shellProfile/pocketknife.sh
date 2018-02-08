@@ -576,8 +576,8 @@ function ,pwd { pwd | tr '\n' ' ' | .c; }
 function ,se  { tmux split-window -p 50 "vim $1;"; }
 function ,sc  { tmux split-window -p 30 "vim $1;"; }
 
-function ggr  { cd   $(git rev-parse --show-toplevel); }
-function egr  { echo $(git rev-parse --show-toplevel); }
+function .ggr  { cd   $(git rev-parse --show-toplevel); }
+function .pgr  { echo $(git rev-parse --show-toplevel); }
 
 function ,epoa { echo "$@" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
 function ,epoa { echo "<(xclip)" " #,epoa" >> $general/shellProfile/pocketknife.sh; }  #,epoa
