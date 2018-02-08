@@ -49,6 +49,8 @@ Plugin 'lifepillar/pgsql.vim'
 "@temporarily disabled
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+
+Plugin 'vim-scripts/vim-auto-save'
 call vundle#end()            
 filetype plugin indent on
 " @Plugins.end
