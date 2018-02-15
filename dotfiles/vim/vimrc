@@ -185,6 +185,9 @@ let g:tabber_predefined_labels = { 1: 'core', 2: 'html/json', 3: 'others' }
 
 " @mapping-java only
 :autocmd Filetype java :inoremap ;'; <Esc>$;a<cr>
+
+" @mapping-java-script js only
+:autocmd Filetype sh :inoremap 34 "$"<Left>
 "----------------------------------------------------------------------------------
 
 
@@ -409,4 +412,3 @@ if exists('g:loaded_webdevicons')
 endif
 :highlight clear SignColumn
 "----------------------------------------------------------------------------------
-
