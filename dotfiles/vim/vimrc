@@ -1,400 +1,48 @@
 "----------------------------------------------------------------------------------
-set nocompatible              " be iMproved, required
-filetype off                  " required
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
 " @Plugins
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
-"@core 
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-
-"@usefull navigation
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tmux-plugins/vim-tmux'
-
-"@look
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ryanoasis/vim-devicons'
-
-"@small things but making me so happy..
-Plugin 'godlygeek/tabular'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'vim-scripts/CmdlineComplete'
-Plugin 'itchyny/vim-cursorword' "underline words under cursor
-Plugin 'tpope/vim-commentary'   "comments
-Plugin 'tpope/vim-abolish'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'xolox/vim-session'
-Plugin 'xolox/vim-misc'
-Plugin 'vim-scripts/keepcase.vim'
-Plugin 'fweep/vim-tabber'
-Plugin 'vim-scripts/vim-auto-save'
-
-"@syntax
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'lifepillar/pgsql.vim'
-
-"@folding
-Plugin 'tmhedberg/SimpylFold'
-
-call vundle#end()            
-filetype plugin indent on
-" @Plugins.end
+source ~/.vim/vimrc_splitted/plugins.vim
 "----------------------------------------------------------------------------------
 
 
-
 "----------------------------------------------------------------------------------
-"GUI OPTIONS
-:set guifont=Roboto\ Mono\ Medium\ for\ Powerline\ Medium\ 9 
-
-
+" @must-be-on-top
 
 " @powerline
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
-
-
-" @devicons
-:let g:webdevicons_enable_ctrlp = 1
-:let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-:let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-
-
-
-" @colors
-set background=dark
-colorscheme solarized
-:highlight nontext ctermfg=bg 
-:hi folded term=none cterm=none ctermfg=green ctermbg=none
-:hi foldcolumn ctermbg=none
+set tabline=%!tabber#TabLine()
 "----------------------------------------------------------------------------------
-
-
-
 
 
 "----------------------------------------------------------------------------------
 " @mappings
-
-" @basics
-:let mapleader = ","
-:let maplocalleader = "\\"
-inoremap jk <Esc>
-:nnoremap ghg G
-:nnoremap <leader>= :vertical resize +10<cr>
-:nnoremap <leader>- :vertical resize -10<cr>
-:nnoremap <leader><leader>= :resize +10<cr>
-:nnoremap <leader><leader>- :resize -10<cr>
-:nmap ; :
-:nnoremap <leader>ev :split $MYVIMRC<cr>/Mapping<cr>zt
-:nnoremap <leader>rv :source ~/.vimrc<cr>
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
-:nnoremap ,.. >>
-:nnoremap .,, << 
-:nnoremap l;l :tabn<Enter>
-:nnoremap ;;; :tabe<Enter>
-
-" @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
-:inoremap <Esc>l <Right>
-:inoremap <Esc>h <Left>
-
-" @fast begin end
-:nnoremap <Esc>g 0
-:nnoremap <Esc>; $
-:inoremap <Esc>b <c-o>b
-:inoremap <Esc>e <c-o>e
-:inoremap <Esc>w <c-o>w
-:inoremap ó <c-o>
-:nnoremap <Esc>a A
-
-" @Insert blank
-nnoremap ,2, :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
-:nnoremap =<space> i<space><esc>
-:nnoremap =<tab> i<tab><esc>
-:nnoremap =<CR> i<CR><esc>
-
-" @nerdtree
-:nnoremap <leader>nt :NERDTreeToggle<cr>
-:nnoremap <leader>nf :NERDTreeFocus<cr>
-
-" @double quote string
-:nnoremap <leader>" bdwi""<Esc>hp
-:nnoremap <leader>{ bdwi{}<Esc>hp
-
-:inoremap <m-j> <Tab><C-a>
-
-" @others
-:nnoremap cp :let @+ = expand("%") <cr>
-:nnoremap <leader>ep :split $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
-:nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
-:nnoremap <leader>p :CtrlPTag
-:nnoremap <leader>h :hide
-:nnoremap <leader>b :CtrlPBuffer<cr>
-:nnoremap <leader>e 10<C-e>
-:nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
-:nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
-nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-:nnoremap op[ :UltiSnipsEdit<CR>
-let g:tabber_predefined_labels = { 1: 'core', 2: 'html/json', 3: 'others' }
-
-" @replace current
-:vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
-:nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
-
-" @all programming languages
-:inoremap ;'; <Esc>o
-:inoremap -= +
-:inoremap 89 ()<Left>
-:inoremap 0- _
-
-" @mapping-sh only
-:autocmd Filetype sh :inoremap 34 "$"<Left>
-	"VVV Thats quite shitty thing: we here use escape sequence
-:autocmd Filetype sh :inoremap <Esc>4 \|<Space>
-
-" @mapping-c++ only
-
-" @mapping-python only
-:autocmd Filetype python :inoremap ;; <Esc>$a:<cr>
-:autocmd Filetype python :inoremap ;'; <Esc>$a<cr>
-:autocmd Filetype python :inoremap [] {}<Left>
-:autocmd Filetype python :inoremap prt print()<Left> 
-
-" @mapping-java only
-:autocmd Filetype java :inoremap ;'; <Esc>$;a<cr>
-
-" @mapping-java-script js only
-:autocmd Filetype sh :inoremap 34 "$"<Left>
+source ~/.vim/vimrc_splitted/mappings.vim
 "----------------------------------------------------------------------------------
-
-
-
 
 
 "----------------------------------------------------------------------------------
 " @encoding @indent @general
-:set wrap
-:set linebreak
-" :set breakindent
-:set display+=lastline
-:set t_ut=
-:set rnu
-:set nu
-:set cursorline
-hi NonText guifg=bg
-:set encoding=utf8
-:set laststatus=2
-set nocompatible              " be iMproved, required
-set clipboard=unnamedplus
-filetype on
-filetype plugin on
-filetype indent on
-syntax enable
-:set textwidth=0 
-:set wrapmargin=0
-:set showtabline=2
-:set backspace=2
-" :set scroll=15
-set splitbelow
-set splitright
-:set autowrite
-:set ignorecase
-:set smartcase
-" :set showtabline=0
-:set foldignore=
-:set hidden
-:set ssop=blank,buffers,sesdir,folds,tabpages,winpos,winsize
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-"to highlight (["
-:let OPTION_NAME = 1
-autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
-function! s:def_base_syntax()
-	" Simple example
-	syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-	syntax match baseDelimiter ","
-	hi link commonOperator Operator
-	hi link baseDelimiter Special
-endfunction
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @nerdtree
-:let g:NERDTreeDirArrowExpandable="+"
-:let g:NERDTreeDirArrowCollapsible="~"
-:let g:NERDTreeWinSize=34
-:let g:NERDTreeMinimalUI=1
-:let NERDTreeHijackNetrw=0
-" enable line numbers
-:let NERDTreeShowLineNumbers=1
-" make sure relative line numbers are used
-autocmd FileType nerdtree setlocal relativenumber
-:let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @ctrlp fuzzy finder
-:let g:ctrlp_follow_symlinks = 2
-:let g:ctrlp_working_path_mode = 'r'
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @ultisnips
-:let g:UltiSnipsExpandTrigger="<Esc>a"
-:let g:UltiSnipsListSnippets="<c-u>"
-:let g:UltiSnipsJumpForwardTrigger="<c-b>"
-:let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-:let g:UltiSnipsEditSplit="horizontal"
-:let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
-:let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @easy-motion
-map ,. <Plug>(easymotion-prefix)
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @folding
-set foldmethod=indent
-set foldtext=MyFoldText()
-function! MyFoldText()
-	let i = indent(v:foldstart)
-	return repeat(' ', i) . "----Folded----" 
-endfunction
-set foldlevel=3
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @wipeout
-command! -bang Wipeout :call Wipeout(<bang>0)
-function! Wipeout(bang)
-	" figure out which buffers are visible in any tab
-	let visible = {}
-	for t in range(1, tabpagenr('$'))
-		for b in tabpagebuflist(t)
-			let visible[b] = 1
-		endfor
-	endfor
-	" close any buffer that are loaded and not visible
-	let l:tally = 0
-	let l:cmd = 'bw'
-	if a:bang
-		let l:cmd .= '!'
-	endif
-	for b in range(1, bufnr('$'))
-		if buflisted(b) && !has_key(visible, b)
-			let l:tally += 1
-			exe l:cmd . ' ' . b
-		endif
-	endfor
-	echon "Deleted " . l:tally . " buffers"
-endfun
-
-:let g:session_autosave = 'no'
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @line-length-limit x-st column is magenta if there is a char
-autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
-autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @ycm you complete me ycm to set python version
-:let g:ycm_python_binary_path = 'python'
-:let g:ycm_global_ycm_extra_conf = '~/Programming/_General/tools/ycm/.ycm_global_conf.py'
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @session @vim-session
-set sessionoptions-=options
-set sessionoptions-=help
-set sessionoptions-=buffers
-"----------------------------------------------------------------------------------
-
-
-
-"----------------------------------------------------------------------------------
-" @unsorted
-:set isfname-=/
-:set path=$PWD/**
-:set timeoutlen=300 ttimeoutlen=0
-
+source ~/.vim/vimrc_splitted/general_settings.vim
 "----------------------------------------------------------------------------------
 
 
 "----------------------------------------------------------------------------------
-let g:auto_save = 1  " enable AutoSave on Vim startup
-" AutoSave relies on CursorHold event and sets the updatetime option to 200 so that modifications are saved almost instantly.
-" But sometimes changing the updatetime option may affect other plugins and break things.
-" You can prevent AutoSave from changing the updatetime with g:auto_save_no_updatetime option:
-
-" .vimrc
-let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
-" You can disable AutoSave in insert mode with the g:auto_save_in_insert_mode option:
-
-" .vimrc
-let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-" AutoSave will display on the status line on each auto-save by default.
-
-" (AutoSaved at 08:40:55)
-" You can silence the display with the g:auto_save_silent option:
-" .vimrc
-let g:auto_save_silent = 1  " do not display the auto-save notification
-" If you need an autosave hook (such as generating tags post-save) then use g:auto_save_postsave_hook option:
-
-" .vimrc
-" let g:auto_save_postsave_hook = 'TagsGenerate'  " this will run :TagsGenerate after each save
+" @plugin-settings
+source ~/.vim/vimrc_splitted/plugins_settings.vim
 "----------------------------------------------------------------------------------
 
 
 "----------------------------------------------------------------------------------
-"Needed to be on the end of the file
+" @helper functions
+source ~/.vim/vimrc_splitted/helper_functions.vim
+"----------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------
+" @must-be-on-end
+
 :highlight nontext ctermfg=bg 
 :hi folded term=none cterm=none ctermfg=none ctermbg=none
 :hi Normal ctermbg=none
@@ -406,6 +54,7 @@ let g:auto_save_silent = 1  " do not display the auto-save notification
 :autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 :autocmd FileType javascript setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 :autocmd FileType sh setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
 " after a re-source, fix syntax matching issues (concealing brackets):
 if exists('g:loaded_webdevicons')
     call webdevicons#refresh()

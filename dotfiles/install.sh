@@ -1,6 +1,6 @@
 #!/bin/bash -e
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
+asdf
 function create_link_long {
 	# @Description
 	#	Create symbolic link of file 
@@ -42,6 +42,7 @@ done
 mkdir -p ~/.oh-my-zsh/themes; create_link zsh/felidadae.zsh-theme ~/.oh-my-zsh/themes/felidadae.zsh-theme
 create_link vim/vimrc ~/.vimrc
 create_link vim/snippets ~/.vim/felidadae_snippets
+create_link vim/vimrc_splitted ~/.vim/vimrc_splitted
 create_link vim/syntax ~/.vim/syntax
 create_link vim/ftdetect ~/.vim/ftdetect
 mkdir -p ~/.config/matplotlib; create_link matplotlib/matplotlibrc  ~/.config/matplotlib/matplotlibrc
