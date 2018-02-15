@@ -47,7 +47,7 @@ nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 :nnoremap <leader>" bdwi""<Esc>hp
 :nnoremap <leader>{ bdwi{}<Esc>hp
 :inoremap <m-j> <Tab><C-a>
-
+""
 " @others
 :nnoremap cp :let @+ = expand("%") <cr>
 :nnoremap <leader>ep :split $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt

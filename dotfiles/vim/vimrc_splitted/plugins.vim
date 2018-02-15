@@ -39,6 +39,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/keepcase.vim'
 Plugin 'fweep/vim-tabber'
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'mileszs/ack.vim'
 
 "@syntax
 Plugin 'ekalinin/Dockerfile.vim'

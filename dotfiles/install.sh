@@ -1,6 +1,5 @@
 #!/bin/bash -e
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-asdf
 function create_link_long {
 	# @Description
 	#	Create symbolic link of file 

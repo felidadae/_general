@@ -13,6 +13,7 @@ colorscheme solarized
 :highlight nontext ctermfg=bg 
 :hi folded term=none cterm=none ctermfg=green ctermbg=none
 :hi foldcolumn ctermbg=none
+call Initialize_highlights_()
 "----------------------------------------------------------------------------------
 
 
@@ -35,7 +36,6 @@ set clipboard=unnamedplus
 filetype on
 filetype plugin on
 filetype indent on
-syntax enable
 :set textwidth=0 
 :set wrapmargin=0
 :set showtabline=2
