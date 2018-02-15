@@ -6,19 +6,12 @@ source ~/.vim/vimrc_splitted/plugins.vim
 
 "----------------------------------------------------------------------------------
 " @must-be-on-top
-
 " @powerline
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
 set tabline=%!tabber#TabLine()
-"----------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------
-" @mappings
-source ~/.vim/vimrc_splitted/mappings.vim
 "----------------------------------------------------------------------------------
 
 
@@ -31,6 +24,12 @@ source ~/.vim/vimrc_splitted/general_settings.vim
 "----------------------------------------------------------------------------------
 " @plugin-settings
 source ~/.vim/vimrc_splitted/plugins_settings.vim
+"----------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------
+" @mappings
+source ~/.vim/vimrc_splitted/mappings.vim
 "----------------------------------------------------------------------------------
 
 

@@ -22,6 +22,8 @@ colorscheme solarized
 :set linebreak
 " :set breakindent
 :set display+=lastline
+:set lazyredraw "very very good shit; not redrawing while macros, etc.
+:set ttyfast
 :set t_ut=
 :set rnu
 :set nu
