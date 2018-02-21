@@ -1,5 +1,8 @@
 remove mod4 = Super_R
 add shift = Super_R
 
+! Comments:
+! xmodmap -e 'remove mod4 = Super_R'
+! xmodmap -e 'add shift = Super_R'
 ! xmodmap -e 'remove mod5 = ISO_Level3_Shift'
 ! xmodmap -e 'add shift = ISO_Level3_Shift'
