@@ -50,7 +50,7 @@ set splitright
 :set foldignore=
 :set hidden
 :set ssop=blank,buffers,sesdir,folds,tabpages,winpos,winsize
-set iskeyword-=_
+" set iskeyword-=_
 :set isfname-=/
 :set path=$PWD/**
 :set timeoutlen=300 ttimeoutlen=0

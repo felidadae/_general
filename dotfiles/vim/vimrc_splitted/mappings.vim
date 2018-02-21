@@ -1,3 +1,9 @@
+"
+" Grouping mappings into groups:
+" - @basics
+"
+"
+
 " @basics
 :let mapleader = ","
 :let maplocalleader = "\\"
@@ -8,6 +14,7 @@ inoremap jk <Esc>
 :nnoremap <leader><leader>= :resize +10<cr>
 :nnoremap <leader><leader>- :resize -10<cr>
 :nmap ; :
+:nnoremap grt gT
 :nnoremap <leader>ev :split $MYVIMRC<cr>/Mapping<cr>zt
 :nnoremap <leader>rv :source ~/.vimrc<cr>
 augroup MyAutoCmd
@@ -18,6 +25,7 @@ augroup END
 :nnoremap .,, << 
 :nnoremap l;l :tabn<Enter>
 :nnoremap ;;; :tabe<Enter>
+:nnoremap e, :TabberLabel 
 
 " @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
 :inoremap <Esc>l <Right>
