@@ -45,6 +45,7 @@ source ~/.zshnip_/zshnip.zsh
 export __MY_SHELL__="zsh"
 source ~/Programming/_General/shellProfile/AllFatherOfAllSons.sh
 source ~/Programming/_General/felidadaeTools/spanishLearner/main.zsh
+
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
 	function virtualenv_prompt_info(){
 	  [[ -n ${VIRTUAL_ENV} ]] || return
@@ -57,6 +58,7 @@ if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
 	source /usr/local/bin/virtualenvwrapper.sh
 	VIRTUAL_ENV="system-wide"
 fi
+
 if [ -d ~/miniconda3 ]; then
 	PATH="$PATH:/home/felidadae/miniconda3/bin"
 fi
@@ -65,4 +67,3 @@ if [ ! -e $_sources/z/z.sh ]; then
 	git clone https://github.com/rupa/z.git $_sources/z
 fi
 source $_sources/z/z.sh
-workon env35
