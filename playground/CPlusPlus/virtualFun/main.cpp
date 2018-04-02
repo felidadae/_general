@@ -1,4 +1,6 @@
+/* https://stackoverflow.com/questions/5134891/how-do-i-use-valgrind-to-find-memory-leaks */
 #include <iostream>
+#include <vector>
 
 
 
@@ -18,10 +20,12 @@ public:
 
 	virtual int kupka() {
 		std::cout << "Stolec::kupka()" << std::endl;
+        return 0;
 	}
 
 	virtual int siczki() {
 		std::cout << "Stolec::siczki()" << std::endl;
+        return 0;
 	}
 
 	void wyczyscSie() {
@@ -46,31 +50,68 @@ public:
 
 	virtual int kupka() override final {
 		std::cout << "StolecMutacja::kupka()" << std::endl;
+        return 0;
 	}
 
-	virtual int siczki() {
+	virtual int siczki() override {
 		std::cout << "StolecMutacja::siczki()" << std::endl;
+        return 0;
+	}
+};
+
+class StolecMutacjaDestrukcyjna: public Stolec {
+public:
+    std::vector<int> myNumbers_;
+	StolecMutacjaDestrukcyjna() {
+		std::cout << "StolecMutacjaDestrukcyjna::Stolec()" << std::endl;
+		kupka();
+		siczki();
+        for (auto i = 0; i < 100; ++i)
+            myNumbers_.push_back(5);
 	}
 
+	virtual ~StolecMutacjaDestrukcyjna() {
+		std::cout << "StolecMutacjaDestrukcyjna::~StolecMutacjaDestrukcyjna()" << std::endl;
+		kupka();
+		siczki();
+	}
+
+	virtual int kupka() override final {
+		std::cout << "StolecMutacjaDestrukcyjna::kupka()" << std::endl;
+        return 0;
+	}
+
+	virtual int siczki() override {
+		std::cout << "StolecMutacjaDestrukcyjna::siczki()" << std::endl;
+        return 0;
+	}
 };
 
 
-
-int main(int argc, char const *argv[])
+int main()
 {
+	/* { */
+	/* 	Stolec stolec; */ 
+	/* 	std::cout << "***" << std::endl; */
+	/* 	stolec.wyczyscSie(); */
+	/* } */
+
+	/* std::cout << "*********" << std::endl; */
+
+	/* { */
+	/* 	StolecMutacja stolecMutacja; */ 
+	/* 	std::cout << "***" << std::endl; */
+	/* 	Stolec* st = &stolecMutacja; */
+	/* 	st->wyczyscSie(); */
+	/* } */
 	{
-		Stolec stolec; 
-		std::cout << "***" << std::endl;
-		stolec.wyczyscSie();
+		Stolec* stolec = new StolecMutacjaDestrukcyjna(); 
+        delete stolec;
 	}
-
 	std::cout << "*********" << std::endl;
-
 	{
-		StolecMutacja stolecMutacja; 
-		std::cout << "***" << std::endl;
-		Stolec* st = &stolecMutacja;
-		st->wyczyscSie();
+		Stolec* stolec = new StolecMutacja(); 
+        delete stolec;
 	}
 
 	return 0;
