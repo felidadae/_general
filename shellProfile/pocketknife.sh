@@ -567,7 +567,7 @@ function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c
 function ,epo { 
 	vim +/@super $general/shellProfile/pocketknife.sh;
 }
-function ,ev  { tmux split -p 40 'vim +/@mapping ~/.vimrc';  }
+function ,ev  { vim +/@mapping ~/.vimrc; }
 
 alias _f=fuzzyCall
 function ,   { fuzzyCall . "vim" "$1" "$2"; }

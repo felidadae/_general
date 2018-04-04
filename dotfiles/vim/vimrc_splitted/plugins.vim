@@ -9,7 +9,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 "@core 
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'artur-shaik/vim-javacomplete2'
+"Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
@@ -28,18 +28,18 @@ Plugin 'ryanoasis/vim-devicons'
 
 "@small things but making me so happy..
 Plugin 'godlygeek/tabular'
-Plugin 'jiangmiao/auto-pairs'
+" Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/CmdlineComplete'
-Plugin 'itchyny/vim-cursorword' "underline words under cursor
+" Plugin 'itchyny/vim-cursorword' "underline words under cursor
 Plugin 'tpope/vim-commentary'   "comments
-Plugin 'tpope/vim-abolish'
+" Plugin 'tpope/vim-abolish'
 Plugin 'qpkorr/vim-bufkill'
-Plugin 'xolox/vim-session'
-Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-session'
+" Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/keepcase.vim'
 Plugin 'fweep/vim-tabber'
-Plugin 'vim-scripts/vim-auto-save'
-Plugin 'mileszs/ack.vim'
+" Plugin 'vim-scripts/vim-auto-save'
+" Plugin 'mileszs/ack.vim'
 Plugin 'tweekmonster/django-plus.vim'
 
 "@syntax
@@ -48,7 +48,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'lifepillar/pgsql.vim'
 
 "@folding
-Plugin 'tmhedberg/SimpylFold'
+"Plugin 'tmhedberg/SimpylFold'
 
 call vundle#end()            
 filetype plugin indent on

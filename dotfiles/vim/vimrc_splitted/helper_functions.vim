@@ -31,27 +31,23 @@ endfun
 
 "----------------------------------------------------------------------------------
 "to highlight (["
-:let OPTION_NAME = 1
-autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
-function! s:def_base_syntax()
-	" Simple example
-	syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-	syntax match baseDelimiter ","
-	hi link commonOperator Operator
-	hi link baseDelimiter Special
-endfunction
+" :let OPTION_NAME = 1
+" autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
+" function! s:def_base_syntax()
+" 	" Simple example
+" 	syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+" 	syntax match baseDelimiter ","
+" 	hi link commonOperator Operator
+" 	hi link baseDelimiter Special
+" endfunction
 "----------------------------------------------------------------------------------
 
 
 "----------------------------------------------------------------------------------
 " @folding
-set foldmethod=indent
-set foldtext=MyFoldText()
-function! MyFoldText()
-	let i = indent(v:foldstart)
-	return repeat(' ', i) . "----Folded----" 
-endfunction
-set foldlevel=3
+autocmd BufNewFile,BufRead *.py set foldmethod=indent
+autocmd BufNewFile,BufRead *.cpp set foldmethod=syntax
+set foldtext=foldtext()
 "----------------------------------------------------------------------------------
 
 
