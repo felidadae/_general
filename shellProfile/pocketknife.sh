@@ -354,6 +354,18 @@ function help_gnome_extensions {
 function help_system_clipboard_piping {
 	echo "to pipe into clipboard >> xclip -selection c"
 }
+function help_nvidia_tearing_screen {
+    echo "Finally fixed for ubuntu 16.04 !!!"
+    echo ""
+    echo "read https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/"
+    echo "in file /etc/modprobe.d/nvidia-graphics-drivers.conf set 'options nvidia_*_drm modeset=1'"
+    echo ""
+    echo "read https://wiki.archlinux.org/index.php/NVIDIA_Optimus#Tearing.2FBroken_VSync"
+    echo "part of the article:"
+    echo "This requires xorg-server 1.19 or higher, linux kernel 4.5 or higher, and"
+    echo "nvidia 370.23 or higher. Then enable DRM kernel mode setting, which will in"
+    echo "turn enable the PRIME synchronization and fix the tearing."
+}
 
 #--------------------------------
 
