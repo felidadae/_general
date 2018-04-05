@@ -17,7 +17,7 @@ hi def link tags TickerDone
 hi def link content ContentOf
 hi def link date DateOf
 hi def link title Title
-hi def link note Comment
+hi def link note NoteC
 
 let b:current_syntax = 'todo'
 hi TickerDone ctermfg=28 ctermbg=NONE cterm=NONE guifg=green guibg=NONE gui=NONE
@@ -27,3 +27,4 @@ hi tags ctermfg=33 ctermbg=NONE cterm=NONE guifg=green guibg=NONE gui=NONE
 hi ContentOf ctermfg=100 ctermbg=NONE cterm=NONE guifg=red guibg=NONE gui=NONE
 hi DateOf ctermfg=65 ctermbg=NONE cterm=NONE guifg=red guibg=NONE gui=NONE
 hi Title ctermfg=65 ctermbg=NONE cterm=NONE guifg=red guibg=NONE gui=NONE
+hi NoteC ctermfg=11 ctermbg=NONE cterm=NONE guifg=darkgrey guibg=NONE gui=NONE

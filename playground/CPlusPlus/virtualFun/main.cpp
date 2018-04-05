@@ -1,7 +1,9 @@
-/* https://stackoverflow.com/questions/5134891/how-do-i-use-valgrind-to-find-memory-leaks */
+/* 
+ * https://stackoverflow.com/questions/5134891/
+ * how-do-i-use-valgrind-to-find-memory-leaks
+ */
 #include <iostream>
 #include <vector>
-
 
 
 class Stolec {
@@ -87,23 +89,7 @@ public:
 	}
 };
 
-
-int main()
-{
-	/* { */
-	/* 	Stolec stolec; */ 
-	/* 	std::cout << "***" << std::endl; */
-	/* 	stolec.wyczyscSie(); */
-	/* } */
-
-	/* std::cout << "*********" << std::endl; */
-
-	/* { */
-	/* 	StolecMutacja stolecMutacja; */ 
-	/* 	std::cout << "***" << std::endl; */
-	/* 	Stolec* st = &stolecMutacja; */
-	/* 	st->wyczyscSie(); */
-	/* } */
+int main() {
 	{
 		Stolec* stolec = new StolecMutacjaDestrukcyjna(); 
         delete stolec;
@@ -113,6 +99,5 @@ int main()
 		Stolec* stolec = new StolecMutacja(); 
         delete stolec;
 	}
-
 	return 0;
 }

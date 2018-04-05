@@ -62,6 +62,14 @@ let g:auto_save_silent = 1
 
 "----------------------------------------------------------------------------------
 " @session @vim-session
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+"----------------------------------------------------------------------------------
+
+
+
+"----------------------------------------------------------------------------------
+" @session @vim-session
 set sessionoptions-=options
 set sessionoptions-=help
 set sessionoptions-=buffers

@@ -11,9 +11,10 @@
 set background=dark
 colorscheme solarized
 :highlight nontext ctermfg=bg 
-:hi folded term=none cterm=none ctermfg=green ctermbg=none
-:hi foldcolumn ctermbg=none
-call Initialize_highlights_()
+:hi SignColumn term=none cterm=none ctermfg=green ctermbg=black
+" :hi folded term=none cterm=none ctermfg=green ctermbg=none
+" :hi foldcolumn ctermbg=none
+" call Initialize_highlights_()
 "----------------------------------------------------------------------------------
 
 
@@ -28,7 +29,7 @@ call Initialize_highlights_()
 :set t_ut=
 :set rnu
 :set nu
-:set cursorline
+" :set cursorline
 hi NonText guifg=bg
 :set encoding=utf8
 :set laststatus=2
@@ -40,7 +41,7 @@ filetype indent on
 :set wrapmargin=0
 :set showtabline=2
 :set backspace=2
-" :set scroll=15
+:set scroll=15
 set splitbelow
 set splitright
 :set autowrite

@@ -9,7 +9,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 "@core 
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
@@ -38,7 +38,7 @@ Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/keepcase.vim'
 Plugin 'fweep/vim-tabber'
-Plugin 'vim-scripts/vim-auto-save'
+" Plugin 'vim-scripts/vim-auto-save'
 Plugin 'mileszs/ack.vim'
 Plugin 'tweekmonster/django-plus.vim'
 
@@ -48,7 +48,10 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'lifepillar/pgsql.vim'
 
 "@folding
-Plugin 'tmhedberg/SimpylFold'
+" Plugin 'tmhedberg/SimpylFold'
+" Plugin 'LucHermitte/lh-vim-lib'
+" Plugin 'LucHermitte/VimFold4C'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()            
 filetype plugin indent on

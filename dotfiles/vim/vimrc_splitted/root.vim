@@ -42,12 +42,13 @@ source ~/.vim/vimrc_splitted/helper_functions.vim
 "----------------------------------------------------------------------------------
 " @must-be-on-end
 
-:highlight nontext ctermfg=bg 
-:hi folded term=none cterm=none ctermfg=none ctermbg=none
-:hi Normal ctermbg=none
-:hi foldcolumn ctermbg=none
+" :highlight nontext ctermfg=bg 
+" :hi folded term=none cterm=none ctermfg=none ctermbg=none
+" :hi Normal ctermbg=none
+" :hi foldcolumn ctermbg=none
 :set fillchars="fold: " 
 " :set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+:setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 :autocmd Filetype html setlocal ts=2 sw=2 expandtab
 :autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
 :autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4

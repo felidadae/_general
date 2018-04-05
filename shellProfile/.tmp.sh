@@ -31,8 +31,9 @@ vim_snippets=~/.vim/felidadae_snippets
 _synth=/home/felidadae/Programming/_toolsSources/music-synthesizer-for-android
 
 
-vim_=/home/felidadae/.vim
+vim_=/home/felidadae/.vim/vimrc_splitted
 darktable_conf=/home/felidadae/.config/darktable
 darktable_exec=/opt/darktable
 darktable_src=$base/_toolsSources/darktable
-cv=/home/felidadae/Dropbox/CV
+cv=/home/felidadae/Dropbox/CV_And_JobPreparing/CV
+cvjob=/home/felidadae/Dropbox/CV_And_JobPreparing
