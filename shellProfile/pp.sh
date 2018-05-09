@@ -66,3 +66,28 @@ function pp-listfun {
 	cd "$currPos"
 }
 pp-listfun
+
+function git_before_commit {
+    setopt shwordsplit
+    file_ext=$@
+    file_list=""
+    for ext in $file_ext; do
+        export ext="$ext"
+        file_list="$file_list $(git status --porcelain \
+                                | grep -P '^\s*M' \
+                                | perl -pe 's/^\s*M\s+(.*)$/\1/' \
+                                | perl -ne 'print "$_" if /.*\.$ENV{ext}/;')" 
+    done
+    
+    echo "removing line empty line endings for >>Staged Files<<:"
+    echo "$file_list"
+    read
+    perl -i -lpe 's/\s+$//g' $file_list
+    
+    echo "Last commit message copied into clipboard"
+    git log --format=%B -n 1 HEAD | .c
+
+    echo ""
+    echo "Please check if README is updated; Make sure tabs and spaces are not mixed;"
+}
+

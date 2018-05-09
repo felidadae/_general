@@ -19,15 +19,14 @@ void fun(vector<int>::iterator it, vector<int>::iterator it_prev, bool ifFirst, 
 	return;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	vector<int> myvector={1,2,3,4,5};
 	vector<int> result;
 	for_each_(myvector.begin(), myvector.end(), 
 		[&result](vector<int>::iterator it, vector<int>::iterator it_prev, 
-			bool ifFirst, bool ifLast) { 
+			      bool ifFirst, bool ifLast) { 
 					if (ifFirst) { cout << "First iter"; }
-					if (ifLast) { cout << "Last iter";}
+					if (ifLast)  { cout << "Last iter";}
 					result.push_back( (*it) + (*it_prev));
 				});
 	for_each(result.begin(), result.end(), [] (int& el) { cout << el; });

@@ -1,4 +1,3 @@
-
 "----------------------------------------------------------------------------------
 " @wipeout
 command! -bang Wipeout :call Wipeout(<bang>0)
@@ -28,83 +27,33 @@ endfun
 :let g:session_autosave = 'no'
 "----------------------------------------------------------------------------------
 
-
-"----------------------------------------------------------------------------------
-"to highlight (["
-" :let OPTION_NAME = 1
-" autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
-" function! s:def_base_syntax()
-" 	" Simple example
-" 	syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-" 	syntax match baseDelimiter ","
-" 	hi link commonOperator Operator
-" 	hi link baseDelimiter Special
-" endfunction
-"----------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------
-" @folding
-" set foldmethod=indent
-" autocmd Filetype cpp set foldmethod=syntax
-" autocmd Filetype python set foldmethod=indent
-" set foldtext=MyFoldText()
-" autocmd Filetype cpp set foldtext=MyFoldTextCpp()
-" autocmd Filetype python set foldtext=MyFoldText()
-" autocmd Filetype todo hi Folded ctermfg=11
-" hi Folded ctermfg=11
-
-" function! MyFoldText()
-"     let line = getline(v:foldstart)
-"     let line = getline(v:foldstart)
-"     let line = substitute(l:line, "{", "", "")
-"     let lines = 1 + v:foldend - v:foldstart
-" 	let i = indent(v:foldstart)
-" 	return repeat(' ', i) . "⎨" . "[" . lines . "]" . "⎬"
-" endfunction
-
-" function! MyFoldTextCpp()
-"     let line = getline(v:foldstart)
-"     if match( line, '^[ \t]*\(\/\*\|\/\/\)[*/\\]*[ \t]*$' ) == 0
-"         let initial = substitute( line, '^\([ \t]\)*\(\/\*\|\/\/\)\(.*\)', '\1\2', '' )
-"         let linenum = v:foldstart + 1
-"         while linenum < v:foldend
-"             let line = getline( linenum )
-"             let comment_content = substitute( line, '^\([ \t\/\*]*\)\(.*\)$', '\2 */', 'g' )
-"             if comment_content != ''
-"                 break
-"             endif
-"             let linenum = linenum + 1
-"         endwhile
-"         let sub = initial . ' ' . comment_content
-"     else
-"         let sub = line
-"         let startbrace = substitute( line, '^.*{[ \t]*$', '{', 'g')
-"         if startbrace == '{'
-"             let line = getline(v:foldend)
-"             let endbrace = substitute( line, '^[ \t]*}\(.*\)$', '}', 'g')
-"             if endbrace == '}'
-"                 let sub = sub.substitute( line, '^[ \t]*}\(.*\)$', '...}\1', 'g')
-"             endif
-"         endif
-"     endif
-"     let n = v:foldend - v:foldstart + 1
-"     let info = " " . n . " lines"
-"     let sub = "⎨" . sub . "⎬" 
-"     let sub = sub . "                                                                                                                                                                                                                                    "
-"     let num_w = getwinvar( 0, '&number' ) * getwinvar( 0, '&numberwidth' )
-"     let fold_w = getwinvar( 0, '&foldcolumn' )
-"     let i = indent(v:foldstart)
-"     " let sub = strpart( sub, 0, winwidth(0) - strlen( info ) - num_w - fold_w - i - 1 - 1 )
-"     return repeat(' ', i) . sub
-autocmd BufNewFile,BufRead *.py set foldmethod=indent
-autocmd BufNewFile,BufRead *.cpp set foldmethod=syntax
-set foldtext=foldtext()
-"----------------------------------------------------------------------------------
-
-
 "----------------------------------------------------------------------------------
 " @line-length-limit x-st column is magenta if there is a char
 autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
 autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
+"----------------------------------------------------------------------------------
+
+"----------------------------------------------------------------------------------
+" Highlight all instances of word under cursor, when idle.
+" Useful when studying strange source code.
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=500
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction
 "----------------------------------------------------------------------------------

@@ -366,7 +366,19 @@ function help_nvidia_tearing_screen {
     echo "nvidia 370.23 or higher. Then enable DRM kernel mode setting, which will in"
     echo "turn enable the PRIME synchronization and fix the tearing."
 }
-
+function help_perlregexbehind {
+	echo '(?=) - Positive look ahead assertion foo(?=bar) matches foo when followed by bar'
+	echo '(?!) - Negative look ahead assertion foo(?!bar) matches foo when not followed by bar'
+	echo '(?<=) - Positive look behind assertion (?<=foo)bar matches bar when preceded by foo'
+	echo '(?<!) - Negative look behind assertion (?<!foo)bar matches bar when NOT preceded by foo'
+	echo '(?>) - Once-only subpatterns (?>\d+)bar Performance enhancing when bar not present'
+	echo '(?(x)) - Conditional subpatterns'
+	echo '(?(3)foo|fu)bar - Matches foo if 3rd subpattern has matched, fu if not'
+	echo '(?#) - Comment (?# Pattern does x y or z)'
+}
+function help_checkspace {
+	echo 'Use tools: du, df, ncdu'
+}
 #--------------------------------
 
 
@@ -420,19 +432,6 @@ function zshsnippet_save {
 		' "$EPO"
 	unset LAST_COMMAND
 }
-function help_perlregexbehind {
-	echo '(?=) - Positive look ahead assertion foo(?=bar) matches foo when followed by bar'
-	echo '(?!) - Negative look ahead assertion foo(?!bar) matches foo when not followed by bar'
-	echo '(?<=) - Positive look behind assertion (?<=foo)bar matches bar when preceded by foo'
-	echo '(?<!) - Negative look behind assertion (?<!foo)bar matches bar when NOT preceded by foo'
-	echo '(?>) - Once-only subpatterns (?>\d+)bar Performance enhancing when bar not present'
-	echo '(?(x)) - Conditional subpatterns'
-	echo '(?(3)foo|fu)bar - Matches foo if 3rd subpattern has matched, fu if not'
-	echo '(?#) - Comment (?# Pattern does x y or z)'
-}
-function help_checkspace {
-	echo 'Use tools: du, df, ncdu'
-}
 #--------------------------------
 
 
@@ -461,6 +460,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 
 	#numeric
 	bindkey -M viins -s '34' \$
+	bindkey -M viins -s ";\'" "\"\""$KEY_LEFT
 	bindkey -M viins -s '1232' \!\!
 	bindkey -M viins -s '89' "\""
 	bindkey -M viins -s '78' "*"
@@ -483,7 +483,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '^[2' ' | '
 	bindkey -M viins -s '^[3' ' | grep -i '
 	bindkey -M viins -s 'wcl' ' | wc -l'
-	bindkey -M viins -s 'ł' 'ls'"$ENTER"
+	# bindkey -M viins -s 'ł' 'ls'"$ENTER"
 	bindkey -M viins -s 'æ' 'git lg1'"$ENTER"
 	bindkey -M viins -s 'ŋ' 'git status'"$ENTER"
 	bindkey -M viins -s 'ó' "$ENTER"
@@ -544,6 +544,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey '\ej' zshnip-expand-or-edit # Alt-J
 	bindkey '\ee' zshnip-edit-and-expand # Alt-E
 	bindkey '^[8' zshnip-list
+    alias snipl=zshnip-list
 	# @zshsnippet_begin
 	zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
 	alias echotsv=''
@@ -555,6 +556,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	alias perlne=''
 	zshnip-add perli $'perl -i -pe \'s///g\' *' 6
 	alias perli=""
+
 	# @zshsnippet_end
 fi
 #------------
@@ -570,14 +572,16 @@ function ,epo {
 function ,ev  { vim +/@mapping ~/.vimrc; }
 
 alias _f=fuzzyCall
-function ,   { fuzzyCall . "vim" "$1" "$2"; }
-function ,gi { fuzzyCall . "git diff" "$1" "$2"; }
+#mini lang
 function ,.  { fuzzyCall . "$1" "$2" "$3"; }
+function ,   { fuzzyCall . "vim" "$1" "$2"; }
+function ,gd { fuzzyCall . "git diff" "$1" "$2"; }
 function g,  { fuzzyCall "$general" "vim" "$1" "$2"; }
+function v,  { fuzzyCall "$vim_" "vim" "$1" "$2"; }
 function g,. { fuzzyCall "$general" "pygmentize -g" "$1" "$2"; }
 function s,  { fuzzyCall "/" "vim" "$1" "$2";  }
-function ,n  { notify-send --urgency=critical --expire-time=400 "$1" "$2"; }
 
+function ,n  { notify-send --urgency=critical --expire-time=400 "$1" "$2"; }
 
 alias diffgit="git diff --no-index"
 alias _gs="git status"
@@ -601,6 +605,8 @@ function ,epoc { perl -ne '/\@Super fast/ && ($m=1); $m == 1 && print;' $general
 #--------------------------------
 #@--not yet ordered
 function .reslow { xrandr -s 1920x1080; }
+alias r=ranger
+alias v=vim
 function .reshigh { xrandr -s 3840x2160; }
 function .b+ { xbacklight -inc $1; }
 function .b- { xbacklight -dec $1; }

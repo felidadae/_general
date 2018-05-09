@@ -1,4 +1,19 @@
 {
+	"animation_enabled": false,
+	"auto_complete": true,
+	"auto_complete_selector": "source - comment",
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "."
+		},
+		{
+			"characters": ">"
+		},
+		{
+			"characters": ":"
+		}
+	],
 	"binary_file_patterns":
 	[
 		"*.dds",
@@ -12,33 +27,44 @@
 		"*.png",
 		"*.swf",
 		"*.tga",
-		"*.tsv",
 		"*.ttf",
 		"*.zip",
-		"/mnt/b/HLTLAB/working/schwa/dictionary-updates/**",
-		"/mnt/b/HLTLAB/working/schwa/web-tool-manual-validation-logs/**",
-		"AE2-Scripts/.OUT/**",
-		"AE2-Scripts/.in/**",
-		"AE2-Scripts/doc/**",
-		"AE2-Scripts/lastRunFilteredOut/**",
-		"TIweb/XMLResources/**",
-		"TIweb/src/tifocus/static/**"
+		"__pycache__/**"
 	],
 	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"dpi_scale": 1,
-	"font_size": 9,
+	"extensions":
+	[
+		"c",
+		"h"
+	],
+	"font_size": 11,
 	"highlight_line": true,
+	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Anaconda",
+		"Alignment",
+		"All Autocomplete",
+		"BracketHighlighter",
 		"ClangAutoComplete",
 		"Colorcoder",
-		"HTMLBeautify",
+		"GTKDarkThemeVariantSetter",
 		"Makefile",
-		"Package Control",
-		"TrailingSpaces"
+		"Vintage"
 	],
-	"original_color_scheme": "Packages/User/Color Highlighter/themes/Monokai (Colorcoded).tmTheme",
-	"show_encoding": true,
-	"theme": "Soda Dark 3.sublime-theme"
+	"material_theme_bold_tab": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_tab": true,
+	"overlay_scroll_bars": "enabled",
+	"remember_open_files": false,
+	"rulers":
+	[
+		80
+	],
+	"save_on_focus_lost": false,
+	"scroll_speed": 0.0,
+	"soda_classic_tabs": false,
+	"theme": "Soda Dark 3.sublime-theme",
+	"tree_animation_enabled": true
 }

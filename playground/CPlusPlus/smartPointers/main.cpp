@@ -4,52 +4,13 @@
 
 
 
-struct Foo {
-    int k = 12;
-    Foo()      			{ std::cout << "Foo::Foo\n";  }
-    Foo(const Foo &) 	{ std::cout << "Foo::Foo\n";  }
-    ~Foo()     			{ std::cout << "Foo::~Foo\n"; }
-    void bar() 			{ std::cout << "Foo::bar\n";  }
-};
-
-void f(const Foo &) {
-    std::cout << "f(const Foo&)\n";
-}
-
-void seeSmartness() {
-    std::unique_ptr<Foo> p1(new Foo);  // p1 owns Foo
-
-    if (p1) p1->bar();
-
-    {
-        std::unique_ptr<Foo> p2(std::move(p1));  // now p2 owns Foo
-        f(*p2);
-
-        p1 = std::move(p2);  // ownership returns to p1
-        std::cout << "destroying p2...\n";
-    }
-
-    if (p1) p1->bar();
-
-    // Foo instance is destroyed when p1 goes out of scope
-}
-
-int seeSmartness2() {
-	std::vector<Foo> foos;
-	Foo foo;
-
-	foos.push_back(std::move(foo));
-
-	return 0;
-}
-
-
-
-
 /*
  *  tail->next points to head, head to first element;
  *  when size == 1:
  *      head and tail points to the only element, tail->next points to itself
+ *
+ *  Problem:
+ *  iterating through cycled list through all the elements: first, end, last
  **/
 template<typename NodeVal>
 class CycledList {
@@ -71,7 +32,7 @@ public:
 	CycledList (){ std::cout << "CycledList() " << std::endl; }
 	~CycledList(){
 		std::cout << "~CycledList() " << std::endl;
-		if(tail) tail->next.reset();
+		if(tail) tail->next.reset(); /* breaks the loop */
 	}
 
     /* makes copy of NodeVal */
@@ -89,27 +50,39 @@ public:
 
     struct iterator {
         PNode start_;
+        PNode last_;
         PNode state_;
-        iterator(const PNode& start) {
+        bool if_after_last_ = false;
+
+        iterator(const PNode& start, const PNode& last) {
             start_ = start;
             state_ = start_;
+            last_ = last;
         }
         bool operator!=(const iterator& other) {
+            if (this->if_after_last_ != other.if_after_last_) return true;
             return this->state_ != other.state_;
         }
         const NodeVal& operator*() {
-            return (const NodeVal &)this->state_->data_; 
+            return (const NodeVal &)this->state_->data_;
         }
         void operator++() {
-            state_ = state_->next;
+            if (state_ == last_) {
+                /* state_.reset(); */
+                if_after_last_ = true;    
+            }
+            else
+                state_ = state_->next;
         }
     };
 
     iterator begin() {
-        return iterator(this->head);
+        return iterator(this->head, this->tail);
     }
     iterator end() {
-        return iterator(this->tail);
+        iterator after_last(this->tail, this->tail);
+        ++after_last;
+        return after_last;
     }
 
 private:
@@ -119,12 +92,11 @@ private:
 int main() {
 	{
         CycledList<std::string> cycledList;
-		cycledList.push_back( std::string("pierwszy") );
-		cycledList.push_back( std::string("drugi")    );
-		cycledList.push_back( std::string("trzeci")   );
-        for (const std::string& node_val: cycledList) {
+		cycledList.push_back( std::string("one") );
+		cycledList.push_back( std::string("two")    );
+		cycledList.push_back( std::string("three")   );
+        for (const std::string& node_val: cycledList)
             std::cout << node_val << std::endl;
-        }
 	}
 	std::cout << "*****" << std::endl;
 	return 0;

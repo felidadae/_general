@@ -1,19 +1,25 @@
 "
+"
 " Grouping mappings into groups:
 " - @basics
 "
 "
 
-" @basics
+" @leader
 :let mapleader = ","
 :let maplocalleader = "\\"
+
+" @basics
 inoremap jk <Esc>
 :nnoremap ghg G
 :nnoremap <leader>= :vertical resize +10<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
 :nnoremap <leader><leader>= :resize +10<cr>
 :nnoremap <leader><leader>- :resize -10<cr>
+:nnoremap yal ggVGy
 :nmap ; :
+:nmap .,, <<
+:nmap ,.. >>
 :nnoremap grt gT
 :nnoremap <leader>ev :split $MYVIMRC<cr>/Mapping<cr>zt
 :nnoremap <leader>rv :source ~/.vimrc<cr>
@@ -21,8 +27,12 @@ augroup MyAutoCmd
     autocmd!
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
-:nnoremap ,.. >>
-:nnoremap .,, << 
+
+"fast looking through files
+:nnoremap - <C-f>
+:nnoremap 0 <C-b>
+
+" @vim-tabs left right
 :nnoremap l;l :tabn<Enter>
 :nnoremap ;;; :tabe<Enter>
 :nnoremap e, :TabberLabel 
@@ -60,23 +70,33 @@ nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 :nnoremap cp :let @+ = expand("%") <cr>
 :nnoremap <leader>ep :split $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
 :nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
-:nnoremap <leader>p :CtrlPTag
-:nnoremap <leader>h :hide
+:nnoremap <leader>t :CtrlPTag<cr>
+:nnoremap <leader>p :CtrlP<cr>
+:nnoremap <leader>h :hide<cr>
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
 :nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
 nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-:nnoremap op[ :UltiSnipsEdit<CR>
-let g:tabber_predefined_labels = { 1: 'core', 2: 'html/json', 3: 'others' }
+:nnoremap ,sl :UltiSnipsEdit<CR>
+:nnoremap .,, <<
+:nnoremap ,.. >>
+:vnoremap .,, <<
+:vnoremap ,.. >>
+
 
 " @replace current
 :vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 
+" @command mode
+cnoremap <C-w> <cr>
+cnoremap <C-j> <down>
+cnoremap <C-k> <up>
+
+:nnoremap <leader>ac :Ack<space>
 
 " @all programming languages
-:inoremap ;'; <Esc>o
 :inoremap -= +
 :inoremap 89 ()<Left>
 :inoremap ;' ""<Left>
@@ -119,5 +139,28 @@ augroup END
 " @mappings-c_like_languages
 augroup filtetype_clike
 	autocmd!
-	:autocmd Filetype javascript,c,c++ inoremap p[ {<cr><cr>}<esc>ka<tab>
+	:autocmd Filetype javascript,c,cpp inoremap p[ {<cr><cr>}<esc>kddko
+	:autocmd Filetype c,cpp inoremap ;'; <Esc>$i;<Esc>o
+	:autocmd Filetype c,cpp nnoremap ,cb /{<cr>N%xdw<C-o>xx<C-o>
+augroup END
+
+augroup cplusplus 
+	autocmd!
+	:autocmd Filetype cpp inoremap -. ->
+	:autocmd Filetype cpp inoremap 78 * 
+	:autocmd Filetype cpp inoremap `1 !
+	:autocmd Filetype cpp inoremap 67 & 
+	:autocmd Filetype cpp inoremap sts std::
+	:autocmd Filetype cpp inoremap vec vector<><Left>
+	:autocmd Filetype cpp inoremap hashm unordered_map<><Left>
+	:autocmd Filetype cpp inoremap boos boost::
+	:autocmd Filetype cpp inoremap inc,. #include <><Left>
+	:autocmd Filetype cpp inoremap ;; ::
+	:autocmd Filetype cpp inoremap m,. <><Left>
+augroup END
+
+
+augroup vimscript
+	autocmd!
+	:autocmd Filetype vim nnoremap gff lBvEgf
 augroup END
