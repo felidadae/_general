@@ -32,22 +32,21 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 
         vector<TreeNode*> level_;
         for(const auto& nodep: level) {
-            if (nodep->left)  level_.push_back(nodep->left);   
-            if (nodep->right) level_.push_back(nodep->right);   
-        }    
+            if (nodep->left)  level_.push_back(nodep->left);
+            if (nodep->right) level_.push_back(nodep->right);
+        }
     }
 
     return levels;
 }
 
 void flatten(TreeNode* root) {
-    if (!root) return;     
-    if (root->right) flatten(root->right);
+    if (!root) return;
     if (root->left)  flatten(root->left);
+    if (root->right) flatten(root->right);
     if (root->left) {
         TreeNode* tmp = root->right;
-        root->right= root->left;
-
+        root->right = root->left;
         TreeNode* wlk = root->left;
         while(root->right) wlk = root->right;
         wlk->right = tmp;
