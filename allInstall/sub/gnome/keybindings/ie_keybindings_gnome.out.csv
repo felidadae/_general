@@ -48,10 +48,10 @@ org.gnome.desktop.wm.keybindings	toggle-on-all-workspaces	[]
 org.gnome.desktop.wm.keybindings	move-to-monitor-up	['<Super><Shift>Up']
 org.gnome.desktop.wm.keybindings	move-to-corner-sw	['<Primary><Alt>KP_End']
 org.gnome.desktop.wm.keybindings	toggle-shaded	[]
-org.gnome.desktop.wm.keybindings	switch-to-workspace-1	['<Alt>1']
-org.gnome.desktop.wm.keybindings	switch-to-workspace-2	['<Alt>2']
-org.gnome.desktop.wm.keybindings	switch-to-workspace-3	['<Alt>3']
-org.gnome.desktop.wm.keybindings	switch-to-workspace-4	['<Alt>4']
+org.gnome.desktop.wm.keybindings	switch-to-workspace-1	[]
+org.gnome.desktop.wm.keybindings	switch-to-workspace-2	[]
+org.gnome.desktop.wm.keybindings	switch-to-workspace-3	[]
+org.gnome.desktop.wm.keybindings	switch-to-workspace-4	[]
 org.gnome.desktop.wm.keybindings	raise-or-lower	[]
 org.gnome.desktop.wm.keybindings	switch-panels	['<Control><Alt>Tab']
 org.gnome.desktop.wm.keybindings	switch-panels-backward	['<Shift><Control><Alt>Tab']
@@ -72,11 +72,11 @@ org.gnome.desktop.wm.keybindings	toggle-maximized	['<Primary><Alt>KP_5']
 org.gnome.desktop.wm.keybindings	set-spew-mark	[]
 org.gnome.desktop.wm.keybindings	begin-resize	['<Alt>F8']
 org.gnome.desktop.wm.keybindings	move-to-workspace-down	['<Primary><Shift><Alt>j', '<Control><Shift><Alt>Down']
-org.gnome.desktop.wm.keybindings	switch-to-workspace-last	['<Alt>5']
+org.gnome.desktop.wm.keybindings	switch-to-workspace-last	[]
 org.gnome.desktop.wm.keybindings	switch-group-backward	['<Shift><Super>Above_Tab', '<Shift><Alt>Above_Tab']
 org.gnome.desktop.wm.keybindings	switch-group	['<Super>Above_Tab', '<Alt>Above_Tab']
 org.gnome.desktop.wm.keybindings	cycle-group	['<Alt>F6']
-org.gnome.desktop.wm.keybindings	close	['F5']
+org.gnome.desktop.wm.keybindings	close	['<Alt>F5']
 org.gnome.desktop.wm.keybindings	switch-to-workspace-up	['F4', '<Control><Alt>Up']
 org.gnome.desktop.wm.keybindings	move-to-workspace-1	['<Primary><Shift>exclam']
 org.gnome.desktop.wm.keybindings	move-to-workspace-2	['<Primary><Shift>at']
@@ -125,11 +125,11 @@ org.gnome.settings-daemon.plugins.media-keys	toggle-contrast	''
 org.gnome.settings-daemon.plugins.media-keys	pause	'XF86AudioPause'
 org.gnome.settings-daemon.plugins.media-keys	area-screenshot	'<Shift>Print'
 custom	'open browser'	'google-chrome-unstable'	'<Primary>F1'
-custom	'open terminal'	'gnome-terminal --full-screen -e tmux'	'F1'
+custom	'open terminal'	'gnome-terminal --full-screen -e tmux'	
 custom	'Open a book'	'xdg-open /home/felidadae/Dropbox/Books/FluentPython.pdf'	'F6'
 custom	'spotify'	'spotify --force-device-scale-factor=2.5'	'<Primary>F2'
 custom	'Open book2'	'xdg-open /home/felidadae/Dropbox/Books/powiesci/William-Golding-Władca-Much.pdf   '	'F7'
-custom	'open terminal small'	'gnome-terminal --geometry 93x61+0+0 -x tmux'	'<Alt>F1'
+custom	'open terminal small'	'gnome-terminal --geometry 93x61+0+0 -x tmux'	
 custom	'resize-window 80'	'resize_a.sh 80'	'<Primary>F9'
 custom	'resize-window 70'	'resize_a.sh 70'	'<Alt>F9'
 custom	'resize_window 90'	'resize_a.sh 90'	'F9'
