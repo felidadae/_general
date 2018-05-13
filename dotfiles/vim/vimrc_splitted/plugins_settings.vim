@@ -23,10 +23,6 @@ autocmd FileType nerdtree setlocal relativenumber
 
 
 " @ultisnips
-:let g:UltiSnipsExpandTrigger="<Esc>a"
-:let g:UltiSnipsListSnippets="<c-u>"
-:let g:UltiSnipsJumpForwardTrigger="<c-b>"
-:let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 :let g:UltiSnipsEditSplit="horizontal"
 :let g:UltiSnipsSnippetDirectories=["UltiSnips", "felidadae_snippets"]
 :let g:UltiSnipsSnippetsDir="~/.vim/felidadae_snippets"

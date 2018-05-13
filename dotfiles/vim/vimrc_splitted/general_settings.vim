@@ -7,15 +7,21 @@
 :let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 :let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 
+let g:rainbow_active = 1
+
 " @colors
 set background=dark
 colorscheme solarized
+" :set t_Co=256
+" :colorscheme monokai
 :hi nontext ctermfg=bg 
 :hi SignColumn term=none cterm=none ctermfg=green ctermbg=black
 :hi folded term=none cterm=none ctermfg=green ctermbg=none
 :hi foldcolumn ctermbg=none
 :hi folded term=none cterm=none ctermfg=green ctermbg=none
 :hi foldcolumn ctermbg=none
+:hi MatchParen cterm=none ctermbg=none ctermfg=35 "opening/closing paranthesis
+
 " call Initialize_highlights_()
 
 

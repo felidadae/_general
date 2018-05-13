@@ -25,6 +25,12 @@ Plugin 'tmux-plugins/vim-tmux'
 "@look
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'crusoexia/vim-monokai'
+
+"@pracical look
+" Plugin 'Valloric/MatchTagAlways'
+" Plugin 'justinmk/vim-matchparenalways'
+" Plugin 'luochen1990/rainbow'
 
 "@small things but making me so happy..
 Plugin 'godlygeek/tabular'

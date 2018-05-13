@@ -1,9 +1,3 @@
-/*
-
-	
-
-*/
-
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -98,8 +92,7 @@ int main() {
 		cin >> set[i];
 
 	PrefixTree prefTree;
-	for (int i = 0; i < N; ++i)
-	{
+	for (int i = 0; i < N; ++i) {
 		bool result = prefTree.insertWord(set[i]);
 		if (!result) {
 			cout << "BAD SET" << endl << set[i] << endl;

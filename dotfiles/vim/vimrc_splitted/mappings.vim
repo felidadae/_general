@@ -1,28 +1,34 @@
-"
-"
-" Grouping mappings into groups:
-" - @basics
-"
-"
-
 " @leader
 :let mapleader = ","
 :let maplocalleader = "\\"
 
 " @basics
 inoremap jk <Esc>
-:nnoremap ghg G
+:nmap ; :
+
+" @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
 :nnoremap <leader><leader>= :resize +10<cr>
 :nnoremap <leader><leader>- :resize -10<cr>
+
+" @copy all
 :nnoremap yal ggVGy
-:nmap ; :
-:nmap .,, <<
-:nmap ,.. >>
-:nnoremap grt gT
-:nnoremap <leader>ev :split $MYVIMRC<cr>/Mapping<cr>zt
-:nnoremap <leader>rv :source ~/.vimrc<cr>
+
+" @indent
+:nnoremap .,, <<
+:nnoremap ,.. >>
+:vnoremap .,, <<
+:vnoremap ,.. >>
+
+" @edit vimrc-family and other important files
+:nnoremap <leader>ev :edit ~/.vim/vimrc_splitted/vimrc_original
+:nnoremap <leader>evm :edit ~/.vim/vimrc_splitted/mappings.vim<cr>
+:nnoremap <leader>rv :source ~/.vim/vimrc_splitted/mappings.vim<cr>
+:nnoremap <leader>ep :edit $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
+:nnoremap <leader>epo :edit $general/bashProfile/pocketknife.sh<cr>G
+" copy current position
+:nnoremap <leader>yy :let @+ = expand("%") <cr>
 augroup MyAutoCmd
     autocmd!
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
@@ -32,30 +38,28 @@ augroup END
 :nnoremap - <C-f>
 :nnoremap 0 <C-b>
 
-" @vim-tabs left right
+" @tabs
+:nnoremap grt gT
 :nnoremap l;l :tabn<Enter>
 :nnoremap ;;; :tabe<Enter>
-:nnoremap e, :TabberLabel 
+:nnoremap e, :TabberLabel
 
 " @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
 :inoremap <Esc>l <Right>
 :inoremap <Esc>h <Left>
-
-" @fast begin end
-:nnoremap <Esc>g 0
-:nnoremap <Esc>; $
 :inoremap <Esc>b <c-o>b
 :inoremap <Esc>e <c-o>e
 :inoremap <Esc>w <c-o>w
-:inoremap ó <c-o>
-:nnoremap <Esc>a A
 
 " @Insert blank
-nnoremap ,2, :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+:nnoremap ,2, :set paste<CR>m`o<Esc>``:set nopaste<CR>
+:nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 :nnoremap =<space> i<space><esc>
 :nnoremap =<tab> i<tab><esc>
 :nnoremap =<CR> i<CR><esc>
+
+" @tagbar
+:nnoremap ,tb :TagbarToggle<cr>
 
 " @nerdtree
 :nnoremap <leader>nt :NERDTreeToggle<cr>
@@ -65,25 +69,23 @@ nnoremap <silent><F3> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 :nnoremap <leader>" bdwi""<Esc>hp
 :nnoremap <leader>{ bdwi{}<Esc>hp
 :inoremap <m-j> <Tab><C-a>
-""
+
 " @others
-:nnoremap cp :let @+ = expand("%") <cr>
-:nnoremap <leader>ep :split $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
-:nnoremap <leader>epo :split $general/bashProfile/pocketknife.sh<cr>G
 :nnoremap <leader>t :CtrlPTag<cr>
 :nnoremap <leader>p :CtrlP<cr>
 :nnoremap <leader>h :hide<cr>
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
-:nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc> 
-nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-:nnoremap ,sl :UltiSnipsEdit<CR>
-:nnoremap .,, <<
-:nnoremap ,.. >>
-:vnoremap .,, <<
-:vnoremap ,.. >>
+:nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc>
+:nnoremap <Esc>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" @utlisnips
+:nnoremap ,sl :UltiSnipsEdit<CR>
+:let g:UltiSnipsExpandTrigger="<Esc>a"
+:let g:UltiSnipsListSnippets="<c-u>"
+:let g:UltiSnipsJumpForwardTrigger="<c-b>"
+:let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " @replace current
 :vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
@@ -95,6 +97,8 @@ cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 
 :nnoremap <leader>ac :Ack<space>
+
+
 
 " @all programming languages
 :inoremap -= +
@@ -121,7 +125,7 @@ augroup filtetype_python
 	:autocmd Filetype python :inoremap ;; <Esc>$a:<cr>
 	:autocmd Filetype python :inoremap ;'; <Esc>$a<cr>
 	:autocmd Filetype python :inoremap [] {}<Left>
-	:autocmd Filetype python :inoremap prt print()<Left> 
+	:autocmd Filetype python :inoremap prt print()<Left>
 augroup END
 
 " @mapping-java only
@@ -144,12 +148,12 @@ augroup filtetype_clike
 	:autocmd Filetype c,cpp nnoremap ,cb /{<cr>N%xdw<C-o>xx<C-o>
 augroup END
 
-augroup cplusplus 
+augroup cplusplus
 	autocmd!
 	:autocmd Filetype cpp inoremap -. ->
-	:autocmd Filetype cpp inoremap 78 * 
+	:autocmd Filetype cpp inoremap 78 *
 	:autocmd Filetype cpp inoremap `1 !
-	:autocmd Filetype cpp inoremap 67 & 
+	:autocmd Filetype cpp inoremap 67 &
 	:autocmd Filetype cpp inoremap sts std::
 	:autocmd Filetype cpp inoremap vec vector<><Left>
 	:autocmd Filetype cpp inoremap hashm unordered_map<><Left>
@@ -164,3 +168,15 @@ augroup vimscript
 	autocmd!
 	:autocmd Filetype vim nnoremap gff lBvEgf
 augroup END
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.cpp :%s/\s\+$//e
+autocmd BufWritePre *.h :%s/\s\+$//e
+autocmd BufWritePre *.java :%s/\s\+$//e
