@@ -36,7 +36,7 @@ Plugin 'crusoexia/vim-monokai'
 Plugin 'godlygeek/tabular'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/CmdlineComplete'
-Plugin 'itchyny/vim-cursorword' "underline words under cursor
+" Plugin 'itchyny/vim-cursorword' "underline words under cursor
 Plugin 'tpope/vim-commentary'   "comments
 Plugin 'tpope/vim-abolish'
 Plugin 'qpkorr/vim-bufkill'

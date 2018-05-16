@@ -37,7 +37,7 @@ source ~/.vim/vimrc_splitted/mappings.vim "also contains mappings for plugins
 " @additional
 source ~/.vim/vimrc_splitted/folding.vim "foldtext foldmethod per filetype
 source ~/.vim/vimrc_splitted/helper_functions.vim "custom vim functions
-source ~/.vim/vimrc_splitted/tabs_settings.vim 
+source ~/.vim/vimrc_splitted/tabs_settings.vim
 "----------------------------------------------------------------------------------
 
 
@@ -45,7 +45,7 @@ source ~/.vim/vimrc_splitted/tabs_settings.vim
 " @must-be-on-end (for some reasons this commands has to be on the end of the
 " whole settings file)
 
-:hi nontext ctermfg=bg 
+:hi nontext ctermfg=bg
 :hi folded term=none cterm=none ctermfg=none ctermbg=none
 :hi Normal ctermbg=none
 :hi foldcolumn ctermbg=none

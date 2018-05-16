@@ -5,6 +5,7 @@
 " @basics
 inoremap jk <Esc>
 :nmap ; :
+:nnoremap ww :w<cr>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
