@@ -37,3 +37,7 @@ darktable_exec=/opt/darktable
 darktable_src=$base/_toolsSources/darktable
 cv=/home/felidadae/Dropbox/CV_And_JobPreparing/CV
 cvjob=/home/felidadae/Dropbox/CV_And_JobPreparing
+
+alias v--="amixer -D pulse sset Master 5%-"
+alias v++="amixer -D pulse sset Master 5%+"
+

@@ -5,7 +5,7 @@
 " @basics
 inoremap jk <Esc>
 :nmap ; :
-:nnoremap ww :w<cr>
+:nnoremap <leader>ww :w<cr>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
@@ -29,7 +29,8 @@ inoremap jk <Esc>
 :nnoremap <leader>ep :edit $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
 :nnoremap <leader>epo :edit $general/bashProfile/pocketknife.sh<cr>G
 " copy current position
-:nnoremap <leader>yy :let @+ = expand("%") <cr>
+:nnoremap <leader>yy :let @+ = expand("%:p") <cr>
+
 augroup MyAutoCmd
     autocmd!
     autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC

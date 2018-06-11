@@ -2,10 +2,10 @@
 	editor = vim
 	pager = less -x1,5
 [user]
-	email = szymon.bugaj@protonmail.com
+	email = szymon.bugaj@intel.com
 	name = Szymon Bugaj
 [credential]
-	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [diff]
 	tool = vimdiff
 [difftool]
