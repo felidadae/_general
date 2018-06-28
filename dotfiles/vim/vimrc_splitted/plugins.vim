@@ -57,6 +57,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 
 "@folding
 " Plugin 'Konfekt/FastFold'
+Plugin 'vim-jp/vim-java'
 
 call vundle#end()            
 filetype plugin indent on

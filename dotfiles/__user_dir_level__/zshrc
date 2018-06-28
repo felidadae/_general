@@ -11,7 +11,7 @@ setopt INC_APPEND_HISTORY
 #save only one command if 2 common are same and consistent
 setopt HIST_IGNORE_DUPS
 #add timestamp for each entry
-setopt EXTENDED_HISTORY   
+setopt EXTENDED_HISTORY
 
 ZSH_THEME="felidadae"
 HYPHEN_INSENSITIVE="true"
@@ -21,7 +21,7 @@ plugins=(git zsh-history-substring-search clipboard conda)
 source $ZSH/oh-my-zsh.sh
 
 # show which vim mode we are in
-bindkey -v 
+bindkey -v
 precmd() {
   RPROMPT=""
 }

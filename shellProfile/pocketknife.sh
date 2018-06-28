@@ -20,6 +20,7 @@ alias t2="tree2"
 alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
 alias tmux="tmux -2"
+alias tmuxa="tmux attach-sesion -t"
 alias gre=grep
 alias .get="sudo apt-get install"
 alias .remove="apt-get uninstall"
@@ -476,6 +477,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 
 	bindkey -M viins 'jk' vi-cmd-mode
 	bindkey -M viins '^[r' history-incremental-search-backward
+	bindkey -M viins '^R' history-incremental-search-backward
 	bindkey -M vicmd v edit-command-line
 	bindkey -M vicmd -s '^S' "$ENTER" 
 	bindkey -M viins -s '^S' "$ENTER" 
@@ -483,6 +485,9 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '^[2' ' | '
 	bindkey -M viins -s '^[3' ' | grep -i '
 	bindkey -M viins -s 'wcl' ' | wc -l'
+	bindkey -M viins -s '0gs' "git status$ENTER"
+	bindkey -M viins -s '0gd' "git diff$ENTER"
+	bindkey -M viins -s '0gdd' "git diff --cached $ENTER"
 	# bindkey -M viins -s 'ł' 'ls'"$ENTER"
 	bindkey -M viins -s 'æ' 'git lg1'"$ENTER"
 	bindkey -M viins -s 'ŋ' 'git status'"$ENTER"

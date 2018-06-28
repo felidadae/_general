@@ -47,6 +47,11 @@ let g:auto_save_silent = 1
 " @session @vim-session
 " let g:gitgutter_realtime = 0
 " let g:gitgutter_eager = 0
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
 
 
 " @session @vim-session

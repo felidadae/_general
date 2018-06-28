@@ -1,0 +1,5 @@
+---
+- name: Set config file
+  template:
+      src: config.yml.j2
+      dest: "{{ prometheus_host_config_path }}"

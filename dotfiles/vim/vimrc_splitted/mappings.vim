@@ -37,8 +37,8 @@ augroup MyAutoCmd
 augroup END
 
 "fast looking through files
-:nnoremap - <C-f>
-:nnoremap 0 <C-b>
+" :nnoremap - <C-f>
+" :nnoremap 0 <C-b>
 
 " @tabs
 :nnoremap grt gT
@@ -171,14 +171,14 @@ augroup vimscript
 	:autocmd Filetype vim nnoremap gff lBvEgf
 augroup END
 
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" match ExtraWhitespace /\s\+$/
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+" autocmd BufWinLeave * call clearmatches()
 
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.cpp :%s/\s\+$//e
-autocmd BufWritePre *.h :%s/\s\+$//e
-autocmd BufWritePre *.java :%s/\s\+$//e
+" autocmd BufWritePre *.py :%s/\s\+$//e
+" autocmd BufWritePre *.cpp :%s/\s\+$//e
+" autocmd BufWritePre *.h :%s/\s\+$//e
+" autocmd BufWritePre *.java :%s/\s\+$//e

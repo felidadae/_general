@@ -1,0 +1,6 @@
+---
+- include_tasks: deploy.yml
+  when: perform == "deploy"
+
+- include_tasks: purge.yml
+  when: perform == "purge"
