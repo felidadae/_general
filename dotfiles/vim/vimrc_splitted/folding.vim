@@ -63,5 +63,6 @@ endfunction
 set foldtext=MyFoldText()
 
 set foldmethod=indent
+set foldlevelstart=20
 autocmd BufNewFile,BufRead *.py set foldmethod=indent
 autocmd BufNewFile,BufRead *.cpp set foldmethod=syntax

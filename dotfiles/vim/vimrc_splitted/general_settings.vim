@@ -39,7 +39,7 @@ python del powerline_setup
 " :set display+=lastline
 :set lazyredraw "very very good shit; not redrawing while macros, etc.
 " :set rnu
-:set nu
+:set rnu
 " :set cursorline
 hi NonText guifg=bg
 :set encoding=utf8

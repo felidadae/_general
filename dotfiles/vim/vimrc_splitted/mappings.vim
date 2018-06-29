@@ -7,6 +7,18 @@ inoremap jk <Esc>
 :nmap ; :
 :nnoremap <leader>ww :w<cr>
 
+" @gitgutter
+:nmap ]h <Plug>GitGutterNextHunk
+:nmap [h <Plug>GitGutterPrevHunk
+:nmap <Leader>ha <Plug>GitGutterStageHunk
+:nmap <Leader>hr <Plug>GitGutterUndoHunk
+:nmap <Leader>hv <Plug>GitGutterPreviewHunk
+
+" @ycm
+:nnoremap ,] :YcmCompleter GoTo<CR>
+:nmap <Leader>db :let g:gitgutter_diff_base = ''<Left>
+
+
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
