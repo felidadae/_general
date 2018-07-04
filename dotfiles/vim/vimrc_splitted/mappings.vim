@@ -16,7 +16,7 @@ inoremap jk <Esc>
 
 " @ycm
 :nnoremap ,] :YcmCompleter GoTo<CR>
-:nmap <Leader>db :let g:gitgutter_diff_base = ''<Left>
+:nmap <Leader>ggc :let g:gitgutter_diff_base = ''<Left>
 
 
 " @resize windows
