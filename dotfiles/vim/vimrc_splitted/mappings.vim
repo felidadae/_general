@@ -21,7 +21,9 @@ inoremap jk <Esc>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
+:nnoremap <leader>= :vertical resize +50<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
+:nnoremap <leader>-- :vertical resize -50<cr>
 :nnoremap <leader><leader>= :resize +10<cr>
 :nnoremap <leader><leader>- :resize -10<cr>
 
