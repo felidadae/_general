@@ -16,6 +16,7 @@ inoremap jk <Esc>
 
 " @ycm
 :nnoremap ,] :YcmCompleter GoTo<CR>
+:nnoremap ,dc :YcmCompleter GetDoc<CR>
 :nmap <Leader>db :let g:gitgutter_diff_base = ''<Left>
 
 
