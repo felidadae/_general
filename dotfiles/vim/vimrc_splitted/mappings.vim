@@ -13,11 +13,10 @@ inoremap jk <Esc>
 :nmap <Leader>ha <Plug>GitGutterStageHunk
 :nmap <Leader>hr <Plug>GitGutterUndoHunk
 :nmap <Leader>hv <Plug>GitGutterPreviewHunk
+:nmap <Leader>ggc :let g:gitgutter_diff_base = ''<Left>
 
 " @ycm
 :nnoremap ,] :YcmCompleter GoTo<CR>
-:nmap <Leader>ggc :let g:gitgutter_diff_base = ''<Left>
-
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
