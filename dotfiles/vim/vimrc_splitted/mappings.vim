@@ -17,6 +17,7 @@ inoremap jk <Esc>
 
 " @ycm
 :nnoremap ,] :YcmCompleter GoTo<CR>
+:nnoremap ,dc :YcmCompleter GetDoc<CR>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>

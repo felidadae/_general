@@ -48,6 +48,7 @@ Plugin 'fweep/vim-tabber'
 Plugin 'mileszs/ack.vim'
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'fholgado/minibufexpl.vim'
 
 "@syntax
 Plugin 'ekalinin/Dockerfile.vim'
