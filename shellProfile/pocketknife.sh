@@ -485,6 +485,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '^[2' ' | '
 	bindkey -M viins -s '^[3' ' | grep -i '
 	bindkey -M viins -s 'wcl' ' | wc -l'
+	bindkey -M viins -s 'h\' 'history | '
 	bindkey -M viins -s '0gs' "git status$ENTER"
 	bindkey -M viins -s '0gd' "git diff$ENTER"
 	bindkey -M viins -s '0gdd' "git diff --cached $ENTER"
@@ -612,6 +613,7 @@ function ,epoc { perl -ne '/\@Super fast/ && ($m=1); $m == 1 && print;' $general
 function .reslow { xrandr -s 1920x1080; }
 alias r=ranger
 alias v=vim
+alias h=history
 function .reshigh { xrandr -s 3840x2160; }
 function .b+ { xbacklight -inc $1; }
 function .b- { xbacklight -dec $1; }

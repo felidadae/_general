@@ -1,0 +1,7 @@
+xmodmap -e 'remove mod5 = ISO_Level3_Shift'  
+xmodmap -e 'add shift = ISO_Level3_Shift' 
+setxkbmap -option caps:none 
+xmodmap -e 'keycode 66 = KP_Enter NoSymbol KP_Enter' 
+xmodmap -e 'keycode 68 = Shift_R ' 
+xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
+xmodmap -e 'add shift = ISO_Level3_Shift'

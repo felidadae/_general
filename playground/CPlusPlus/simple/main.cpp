@@ -5,11 +5,9 @@
 
 int main()
 {
-    using std::string;
-    using std::vector;  
-    string strings[] = {string("zupa"), string("zupencja")};
-    for(string& s: strings) {
-        std::cout << s;
-    }
+    typedef double f__;
+    f__ f = 1.000000000000000000000000001;
+    f__ f2 = 1;
+    std::cout << (bool)(f == f2);
     return 0;
 }

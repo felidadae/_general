@@ -19,9 +19,20 @@ inoremap jk <Esc>
 :nnoremap ,] :YcmCompleter GoTo<CR>
 :nnoremap ,dc :YcmCompleter GetDoc<CR>
 
+" @mini buffer explorer
+:let g:miniBufExplBuffersNeeded = 0
+:nnoremap <Leader>mbe :MBEOpen<cr>
+:nnoremap <Leader>mbc :MBEClose<cr>
+:nnoremap <Leader>mbt :MBEToggle<cr>
+:nnoremap <Leader>mbf :MBEFocus<cr>
+:nnoremap <Leader>mn :MBEbp<cr>
+:nnoremap nm<Leader> :MBEbn<cr>
+
+:nnoremap ,qq :wqall!<cr>
+
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
-:nnoremap <leader>= :vertical resize +50<cr>
+:nnoremap <leader>== :vertical resize +50<cr>
 :nnoremap <leader>- :vertical resize -10<cr>
 :nnoremap <leader>-- :vertical resize -50<cr>
 :nnoremap <leader><leader>= :resize +10<cr>
