@@ -517,7 +517,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 		LBUFFER="sudo "
 	}
 	zle -N _sudo-all 
-	bindkey '\es\es' _sudo-all
+	bindkey '\es\es' _sudo-all #Alt-s Alt-s
 
 	function _yank_line {
 		zle vi-yank-whole-line
@@ -550,7 +550,6 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	export TAB="\t"
 	bindkey '\ej' zshnip-expand-or-edit # Alt-J
 	bindkey '\ee' zshnip-edit-and-expand # Alt-E
-	bindkey '^[8' zshnip-list
     alias snipl=zshnip-list
 	# @zshsnippet_begin
 	zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
