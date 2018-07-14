@@ -487,6 +487,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s 'wcl' ' | wc -l'
 	bindkey -M viins -s 'h\' 'history | '
 	bindkey -M viins -s 'tiga' "tig --all $ENTER"
+	bindkey -M viins -s 'lsl' "lss $ENTER"
 	bindkey -M viins -s '0gs' "git status$ENTER"
 	bindkey -M viins -s '0gd' "git diff$ENTER"
 	bindkey -M viins -s '0gdd' "git diff --cached $ENTER"

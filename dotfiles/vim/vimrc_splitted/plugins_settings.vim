@@ -29,7 +29,7 @@ autocmd FileType nerdtree setlocal relativenumber
 
 
 " @easy-motion
-map ,. <Plug>(easymotion-prefix)
+map ,, <Plug>(easymotion-prefix)
 
 
 " @autosave plugin options

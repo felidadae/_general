@@ -15,6 +15,9 @@ inoremap jk <Esc>
 :nmap <Leader>hv <Plug>GitGutterPreviewHunk
 :nmap <Leader>ggc :let g:gitgutter_diff_base = ''<Left>
 
+" @easy-motion
+map ,, <Plug>(easymotion-prefix)
+
 " @ycm
 :nnoremap ,] :YcmCompleter GoTo<CR>
 :nnoremap ,dc :YcmCompleter GetDoc<CR>
