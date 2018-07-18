@@ -52,6 +52,7 @@ map ,, <Plug>(easymotion-prefix)
 
 " @edit vimrc-family and other important files
 :nnoremap <leader>ev :edit ~/.vim/vimrc_splitted/vimrc_original
+:nnoremap <leader>tm :edit ~/.tmux.conf
 :nnoremap <leader>evm :edit ~/.vim/vimrc_splitted/mappings.vim<cr>
 :nnoremap <leader>rv :source ~/.vim/vimrc_splitted/mappings.vim<cr>
 :nnoremap <leader>ep :edit $general/bashProfile/pocketknife.sh<cr>/Mapping<cr>zt
