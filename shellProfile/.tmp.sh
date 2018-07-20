@@ -42,3 +42,5 @@ alias v--="amixer -D pulse sset Master 5%-"
 alias v++="amixer -D pulse sset Master 5%+"
 
 alias ,ps="pipenv shell"
+intelbase=~/Intel-Job; ii=$ntelbase
+intelbase=~/Intel-Job; ii=$intelbase

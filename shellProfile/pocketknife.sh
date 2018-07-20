@@ -25,7 +25,7 @@ alias gre=grep
 alias .get="sudo apt-get install"
 alias .remove="apt-get uninstall"
 alias lynx='lynx -accept_all_cookies -lss=lynx.lss'
-function up {
+function up_system {
 	sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove
 }
 alias cham="chmod +x"
@@ -38,13 +38,13 @@ function howManyFiles { ls -1 "$1" | wc -l; }
 function modifiedFilesIn {
 	find . -mtime -1 -ls
 }
-function listSize {
+function list_size {
 	for i in "$1"*; do
 		[ ! -d "$i" ] && continue
 		du -sh "$i"
 	done
 }
-function lsInMB {
+function ls_in_mb {
   ls -s --block-size=1048576 $1 | cut -d' ' -f1
 }
 function mls {
@@ -165,12 +165,6 @@ function translate_and_read_en2es {
 				&& play -q zupa.mp3 && rm zupa.mp3'
 }
 
-#Bindings
-bindkey -M vicmd -s 'tre' "itrans pl:en ''$KEY_LEFT"
-bindkey -M vicmd -s 'ytr' "itrans -p en:es ''$KEY_LEFT"
-bindkey -M vicmd -s 'gtr' "igtts-cli.py -l es -o zupa.mp3 ''$KEY_LEFT"
-bindkey -M vicmd -s 'ptr' "iplay zupa.mp3$ENTER"
-bindkey -M vicmd -s 'atr' "itrans -p es:en ''$KEY_LEFT"
 #--------------------------------
 
 
@@ -445,6 +439,8 @@ function zshsnippet_save {
 #------------
 # @zsh @zsh-snippets @zsh-small-snippets
 if [[ "$__MY_SHELL__" == 'zsh' ]]; then
+
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	#	Use showkeys -a or cat to see which escape sequences needed.
 	#	Autokeys should be disabled while using this.
 	#	bindkey to use fast without special key to 
@@ -455,103 +451,70 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	KEY_LEFT='^[[D'
 	KEY_BRACKET_LEFT='^?^?{'
 	ENTER='^M'
-	bindkey -M viins -s '^[h' '^[[D'
-	bindkey -M viins -s '^[l' '^[[C'
-	bindkey -M viins -s '^[4' '^[[4~ | '
+    TAB='9'
 
-	#numeric
-	bindkey -M viins -s '34' \$
+
+    # main in blood
+	bindkey -M viins 'jk' vi-cmd-mode
+	bindkey -M viins '^[r' history-incremental-search-backward
+	bindkey -M viins '^R' history-incremental-search-backward
+    bindkey -M vicmd v edit-command-line
+
+    # apostrophe
 	bindkey -M viins -s ";\'" "\"\""$KEY_LEFT
-	bindkey -M viins -s '1232' \!\!
-	bindkey -M viins -s '89' "\""
-	bindkey -M viins -s '78' "*"
-	bindkey -M viins -s '90' "\""
-	bindkey -M viins -s '890' "\"\"$KEY_LEFT"
-	bindkey -M viins -s '0-' "_"
+
+    # deprecated: too much problem while inserting text
+	# numeric
+	# bindkey -M viins -s '34' \$
+	# bindkey -M viins -s '1232' \!\!
+	# bindkey -M viins -s '89' "\""
+	# bindkey -M viins -s '78' "*"
+	# bindkey -M viins -s '90' "\""
+	# bindkey -M viins -s '890' "\"\"$KEY_LEFT"
+	# bindkey -M viins -s '0-' "_"
+
+    # alt + nmeric
+	bindkey -M viins -s '^[2' ' | '
+    bindkey -M viins -s '^[3' "\$()$KEY_LEFT"
+
+    # tylda
 	bindkey -M viins -s '``' "~/"
 	bindkey -M viins -s '```' '$general/'
 	bindkey -M viins -s '````' 'cd $general'"$ENTER"
 
-	bindkey -M viins -s '^[;' "^[[4~" # go to end of the line >>M-;<<
-	bindkey -M viins -s '^[g' "^[[1~" # go to the begin of the line M-g
-
-	bindkey -M viins 'jk' vi-cmd-mode
-	bindkey -M viins '^[r' history-incremental-search-backward
-	bindkey -M viins '^R' history-incremental-search-backward
-	bindkey -M vicmd v edit-command-line
-	bindkey -M vicmd -s '^S' "$ENTER" 
-	bindkey -M viins -s '^S' "$ENTER" 
-	bindkey -M viins -s ']\' '|'
-	bindkey -M viins -s '^[2' ' | '
-	bindkey -M viins -s '^[3' ' | grep -i '
-	bindkey -M viins -s 'wcl' ' | wc -l'
-	bindkey -M viins -s 'h\' 'history | '
-	bindkey -M viins -s 'tiga' "tig --all $ENTER"
-	bindkey -M viins -s 'lsl' "lss $ENTER"
+    # beginning with characters
+	bindkey -M viins -s '0tiga' "tig --all $ENTER"
+	bindkey -M viins -s '0lsl' "ls $ENTER"
 	bindkey -M viins -s '0gs' "git status$ENTER"
+	bindkey -M viins -s '0tta' "tmux attach-session -t "
 	bindkey -M viins -s '0gd' "git diff$ENTER"
 	bindkey -M viins -s '0gdd' "git diff --cached $ENTER"
-	# bindkey -M viins -s 'ł' 'ls'"$ENTER"
-	bindkey -M viins -s 'æ' 'git lg1'"$ENTER"
-	bindkey -M viins -s 'ŋ' 'git status'"$ENTER"
-	bindkey -M viins -s 'ó' "$ENTER"
-	bindkey -M viins -s 'þ' "$ENTER"
-	bindkey -M viins -s ',ez' "tmux split-window \"vim + ~/.zshrc\"$ENTER"
-	bindkey -M viins -s ',e,' "jk0itmux split-window -p 30 " 
+	bindkey -M viins -s '0gda' "git add -u"
+	bindkey -M viins -s '0gca' "git commit --amend"
+	bindkey -M viins -s '^[m' "list_mappings_$TAB"
 
-	function _git-status {
-		BUFFER="git status"
-		zle accept-line
-	}
-	zle -N _git-status
-	bindkey 'ś' _git-status
+    # translate
+    bindkey -M vicmd -s 'tre' "itrans pl:en ''$KEY_LEFT"
+    bindkey -M vicmd -s 'ytr' "itrans -p en:es ''$KEY_LEFT"
+    bindkey -M vicmd -s 'gtr' "igtts-cli.py -l es -o zupa.mp3 ''$KEY_LEFT"
+    bindkey -M vicmd -s 'ptr' "iplay zupa.mp3$ENTER"
+    bindkey -M vicmd -s 'atr' "itrans -p es:en ''$KEY_LEFT"
 
-	function _git-diff {
-		BUFFER="git diff"
-		zle accept-line
-	}
-	zle -N _git-diff
-	bindkey 'ð' _git-diff
-
-	function _sudo-all {
-		zle beginning-of-line
-		LBUFFER="sudo "
-	}
+    # sudo all
+	function _sudo-all { zle beginning-of-line; LBUFFER="sudo "; }
 	zle -N _sudo-all 
-	bindkey '\es\es' _sudo-all #Alt-s Alt-s
+    bindkey '\es\es' _sudo-all #Alt-s Alt-s
 
-	function _yank_line {
-		zle vi-yank-whole-line
-		LBUFFER="sudo "
-	}
-	zle -N _sudo-all 
-	bindkey '\es\es' _sudo-all
+    function list_mappings_zsh_insert {
+        grep -P '^\s*bindkey' "$general/shellProfile/pocketknife.sh" | perl -pe 's/^\s+//g' | grep bindkey
+    }
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
-	function _tmux_bottom {
-		zle beginning-of-line
-		LBUFFER="tmux split-window -p $1"
-		zle accept-line
-	}
-	function _tmux_bottom_30 {
-		_tmux_bottom 30
-	}
-	function _tmux_bottom_50 {
-		_tmux_bottom 50
-	}
-	function _tmux_kill_pane {
-		BUFFER="tmux kill-pane"
-		zle accept-line
-	}
-	zle -N _tmux_bottom_30
-	bindkey 'ß' _tmux_bottom_30
-	zle -N _tmux_bottom_50
-	bindkey 'ßß' _tmux_bottom_50
-
-	export TAB="\t"
 	bindkey '\ej' zshnip-expand-or-edit # Alt-J
 	bindkey '\ee' zshnip-edit-and-expand # Alt-E
     alias snipl=zshnip-list
+
 	# @zshsnippet_begin
 	zshnip-add echotsv $'echo -e "col0${TAB}col1${TAB}col2${TAB}col3" | ' 0
 	alias echotsv=''
@@ -563,7 +526,6 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	alias perlne=''
 	zshnip-add perli $'perl -i -pe \'s///g\' *' 6
 	alias perli=""
-
 	# @zshsnippet_end
 fi
 #------------
