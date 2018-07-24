@@ -477,6 +477,12 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '^[2' ' | '
     bindkey -M viins -s '^[3' "\$()$KEY_LEFT"
 
+    # ctrl + nmeric
+	bindkey -M viins -s '^@' "ls$ENTER" # ctrl+2
+	bindkey -M viins -s '^[' "tig --all$ENTER" # ctrl+3
+
+    # temporary
+
     # tylda
 	bindkey -M viins -s '``' "~/"
 	bindkey -M viins -s '```' '$general/'
