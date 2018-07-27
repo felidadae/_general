@@ -452,10 +452,12 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	KEY_BRACKET_LEFT='^?^?{'
 	ENTER='^M'
     TAB='9'
+    BACK_SPACE='^?'
 
 
     # main in blood
 	bindkey -M viins 'jk' vi-cmd-mode
+	bindkey -M viins -s '^D' "$BACK_SPACE"
 	bindkey -M viins '^[r' history-incremental-search-backward
 	bindkey -M viins '^R' history-incremental-search-backward
     bindkey -M vicmd v edit-command-line

@@ -6,6 +6,7 @@
 inoremap jk <Esc>
 :nmap ; :
 :nnoremap <leader>ww :w<cr>
+:inoremap <C-d> <BS>
 
 " @gitgutter
 :nmap ]h <Plug>GitGutterNextHunk
@@ -15,8 +16,22 @@ inoremap jk <Esc>
 :nmap <Leader>hv <Plug>GitGutterPreviewHunk
 :nmap <Leader>ggc :let g:gitgutter_diff_base = ''<Left>
 
+
 " @easy-motion
-map ,, <Plug>(easymotion-prefix)
+" map ,, <Plug>(easymotion-prefix)
+map ` <Plug>(easymotion-prefix)
+let g:EasyMotion_smartcase = 1
+
+" Gif config
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
 
 " @ycm
 :nnoremap ,] :YcmCompleter GoTo<CR>
