@@ -16,6 +16,12 @@ function c { clear; }
 function tree1 { tree -L 1 -C --dirsfirst; }
 function tree2 { tree "$1" -L 2 -C --dirsfirst; }
 function definition { whence -f $1; }
+alias m="man"
+alias s-s="sudo systemctl status"
+alias s-r="sudo systemctl restart"
+alias s-stop="sudo systemctl stop"
+alias j-="sudo journalctl --since \"5minutes ago\" -u"
+alias v-"vim -"
 alias t2="tree2"
 alias lss="ls -1a --color"
 alias lsd="LC_COLLATE=C ls -1a --group-directories-first --color"
@@ -533,6 +539,8 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	zshnip-add perln $'perl -ne \'print "$." if //;\' ' 4
 	alias perlne=''
 	zshnip-add perli $'perl -i -pe \'s///g\' *' 6
+	alias perli=""
+	zshnip-add find. $'find . -name \' \'' 6
 	alias perli=""
 	# @zshsnippet_end
 fi

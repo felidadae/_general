@@ -1,0 +1,7 @@
+[Unit]
+Description=keyboard_mappings
+
+[Service]
+Restart=always
+RestartSec=2s
+ExecStart=/bin/bash -ex /home/felidadae/Programming/_General/felidadaeTools/services/keyboard_mappings.sh

@@ -20,7 +20,7 @@ inoremap jk <Esc>
 " @easy-motion
 " map ,, <Plug>(easymotion-prefix)
 map ` <Plug>(easymotion-prefix)
-let g:EasyMotion_smartcase = 1
+let g:EasyMotion_smartcase = 0
 
 " Gif config
 map  / <Plug>(easymotion-sn)
