@@ -1,5 +1,14 @@
 #!/bin/bash -e
 current="$(tmux show-buffer)"
-if [ "$current" != "$(xclip -o -selection clipboard)" ]; then
-	tmux set-buffer "$(xclip -o -selection clipboard)"
+
+if [ "$DISPLAY" != "" ]; then
+    # read from x11 clipboard
+    new_buffer="$(xclip -o -selection clipboard)"
+else
+    # put data into a file
+    new_buffer="$(cat ~/.shared_buffer)"
+fi
+
+if [ "$current" != "$new_buffer" ]; then
+	tmux set-buffer "$new_buffer"
 fi

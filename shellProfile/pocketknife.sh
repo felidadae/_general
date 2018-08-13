@@ -548,7 +548,12 @@ fi
 
 
 alias .r="reloadBashProfile"
-alias .c="tr '\n' ' ' | xclip -selection c"
+# important fix: working without x11
+if [ "$DISPLAY" != ""  ]; then
+    alias .c="tr '\n' ' ' | xclip -selection c"
+else
+    alias .c="tr '\n' ' ' > ~/.shared_buffer"
+fi
 function .cl { history | tail -1 | perl -ne 'print $1 if /^\s*\d+\s*(.*)$/' | .c; }
 
 function ,epo { 
