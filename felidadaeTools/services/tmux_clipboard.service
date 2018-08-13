@@ -1,9 +1,0 @@
-[Unit]
-Description=tmux_clipboard
-
-[Service]
-Restart=always
-RestartSec=2s
-ExecStart=/bin/bash -ex /home/felidadae/Programming/_General/felidadaeTools/services/tmux_clipboard.sh
-
-WantedBy=multi-user.target

@@ -1,4 +1,5 @@
 #!/bin/bash -e
+
 current="$(tmux show-buffer)"
 
 if [ "$DISPLAY" != "" ]; then
