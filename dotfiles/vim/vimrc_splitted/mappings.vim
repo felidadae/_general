@@ -3,7 +3,7 @@
 :let maplocalleader = "\\"
 
 " @copy to tmux buffer
-:vnoremap y :w! ~/.shared_buffer<CR>
+" :vnoremap y :w! ~/.shared_buffer<CR>
 
 " @basics
 inoremap jk <Esc>
