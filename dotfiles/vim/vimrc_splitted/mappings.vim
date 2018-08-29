@@ -3,12 +3,11 @@
 :let maplocalleader = "\\"
 
 " @copy to tmux buffer
-:vnoremap y :w! ~/.shared_buffer<CR>
+" :vnoremap y :w! ~/.shared_buffer<CR>
 
 " @basics
 inoremap jk <Esc>
 :nmap ; :
-:nnoremap <leader>ww :w<cr>
 :inoremap <C-d> <BS>
 
 " @gitgutter
@@ -49,7 +48,10 @@ map  N <Plug>(easymotion-prev)
 :nnoremap <Leader>mn :MBEbp<cr>
 :nnoremap nm<Leader> :MBEbn<cr>
 
+" fast saving, quiting
 :nnoremap ,qq :wqall!<cr>
+:nnoremap ,`q :qall!<cr>
+:nnoremap <leader>ww :w<cr>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
