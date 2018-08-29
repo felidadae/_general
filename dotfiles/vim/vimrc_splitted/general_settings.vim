@@ -82,3 +82,5 @@ endif
 " :set foldignore=
 " " set iskeyword-=_
 "----------------------------------------------------------------------------------
+
+au BufRead,BufNewFile *.aurora set filetype=python

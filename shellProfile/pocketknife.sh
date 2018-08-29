@@ -482,12 +482,11 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	# bindkey -M viins -s '0-' "_"
 
     # alt + nmeric
+	bindkey -M viins -s '^[1' "tig --all$ENTER" # ctrl+3
 	bindkey -M viins -s '^[2' ' | '
-    bindkey -M viins -s '^[3' "\$()$KEY_LEFT"
 
     # ctrl + nmeric
 	bindkey -M viins -s '^@' "ls$ENTER" # ctrl+2
-	bindkey -M viins -s '^[' "tig --all$ENTER" # ctrl+3
 
     # temporary
 
@@ -497,7 +496,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '````' 'cd $general'"$ENTER"
 
     # beginning with characters
-	bindkey -M viins -s '0tiga' "tig --all $ENTER"
+	bindkey -M viins -s '0tig' "tig --all $ENTER"
 	bindkey -M viins -s '0lsl' "ls $ENTER"
 	bindkey -M viins -s '0gs' "git status$ENTER"
 	bindkey -M viins -s '0tta' "tmux attach-session -t "
