@@ -1,5 +1,5 @@
 ---
 - hosts: main
   roles:
-  - prometheus
+  - workloads
 
