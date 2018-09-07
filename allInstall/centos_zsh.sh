@@ -3,7 +3,7 @@
 # works for centos 7.5
 
 sudo yum -y install zsh git vim curl
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cd ~; mkdir Programming; cd Programming;
 git clone https://github.com/felidadae/_general.git
 mv _general _General

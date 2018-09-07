@@ -1,0 +1,11 @@
+---
+- name: Clone OWCA repository to /tmp/owca
+  become: false
+  run_once: true
+  local_action:
+    module: git
+    dest: /home/felidadae/owca
+    repo: git@github.intel.com:serenity/owca.git
+    accept_hostkey: yes
+    update: yes
+    version: 503145c

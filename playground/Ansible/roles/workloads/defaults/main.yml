@@ -1,0 +1,9 @@
+---
+
+perform: deploy
+prometheus_host_port: 9090
+prometheus_host_config_path: /tmp/prometheus_config.yml
+prometheus_container_name: prometheus_container
+prometheus_image: prom/prometheus
+prometheus_image_tag: latest
+prometheus_observed_hosts: "['{{ groups['mesos-slave'] | list | join (\"', '\") }}']"
