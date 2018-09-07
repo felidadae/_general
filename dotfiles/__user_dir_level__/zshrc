@@ -68,4 +68,8 @@ if [ ! -e $_sources/z/z.sh ]; then
 fi
 source $_sources/z/z.sh
 
+if [ ! -d ~/.fzf ]; then
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
