@@ -47,3 +47,7 @@ create_link vim/ftdetect ~/.vim/ftdetect
 mkdir -p ~/.config/matplotlib; create_link matplotlib/matplotlibrc  ~/.config/matplotlib/matplotlibrc
 create_link tmux/tmux.conf ~/.tmux.conf
 create_link perl/perldb ~/.perldb
+
+# ipdb
+
+# ranger
