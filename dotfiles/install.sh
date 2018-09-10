@@ -49,5 +49,10 @@ create_link tmux/tmux.conf ~/.tmux.conf
 create_link perl/perldb ~/.perldb
 
 # ipdb
+create_link ipython/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+create_link ipython/keybindings.py ~/.ipython/profile_default/startup/keybindings.py
 
 # ranger
+create_link ranger/commands.py ~/.config/ranger/commands.py
+create_link ranger/scope.sh ~/.config/ranger/scope.sh
+create_link ranger/rc.conf ~/.config/ranger/rc.conf

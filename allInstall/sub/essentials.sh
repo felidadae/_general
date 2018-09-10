@@ -19,3 +19,4 @@ sudo apt-get install -y libfreetype6-dev libxft-dev
 sudo apt-get install -y ncdu
 sudo apt-get install -y checkinstall
 sudo apt-get install -y net-tools
+sudo apt-get install -y ranger
