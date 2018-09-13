@@ -1,0 +1,23 @@
+owca_topic_metrics_name: owca_metrics
+owca_topic_anomaly_name: owca_anomaly
+
+owca_topic_names:
+  - "{{ owca_topic_metrics_name }}"
+  - "{{ owca_topic_anomaly_name }}"
+  - owca_anomalies
+  - owca_apms_specjbb
+  - owca_apms_twemcache
+  - owca_apms_redis
+  - owca_apms_cassandra
+  - owca_apms_tensorflow_inference
+  - owca_apms_tensorflow_train
+
+owca_topic_scrape_interval:
+  "{{ owca_topic_metrics_name }}": 10ms
+  "{{ owca_topic_anomaly_name }}": 10ms
+  owca_apms_specjbb: 100ms
+  owca_apms_twemcache: 10ms
+  owca_apms_redis: 10ms
+  owca_apms_cassandra: 10ms
+  owca_apms_tensorflow_inference: 500ms
+  owca_apms_tensorflow_train: 500ms

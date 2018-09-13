@@ -47,4 +47,13 @@ else
 				# --with-python3-config-dir=/usr/lib/python3.5/config \
 fi
 make
-sudo checkinstall 
+
+echo "Install system wide using checkinstall."
+sudo apt-get install -y checkinstall
+sudo checkinstall -D -y \
+  --install=yes \
+  --fstrans=no \
+  --reset-uids=yes \
+  --pkgname=tmux \
+  --pkgversion="$(git tag | tail -1)" \
+  --maintainer="felidadae@gmail.com"
