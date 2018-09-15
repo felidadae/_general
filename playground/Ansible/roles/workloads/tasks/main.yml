@@ -1,11 +1,34 @@
 ---
-- name: Clone OWCA repository to /tmp/owca
-  become: false
-  run_once: true
-  local_action:
-    module: git
-    dest: /home/felidadae/owca
-    repo: git@github.intel.com:serenity/owca.git
-    accept_hostkey: yes
-    update: yes
-    version: 503145c
+# - name: Clone OWCA repository to /tmp/owca
+#   become: false
+#   run_once: true
+#   local_action:
+#     module: git
+#     dest: /home/felidadae/owca
+#     repo: git@github.intel.com:serenity/owca.git
+#     accept_hostkey: yes
+#     update: yes
+#     version: 503145c
+
+- name: Get hash of the checkout commit in the submodule owca.
+  command: git rev-parse HEAD
+  args:
+    chdir: "/home/felidadae/Intel-Job/repos/__main__/installer/owca"
+  ignore_errors: False
+  register: submodule_owca_hash
+  delegate_to: localhost
+
+# - command: "git checkout {{ submodule_owca_hash.stdout }}"
+#   args:
+#     chdir: /home/felidadae/Intel-Job/repos/__main__/installer/owca
+#   delegate_to: localhost
+
+- command: "echo {{ owca_topic_names }}"
+  args:
+    chdir: /home/felidadae/Intel-Job/repos/__main__/installer/owca
+  delegate_to: localhost
+
+- command: "echo {{ owca_topic_scrape_interval }}"
+  args:
+    chdir: /home/felidadae/Intel-Job/repos/__main__/installer/owca
+  delegate_to: localhost

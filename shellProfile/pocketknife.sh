@@ -17,6 +17,7 @@ function tree1 { tree -L 1 -C --dirsfirst; }
 function tree2 { tree "$1" -L 2 -C --dirsfirst; }
 function definition { whence -f $1; }
 alias m="man"
+alias i="workon env35; ipython"
 alias s-s="sudo systemctl status"
 alias s-r="sudo systemctl restart"
 alias s-stop="sudo systemctl stop"

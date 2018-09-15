@@ -10,7 +10,7 @@ cd $_sources
 cd tmux/
 git fetch
 git pull origin master
-git checkout master
+git checkout master #newest version
 echo "Install to location $(pwd)"
 sh autogen.sh 
 

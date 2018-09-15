@@ -1,0 +1,10 @@
+   16  mkdir ~/.vim
+   17  bash install.sh
+   18  mkdir ~/.ipython/profile_default
+   19  mkdir -p ~/.ipython/profile_default
+   20  mkdir -p ~/.config.ranger
+   21  bash install.sh
+   22  mkdir -p ~/.config/ranger
+   23  bash install.sh
+   24  mkdir -p ~/.ipython/profile_default/startup
+   25  history | tail -10
