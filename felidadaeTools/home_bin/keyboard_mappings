@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -x
 
 echo "How to add new mappings?"
 echo "Use command xmodmap -pme to see all keys mapped to meta keys (control, alt, modifiers)."
@@ -7,10 +7,6 @@ echo "Next: add needed key to needed meta key."
 
 # Reset all.
 setxkbmap -option
-
-# Caps lock as enter.
-setxkbmap -option caps:none 
-xmodmap -e 'keycode 66 = Return'    #caps lock as enter
 
 # Here example how to map F7:
 # xmodmap -e 'keycode 74 = Tab' #F7
@@ -21,7 +17,14 @@ echo "Keyboard type (options: mac, erg, acer)"
 read keyboard_type
 [ "$keyboard_type" == "" ] && echo "Set default to mac." && keyboard_type=mac
 
-if [ "$keyboard_type" = "mac" ]; then
+
+# Common ---
+# Caps lock as enter.
+setxkbmap -option caps:none 
+xmodmap -e 'keycode 66 = Return'    #caps lock as enter
+# ---
+
+if [ "$keyboard_type" == "mac" ]; then
     xmodmap -e 'remove mod4 = Super_R'  
     xmodmap -e 'add shift = Super_R'
     # -- 
@@ -30,8 +33,23 @@ if [ "$keyboard_type" = "mac" ]; then
     # -- 
     xmodmap -e 'remove control = Control_L'
     xmodmap -e 'add mod4 = Control_L'
-else
+fi
+
+if [ "$keyboard_type" == "erg" ]; then
+    xmodmap -e 'remove control = Control_L' 
+    xmodmap -e 'add mod1 = Control_L' 
+
+    xmodmap -e 'remove mod1 = Alt_L' 
+    xmodmap -e 'add control = Alt_L' 
+
+    xmodmap -e 'remove mod4 = Super_L' 
+    xmodmap -e 'add mod1 = Super_L'
+
     #right alt and right super
-    xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
-    xmodmap -e 'add shift = ISO_Level3_Shift'
+    # xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
+    # xmodmap -e 'add shift = ISO_Level3_Shift'
+
+    #right alt and right super
+    xmodmap -e 'remove mod1 = Alt_R' 
+    xmodmap -e 'add shift = Alt_R'
 fi
