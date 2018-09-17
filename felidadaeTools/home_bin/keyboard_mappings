@@ -8,10 +8,6 @@ echo "Next: add needed key to needed meta key."
 # Reset all.
 setxkbmap -option
 
-# Here example how to map F7:
-# xmodmap -e 'keycode 74 = Tab' #F7
-# xmodmap -e 'keycode 134 = Next' #F7
-
 # Set keyboard type.
 echo "Keyboard type (options: mac, erg, acer)"
 read keyboard_type
@@ -46,10 +42,10 @@ if [ "$keyboard_type" == "erg" ]; then
     xmodmap -e 'add mod1 = Super_L'
 
     #right alt and right super
-    # xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
-    # xmodmap -e 'add shift = ISO_Level3_Shift'
-
-    #right alt and right super
+    # case intel
+    xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
+    xmodmap -e 'add shift = ISO_Level3_Shift'
+    # case home
     xmodmap -e 'remove mod1 = Alt_R' 
     xmodmap -e 'add shift = Alt_R'
 fi
