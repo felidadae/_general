@@ -3,6 +3,8 @@
 source ~/.vim/vimrc_splitted/plugins.vim
 "----------------------------------------------------------------------------------
 
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
 
 "----------------------------------------------------------------------------------
 " @must-be-on-top (for some reason this settings has to be on the top of the

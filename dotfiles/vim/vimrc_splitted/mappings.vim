@@ -52,6 +52,7 @@ map  N <Plug>(easymotion-prev)
 :nnoremap ,qq :wqall!<cr>
 :nnoremap ,`q :qall!<cr>
 :nnoremap <leader>ww :w<cr>
+:nnoremap <leader>k :BUN<cr>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
@@ -147,7 +148,8 @@ cnoremap <C-w> <cr>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 
-:nnoremap <leader>ac :Ack<space>
+:nnoremap <leader>ac :Ack!<space>''<Left>
+:nnoremap <leader>ac ye :Ack!<space>'<c-r>"'<Left>
 
 
 

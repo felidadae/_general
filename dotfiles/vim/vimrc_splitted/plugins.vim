@@ -19,7 +19,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'thalesmello/vim-tmux-navigator'
 Plugin 'tmux-plugins/vim-tmux'
 
 "@look

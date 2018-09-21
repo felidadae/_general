@@ -34,7 +34,7 @@ python del powerline_setup
 
 "----------------------------------------------------------------------------------
 " @encoding @indent @general
-:set wrap
+:set nowrap
 :set linebreak
 " :set display+=lastline
 :set lazyredraw "very very good shit; not redrawing while macros, etc.

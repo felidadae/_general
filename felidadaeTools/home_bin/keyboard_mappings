@@ -5,22 +5,18 @@ echo "Use command xmodmap -pme to see all keys mapped to meta keys (control, alt
 echo "Next: remove needed key from current meta key."
 echo "Next: add needed key to needed meta key."
 
-# Reset all.
-setxkbmap -option
-
 # Set keyboard type.
 echo "Keyboard type (options: mac, erg, acer)"
 read keyboard_type
 [ "$keyboard_type" == "" ] && echo "Set default to mac." && keyboard_type=mac
 
-
-# Common ---
-# Caps lock as enter.
-setxkbmap -option caps:none 
-xmodmap -e 'keycode 66 = Return'    #caps lock as enter
-# ---
-
 if [ "$keyboard_type" == "mac" ]; then
+    echo "Mac keyboard template loading.."
+    setxkbmap -option
+    setxkbmap -option caps:none 
+    xmodmap -e 'keycode 66 = Return'    #caps lock as enter
+    # ---
+
     xmodmap -e 'remove mod4 = Super_R'  
     xmodmap -e 'add shift = Super_R'
     # -- 
@@ -32,8 +28,14 @@ if [ "$keyboard_type" == "mac" ]; then
 fi
 
 if [ "$keyboard_type" == "erg" ]; then
+    echo "Ergonomic home template loading.."
+    setxkbmap -option
+    setxkbmap -option caps:none 
+    xmodmap -e 'keycode 66 = Return'    #caps lock as enter
+    # ---
+
     xmodmap -e 'remove control = Control_L' 
-    xmodmap -e 'add mod1 = Control_L' 
+    xmodmap -e 'add mod4 = Control_L' 
 
     xmodmap -e 'remove mod1 = Alt_L' 
     xmodmap -e 'add control = Alt_L' 
@@ -42,10 +44,15 @@ if [ "$keyboard_type" == "erg" ]; then
     xmodmap -e 'add mod1 = Super_L'
 
     #right alt and right super
-    # case intel
-    xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
-    xmodmap -e 'add shift = ISO_Level3_Shift'
     # case home
     xmodmap -e 'remove mod1 = Alt_R' 
     xmodmap -e 'add shift = Alt_R'
+fi
+
+if [ "$keyboard_type" == "erg-intel" ]; then
+    echo "Ergonomic intel template loading.."
+    setxkbmap -option caps:none 
+    xmodmap -e 'keycode 66 = Return'    #caps lock as enter
+    xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
+    xmodmap -e 'add shift = ISO_Level3_Shift'
 fi
