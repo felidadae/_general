@@ -51,8 +51,20 @@ fi
 
 if [ "$keyboard_type" == "erg-intel" ]; then
     echo "Ergonomic intel template loading.."
+    setxkbmap -option
     setxkbmap -option caps:none 
     xmodmap -e 'keycode 66 = Return'    #caps lock as enter
+    # ---
+
+    xmodmap -e 'remove control = Control_L' 
+    xmodmap -e 'add mod4 = Control_L' 
+
+    xmodmap -e 'remove mod1 = Alt_L' 
+    xmodmap -e 'add control = Alt_L' 
+
+    xmodmap -e 'remove mod4 = Super_L' 
+    xmodmap -e 'add mod1 = Super_L'
+
     xmodmap -e 'remove mod5 = ISO_Level3_Shift' 
     xmodmap -e 'add shift = ISO_Level3_Shift'
 fi

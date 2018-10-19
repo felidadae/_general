@@ -6,6 +6,7 @@ for f in sublime-text/*; do
 	source="$dotfiles_dir/$f"
 	target="$sublime3_my/$(echo $(basename "$f"))"
 	
+    rm -r "$target"
 	if [ -e  "$target" ]; then
 		echo -e "\t$target\n\t\tfile/dir exists already; delete it first;"
 	else

@@ -5,7 +5,6 @@ function reloadBashProfile {
 	else
 		source ~/.bashrc	
 	fi
-	source $general/shellProfile/AllFatherOfAllSons.sh; 
 }
 
 # make tap to click
@@ -483,11 +482,10 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	# bindkey -M viins -s '0-' "_"
 
     # alt + nmeric
-	bindkey -M viins -s '^[1' "tig --all$ENTER" # ctrl+3
-	bindkey -M viins -s '^[2' ' | '
+	# bindkey -M viins -s '^@' ' | ' # ctrl + 2
 
     # ctrl + nmeric
-	bindkey -M viins -s '^@' "ls$ENTER" # ctrl+2
+	bindkey -M viins -s '^[' "ls$ENTER" # ctrl+3
 
     # temporary
 
@@ -497,7 +495,8 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	bindkey -M viins -s '````' 'cd $general'"$ENTER"
 
     # beginning with characters
-	bindkey -M viins -s '0tig' "tig --all $ENTER"
+	bindkey -M viins -s '0tg' "tig --all$ENTER" # ctrl+T
+	bindkey -M viins -s '0tg0' "tig --all$ENTER" # ctrl+T
 	bindkey -M viins -s '0lsl' "ls $ENTER"
 	bindkey -M viins -s '0gs' "git status$ENTER"
 	bindkey -M viins -s '0tta' "tmux attach-session -t "
@@ -619,5 +618,12 @@ function touch_script_sh {
 	touch "$1.sh"
 	chmod +x "$1.sh"
 	echo "#!/bin/bash -e" > "$1.sh"
+}
+function vim_into_grep {
+	local grep_args="$@"
+	eval grep -Inr $grep_args
+	read n
+	export n
+	eval "$(eval grep -Inr $grep_args | perl -ne 'print "vim +$2 $1\n" if /^(.*?):(\d+):/' | perl -ne 'print $_ if $. eq $ENV{n}')"
 }
 #--------------------------------

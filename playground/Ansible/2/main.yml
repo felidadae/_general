@@ -1,0 +1,8 @@
+- hosts: other_group
+  gather_facts: no
+  tasks:
+    - name: Print all variables
+      vars:
+        zupa: "{{groups['other_group'][0]}}"
+      command: echo "{{ janek_9 }}"
+      environment:

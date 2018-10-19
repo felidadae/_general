@@ -48,7 +48,7 @@ Plugin 'fweep/vim-tabber'
 Plugin 'mileszs/ack.vim'
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'fholgado/minibufexpl.vim'
+" Plugin 'fholgado/minibufexpl.vim'
 Plugin 'nvie/vim-flake8'
 
 "@syntax

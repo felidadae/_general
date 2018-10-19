@@ -20,7 +20,7 @@ autocmd FileType nerdtree setlocal relativenumber
 " @ctrlp fuzzy finder
 :let g:ctrlp_follow_symlinks = 2
 :let g:ctrlp_working_path_mode = 'r'
-
+:let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " @ultisnips
 :let g:UltiSnipsEditSplit="horizontal"
@@ -61,4 +61,4 @@ set sessionoptions-=buffers
 
 
 " @tabber
-let g:tabber_predefined_labels = { 1: 'core', 2: 'helper1', 3: 'helper2' }
+let g:tabber_predefined_labels = { 1: '1', 2: '2', 3: '3' }
