@@ -1,4 +1,5 @@
 #!/bin/bash -e
+
 dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 function create_link_long {
 	# @Description
@@ -11,9 +12,20 @@ function create_link_long {
 	local target=${2}
 	local name=${3}
 
-	echo "Creating symbolic for $name."
-	sudo rm -f $target
-	sudo ln -s "$source" "$target"
+    if [ -e "$target" ]; then
+        if [ "$OVERWRITE_DOTFILES" == "true" ]; then
+            echo "Deleting file $source as we want to creat symbolic link for target $target"
+            sudo rm -f "$target"
+            echo "Creating symbolic for $name."
+            sudo ln -s "$source" "$target"
+        else
+            echo "Skipping file $target, as it already exists and OVERWRITE_DOTFILES is not set to >>true<<."
+        fi
+    else
+        echo "Creating symbolic for $name."
+        [ ! -d "$source" ] && mkdir -p "$(dirname "$target")"
+        sudo ln -s "$source" "$target"
+    fi
 }
 function create_link {
 	local source=${1}
@@ -34,18 +46,30 @@ function add_dot_file {
 }
 
 
+
+# home dir level
 for f in $dotfiles_dir/__user_dir_level__/*; do
 	[ ! -e "$f" ] && continue
 	create_link_long "$f" ~/.$(basename $f) $(basename $f)
 done
-mkdir -p ~/.oh-my-zsh/themes; create_link zsh/felidadae.zsh-theme ~/.oh-my-zsh/themes/felidadae.zsh-theme
+
+# zsh
+create_link zsh/felidadae.zsh-theme ~/.oh-my-zsh/themes/felidadae.zsh-theme
+
+# vim
 create_link vim/vimrc ~/.vimrc
 create_link vim/snippets ~/.vim/felidadae_snippets
 create_link vim/vimrc_splitted ~/.vim/vimrc_splitted
 create_link vim/syntax ~/.vim/syntax
 create_link vim/ftdetect ~/.vim/ftdetect
-mkdir -p ~/.config/matplotlib; create_link matplotlib/matplotlibrc  ~/.config/matplotlib/matplotlibrc
+
+# matplotlib
+create_link matplotlib/matplotlibrc ~/.config/matplotlib/matplotlibrc
+
+# tmux
 create_link tmux/tmux.conf ~/.tmux.conf
+
+# perl
 create_link perl/perldb ~/.perldb
 
 # ipdb

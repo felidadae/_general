@@ -8,7 +8,6 @@ cd "$scriptPath_install_tool"
 [ ! -d monokai.terminal ] && git clone git://github.com/stephenway/monokai.terminal.git
 [ ! -d fonts ] && git clone git://github.com/powerline/fonts.git && bash fonts/install.sh
 
-
 if [[ ! -d Komodo-PerlRemoteDebugging* ]]; then
 	curl http://downloads.activestate.com/Komodo/releases/archive/8.x/8.0.2/remotedebugging/Komodo-PerlRemoteDebugging-8.0.2-78971-linux-x86_64.tar.gz \
 		> Komodo-PerlRemoteDebugging-8.0.2-78971-linux-x86_64.tar.gz
