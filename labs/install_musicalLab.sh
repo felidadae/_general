@@ -1,2 +1,0 @@
-source install_genericLab.sh
-installLab MusicalLab musicalLab

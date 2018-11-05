@@ -19,4 +19,7 @@ sudo apt-get install -y libfreetype6-dev libxft-dev
 sudo apt-get install -y ncdu
 sudo apt-get install -y checkinstall
 sudo apt-get install -y net-tools
+
+# all ranger
 sudo apt-get install -y ranger
+sudo apt-get install -y lynx elinks highlight img2txt atool pdftotext mediainfo

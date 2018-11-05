@@ -3,7 +3,9 @@ General
 
 Overview
 ---------------------
-I keep in this repository all stuff not connected to any particular project, general useful things like user configuration files, or some handy small programs or bash functions to improve quality of my life..
+I keep in this repository all stuff not connected to any particular project, 
+general useful things like user configuration files, or some handy small 
+programs or bash functions to improve quality of my life..
 
 Among others the repository contains:
 * _configuration files_ for vim, tmux, sublime-text, and pretty anything else what has user configuration files

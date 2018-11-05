@@ -22,6 +22,9 @@ colorscheme solarized
 :hi foldcolumn ctermbg=none
 :hi MatchParen cterm=none ctermbg=none ctermfg=35 "opening/closing paranthesis
 
+" to fix ack output to terminal
+set shellpipe=&>
+
 " call Initialize_highlights_()
 
 

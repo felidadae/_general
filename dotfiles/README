@@ -2,8 +2,8 @@
 
 # Source install.sh to use function 
 #	addDotfile to add new dot file which should
-#	placed in directly in ~/
+#	placed directly in ~/
 
-# File which should be placed directly in ~/
+# Files which should be linked directly to ~/
 # should be placed in:
 # ./__user_dir_level__ 

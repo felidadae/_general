@@ -1,5 +1,7 @@
 export ZSH=~/.oh-my-zsh
-
+case $(uname -a) in
+  *Microsoft*) unsetopt BG_NICE ;;
+esac
 #set history size
 export HISTSIZE=20000
 #save history after logout
@@ -13,7 +15,7 @@ setopt HIST_IGNORE_DUPS
 #add timestamp for each entry
 setopt EXTENDED_HISTORY
 
-ZSH_THEME="felidadae"
+ZSH_THEME=""
 HYPHEN_INSENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
