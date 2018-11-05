@@ -1,7 +1,7 @@
 " @nerdtree
 :let g:NERDTreeDirArrowExpandable="+"
 :let g:NERDTreeDirArrowCollapsible="~"
-:let g:NERDTreeWinSize=34
+:let g:NERDTreeWinSize=45
 :let g:NERDTreeMinimalUI=1
 :let NERDTreeHijackNetrw=0
 " enable line numbers
@@ -9,6 +9,7 @@
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
 :let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
+" :autocmd VimEnter * NERDTree
 
 
 " @devicons
@@ -61,4 +62,4 @@ set sessionoptions-=buffers
 
 
 " @tabber
-let g:tabber_predefined_labels = { 1: '1', 2: '2', 3: '3' }
+let g:tabber_predefined_labels = { 1: 'workspace-1', 2: 'workspace-2', 3: 'workspace-3' }

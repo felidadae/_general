@@ -1,8 +1,24 @@
 - hosts: other_group
   gather_facts: no
+  vars: 
+    dupa: 5
   tasks:
     - name: Print all variables
       vars:
+        dupa: "13"
         zupa: "{{groups['other_group'][0]}}"
-      command: echo "{{ janek_9 }}"
-      environment:
+      # command: echo "{{ dupa }}"
+      debug: var=dupa
+      register: dupa
+    - name: Print all variables again
+      debug: var=dupa
+    - name: Increment
+      set_fact:
+        dupa: "{{dupa|int + 1}}"
+    - name: Print dupa
+      debug: var=dupa
+    - name: Increment
+      set_fact:
+        dupa: "{{dupa|int + 1}}"
+    - name: Print dupa
+      debug: var=dupa

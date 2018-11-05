@@ -46,6 +46,8 @@ Plugin 'vim-scripts/keepcase.vim'
 Plugin 'fweep/vim-tabber'
 " Plugin 'vim-scripts/vim-auto-save'
 Plugin 'mileszs/ack.vim'
+" Plugin 'rking/ag.vim'
+
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'majutsushi/tagbar'
 " Plugin 'fholgado/minibufexpl.vim'

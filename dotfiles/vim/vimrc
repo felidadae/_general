@@ -5,6 +5,12 @@ source ~/.vim/vimrc_splitted/plugins.vim
 
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
+set shellpipe=>
+" set t_ti= t_te=
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+set lazyredraw
 
 "----------------------------------------------------------------------------------
 " @must-be-on-top (for some reason this settings has to be on the top of the
