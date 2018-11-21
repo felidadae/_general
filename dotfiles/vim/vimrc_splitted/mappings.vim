@@ -140,6 +140,7 @@ augroup END
 :let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " @replace current
+:vnoremap 0y :! tee > ~/tmp/.buffer; tmux load-buffer ~/tmp/.buffer; cat ~/tmp/.buffer<CR>
 :vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 

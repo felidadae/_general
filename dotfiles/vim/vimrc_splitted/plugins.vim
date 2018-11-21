@@ -18,6 +18,7 @@ Plugin 'airblade/vim-gitgutter'
 "@usefull navigation
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree.git'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'thalesmello/vim-tmux-navigator'
 Plugin 'tmux-plugins/vim-tmux'
@@ -36,7 +37,7 @@ Plugin 'crusoexia/vim-monokai'
 Plugin 'godlygeek/tabular'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/CmdlineComplete'
-" Plugin 'itchyny/vim-cursorword' "underline words under cursor
+Plugin 'itchyny/vim-cursorword' "underline words under cursor
 Plugin 'tpope/vim-commentary'   "comments
 Plugin 'tpope/vim-abolish'
 Plugin 'qpkorr/vim-bufkill'
@@ -58,6 +59,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'lifepillar/pgsql.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'lepture/vim-jinja'
 
 "@folding
 " Plugin 'Konfekt/FastFold'
