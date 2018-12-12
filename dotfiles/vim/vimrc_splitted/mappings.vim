@@ -50,9 +50,11 @@ map  N <Plug>(easymotion-prev)
 
 " fast saving, quiting
 :nnoremap ,qq :wqall!<cr>
+:nnoremap qq :q<cr>
 :nnoremap ,`q :qall!<cr>
 :nnoremap <leader>ww :w<cr>
 :nnoremap <leader>k :BUN<cr>
+:nnoremap ss :split<cr>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>

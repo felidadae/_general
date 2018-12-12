@@ -43,7 +43,8 @@ python del powerline_setup
 :set lazyredraw "very very good shit; not redrawing while macros, etc.
 " :set rnu
 :set rnu
-" :set cursorline
+:set number
+:set cursorline
 hi NonText guifg=bg
 :set encoding=utf8
 :set laststatus=2
@@ -70,6 +71,8 @@ endif
 
 
 "----------------------------------------------------------------------------------
+:set ttymouse=xterm2
+:set mouse=n
 :set breakindent
 :set ttyfast
 " :set t_ut=

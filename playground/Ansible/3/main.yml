@@ -1,0 +1,20 @@
+- hosts: other_group
+  gather_facts: no
+  vars: 
+    workloads:
+      ycsb_cassandra:
+        big:
+          count: 2
+          resources:
+            cpu: 3
+        small:  
+          count: 3
+          resources:
+            cpu: 3
+  tasks:
+    - name: give me shortest combo of two lists
+      vars:
+        versions: "{{ workloads.ycsb_cassandra.keys() | list }}"
+        counts: "{{ workloads.ycsb_cassandra.values() | map(attribute='count') | list }}"
+      debug:
+        msg: "{{ janek }} {{ kasia }}"
