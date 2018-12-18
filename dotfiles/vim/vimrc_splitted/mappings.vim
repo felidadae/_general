@@ -99,11 +99,9 @@ augroup END
 :nnoremap e, :TabberLabel
 
 " @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
-:inoremap <Esc>l <Right>
-:inoremap <Esc>h <Left>
-:inoremap <Esc>b <c-o>b
-:inoremap <Esc>e <c-o>e
-:inoremap <Esc>w <c-o>w
+:inoremap <C-l> <Right>
+:inoremap <C-h> <Left>
+:inoremap <C-t> <Tab>
 
 " @Insert blank
 :nnoremap ,2, :set paste<CR>m`o<Esc>``:set nopaste<CR>
@@ -147,7 +145,7 @@ augroup END
 :nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 
 " @command mode
-cnoremap <C-w> <cr>
+cnoremap <C-m> <cr>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 

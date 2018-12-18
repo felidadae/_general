@@ -485,7 +485,7 @@ if [[ "$__MY_SHELL__" == 'zsh' ]]; then
 	# bindkey -M viins -s '^@' ' | ' # ctrl + 2
 
     # ctrl + nmeric
-	bindkey -M viins -s '^[' "ls$ENTER" # ctrl+3
+	bindkey -M viins -s '^[1' "ls$ENTER" # ctrl+3
 
     # temporary
 
