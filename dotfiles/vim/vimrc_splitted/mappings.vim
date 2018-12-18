@@ -50,9 +50,11 @@ map  N <Plug>(easymotion-prev)
 
 " fast saving, quiting
 :nnoremap ,qq :wqall!<cr>
+:nnoremap qq :q<cr>
 :nnoremap ,`q :qall!<cr>
 :nnoremap <leader>ww :w<cr>
 :nnoremap <leader>k :BUN<cr>
+:nnoremap ss :split<cr>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
@@ -97,11 +99,9 @@ augroup END
 :nnoremap e, :TabberLabel
 
 " @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
-:inoremap <Esc>l <Right>
-:inoremap <Esc>h <Left>
-:inoremap <Esc>b <c-o>b
-:inoremap <Esc>e <c-o>e
-:inoremap <Esc>w <c-o>w
+:inoremap <C-l> <Right>
+:inoremap <C-h> <Left>
+:inoremap <C-t> <Tab>
 
 " @Insert blank
 :nnoremap ,2, :set paste<CR>m`o<Esc>``:set nopaste<CR>
@@ -140,11 +140,12 @@ augroup END
 :let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " @replace current
+:vnoremap 0y :! tee > ~/tmp/.buffer; tmux load-buffer ~/tmp/.buffer; cat ~/tmp/.buffer<CR>
 :vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
 
 " @command mode
-cnoremap <C-w> <cr>
+cnoremap <C-m> <cr>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 

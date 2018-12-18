@@ -3,7 +3,7 @@
 	pager = less -x1,5
 [user]
 	email = szymon.bugaj@intel.com
-	name = Szymon Bugaj
+	name = Bugaj, Szymon
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [diff]

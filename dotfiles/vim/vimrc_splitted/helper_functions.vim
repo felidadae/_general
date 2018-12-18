@@ -29,8 +29,8 @@ endfun
 
 "----------------------------------------------------------------------------------
 " @line-length-limit x-st column is magenta if there is a char
-autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
-autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
+" autocmd BufNewFile,BufRead *.py highlight ColorColumn ctermbg=magenta
+" autocmd BufNewFile,BufRead *.py call matchadd('ColorColumn', '\%100v', 100)
 "----------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------

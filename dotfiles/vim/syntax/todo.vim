@@ -10,8 +10,8 @@ syntax match date "\v\d\d\d\d[-.]\d\d([-.]\d\d)?"
 syntax match title "$.*" 
 syntax match priorytet "\v\*[\d+-]+\*"
 syntax match http_link "\vhttps?://.*\s*" contained
-syntax match note "\v^\s*\w.*" contains=http_link
-syntax keyword MyKeywords Niewczesniej Czekajac Zakladajac Jezeli Wowczas Przypadek Gdy gotowe oraz lub Nota contained
+syntax match note "\v^\s*(\w|\.|\/|'|\"|\{|\}).*" contains=http_link
+syntax keyword MyKeywords Stan Niewczesniej Czekajac Zakladajac Jezeli Wowczas Przypadek Gdy gotowe oraz lub Nota contained
 syntax keyword logicStart %
 syntax match logic "%.*$" contains=MyKeywords,logicStart
 syn region braceBlock start='{{{' end='}}}' contains=Keyword

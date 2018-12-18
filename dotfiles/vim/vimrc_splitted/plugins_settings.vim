@@ -11,6 +11,18 @@ autocmd FileType nerdtree setlocal relativenumber
 :let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'tags$']
 " :autocmd VimEnter * NERDTree
 
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " @devicons
 :let g:webdevicons_enable_ctrlp = 1
