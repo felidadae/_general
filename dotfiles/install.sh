@@ -12,6 +12,7 @@ function create_link_long {
 	local target=${2}
 	local name=${3}
 
+    echo $target
     if [ -e "$target" ]; then
         if [ "$OVERWRITE_DOTFILES" == "true" ]; then
             echo "Deleting file $source as we want to creat symbolic link for target $target"
