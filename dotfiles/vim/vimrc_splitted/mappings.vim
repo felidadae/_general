@@ -9,6 +9,8 @@
 inoremap jk <Esc>
 :nmap ; :
 :inoremap <C-d> <BS>
+:nnoremap <Space> 5<C-e>
+:nnoremap m 5<C-y>
 
 " @gitgutter
 :nmap ]h <Plug>GitGutterNextHunk
