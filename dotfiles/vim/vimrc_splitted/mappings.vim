@@ -102,7 +102,7 @@ augroup END
 
 " @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
 :inoremap <C-l> <Right>
-:inoremap <C-h> <Left>
+:inoremap <C-h> <Right>
 :inoremap <C-t> <Tab>
 
 " @Insert blank
