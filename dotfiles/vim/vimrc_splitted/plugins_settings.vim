@@ -75,3 +75,7 @@ set sessionoptions-=buffers
 
 " @tabber
 let g:tabber_predefined_labels = { 1: 'workspace-1', 2: 'workspace-2', 3: 'workspace-3' }
+
+" @vim-slime
+let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
