@@ -32,7 +32,7 @@ if [ "$keyboard_type" == "erg" ]; then
     setxkbmap -option
     setxkbmap -option caps:none 
     xmodmap -e 'keycode 66 = Return'    #caps lock as enter
-    xmodmap -e 'keycode 135 = Tab'    #caps lock as enter
+    xmodmap -e 'keycode 135 = Return'    #caps lock as enter
     # ---
 
     xmodmap -e 'remove control = Control_L' 
@@ -55,6 +55,7 @@ if [ "$keyboard_type" == "ergi" ]; then
     setxkbmap -option
     setxkbmap -option caps:none 
     xmodmap -e 'keycode 66 = Return'    #caps lock as enter
+    xmodmap -e 'keycode 135 = Return'    #caps lock as enter
     # ---
 
     xmodmap -e 'remove control = Control_L' 

@@ -2,8 +2,8 @@
 	editor = vim
 	pager = less -x1,5
 [user]
-	email = szymon.bugaj@intel.com
-	name = Bugaj, Szymon
+	email = felidadae@gmail.com
+	name = Szymon Bugaj
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [diff]
