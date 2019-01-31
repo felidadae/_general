@@ -20,6 +20,9 @@ inoremap jk <Esc>
 :nmap <Leader>hv <Plug>GitGutterPreviewHunk
 :nmap <Leader>ggc :let g:gitgutter_diff_base = ''<Left>
 
+" @fugitive
+:nmap ,gd :Gdiff
+:nmap ,gs :Gstatus<CR>
 
 " @easy-motion
 " map ,, <Plug>(easymotion-prefix)
@@ -39,6 +42,9 @@ map  N <Plug>(easymotion-prev)
 
 " @ycm
 :nnoremap ,] :YcmCompleter GoTo<CR>
+:nnoremap <C-LeftMouse> :YcmCompleter GoTo<CR>
+:nnoremap <C-RightMouse> :YckcmCompleter GoTo<CR>
+:nnoremap <C-RightMouse> bye :Ack!<space>'<c-r>"'<Left>
 :nnoremap ,dc :YcmCompleter GetDoc<CR>
 
 " @mini buffer explorer
@@ -56,7 +62,6 @@ map  N <Plug>(easymotion-prev)
 :nnoremap ,`q :qall!<cr>
 :nnoremap <leader>ww :w<cr>
 :nnoremap <leader>k :BUN<cr>
-:nnoremap ss :split<cr>
 
 " @resize windows
 :nnoremap <leader>= :vertical resize +10<cr>
@@ -128,6 +133,9 @@ augroup END
 :nnoremap <leader>t :CtrlPTag<cr>
 :nnoremap <leader>p :CtrlP<cr>
 :nnoremap <leader>h :hide<cr>
+:nnoremap nr :hide<CR>
+:nnoremap vs :vs<CR>
+:nnoremap ss :split<cr>
 :nnoremap <leader>b :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
@@ -152,7 +160,7 @@ cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 
 :nnoremap <leader>ac :Ack!<space>''<Left>
-:nnoremap <leader>ac ye :Ack!<space>'<c-r>"'<Left>
+:nnoremap <leader>ac bye :Ack!<space>'<c-r>"'<Left>
 
 
 

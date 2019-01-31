@@ -22,6 +22,8 @@ colorscheme solarized
 :hi foldcolumn ctermbg=none
 :hi MatchParen cterm=none ctermbg=none ctermfg=35 "opening/closing paranthesis
 :hi DiffAdd ctermfg=none
+:hi DiffText ctermfg=none
+:hi DiffChange ctermfg=none
 
 " to fix ack output to terminal
 set shellpipe=&>
