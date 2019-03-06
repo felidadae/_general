@@ -61,6 +61,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'lifepillar/pgsql.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'lepture/vim-jinja'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 
 "@folding
 " Plugin 'Konfekt/FastFold'

@@ -160,7 +160,8 @@ cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 
 :nnoremap <leader>ac :Ack!<space>''<Left>
-:nnoremap <leader>ac bye :Ack!<space>'<c-r>"'<Left>
+:nnoremap <leader>ac lbye :Ack!<space>'<c-r>"'<Left>
+:nnoremap <C-f> lbye :Ack!<space>'<c-r>"'<Left>
 
 
 
