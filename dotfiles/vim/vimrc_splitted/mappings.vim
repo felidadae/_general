@@ -45,6 +45,7 @@ map  N <Plug>(easymotion-prev)
 :nnoremap <C-LeftMouse> :YcmCompleter GoTo<CR>
 :nnoremap <C-RightMouse> :YckcmCompleter GoTo<CR>
 :nnoremap <C-RightMouse> bye :Ack!<space>'<c-r>"'<Left>
+:nnoremap <RightMouse> :CtrlPBuffer<CR>
 :nnoremap ,dc :YcmCompleter GetDoc<CR>
 
 " @mini buffer explorer
@@ -144,7 +145,7 @@ augroup END
 
 " @utlisnips
 :nnoremap ,sl :UltiSnipsEdit<CR>
-:let g:UltiSnipsExpandTrigger="<Esc>a"
+:let g:UltiSnipsExpandTrigger="<c-a>"
 :let g:UltiSnipsListSnippets="<c-u>"
 :let g:UltiSnipsJumpForwardTrigger="<c-b>"
 :let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -245,3 +246,5 @@ augroup END
 " autocmd BufWritePre *.cpp :%s/\s\+$//e
 " autocmd BufWritePre *.h :%s/\s\+$//e
 " autocmd BufWritePre *.java :%s/\s\+$//e
+
+source ~/.vim/vimrc_splitted/temporary.vim

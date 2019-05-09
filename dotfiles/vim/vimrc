@@ -47,7 +47,6 @@ source ~/.vim/vimrc_splitted/mappings.vim "also contains mappings for plugins
 source ~/.vim/vimrc_splitted/folding.vim "foldtext foldmethod per filetype
 source ~/.vim/vimrc_splitted/helper_functions.vim "custom vim functions
 source ~/.vim/vimrc_splitted/tabs_settings.vim
-source ~/.vim/vimrc_splitted/temporary.vim
 "----------------------------------------------------------------------------------
 
 

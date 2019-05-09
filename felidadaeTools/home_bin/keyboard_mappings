@@ -74,6 +74,19 @@ if [ "$keyboard_type" == "ergi" ]; then
     xmodmap -e 'keycode 26 = e E Tab'
     xmodmap -e 'keycode 27 = r R Return'
     xmodmap -e 'keycode 28 = t T grave'
+    xmodmap -e 'keycode 33 = p P F8'
+    xmodmap -e 'keycode 34 = bracketleft braceleft F9'
+
+    # To be used:
+    # 35  bracketright
+    # 46  l
+    # 47  semicolon
+    # 48  apostrophe
+    # 45  k
+    # 46  l
+    # 47  semicolon
+    # 48  apostrophe
+
     # ---
 
     xmodmap -e 'remove control = Control_L' 

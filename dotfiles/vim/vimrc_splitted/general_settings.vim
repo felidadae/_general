@@ -12,6 +12,7 @@ let g:rainbow_active = 1
 " @colors
 set background=dark
 colorscheme solarized
+
 " :set t_Co=256
 " :colorscheme monokai
 :hi nontext ctermfg=bg 
@@ -79,6 +80,7 @@ endif
 "----------------------------------------------------------------------------------
 :set ttymouse=xterm2
 :set mouse=n
+:set ttymouse=sgr
 :set breakindent
 :set ttyfast
 " :set t_ut=
