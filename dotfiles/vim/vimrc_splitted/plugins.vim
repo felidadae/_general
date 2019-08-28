@@ -42,13 +42,10 @@ Plugin 'itchyny/vim-cursorword' "underline words under cursor
 Plugin 'tpope/vim-commentary'   "comments
 Plugin 'tpope/vim-abolish'
 Plugin 'qpkorr/vim-bufkill'
-" Plugin 'xolox/vim-session'
-" Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/keepcase.vim'
-" Plugin 'fweep/vim-tabber'
+Plugin 'fweep/vim-tabber'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'mileszs/ack.vim'
-" Plugin 'rking/ag.vim'
 Plugin 'jpalardy/vim-slime'
 
 Plugin 'tweekmonster/django-plus.vim'
@@ -63,9 +60,9 @@ Plugin 'lifepillar/pgsql.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'lepture/vim-jinja'
 Plugin 'martinda/Jenkinsfile-vim-syntax'
+Plugin 'itkq/fluentd-vim'
 
 "@folding
-" Plugin 'Konfekt/FastFold'
 Plugin 'vim-jp/vim-java'
 
 call vundle#end()            

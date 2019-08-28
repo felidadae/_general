@@ -1,2 +1,9 @@
 set main-view-id = yes
 bind generic 9 !@sh -c "echo -n %(commit) | xclip -selection c; tmux set-buffer $(echo -n %(commit))"
+bind generic 8 !@sh -c "git show -s --format=%s %(commit) | xclip -selection c"
+bind generic 8 !@sh -c "git show -s --format=%s %(commit) | xclip -selection c"
+
+bind diff F :/^\+\+\+
+bind diff H :1
+
+set mouse = yes
