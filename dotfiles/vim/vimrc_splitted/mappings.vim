@@ -11,6 +11,8 @@ inoremap jk <Esc>
 :inoremap <C-d> <BS>
 :nnoremap <Space> 5<C-e>
 :nnoremap m 5<C-y>
+:nnoremap <c-u> 10<C-y>
+:nnoremap <c-d> 10<C-e>
 
 " @gitgutter
 :nmap ]h <Plug>GitGutterNextHunk
@@ -104,7 +106,7 @@ augroup END
 :nnoremap grt gT
 :nnoremap l;l :tabn<Enter>
 :nnoremap ;;; :tabe<Enter>
-:nnoremap e, :TabberLabel
+:nnoremap e, :TabberLabel 
 
 " @insert-move provide hjkl movements in Insert mode via the <Alt> modifier key
 :inoremap <C-l> <Right>
@@ -138,6 +140,7 @@ augroup END
 :nnoremap vs :vs<CR>
 :nnoremap ss :split<cr>
 :nnoremap <leader>b :CtrlPBuffer<cr>
+:nnoremap vb :CtrlPBuffer<cr>
 :nnoremap <leader>e 10<C-e>
 :nnoremap <leader>[ :execute "ptag " . expand("<cword>")<CR>
 :nnoremap <leader>" <Right>Bi"<Esc>Ea"<Esc>

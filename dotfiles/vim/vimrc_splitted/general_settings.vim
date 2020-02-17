@@ -13,6 +13,9 @@ let g:rainbow_active = 1
 set background=dark
 colorscheme solarized
 
+filetype plugin on
+syntax on
+
 " :set t_Co=256
 " :colorscheme monokai
 :hi nontext ctermfg=bg 
@@ -34,10 +37,6 @@ set shellpipe=&>
 
 " call Initialize_highlights_()
 
-
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
 "----------------------------------------------------------------------------------
 

@@ -17,9 +17,9 @@ set lazyredraw
 " @must-be-on-top (for some reason this settings has to be on the top of the
 " file)
 " @powerline @tabber
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 set tabline=%!tabber#TabLine()
 "----------------------------------------------------------------------------------
 

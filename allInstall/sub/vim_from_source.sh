@@ -1,6 +1,7 @@
 #!/bin/bash -e
 cd $_sources
 
+
 export IF_NO_X11=0
 
 [[ ! -d vim ]] && git clone https://github.com/vim/vim.git 
@@ -22,30 +23,17 @@ cd vim
 sudo dpkg -r vim
 sudo make uninstall
 make distclean
-if [ $IF_NO_X11 == 0 ]; then
-	./configure --with-features=huge \
-				--enable-multibyte \
-				--enable-rubyinterp=yes \
-				--enable-pythoninterp=yes \
-				--with-python-config-dir=/usr/lib/python2.7/config \
-				--enable-perlinterp=yes \
-				--enable-luainterp=yes \
-				--enable-cscope --prefix=/usr \
-				--enable-gui=gtk3
-				# --enable-python3interp=yes \
-				# --with-python3-config-dir=/usr/lib/python3.5/config \
-else
-	./configure --with-features=huge \
-				--enable-multibyte \
-				--enable-rubyinterp=yes \
-				--enable-pythoninterp=yes \
-				--with-python-config-dir=/usr/lib/python2.7/config \
-				--enable-perlinterp=yes \
-				--enable-luainterp=yes \
-				--enable-cscope --prefix=/usr \
-				# --enable-python3interp=yes \
-				# --with-python3-config-dir=/usr/lib/python3.5/config \
-fi
+
+./configure --with-features=huge \
+			--enable-multibyte \
+			--enable-rubyinterp=yes \
+			--enable-python3interp=yes \
+			--with-python3-config-dir=$(python3-config --configdir) \
+			--enable-perlinterp=yes \
+			--enable-luainterp=yes \
+			--enable-gui=gtk3 \
+			--enable-cscope \
+			--prefix=/usr/local
 make
 
 echo "Install system wide using checkinstall."
@@ -54,6 +42,6 @@ sudo checkinstall -D -y \
   --install=yes \
   --fstrans=no \
   --reset-uids=yes \
-  --pkgname=tmux \
-  --pkgversion="$(git tag | tail -1)" \
+  --pkgname=vim\
+  --pkgversion=8.2 \
   --maintainer="felidadae@gmail.com"

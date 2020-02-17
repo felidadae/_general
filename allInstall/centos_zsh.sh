@@ -1,15 +1,20 @@
 #!/bin/bash -ex
 
 # works for centos 7.5
-perl -i -pe 's/ZSH_THEME="felidadae"/ZSH_THEME="blinks"/' ~/.zshrc
-rm ~/.vimrc
-cd ..
-sudo yum -y install zsh git vim curl
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cd ~; mkdir Programming; cd Programming;
+yum install -y sudo
+sudo yum -y install epel-release
+sudo yum -y install zsh git vim
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
+echo "# Removing automatically created zshrc"
+rm -rf ~/.zshrc
+
+cd ~; mkdir -p Programming; cd Programming;
 git clone https://github.com/felidadae/_general.git
 mv _general _General
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-sudo passwd sbugaj
-chsh -s /bin/zsh
+cd _General
+cd dotfiles
+mkdir ~/.vim
+bash install.sh
+perl -i -pe 's/ZSH_THEME=.*/ZSH_THEME="blinks"/' ~/.zshrc
+cd ..
