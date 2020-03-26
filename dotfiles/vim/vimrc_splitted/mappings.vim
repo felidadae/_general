@@ -164,8 +164,9 @@ cnoremap <C-m> <cr>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 
-:nnoremap <leader>ac :Ack!<space>''<Left>
-:nnoremap <leader>ac lbye :Ack!<space>'<c-r>"'<Left>
+" :nnoremap <leader>ac :Ack!<space>''<Left>
+" :nnoremap <leader>ac :Grepper -query <space>''<Left>
+:nnoremap <leader>ac lbye :Grepper -query <space>'<c-r>"'<Left>
 :nnoremap <C-f> lbye :Ack!<space>'<c-r>"'<Left>
 
 
