@@ -3,14 +3,6 @@
 source ~/.vim/vimrc_splitted/plugins.vim
 "----------------------------------------------------------------------------------
 
-" @Some special settings which do needs to be on top of the whole config.
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
-set shellpipe=>
-" set t_ti= t_te=
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
 set lazyredraw
 
 "----------------------------------------------------------------------------------
@@ -24,30 +16,11 @@ set tabline=%!tabber#TabLine()
 "----------------------------------------------------------------------------------
 
 
-"----------------------------------------------------------------------------------
-" @encoding @indent @general
 source ~/.vim/vimrc_splitted/general_settings.vim "general vim settings
-"----------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------
-" @plugin-settings
 source ~/.vim/vimrc_splitted/plugins_settings.vim
-"----------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------
-" @mappings (note: contains also mappings for plugins)
 source ~/.vim/vimrc_splitted/mappings.vim "also contains mappings for plugins
-"----------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------
-" @additional
-source ~/.vim/vimrc_splitted/folding.vim "foldtext foldmethod per filetype
 source ~/.vim/vimrc_splitted/helper_functions.vim "custom vim functions
 source ~/.vim/vimrc_splitted/tabs_settings.vim
-"----------------------------------------------------------------------------------
 
 
 "----------------------------------------------------------------------------------

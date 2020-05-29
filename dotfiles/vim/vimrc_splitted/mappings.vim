@@ -43,12 +43,12 @@ map  N <Plug>(easymotion-prev)
 
 
 " @ycm
-:nnoremap ,] :YcmCompleter GoTo<CR>
-:nnoremap <C-LeftMouse> :YcmCompleter GoTo<CR>
-:nnoremap <C-RightMouse> :YckcmCompleter GoTo<CR>
+" :nnoremap ,] :YcmCompleter GoTo<CR>
+" :nnoremap <C-LeftMouse> :YcmCompleter GoTo<CR>
+" :nnoremap <C-RightMouse> :YckcmCompleter GoTo<CR>
 :nnoremap <C-RightMouse> bye :Ack!<space>'<c-r>"'<Left>
 :nnoremap <RightMouse> :CtrlPBuffer<CR>
-:nnoremap ,dc :YcmCompleter GetDoc<CR>
+" :nnoremap ,dc :YcmCompleter GetDoc<CR>
 
 " @mini buffer explorer
 :let g:miniBufExplBuffersNeeded = 0

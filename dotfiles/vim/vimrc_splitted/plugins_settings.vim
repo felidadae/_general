@@ -53,8 +53,8 @@ let g:auto_save_silent = 1
 
 
 " @ycm you complete me ycm to set python version
-:let g:ycm_python_binary_path = 'python'
-:let g:ycm_global_ycm_extra_conf = '~/Programming/_General/tools/ycm/.ycm_global_conf.py'
+" :let g:ycm_python_binary_path = 'python'
+" :let g:ycm_global_ycm_extra_conf = '~/Programming/_General/tools/ycm/.ycm_global_conf.py'
 
 
 " @session @vim-session
@@ -79,3 +79,19 @@ let g:tabber_predefined_labels = { 1: 'workspace-1', 2: 'workspace-2', 3: 'works
 " @vim-slime
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+" function! s:on_lsp_buffer_enabled() abort
+setlocal omnifunc=lsp#complete
+setlocal signcolumn=yes
+nmap <buffer> gd <plug>(lsp-definition)
+nmap <buffer> <f2> <plug>(lsp-rename)
+" refer to doc to add more commands
+" endfunction

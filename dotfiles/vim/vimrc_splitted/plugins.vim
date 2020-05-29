@@ -12,6 +12,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'mattn/vim-lsp-settings'
+Plugin 'thomasfaingnaert/vim-lsp-snippets'
+Plugin 'thomasfaingnaert/vim-lsp-ultisnips'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'yami-beta/asyncomplete-omni.vim'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -40,7 +44,7 @@ Plugin 'crusoexia/vim-monokai'
 
 "@small things but making me so happy..
 Plugin 'godlygeek/tabular'
-Plugin 'jiangmiao/auto-pairs'
+" Plugin 'jiangmiao/auto-pairs' # paranthesis, but its too often wrong
 Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'itchyny/vim-cursorword' "underline words under cursor
 Plugin 'tpope/vim-commentary'   "comments
@@ -52,7 +56,7 @@ Plugin 'vim-scripts/vim-auto-save'
 Plugin 'mileszs/ack.vim'
 Plugin 'mhinz/vim-grepper'
 Plugin 'jpalardy/vim-slime'
-Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'majutsushi/tagbar'
