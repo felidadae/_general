@@ -15,13 +15,11 @@ Plugin 'mattn/vim-lsp-settings'
 Plugin 'thomasfaingnaert/vim-lsp-snippets'
 Plugin 'thomasfaingnaert/vim-lsp-ultisnips'
 Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'yami-beta/asyncomplete-omni.vim'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-" Plugin 'vim-airline/vim-airline'
 
 "@usefull navigation
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -36,11 +34,6 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'crusoexia/vim-monokai'
-
-"@pracical look
-" Plugin 'Valloric/MatchTagAlways'
-" Plugin 'justinmk/vim-matchparenalways'
-" Plugin 'luochen1990/rainbow'
 
 "@small things but making me so happy..
 Plugin 'godlygeek/tabular'

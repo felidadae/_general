@@ -153,8 +153,9 @@ augroup END
 :let g:UltiSnipsJumpForwardTrigger="<c-b>"
 :let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" @replace current
 :vnoremap 0y :! tee > ~/tmp/.buffer; tmux load-buffer ~/tmp/.buffer; cat ~/tmp/.buffer<CR>
+:nnoremap 000 :echom expand("%:h") . '/' . expand("%:t") . ':' . line(".")<CR>
+:nnoremap AQ :SlimeSend<CR>
 :vnoremap `y :! tee > ~/tmp/.buffer; tmux load-buffer ~/tmp/.buffer; cat ~/tmp/.buffer<CR>
 :vnoremap <leader>n y :.,$s/<c-r>"//gc<Left><Left><Left>
 :nnoremap <leader>n viwy :.,$s/<c-r>"//gc<Left><Left><Left>
@@ -168,7 +169,6 @@ cnoremap <C-k> <up>
 " :nnoremap <leader>ac :Grepper -query <space>''<Left>
 :nnoremap <leader>ac lbye :Grepper -query <space>'<c-r>"'<Left>
 :nnoremap <C-f> lbye :Ack!<space>'<c-r>"'<Left>
-
 
 
 " @all programming languages
@@ -212,28 +212,10 @@ augroup filtetype_javascript
 augroup END
 
 " @mappings-c_like_languages
-augroup filtetype_clike
-	autocmd!
-	:autocmd Filetype javascript,c,cpp inoremap p[ {<cr><cr>}<esc>kddko
-	:autocmd Filetype c,cpp inoremap ;'; <Esc>$i;<Esc>o
-	:autocmd Filetype c,cpp nnoremap ,cb /{<cr>N%xdw<C-o>xx<C-o>
-augroup END
-
 augroup cplusplus
 	autocmd!
-	:autocmd Filetype cpp inoremap -. ->
-	:autocmd Filetype cpp inoremap 78 *
-	:autocmd Filetype cpp inoremap `1 !
-	:autocmd Filetype cpp inoremap 67 &
 	:autocmd Filetype cpp inoremap sts std::
-	:autocmd Filetype cpp inoremap vec vector<><Left>
-	:autocmd Filetype cpp inoremap hashm unordered_map<><Left>
-	:autocmd Filetype cpp inoremap boos boost::
-	:autocmd Filetype cpp inoremap inc,. #include <><Left>
-	:autocmd Filetype cpp inoremap ;; ::
-	:autocmd Filetype cpp inoremap m,. <><Left>
 augroup END
-
 
 augroup vimscript
 	autocmd!
@@ -252,4 +234,26 @@ augroup END
 " autocmd BufWritePre *.h :%s/\s\+$//e
 " autocmd BufWritePre *.java :%s/\s\+$//e
 
-source ~/.vim/vimrc_splitted/temporary.vim
+:nnoremap ne :bp\|bd #<CR> 
+:nnoremap <C-n> :<C-f>
+:nnoremap <C-b> :CtrlPBuffer<CR>
+:nnoremap <C-t> :CtrlPTag<CR>
+let g:ctrlp_switch_buffer = '0'
+:nnoremap T zt
+
+syn keyword pythonSelf self
+highlight def link pythonSelf TickerDone
+hi TickerDone ctermfg=28 ctermbg=NONE cterm=NONE guifg=green guibg=NONE gui=NONE
+
+" :nnoremap gd :YcmCompleter GoTo<CR>
+:nnoremap <silent> ,gs :Gstatus<CR>:13wincmd_<CR>
+let g:ycm_confirm_extra_conf = 0
+
+:nnoremap tbt :SlimeConfig<CR>
+:nnoremap tbt <Plug>SlimeConfig<CR>
+:nnoremap rvr :SlimeSend<CR>
+:nnoremap rrr :SlimeSend<CR>
+
+:let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+:let g:slime_target = "tmux"
+:let g:slime_dont_ask_default = 1

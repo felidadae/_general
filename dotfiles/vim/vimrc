@@ -15,12 +15,9 @@ python3 del powerline_setup
 set tabline=%!tabber#TabLine()
 "----------------------------------------------------------------------------------
 
-
-source ~/.vim/vimrc_splitted/general_settings.vim "general vim settings
+source ~/.vim/vimrc_splitted/general_settings.vim
 source ~/.vim/vimrc_splitted/plugins_settings.vim
 source ~/.vim/vimrc_splitted/mappings.vim "also contains mappings for plugins
-source ~/.vim/vimrc_splitted/helper_functions.vim "custom vim functions
-source ~/.vim/vimrc_splitted/tabs_settings.vim
 
 
 "----------------------------------------------------------------------------------
