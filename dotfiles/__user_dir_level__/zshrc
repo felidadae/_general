@@ -224,3 +224,4 @@ alias kepvc='kubectl edit pvc'
 alias kdpvc='kubectl describe pvc'
 alias kdelpvc='kubectl delete pvc'
 # -----
+source ~/.config/up/up.sh

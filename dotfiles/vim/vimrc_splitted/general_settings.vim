@@ -87,8 +87,8 @@ au BufRead,BufNewFile *.aurora set filetype=python
 
 "----------------------------------------------------------------------------------
 " @wipeout
-command! -bang Wipeout :call Wipeout(<bang>0)
-function! Wipeout(bang)
+command! -bang Wipeout2 :call Wipeout2(<bang>0)
+function! Wipeout2(bang)
 	" figure out which buffers are visible in any tab
 	let visible = {}
 	for t in range(1, tabpagenr('$'))

@@ -53,7 +53,7 @@ Plugin 'jpalardy/vim-slime'
 
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'majutsushi/tagbar'
-" Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'fholgado/minibufexpl.vim'
 Plugin 'nvie/vim-flake8'
 
 "@syntax
